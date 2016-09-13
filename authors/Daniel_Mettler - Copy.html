@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Daniel Mettler</title>
+    <script type="text/javascript">
+        
+    </script>
+  </head>
+  <body>
+                                <div class="app-blog sc-element">
+                
+                <div class="app-blog-detail">
+                        <div>
+                            <img style="max-width:100%; display:block;" src="http://2sxc.org/Portals/0/Blog/2015/08-10 Grunt Basics/grunt-banner.png?w=1000&h=500&mode=max&scale=both&blog=dnnsoftware" alt="" />
+                            <div style="float:left; font-size:9px; ">this is a <a target="_blank" tabindex="0" href="http://2sxc.org/en/Blog/post/grunt-1-1-what-is-nodejs-npm-grunt-bower/source/dnnsoftware">repost from the 2sxc blog</a></div>
+                        </div>
+                    <div class="app-blog-text">
+                        <p>So you're curious about Grunt, npm, nodeJS and more, but probably don't see what the big deal is about? I'll teach you more of that in the following posts, this post should just help you keep understand what each part of the puzzle does.&nbsp;</p>
+<h2>The Platform: nodeJS and the Google-Chrome JavaScript Engine</h2>
+<p>So <a href="https://nodejs.org/" target="_blank">nodeJS</a> is your engine - a bit like your .net framework when you're working with C#. So you could use it to create a web-server, a command-line application or a bunch of other stuff. It's basically a wrapper for the very <a href="https://developers.google.com/v8/" target="_blank">fast JavaScript engine used in Google-Chrome called V8</a>. Since it uses JavaScript as the main development language it's very cross-platform. You don't need to know much about nodeJS when using applications built with nodeJS (like when using Grunt) - so for now, this is all you need to know.&nbsp;</p>
+<h2>The Installer: npm the Node Package Manager</h2>
+<p>To download and use published software written for nodeJS we will use npm. So basically anybody publishing open-source software written with nodeJS will prepare some configuration files (the package.json) to help npm figure out how to install it. Again you don't need to know how it works, but it works like magic. If you want to dig deeper I recommend this <a href="http://www.sitepoint.com/beginners-guide-node-package-manager/" target="_blank">beginners guide to npm</a>, but everything you need to know I'll write about.&nbsp;</p>
+<p>So what do you need to know? Some key facts to understand:</p>
+<ol>
+    <li>npm will download packages of JavaScript applications and install it either in a global folder (located in your user profile) OR in a folder which you are currently in. In some cases - like when installing global tools like Grunt - you'll want the global repository. In most cases - like when installing a linting tool you need to clean up some of your JavaScript code - you'll usually only want to install that version in the project you're currently working in.</li>
+    <li>When npm installs something "into the current folder" it's actually downloading the code and deploying it in a subfolder called <em>node_modules</em>.&nbsp;</li>
+    <li>you can download / install these packages from the command line and specify each package you want manually...</li>
+    <li>...but usually you will have this fully automated. So your application (let's say a gallery-app written for DNN/2sxc) will have a file called package.json which lists all packages it expects. npm will then get all these packages together, automatically.&nbsp;</li>
+    <li>the nodeJS app you just installed -&nbsp;<a href="https://www.npmjs.com/package/grunt-ts" target="_blank">let's say a TypeScript compiler which generates JavaScript from TypeScript</a> - will also rely on other dependencies. npm will look these up and download them automatically, and store them in a sub folder of the grunt-ts folder. In this example, you could run "npm install grunt-ts" from your command line and see that grunt-ts needs at least 9 other projects.&nbsp;</li>
+</ol>
+<p>So npm doesn't do anything - but it downloads everything you need so that you can actually do something.&nbsp;</p>
+<h2>The automation engine: Grunt - the JavaScript Task runner</h2>
+<p>When you're developing modern web applications there are many things you would like to do with your code. You might want to use LESS to write better CSS or TypeScript for developing better JavaScript. You might also want to run some quality-checks and then compress your JavaScript so it's more compact before delivering it to your browser. All these things are easy to do with nodeJS - but it would be very cumbersome to run each task from your command line.&nbsp;</p>
+<p>Grunt takes care of this for you. It will run all these scripts for you, fully automated. It will need to know what you want it to do - and for that it will look at your package.json and your gruntfile.json. But these are very easy to set up.&nbsp;</p>
+<h2>The automation plugins: Grunt-XXX packages / wrappers</h2>
+<p>One more detail in the puzzle: many developers create awesome nodeJS tools (like <a href="http://jshint.com/" target="_blank">JSHint</a>, to analyze your JS code and help you improve it). But these don't automatically work with grunt because they just solve a specific problem but don't support the Grunt-interface by default. So somebody else will write a grunt compatible wrapper and deploy this as a npm-package, usually named with grunt- in front, like grunt-jshint or <a href="https://github.com/gruntjs/grunt-contrib-jshint" target="_blank">grunt-contrib-jshint</a>.&nbsp;</p>
+<h2>The automation configuration: gruntfile.json and package.json</h2>
+<p>And finally the configuration. Each application / plugin (like JSHint) is usually highly configurable. When using grunt you will usually place this configuration for each automation inside the gruntfile.json file. Since each feature has it's own options you'll have to research the possibilities on each plugin. Fortunately all the popular plugins have extensive documentation. You can also refer to other config-files where you need to - so it's common practice to also tell grunt to get certain aspects (like the copyright information) out of the package.json file.&nbsp;</p>
+<h2>A quick word about alternatives</h2>
+<p>When you start with such new technologies to solve problems you never really thought about, you may wonder if you're using the right tools. The answer is that as of today (August 2015) these are the most popular tools for this kind of work. They are very, very popular - but there are alternatives. If you really want the full picture, you may also want to research:</p>
+<ol>
+    <li>Gulp - an alternative to Grunt with a different ideology</li>
+    <li>Bower - this is also a package manager - but it does not compete with npm; in's meant to manage packages of client-js files (not dev-js-files)</li>
+    <li>io.js - a fork of nodeJs - but it looks like the projects will be merged again</li>
+</ol>
+<p>We (2sic) strongly recommend to stick to the most popular solution on the market - because even if it ends up being replaced by something else (maybe Gulp is better, maybe not) there will be so many people making the transition, that there will be help when it becomes relevant.&nbsp;</p>
+                    </div>
+                </div>
+                <hr />
+                <div class="app-blog-authordetails">
+                    <div>
+                        <iframe style="float: right; margin-left: 5px; width: 200px; height: 200px; border: none;" src='http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html?id=6730&blog=dnnsoftware&name=grunt-1-1-what-is-nodejs-npm-grunt-bower'></iframe> <p><em>Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&nbsp;<a tabindex="0" target="_blank" href="http://www.2sic.com/">2sic internet solutions</a>&nbsp;in
+Switzerland and Liechtenstein, an 20-head web specialist with over 800
+DNN projects since 1999. He is also chief architect of&nbsp;<a tabindex="0" target="_blank" href="http://2sxc.org/">2sxc</a>&nbsp;(see&nbsp;<a tabindex="0" target="_blank" href="http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent">forge</a>), an open source module for creating <em>attractive content</em> and DNN Apps.</em></p><br /><br />
+                        Read more posts by <a href="http://2sxc.org/en/Blog/author/Daniel Mettler">Daniel Mettler</a>
+                    </div>
+                </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+                    <div style="text-align:center; overflow:hidden;">
+                    <img alt="" style="max-width:100%; max-height:300px;" src="http://2sxc.org/Portals/0/Blog/2015/08-10 Grunt Basics/grunt-banner.png?h=300" />
+            </div>
+            <p>To get started it helps to understand what these parts are for and what each one does. This short introduction will help you figure it out. </p>
+        
+        
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
+@* this will show an "add" button if the current user is an editor *@
+@Edit.Toolbar(actions: "new", contentType: "BlogPost")
+
+@{
+    // get all posts as delived from the standard query
+	var postsToShow = AsDynamic(Data["Default"]);
+	
+	// only apply this filter for non-editors
+	if (!Permissions.UserMayEditContent) {
+		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now).Where(p => p.Published);
+	}
+}
+
+<div class="app-blog">
+	@* the posts *@
+	@foreach(var post in postsToShow)
+	{
+		@RenderPage("_list-item.cshtml", new { Post = post })
+	}
+
+	@* Paging Bar *@
+	@RenderPage("_pager.cshtml")
+</div>

@@ -1,0 +1,21 @@
+<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
+@{	
+	var lib = CreateInstance("_library.cshtml"); 
+	var author = AsDynamic(Data["Author"]).FirstOrDefault() ?? lib.unknownAuthor;
+}
+
+<div class="app-todo">
+   <h1>Posts by @author.FullName</h1>
+   <div class="todo">
+		@Html.Raw(author.ShortBio)
+   </div>
+</div>
+
+<div class="app-blog">
+	@foreach(var post in AsDynamic(Data["Default"]))
+	{
+		@RenderPage("_list-item.cshtml", new { Post = post })
+	}
+
+	@RenderPage("_pager.cshtml")
+</div>

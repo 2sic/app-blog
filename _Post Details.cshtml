@@ -1,0 +1,97 @@
+@using System.Web.UI.HtmlControls
+
+<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
+@{	var lib = CreateInstance("_library.cshtml"); }
+@{
+	var post = AsDynamic(Data["Default"]).First();
+    var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
+
+	
+	// Meta Stuff, Page Title
+	var pageHandler = HttpContext.Current.Handler as Page;
+	var tp = (DotNetNuke.Framework.CDefault)pageHandler;
+
+	if (pageHandler != null && tp != null)
+	{
+		var MetaDescription = post.Teaser;
+		if (!String.IsNullOrEmpty(post.MetaDescription))
+		{
+			MetaDescription = post.MetaDescription;
+		}
+		tp.Description = MetaDescription;
+		var metaDescription = (HtmlMeta)pageHandler.FindControl("metaDescription");
+		metaDescription.Visible = true;
+		metaDescription.Content = HttpUtility.HtmlAttributeEncode(MetaDescription);
+
+		var MetaTitle = post.Title;
+		if (!String.IsNullOrEmpty(post.MetaTitle))
+		{
+			MetaTitle = post.MetaTitle;
+		}
+		pageHandler.Title = MetaTitle;
+	}
+}
+@if(post.Published || Permissions.UserMayEditContent){
+<div class="app-blog sc-element">
+	@post.Toolbar
+	<div class="app-blog-detail"> <!-- Add class: app-blog-small -->
+		<div class="app-blog-detail-top">
+			<div class="app-blog-person">
+				<a href="@Link.To(parameters: "author=" + author.FullName)">
+					<img src="@author.Image.ToLower()?w=64&amp;h=65&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
+					<h4>@author.FullName</h4>
+				</a>
+			</div>
+			@if (Permissions.UserMayEditContent && post.Published != true) {
+				<span class="text-warning">Not published</span>
+			}
+			<h1>@post.Title</h1>
+			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
+		</div>
+		@if(post.ImageSquare != true){
+			<img class="app-blog-image" src="@post.Image.ToLower()?w=1000&amp;h=500&amp;mode=max&amp;scale=both" alt="" />
+		}
+		else {
+			<img class="app-blog-image pull-right" src="@post.Image.ToLower()?w=300&amp;h=300&amp;mode=max&amp;scale=both" alt="" />
+		}
+		<div class="app-blog-text">
+			@Html.Raw(post.Body)
+		</div>
+		<div class="app-blog-text sc-content-block-list" @Edit.ContextAttributes(post, field: "DesignedContent")>
+			@foreach(var cb in @post.DesignedContent) {
+				@cb.Render();
+			}
+		</div>
+	</div>
+	
+	<div class="app-blog-tags">
+		<hr />
+		<h3>Tags</h3>
+		<ul>
+			@foreach(var tag in post.Tags) {
+				<li class="app-blog-tag1"><a href="@Link.To(parameters: "tag=" + tag.Tag)" title="@tag.Name">@tag.Name</a></li>
+			}
+		</ul>
+	</div>
+	<hr />
+
+	<div class="app-blog-authordetails">
+		<div>
+			<img style="float: right; margin-left: 5px; width: 200px; height: 200px; border: none;" src='@author.Image'/> @Html.Raw(author.ShortBio)
+		</div>
+		<div>
+		Read more posts by <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
+		</div>
+	</div>
+	<div class="app-blog-backlinks">
+		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">Back to blog home </a>
+	</div>
+</div>
+} else {
+	Response.StatusCode = 404;
+	Response.TrySkipIisCustomErrors = true;
+	<h1>404 (not found)</h1>
+	<p>
+		<a href="/">Back to frontpage</a>
+	</p>
+}

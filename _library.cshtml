@@ -1,0 +1,20 @@
+@using System.Dynamic
+@functions {
+	// this is a fairly complex workaround to deliver a anonymous type, because 
+	// razor doesn't fully support anonymous types, so I must create an expando instead
+	public dynamic unknownAuthor = ToExpando(new Dictionary<string, object>() 
+		{
+			{ "FullName", "Unknown" },
+			{ "Image", "unknown.jpg" },
+			{ "ShortBio", "bio unknown" }
+		}); 
+	
+    public static dynamic ToExpando(Dictionary<string, object> anonymousDictionary)
+    {
+        IDictionary<string, object> expando = new ExpandoObject();
+        foreach (var item in anonymousDictionary)
+            expando.Add(item);
+        return (ExpandoObject)expando;
+    }
+
+}

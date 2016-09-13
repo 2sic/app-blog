@@ -1,0 +1,42 @@
+@{	
+	var lib = CreateInstance("_library.cshtml"); 
+	var post = PageData["Post"];
+    var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
+}
+    <article class="app-blog-item">
+	        <div class="app-blog-col1 sc-element">
+		@post.Toolbar
+            <a href="@Link.To(parameters: "post=" + post.UrlKey)" title="@post.Title" class="app-blog-link">
+                <img class="app-blog-person-mobile" src="@author.Image.ToLower()?w=40&amp;h=40&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
+				@if (Permissions.UserMayEditContent && post.Published != true) {
+					<span class="text-warning">Not published</span>
+				}
+                <h2>@post.Title</h2>
+                <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
+                <div style="text-align:center; padding-bottom:8px;">
+					<img @Html.Raw(post.ImageSquare != true ? "style='width:100%;'" : "" ) class="app-blog-article-img" src="@post.Image.ToLower()?w=790&amp;h=300&amp;mode=max&amp;scale=both" alt="@post.Title" /></div>
+                <div class="Normal">
+					@Html.Raw(post.Teaser)
+                </div>
+            </a>
+        </div>
+        <div class="app-blog-col2">
+            <div class="app-blog-person">
+                <a href="@Link.To(parameters: "author=" + author.FullName)">
+                    <img src="@author.Image.ToLower()?w=64&amp;h=65&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
+                    <h4>@author.FullName</h4>
+                </a>
+            </div>
+            <hr />
+            <div class="app-blog-tags">
+                <h3>Tags</h3>
+                <ul>
+					@foreach(var tag in post.Tags) {
+                    	<li class="app-blog-tag1"><a href="@Link.To(parameters: "tag=" +tag.Tag)" title="@tag.Name">@tag.Name</a></li>
+					}
+                </ul>
+            </div>
+        </div>
+    </article>
+	
+	
