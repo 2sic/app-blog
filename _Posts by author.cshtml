@@ -3,6 +3,15 @@
 	var lib = CreateInstance("_library.cshtml"); 
 	var author = AsDynamic(Data["Author"]).FirstOrDefault() ?? lib.unknownAuthor;
 }
+@{
+    // get all posts as delived from the standard query
+	var postsToShow = AsDynamic(Data["Default"]);
+	
+	// only apply this filter for non-editors
+	if (!Permissions.UserMayEditContent) {
+		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now).Where(p => p.Published);
+	}
+}
 
 <div class="app-todo">
    <h1>Posts by @author.FullName</h1>
@@ -12,7 +21,7 @@
 </div>
 
 <div class="app-blog">
-	@foreach(var post in AsDynamic(Data["Default"]))
+	@foreach(var post in postsToShow)
 	{
 		@RenderPage("_list-item.cshtml", new { Post = post })
 	}
