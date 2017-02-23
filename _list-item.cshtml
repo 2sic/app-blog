@@ -8,9 +8,6 @@
 		@post.Toolbar
             <a href="@Link.To(parameters: "post=" + post.UrlKey)" title="@post.Title" class="app-blog-link">
                 <img class="app-blog-person-mobile" src="@author.Image.ToLower()?w=40&amp;h=40&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
-				@if (Permissions.UserMayEditContent && post.Published != true) {
-					<span class="text-warning">Not published</span>
-				}
                 <h2>@post.Title</h2>
                 <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
                 @if(!String.IsNullOrEmpty(post.Image)){

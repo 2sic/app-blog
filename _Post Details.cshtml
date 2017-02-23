@@ -1,8 +1,14 @@
 @using System.Web.UI.HtmlControls
+@using System.Text.RegularExpressions
+
+
 
 <link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
 @{	var lib = CreateInstance("_library.cshtml"); }
 @{
+
+
+
 	var post = AsDynamic(Data["Default"]).First();
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
 
@@ -10,28 +16,54 @@
 	// Meta Stuff, Page Title
 	var pageHandler = HttpContext.Current.Handler as Page;
 	var tp = (DotNetNuke.Framework.CDefault)pageHandler;
+	var isHttpRequest = pageHandler != null && tp != null;
+	var imgUrl = post.Image;
+	var niceTeaser = Regex.Replace(post.Teaser, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
+	niceTeaser = Regex.Replace(niceTeaser, "\\s+", " ");
 
-	if (pageHandler != null && tp != null)
+	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
+	if (isHttpRequest)
 	{
-		var MetaDescription = post.Teaser;
-		if (!String.IsNullOrEmpty(post.MetaDescription))
-		{
-			MetaDescription = post.MetaDescription;
-		}
+		var MetaDescription = String.IsNullOrEmpty(post.MetaDescription)
+			? post.MetaDescription
+			: post.Teaser;
+
 		tp.Description = MetaDescription;
 		var metaDescription = (HtmlMeta)pageHandler.FindControl("metaDescription");
 		metaDescription.Visible = true;
 		metaDescription.Content = HttpUtility.HtmlAttributeEncode(MetaDescription);
 
-		var MetaTitle = post.Title;
-		if (!String.IsNullOrEmpty(post.MetaTitle))
-		{
-			MetaTitle = post.MetaTitle;
+		pageHandler.Title = String.IsNullOrEmpty(post.MetaTitle) 
+			? post.MetaTitle
+			: post.Title;
+
+		var teaser = !String.IsNullOrEmpty(post.SharingDescription) ? post.SharingDescription : niceTeaser ;
+
+		// define image url based on square or not
+		// also adds full domain, because this way it will work when sharing
+		if(!String.IsNullOrEmpty(imgUrl)) {
+			imgUrl = Request.Url.Scheme + "://" + Request.Url.Host 
+				+ imgUrl.ToLower() 
+					+ ((post.ImageSquare != true) ? "?w=1000&amp;h=500" : "?w=300&amp;h=300")
+					+ "&amp;mode=max&amp;scale=both";
 		}
-		pageHandler.Title = MetaTitle;
+
+		lib.AddMeta("og:type", "article");
+		lib.AddMeta("og:title", post.Title);
+		lib.AddMeta("og:site_name", App.Settings.Title);
+		lib.AddMeta("og:url", @Link.To(parameters: "post=" + post.UrlKey));
+		lib.AddMeta("og:description", teaser );
+		lib.AddMeta("og:image", imgUrl);
+
+		lib.AddMeta("twitter:card", imgUrl != "" && !post.ImageSquare ? "summary_large_image" : "summary");
+		lib.AddMeta("twitter:title", post.Title);
+		lib.AddMeta("twitter:description", teaser);
+		lib.AddMeta("twitter:image", imgUrl);
 	}
+	
 }
-@if(post.Published || Permissions.UserMayEditContent){
+
+@if(post.IsPublished || Permissions.UserMayEditContent){
 <div class="app-blog sc-element">
 	@post.Toolbar
 	<div class="app-blog-detail"> <!-- Add class: app-blog-small -->
@@ -42,19 +74,11 @@
 					<h4>@author.FullName</h4>
 				</a>
 			</div>
-			@if (Permissions.UserMayEditContent && post.Published != true) {
-				<span class="text-warning">Not published</span>
-			}
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
 		@if(!String.IsNullOrEmpty(post.Image)){
-			if(post.ImageSquare != true){
-				<img class="app-blog-image" src="@post.Image.ToLower()?w=1000&amp;h=500&amp;mode=max&amp;scale=both" alt="" />
-			}
-			else {
-				<img class="app-blog-image pull-right" src="@post.Image.ToLower()?w=300&amp;h=300&amp;mode=max&amp;scale=both" alt="" />
-			}
+			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
 		}
 		<div class="app-blog-text">
 			@Html.Raw(post.Body)

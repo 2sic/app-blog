@@ -16,5 +16,17 @@
             expando.Add(item);
         return (ExpandoObject)expando;
     }
+	
+	// page variable for re-use
+    private Page page = null;
+    public void AddHeaderLine(string newHeader) {
+        if(page == null)
+            page = HttpContext.Current.Handler as Page;  
+    	var genCon = new System.Web.UI.LiteralControl(newHeader);
+        page.Header.Controls.Add(genCon);
+    }
+    public void AddMeta(string prop, string content) {
+    	AddHeaderLine("<meta property='" + prop + "' content='" + content + "' /> ");
+    }
 
 }

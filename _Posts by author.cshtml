@@ -9,7 +9,7 @@
 	
 	// only apply this filter for non-editors
 	if (!Permissions.UserMayEditContent) {
-		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now).Where(p => p.Published);
+		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now).Where(p => p.IsPublished);
 	}
 }
 
