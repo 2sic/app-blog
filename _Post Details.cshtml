@@ -48,11 +48,13 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
-		@if(post.ImageSquare != true){
-			<img class="app-blog-image" src="@post.Image.ToLower()?w=1000&amp;h=500&amp;mode=max&amp;scale=both" alt="" />
-		}
-		else {
-			<img class="app-blog-image pull-right" src="@post.Image.ToLower()?w=300&amp;h=300&amp;mode=max&amp;scale=both" alt="" />
+		@if(!String.IsNullOrEmpty(post.Image)){
+			if(post.ImageSquare != true){
+				<img class="app-blog-image" src="@post.Image.ToLower()?w=1000&amp;h=500&amp;mode=max&amp;scale=both" alt="" />
+			}
+			else {
+				<img class="app-blog-image pull-right" src="@post.Image.ToLower()?w=300&amp;h=300&amp;mode=max&amp;scale=both" alt="" />
+			}
 		}
 		<div class="app-blog-text">
 			@Html.Raw(post.Body)

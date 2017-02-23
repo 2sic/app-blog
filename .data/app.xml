@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.05.02" ExportDate="2016-09-13T12:42:46.993817+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-02-23T14:30:49.2094511+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -180,9 +180,15 @@
         <Attribute StaticName="Title" Type="String" IsTitle="true">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="34454745-f586-45c5-bc93-ef6b773eaddc" KeyNumber="385">
             <Value Key="Name" Value="Title" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="Required" Value="True" Type="Boolean" />
+            <Value Key="DefaultValue" Value="" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="" Type="String" />
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="bddee681-4382-4de9-baa7-205a62ed6ce9" KeyNumber="385" />
         </Attribute>
         <Attribute StaticName="Image" Type="Hyperlink" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="5cf642bc-5ccd-4720-bd2c-c68dd52156b1" KeyNumber="389">
@@ -511,8 +517,8 @@
       <Value Key="Name" Value="Blog Posts for Home and Tags" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="AllowEdit" Value="True" Type="Boolean" />
-      <Value Key="StreamsOut" Value="ListContent,Default,Paging" Type="String" />
-      <Value Key="StreamWiring" Value="298de0e3-67d8-45ec-a864-c84132ad1ea6:Default&gt;376cd440-59fd-493c-b791-f0b526d7255c:Default&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Drafts&gt;376cd440-59fd-493c-b791-f0b526d7255c:Drafts&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Published&gt;376cd440-59fd-493c-b791-f0b526d7255c:Published&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d974619-a658-422f-88e5-8cd5340f62d6:Default&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:XLastDefaultList&#xD;&#xA;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:1st&#xD;&#xA;4c8da744-fd5b-4f10-871e-54a4976f13d0:Default&gt;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Paging&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&gt;Out:Default&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&gt;Out:Paging&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&#xD;&#xA;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:2nd" Type="String" />
+      <Value Key="StreamsOut" Value="ListContent,Default,Paging,SearchIndex,Csv" Type="String" />
+      <Value Key="StreamWiring" Value="298de0e3-67d8-45ec-a864-c84132ad1ea6:Default&gt;376cd440-59fd-493c-b791-f0b526d7255c:Default&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Drafts&gt;376cd440-59fd-493c-b791-f0b526d7255c:Drafts&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Published&gt;376cd440-59fd-493c-b791-f0b526d7255c:Published&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d974619-a658-422f-88e5-8cd5340f62d6:Default&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:XLastDefaultList&#xD;&#xA;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:1st&#xD;&#xA;4c8da744-fd5b-4f10-871e-54a4976f13d0:Default&gt;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Paging&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&gt;Out:Default&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&gt;Out:Paging&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&#xD;&#xA;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:2nd&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&gt;Out:SearchIndex" Type="String" />
       <Value Key="TestParameters" Value="[Module:ModuleID]=541&#xD;&#xA;[QueryString:Tag]=&#xD;&#xA;[QueryString:Author]=Daniel Mettler&#xD;&#xA;[QueryString:Page]=2" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="298de0e3-67d8-45ec-a864-c84132ad1ea6" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
@@ -537,7 +543,7 @@
       <Value Key="Name" Value="ValueSort" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 460,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 460,&#xD;&#xA;  &quot;Left&quot;: 260&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="064dfb9a-91db-4cae-a2fb-4b62c7d6b408" KeyGuid="e8128768-dcba-4cb0-a011-e662579e9b2c">
       <Value Key="Attributes" Value="PublicationMoment" Type="String" />
@@ -547,7 +553,7 @@
       <Value Key="Name" Value="Paging" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Paging, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 340,&#xD;&#xA;  &quot;Left&quot;: 460&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 380,&#xD;&#xA;  &quot;Left&quot;: 540&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="afa30b05-64b9-4498-b89e-5055ce686b8f" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="Post by Tag" Type="String" />
@@ -692,7 +698,7 @@
       <Value Key="Name" Value="CacheAllStreams" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.CacheAllStreams, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 180,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 200,&#xD;&#xA;  &quot;Left&quot;: 449&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="34203a06-fa42-4429-9cb1-8a2d708f89b3" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="Post by Author" Type="String" />
@@ -875,6 +881,21 @@
       <Value Key="Title" Value="" Type="String" />
       <Value Key="App" Value="Default" Type="String" />
       <Value Key="ShowTemplateChooser" Value="False" Type="Boolean" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="8e328ba0-0e53-4b7f-981f-6f1a2693cc24">
+      <Value Key="Title" Value="Test" Type="String" />
+      <Value Key="UrlKey" Value="test" Type="String" />
+      <Value Key="PublicationMoment" Value="2017-02-23T00:00:00" Type="DateTime" />
+      <Value Key="Image" Value="" Type="Hyperlink" />
+      <Value Key="Teaser" Value="&lt;p&gt;test&lt;/p&gt;" Type="String" />
+      <Value Key="Body" Value="&lt;p&gt;test&lt;/p&gt;" Type="String" />
+      <Value Key="MetaDescription" Value="" Type="String" />
+      <Value Key="Published" Value="True" Type="Boolean" />
+      <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
+      <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
+      <Value Key="ImageSquare" Value="False" Type="Boolean" />
+      <Value Key="DesignedContent" Value="" Type="Entity" />
+      <Value Key="MetaTitle" Value="" Type="String" />
     </Entity>
   </Entities>
   <PortalFiles>

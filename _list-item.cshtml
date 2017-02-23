@@ -13,8 +13,11 @@
 				}
                 <h2>@post.Title</h2>
                 <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
-                <div style="text-align:center; padding-bottom:8px;">
-					<img @Html.Raw(post.ImageSquare != true ? "style='width:100%;'" : "" ) class="app-blog-article-img" src="@post.Image.ToLower()?w=790&amp;h=300&amp;mode=max&amp;scale=both" alt="@post.Title" /></div>
+                @if(!String.IsNullOrEmpty(post.Image)){
+                     <div style="text-align:center; padding-bottom:8px;">
+					    <img @Html.Raw(post.ImageSquare != true ? "style='width:100%;'" : "" ) class="app-blog-article-img" src="@post.Image.ToLower()?w=790&amp;h=300&amp;mode=max&amp;scale=both" alt="@post.Title" />
+                     </div>          
+                }
                 <div class="Normal">
 					@Html.Raw(post.Teaser)
                 </div>
