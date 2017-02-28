@@ -1,6 +1,20 @@
 <link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
 @* this will show an "add" button if the current user is an editor *@
-@Edit.Toolbar(actions: "new", contentType: "BlogPost")
+<div class="sc-element">
+	@Edit.Toolbar(toolbar: new object[] { 
+	new { command = new { 
+			action = "new", 
+			contentType = "BlogPost"
+			} 
+			},
+		new { showCondition = true,
+			command = new { 
+				action = "contentitems", 
+				contentType = "BlogPost"
+			} 
+		}
+	
+	}, settings: new { hover="left", show = "hover" })
 
 @{
     // get all posts as delived from the standard query
@@ -21,4 +35,6 @@
 
 	@* Paging Bar *@
 	@RenderPage("_pager.cshtml")
+</div>
+
 </div>
