@@ -20,6 +20,8 @@
 	var imgUrl = post.Image;
 	var niceTeaser = Regex.Replace(post.Teaser, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
 	niceTeaser = Regex.Replace(niceTeaser, "\\s+", " ");
+	var imageHeight = (post.ImageSquare != true ? "500" : "300");
+	var imageWidth = (post.ImageSquare != true ? "1000" : "300");
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
 	if (isHttpRequest)
@@ -44,8 +46,10 @@
 		if(!String.IsNullOrEmpty(imgUrl)) {
 			imgUrl = Request.Url.Scheme + "://" + Request.Url.Host 
 				+ imgUrl.ToLower() 
-					+ ((post.ImageSquare != true) ? "?w=1000&amp;h=500" : "?w=300&amp;h=300")
+					+ "?w=" + imageWidth + "&amp;h=" + imageHeight 
 					+ "&amp;mode=max&amp;scale=both";
+
+			imgUrl = Uri.EscapeUriString(imgUrl);				
 		}
 
 		lib.AddMeta("og:type", "article");
@@ -54,6 +58,8 @@
 		lib.AddMeta("og:url", @Link.To(parameters: "post=" + post.UrlKey));
 		lib.AddMeta("og:description", teaser );
 		lib.AddMeta("og:image", imgUrl);
+		lib.AddMeta("og:image:width", imageWidth);
+		lib.AddMeta("og:image:height", imageHeight);
 
 		lib.AddMeta("twitter:card", imgUrl != "" && !post.ImageSquare ? "summary_large_image" : "summary");
 		lib.AddMeta("twitter:title", post.Title);
