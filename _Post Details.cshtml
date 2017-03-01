@@ -8,13 +8,22 @@
 	var previousPost = AsDynamic(Data["Previous"]).FirstOrDefault();
 	var nextPost = AsDynamic(Data["Next"]).FirstOrDefault();
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
-	
+	var imgUrl = lib.GetSizedImgUrl(post.Image, post.ImageSquare);
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
 	if (HttpContext.Current.Handler is Page)
 	{
-		lib.SetMetaAndTitle(HttpContext.Current.Handler as Page, post);	
-		lib.SetOpenGraphHeaders("article", post.Title, App.Settings.Title, @Link.To(parameters: "post=" + post.UrlKey), lib.StripHtml(post.Teaser, post.Sharingdescription) , lib.GetSizedImgUrl(post.Image, post.ImageSquare), post.ImageSquare);
+		lib.SetMetaAndTitle(post.MetaTitle, post.Title, post.MetaDescription, lib.StripHtml(post.Teaser));	
+
+		var metaDesc = !String.IsNullOrEmpty(post.SharingDescription) ? post.SharingDescription : lib.StripHtml(post.Teaser);
+
+		lib.SetOpenGraphHeaders("article", 
+			post.Title, 
+			App.Settings.Title, 
+			Link.To(parameters: "post=" + post.UrlKey), 
+			metaDesc, 
+			imgUrl, 
+			post.ImageSquare);
 	}
 }
 @Edit.Toolbar(post)
@@ -33,7 +42,7 @@
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
 		@if(!String.IsNullOrEmpty(post.Image)){
-			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@post.Image" alt="" />
+			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
 		}
 		<div class="app-blog-text">
 		    @ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body)

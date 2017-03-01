@@ -34,7 +34,12 @@
     	AddHeaderLine("<meta property='" + prop + "' content='" + content + "' /> ");
     }
 
-    public string GetSizedImgUrl(string imgUrl, bool isSquare){
+    // return composed sized and sanitized image URL 
+    public string GetSizedImgUrl(string imgUrl, bool isSquare) {
+        // skip this if currently in search-index mode without request object
+        if(Request == null) 
+            return imgUrl;
+
         if (String.IsNullOrEmpty(imgUrl)) throw new Exception("string is empty");
         var imageHeight = isSquare ? "300" : "500";
         var imageWidth = isSquare ? "300" : "1000";
@@ -46,28 +51,27 @@
         return imgUrl;				
     }
 
-    public void SetMetaAndTitle(Page pageHandler, dynamic post){
-        var MetaDescription = String.IsNullOrEmpty(post.MetaDescription)
-			? post.MetaDescription
-			: post.Teaser;
+    // determine and set meta description and meta title
+    public void SetMetaAndTitle(string title, string titleFallback, string meta, string metaFallback){
+        var pageHandler = HttpContext.Current.Handler as Page;
+        meta = String.IsNullOrEmpty(meta) ? meta : metaFallback;
 
-		((DotNetNuke.Framework.CDefault)pageHandler).Description = MetaDescription;
-		var metaDescription = (HtmlMeta)pageHandler.FindControl("metaDescription");
-		metaDescription.Visible = true;
-		metaDescription.Content = HttpUtility.HtmlAttributeEncode(MetaDescription);
+		((DotNetNuke.Framework.CDefault)pageHandler).Description = meta;
+		var metaTag = (HtmlMeta)pageHandler.FindControl("metaDescription");
+		metaTag.Visible = true;
+		metaTag.Content = HttpUtility.HtmlAttributeEncode(meta);
 
-		pageHandler.Title = String.IsNullOrEmpty(post.MetaTitle) 
-			? post.MetaTitle
-			: post.Title;	
+		pageHandler.Title = String.IsNullOrEmpty(title) ? title : titleFallback;	
     }
 
-    public string StripHtml(string original, string sharingDescription){
-            var niceTeaser = Regex.Replace(original, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
-            niceTeaser = Regex.Replace(niceTeaser, "\\s+", " ");
-            var teaser = !String.IsNullOrEmpty(sharingDescription) ? sharingDescription : niceTeaser;
-            return teaser;
+    // strip html from original content
+    public string StripHtml(string original){
+            var sanitizedText = Regex.Replace(original, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
+            sanitizedText = Regex.Replace(sanitizedText, "\\s+", " ");
+            return sanitizedText;     
     }
 
+    // populate and generate open graph headers
     public void SetOpenGraphHeaders(string type, string title, string siteName, string url, string teaser, string imgUrl, bool isSquare){
         AddMeta("og:type", type);
 		AddMeta("og:title", title);
