@@ -1,74 +1,23 @@
 @using System.Web.UI.HtmlControls
-@using System.Text.RegularExpressions
-
-
 
 <link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
-@{	var lib = CreateInstance("_library.cshtml"); }
-@{
-
-
+@{	
+	var lib = CreateInstance("_library.cshtml"); 
 
 	var post = AsDynamic(Data["Default"]).First();
+	var previousPost = AsDynamic(Data["Previous"]).FirstOrDefault();
+	var nextPost = AsDynamic(Data["Next"]).FirstOrDefault();
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
-
 	
-	// Meta Stuff, Page Title
-	var pageHandler = HttpContext.Current.Handler as Page;
-	var tp = (DotNetNuke.Framework.CDefault)pageHandler;
-	var isHttpRequest = pageHandler != null && tp != null;
-	var imgUrl = post.Image;
-	var niceTeaser = Regex.Replace(post.Teaser, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
-	niceTeaser = Regex.Replace(niceTeaser, "\\s+", " ");
-	var imageHeight = (post.ImageSquare != true ? "500" : "300");
-	var imageWidth = (post.ImageSquare != true ? "1000" : "300");
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
-	if (isHttpRequest)
+	if (HttpContext.Current.Handler is Page)
 	{
-		var MetaDescription = String.IsNullOrEmpty(post.MetaDescription)
-			? post.MetaDescription
-			: post.Teaser;
-
-		tp.Description = MetaDescription;
-		var metaDescription = (HtmlMeta)pageHandler.FindControl("metaDescription");
-		metaDescription.Visible = true;
-		metaDescription.Content = HttpUtility.HtmlAttributeEncode(MetaDescription);
-
-		pageHandler.Title = String.IsNullOrEmpty(post.MetaTitle) 
-			? post.MetaTitle
-			: post.Title;
-
-		var teaser = !String.IsNullOrEmpty(post.SharingDescription) ? post.SharingDescription : niceTeaser ;
-
-		// define image url based on square or not
-		// also adds full domain, because this way it will work when sharing
-		if(!String.IsNullOrEmpty(imgUrl)) {
-			imgUrl = Request.Url.Scheme + "://" + Request.Url.Host 
-				+ imgUrl.ToLower() 
-					+ "?w=" + imageWidth + "&amp;h=" + imageHeight 
-					+ "&amp;mode=max&amp;scale=both";
-
-			imgUrl = Uri.EscapeUriString(imgUrl);				
-		}
-
-		lib.AddMeta("og:type", "article");
-		lib.AddMeta("og:title", post.Title);
-		lib.AddMeta("og:site_name", App.Settings.Title);
-		lib.AddMeta("og:url", @Link.To(parameters: "post=" + post.UrlKey));
-		lib.AddMeta("og:description", teaser );
-		lib.AddMeta("og:image", imgUrl);
-		lib.AddMeta("og:image:width", imageWidth);
-		lib.AddMeta("og:image:height", imageHeight);
-
-		lib.AddMeta("twitter:card", imgUrl != "" && !post.ImageSquare ? "summary_large_image" : "summary");
-		lib.AddMeta("twitter:title", post.Title);
-		lib.AddMeta("twitter:description", teaser);
-		lib.AddMeta("twitter:image", imgUrl);
+		lib.SetMetaAndTitle(HttpContext.Current.Handler as Page, post);	
+		lib.SetOpenGraphHeaders("article", post.Title, App.Settings.Title, @Link.To(parameters: "post=" + post.UrlKey), lib.StripHtml(post.Teaser, post.Sharingdescription) , lib.GetSizedImgUrl(post.Image, post.ImageSquare), post.ImageSquare);
 	}
-	
 }
-
+@Edit.Toolbar(post)
 @if(post.IsPublished || Permissions.UserMayEditContent){
 <div class="app-blog sc-element">
 	@Edit.Toolbar(post, actions: "edit")	
@@ -84,16 +33,23 @@
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
 		@if(!String.IsNullOrEmpty(post.Image)){
-			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
+			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@post.Image" alt="" />
 		}
 		<div class="app-blog-text">
-			@Html.Raw(post.Body)
+		    @ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body)
 		</div>
-		<div class="app-blog-text sc-content-block-list" @Edit.ContextAttributes(post, field: "DesignedContent")>
-			@foreach(var cb in @post.DesignedContent) {
-				@cb.Render();
-			}
-		</div>
+	</div>
+
+	<div class="app-blog-previouslink pull-left">
+		@if(previousPost != null){
+			<a href="@Link.To(parameters: "post=" + previousPost.UrlKey)" >Previous Article: @previousPost.Title</a>
+		}
+	</div>
+	
+	<div class="app-blog-nextlink pull-right">
+		@if(nextPost != null){
+			<a href="@Link.To(parameters: "post=" + nextPost.UrlKey)" >Next Article: @nextPost.Title</a>
+		}
 	</div>
 	
 	<div class="app-blog-tags">

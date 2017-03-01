@@ -1,4 +1,7 @@
 @using System.Dynamic
+@using System.Text.RegularExpressions
+@using System.Web.UI.HtmlControls
+
 @functions {
 	// this is a fairly complex workaround to deliver a anonymous type, because 
 	// razor doesn't fully support anonymous types, so I must create an expando instead
@@ -9,6 +12,7 @@
 			{ "ShortBio", "bio unknown" }
 		}); 
 	
+    // helper method
     public static dynamic ToExpando(Dictionary<string, object> anonymousDictionary)
     {
         IDictionary<string, object> expando = new ExpandoObject();
@@ -17,6 +21,7 @@
         return (ExpandoObject)expando;
     }
 	
+    
 	// page variable for re-use
     private Page page = null;
     public void AddHeaderLine(string newHeader) {
@@ -29,4 +34,51 @@
     	AddHeaderLine("<meta property='" + prop + "' content='" + content + "' /> ");
     }
 
+    public string GetSizedImgUrl(string imgUrl, bool isSquare){
+        if (String.IsNullOrEmpty(imgUrl)) throw new Exception("string is empty");
+        var imageHeight = isSquare ? "300" : "500";
+        var imageWidth = isSquare ? "300" : "1000";
+        imgUrl = Request.Url.Scheme + "://" + Request.Url.Host 
+            + imgUrl.ToLower() 
+                + "?w=" + imageWidth + "&amp;h=" + imageHeight 
+                + "&amp;mode=max&amp;scale=both";
+        imgUrl = Uri.EscapeUriString(imgUrl);
+        return imgUrl;				
+    }
+
+    public void SetMetaAndTitle(Page pageHandler, dynamic post){
+        var MetaDescription = String.IsNullOrEmpty(post.MetaDescription)
+			? post.MetaDescription
+			: post.Teaser;
+
+		((DotNetNuke.Framework.CDefault)pageHandler).Description = MetaDescription;
+		var metaDescription = (HtmlMeta)pageHandler.FindControl("metaDescription");
+		metaDescription.Visible = true;
+		metaDescription.Content = HttpUtility.HtmlAttributeEncode(MetaDescription);
+
+		pageHandler.Title = String.IsNullOrEmpty(post.MetaTitle) 
+			? post.MetaTitle
+			: post.Title;	
+    }
+
+    public string StripHtml(string original, string sharingDescription){
+            var niceTeaser = Regex.Replace(original, "<[^>]*>", " ", RegexOptions.IgnoreCase).Trim();
+            niceTeaser = Regex.Replace(niceTeaser, "\\s+", " ");
+            var teaser = !String.IsNullOrEmpty(sharingDescription) ? sharingDescription : niceTeaser;
+            return teaser;
+    }
+
+    public void SetOpenGraphHeaders(string type, string title, string siteName, string url, string teaser, string imgUrl, bool isSquare){
+        AddMeta("og:type", type);
+		AddMeta("og:title", title);
+		AddMeta("og:site_name", siteName);
+		AddMeta("og:url", url);
+		AddMeta("og:description", teaser);
+	    AddMeta("og:image", imgUrl);
+
+		AddMeta("twitter:card", imgUrl != "" && !isSquare ? "summary_large_image" : "summary");
+		AddMeta("twitter:title", title);
+		AddMeta("twitter:description", teaser);
+		AddMeta("twitter:image", imgUrl);
+    }
 }
