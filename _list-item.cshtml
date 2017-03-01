@@ -43,6 +43,14 @@
 					}
                 </ul>
             </div>
+             <div class="app-blog-categories">
+                <h3>Categories</h3>
+                <ul>
+					@foreach(var cat in post.Categories) {
+                    	<li class="app-blog-category"><a href="@Link.To(parameters: "cat=" +cat.Category)" title="@cat.Name">@cat.Name</a></li>
+					}
+                </ul>
+            </div>
         </div>
     </article>
 	

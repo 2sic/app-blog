@@ -100,6 +100,13 @@ a.app-blog-link {
 .app-blog-tag4{font-size:160%;}
 .app-blog-tag5{font-size:180%;}
 
+/* Categories */
+.app-blog-category{
+  list-style-type: none;
+}
+
+
+
 /* Buttons */
 .app-blog-backlinks { margin-top:20px;}
 .app-blog-back:before { content:"\00AB"; margin-right:5px;}
