@@ -1,41 +1,57 @@
 <link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
 @* this will show an "add" button if the current user is an editor *@
 <div class="sc-element">
+    @* toolbar for add / manage posts *@
 	@Edit.Toolbar(toolbar: new object[] { 
-	new { command = new { 
-			action = "new", 
-			contentType = "BlogPost"
-			} 
-			},
-		new { showCondition = true,
-			command = new { 
-				action = "contentitems", 
-				contentType = "BlogPost"
-			} 
+	    new { 
+            command = new { 
+    			action = "new", 
+    			contentType = "BlogPost"
+		    } 
+		},
+		new { 
+            command = new { 
+                action = "contentitems", 
+                contentType = "BlogPost"
+            },
+            showCondition = true
 		}
-	
 	}, settings: new { hover="left", show = "hover" })
 
-@{
-    // get all posts as delived from the standard query
-	var postsToShow = AsDynamic(Data["Default"]);
-	
-	// only apply this filter for non-editors
-	if (!Permissions.UserMayEditContent) {
-		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
-	}
-}
+    @* toolbar to manage list/view settings *@
+    @Edit.Toolbar(ListContent)
+    
+    
+    @{
+        // get all posts as delived from the standard query
+    	var postsToShow = AsDynamic(Data["Default"]);
 
-<div class="app-blog">
-	@* the posts *@
-	@foreach(var post in postsToShow)
-	{
-		@RenderPage("_list-item.cshtml", new { Post = post })
-	}
+    	// if category-filter is applied, enforce this here
+    	// reason is that the visual-query doesn't have an "relationship CONTAINS" filter, only "=="
+        // note that the compare must run on the EntityId because of object wrapping/unwrapping
+        if(ListContent.Category.Count > 0) {
+            postsToShow = postsToShow
+                .Where(p => (p.Categories as IEnumerable<dynamic>)
+                    .Any(c => c.EntityId == ListContent.Category[0].EntityId));
+        }
+    	
+    	// only apply this filter for non-editors
+    	if (!Permissions.UserMayEditContent) {
+    		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
+    	}
+    	
+    }
 
-	@* Paging Bar *@
-	@RenderPage("_pager.cshtml")
-</div>
+    <div class="app-blog">
+    	@* the posts *@
+    	@foreach(var post in postsToShow)
+    	{
+    		@RenderPage("_list-item.cshtml", new { Post = post })
+    	}
+    
+    	@* Paging Bar *@
+    	@RenderPage("_pager.cshtml")
+    </div>
 
 </div>
 
