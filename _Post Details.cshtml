@@ -41,6 +41,18 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
+		<div class="app-blog-previouslink">
+
+		@if(previousPost != null){
+				<a href="@Link.To(parameters: "post=" + previousPost.UrlKey)" >&laquo;</a>
+			}
+		</div>
+		<div class="app-blog-nextlink">
+			@if(nextPost != null){
+				<a href="@Link.To(parameters: "post=" + nextPost.UrlKey)" >&raquo;</a>
+			}
+		</div>
+
 		@if(!String.IsNullOrEmpty(post.Image)){
 			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
 		}
@@ -49,18 +61,6 @@
 		</div>
 	</div>
 
-	<div class="app-blog-previouslink pull-left">
-		@if(previousPost != null){
-			<a href="@Link.To(parameters: "post=" + previousPost.UrlKey)" >Previous Article: @previousPost.Title</a>
-		}
-	</div>
-	
-	<div class="app-blog-nextlink pull-right">
-		@if(nextPost != null){
-			<a href="@Link.To(parameters: "post=" + nextPost.UrlKey)" >Next Article: @nextPost.Title</a>
-		}
-	</div>
-	
 	<div class="app-blog-tags">
 		<hr />
 		<h3>Tags</h3>
