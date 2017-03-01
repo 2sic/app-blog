@@ -5,7 +5,13 @@
 }
     <article class="app-blog-item">
 	        <div class="app-blog-col1 sc-element">
-		@post.Toolbar
+		    	@Edit.Toolbar(post, toolbar: new { 
+                    entityId = post.EntityId, 
+                    entityGuid = post.EntityGuid, 
+                    entityTitle = post.EntityTitle }
+                )
+		
+		
             <a href="@Link.To(parameters: "post=" + post.UrlKey)" title="@post.Title" class="app-blog-link">
                 <img class="app-blog-person-mobile" src="@author.Image.ToLower()?w=40&amp;h=40&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
                 <h2>@post.Title</h2>
