@@ -25,28 +25,23 @@ a.app-blog-link {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
-.app-blog-nextlink{
+.app-blog-nextlink, .app-blog-previouslink{
   display: inline-block;
   position: absolute;
-  right: -10%; 
-}
-.app-blog-nextlink > a {
-  font-size: 28px;
-  background-color: #fff;
-  display: inline-block;
-  padding: 0 15px 7px 15px;
 }
 .app-blog-previouslink{
-  display: inline-block;
-  position: absolute;
   left: -10%; 
 }
-.app-blog-previouslink > a {
+.app-blog-nextlink{
+  right: -10%; 
+}
+.app-blog-nextlink > a, .app-blog-previouslink > a {
   font-size: 28px;
   background-color: #fff;
   display: inline-block;
   padding: 0 15px 7px 15px;
 }
+
 
 /* Detail */
 .app-blog-detail-top { overflow:hidden;}
