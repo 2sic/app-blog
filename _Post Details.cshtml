@@ -60,15 +60,22 @@
 		    @ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body)
 		</div>
 	</div>
-
+	<hr />
 	<div class="app-blog-tags">
-		<hr />
-		<h3>Tags</h3>
-		<ul>
-			@foreach(var tag in post.Tags) {
-				<li class="app-blog-tag1"><a href="@Link.To(parameters: "tag=" + tag.Tag)" title="@tag.Name">@tag.Name</a></li>
+		<strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+		@{
+				var tagsList = (post.Tags as IEnumerable<dynamic>)
+					.Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
+		}
+		@Html.Raw(string.Join(", ", tagsList))
+	</div>
+	<div class="app-blog-categories">
+		<strong> @(post.Categories.Count > 1 ? @App.Resources.Categories : @App.Resources.Category): </strong>
+		@{
+				var categoryList = (post.Categories as IEnumerable<dynamic>)
+					.Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
 			}
-		</ul>
+		@Html.Raw(string.Join(", ", categoryList))
 	</div>
 	<hr />
 
