@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T16:26:06.3106402+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T22:22:45.2349834+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -501,6 +501,57 @@
             <Value Key="WysiwygWidth" Value="" Type="Number" />
           </Entity>
         </Attribute>
+        <Attribute StaticName="DesignedContent" Type="Entity" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c2743ace-3488-41e1-a0f9-1952d054c774" KeyNumber="447">
+            <Value Key="Name" Value="Designed Content" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;This contains all the designed content-elements like galleries, responsively layouted elements, qr-codes, sliders or whatever. Usually you edit all this from the details-page of the post, this is just here in case you want to do something more complex with the data.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="entity-content-blocks" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="fe9b9721-2fd7-43e9-880a-f8711aa95ddb" KeyNumber="447">
+            <Value Key="EnableEdit" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableCreate" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableAddExisting" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableRemove" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableDelete" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EntityType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
         <Attribute StaticName="Preview" Type="Empty" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3a2bfe11-aa29-4e37-b16d-59387ba67e80" KeyNumber="1152">
             <Value Key="Name" Value="Preview" Type="String">
@@ -675,57 +726,6 @@
             </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="a15b4dc5-a6c9-4168-b3d9-bcaa394d46cb" KeyNumber="394" />
-        </Attribute>
-        <Attribute StaticName="DesignedContent" Type="Entity" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c2743ace-3488-41e1-a0f9-1952d054c774" KeyNumber="447">
-            <Value Key="Name" Value="Designed Content" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="Notes" Value="&lt;p&gt;This contains all the designed content-elements like galleries, responsively layouted elements, qr-codes, sliders or whatever. Usually you edit all this from the details-page of the post, this is just here in case you want to do something more complex with the data.&amp;nbsp;&lt;/p&gt;" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="VisibleInEditUI" Value="False" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="Required" Value="False" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="DefaultValue" Value="" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="Disabled" Value="False" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="InputType" Value="entity-content-blocks" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-          </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="fe9b9721-2fd7-43e9-880a-f8711aa95ddb" KeyNumber="447">
-            <Value Key="EnableEdit" Value="True" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="EnableCreate" Value="True" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="EnableAddExisting" Value="True" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="EnableRemove" Value="True" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="EnableDelete" Value="False" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-            <Value Key="EntityType" Value="" Type="String">
-              <Dimension DimensionID="47" ReadOnly="false" />
-            </Value>
-          </Entity>
         </Attribute>
         <Attribute StaticName="CategoriesGroup" Type="Empty" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b3565291-0570-4833-a5eb-e7f269381d22" KeyNumber="1139">
@@ -1333,7 +1333,7 @@
       <Value Key="OriginalId" Value="3a5ad280-e261-4a49-abec-00ad1429f70e" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="08.04.04" Type="String">
+      <Value Key="RequiredVersion" Value="08.09.00" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String">
@@ -1392,13 +1392,13 @@
       <Value Key="PostsBy" Value="Beiträge von" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
-      <Value Key="PreviousPost" Value="Older post" Type="String">
+      <Value Key="PreviousPost" Value="Read previous" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="PreviousPost" Value="Älterer Beitrag" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
-      <Value Key="NextPost" Value="More recent post" Type="String">
+      <Value Key="NextPost" Value="Read next" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="NextPost" Value="Aktuellerer Beitrag" Type="String">
@@ -1427,13 +1427,13 @@
       <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler wuchs&amp;nbsp;in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in der Schweiz und Liechtenstein, ein 20-k&amp;ouml;pfiger Web-Spezialist mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von &lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(siehe&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
+      <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler wuchs&amp;nbsp;in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in der Schweiz und Liechtenstein, einem 20-k&amp;ouml;pfiger Web-Spezialisten mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von &lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(siehe&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
       <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler wuchs in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der 2sic internet solutions in der Schweiz und Liechtenstein, ein 20-k&amp;ouml;pfiger Web-Spezialist mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von 2sxc (siehe forge), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
+      <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler wuchs in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der 2sic internet solutions in der Schweiz und Liechtenstein, einem 20-k&amp;ouml;pfiger Web-Spezialisten mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von 2sxc (siehe forge), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2000,6 +2000,42 @@
       <Value Key="Name" Value="Test" Type="String" />
       <Value Key="Key" Value="test" Type="String" />
       <Value Key="Description" Value="&lt;p&gt;A test category&lt;/p&gt;" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="0b00a9a5-6fa4-4eae-9068-9e5b68bc60be">
+      <Value Key="Title" Value="Introducing the Blog App 3.0" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlKey" Value="introducing-the-blog-app-3-0" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PublicationMoment" Value="2017-03-05T00:00:00" Type="DateTime">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="" Type="Hyperlink">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Teaser" Value="&lt;p&gt;The latest edition of the Blog-App provides many new features you'll love. Check it out...&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Body" Value="&lt;p&gt;The latest&amp;nbsp;edition of the Blog-App provides many new features you'll love.&amp;nbsp;Here's the rundown:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The blog body now uses &lt;a href=&quot;http://2sxc.org/en/blog/post/2sxc-8-9-with-very-rich-text-inner-content-2-item-delete-and-more&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Very Rich Text&lt;/a&gt;, allowing you to add apps inline&amp;nbsp;to your posts.&amp;nbsp;&lt;/li&gt;&#xA;&lt;li&gt;The details-view now&amp;nbsp;provide paging to the next/previous blog-post&lt;/li&gt;&#xA;&lt;li&gt;Publishing / unpublishing now uses the 2sxc standard method&lt;/li&gt;&#xA;&lt;li&gt;The entire blog-UI is now in multi-language and translated into English and&amp;nbsp;Deutsch&lt;/li&gt;&#xA;&lt;li&gt;In addition to tagging, the blog now also supports categories. These also have additional descriptions which are shown when a category-filter is applied.&lt;/li&gt;&#xA;&lt;li&gt;We've added full support for &lt;a href=&quot;http://ogp.me/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;OpenGraph &lt;/a&gt;- which improves social sharing and previews of the post both on facebook and twitter.&lt;/li&gt;&#xA;&lt;/ol&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="MetaDescription" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="SharingDescription" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7" Type="Entity" />
+      <Value Key="Tags" Value="" Type="Entity" />
+      <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
+      <Value Key="ImageSquare" Value="False" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="DesignedContent" Value="" Type="Entity" />
+      <Value Key="MetaTitle" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
   </Entities>
   <PortalFiles>

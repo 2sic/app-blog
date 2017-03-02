@@ -40,32 +40,8 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
-		@RenderPage("_Post micro preview.cshtml", new { post = previousPost, css = "app-blog-previouslink" })
-		@*
-		<div class="app-blog-previouslink">
-
-			@if(previousPost != null){
-				<a href="@Link.To(parameters: "post=" + previousPost.UrlKey)" >
-					<strong>@App.Resources.previousPost @* @App.Resources.PublicatedOn <time pubdate datetime="@previousPost.PublicationMoment.ToString("d")">@previousPost.PublicationMoment.ToString("d")</time>* @</strong>
-					@if(!String.IsNullOrEmpty(@previousPost.Image)) {
-					    <img src="@previousPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@previousPost.Title">
-					}
-					<span class="app-blog-previouslink-title">@previousPost.Title</span>
-				</a>
-			}
-		</div>
-		*@
-		<div class="app-blog-nextlink">
-			@if(nextPost != null){
-				<a href="@Link.To(parameters: "post=" + nextPost.UrlKey)" >
-					<strong>@App.Resources.NextPost @*@App.Resources.PublicatedOn <time pubdate datetime="@nextPost.PublicationMoment.ToString("d")">@nextPost.PublicationMoment.ToString("d")</time>*@</strong>
-					@if(!String.IsNullOrEmpty(@nextPost.Image)) {
-					    <img src="@nextPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@nextPost.Title">
-					}
-					<span>@nextPost.Title</span>
-				</a>
-			}
-		</div>
+		@RenderPage("_Post micro preview.cshtml", new { post = previousPost, css = "app-blog-previouslink", title = App.Resources.PreviousPost})
+		@RenderPage("_Post micro preview.cshtml", new { post = nextPost, css = "app-blog-nextlink", title = App.Resources.NextPost })
 
 		@if(!String.IsNullOrEmpty(post.Image)){
 			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
@@ -76,7 +52,7 @@
 	</div>
 	<hr />
 	<div class="app-blog-tags">
-		<strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+		<strong> @(post.Tags.Count > 1 ? App.Resources.Tags : App.Resources.Tag): </strong>
 		@{
 				var tagsList = (post.Tags as IEnumerable<dynamic>)
 					.Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
@@ -84,7 +60,7 @@
 		@Html.Raw(string.Join(", ", tagsList))
 	</div>
 	<div class="app-blog-categories">
-		<strong> @(post.Categories.Count > 1 ? @App.Resources.Categories : @App.Resources.Category): </strong>
+		<strong> @(post.Categories.Count > 1 ? App.Resources.Categories : App.Resources.Category): </strong>
 		@{
 				var categoryList = (post.Categories as IEnumerable<dynamic>)
 					.Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
@@ -110,6 +86,6 @@
 	Response.TrySkipIisCustomErrors = true;
 	<h1>404 (not found)</h1>
 	<p>
-		<a href="/">Back to frontpage</a>
+		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
 	</p>
 }
