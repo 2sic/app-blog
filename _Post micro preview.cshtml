@@ -1,0 +1,15 @@
+@{
+    var post = PageData["post"];
+    var cls = PageData["css"];
+}
+@if(post != null){
+    <div class="@cls">
+        <a href="@Link.To(parameters: "post=" + post.UrlKey)" >
+            <strong>@App.Resources.previousPost @*@App.Resources.PublicatedOn <time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>*@</strong>
+            @if(!String.IsNullOrEmpty(@post.Image)) {
+                <img src="@post.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@post.Title">
+            }
+            <span class="app-blog-previouslink-title">@post.Title</span>
+        </a>
+    </div>
+}

@@ -1,5 +1,24 @@
 <link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
-@* this will show an "add" button if the current user is an editor *@
+@{
+    // get all posts as delived from the standard query
+	var postsToShow = AsDynamic(Data["Default"]);
+    var cat = AsDynamic(Data["Category"]).FirstOrDefault(); // get category if, if a category is selected
+    
+	// only apply this filter for non-editors
+	if (!Permissions.UserMayEditContent) {
+		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
+	}
+}
+
+    
+@* optionaly show category header *@
+@if(cat != null) {
+    <div>
+        <h1>@cat.Name</h1>
+        @Html.Raw(cat.Description)
+    </div>
+}
+    
 <div class="sc-element">
     @* toolbar for add / manage posts *@
 	@Edit.Toolbar(toolbar: new object[] { 
@@ -20,27 +39,7 @@
 
     @* toolbar to manage list/view settings *@
     @Edit.Toolbar(ListContent)
-    
-    
-    @{
-        // get all posts as delived from the standard query
-    	var postsToShow = AsDynamic(Data["Default"]);
 
-    	// if category-filter is applied, enforce this here
-    	// reason is that the visual-query doesn't have an "relationship CONTAINS" filter, only "=="
-        // note that the compare must run on the EntityId because of object wrapping/unwrapping
-        if(ListContent.Category.Count > 0) {
-            postsToShow = postsToShow
-                .Where(p => (p.Categories as IEnumerable<dynamic>)
-                    .Any(c => c.EntityId == ListContent.Category[0].EntityId));
-        }
-    	
-    	// only apply this filter for non-editors
-    	if (!Permissions.UserMayEditContent) {
-    		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
-    	}
-    	
-    }
 
     <div class="app-blog">
     	@* the posts *@

@@ -26,16 +26,16 @@ a.app-blog-link {
   display: inline-block;
   position: absolute;
 }
-.app-blog-previouslink{
+.app-blog-nextlink{
   width: 130px;
   right: -20%; 
 }
-.app-blog-nextlink{
+.app-blog-previouslink{
   width: 130px;
   left: -20%; 
 }
 .app-blog-nextlink > a, .app-blog-previouslink > a {
-  font-size: 14px;
+  font-size: 12px;
   background-color: #fff;
   display: inline-block;
   padding: 15px;
@@ -149,6 +149,13 @@ a:hover .app-blog-btn, a:focus .app-blog-btn, a.app-blog-btn:hover, a.app-blog-b
 
 /* Share Buttons */
 .addthis_sharing_toolbox { margin-top:20px;}
+
+/* Widescreen */
+@media all and (max-width: 1200px){
+  .app-blog-nextlink, .app-blog-previouslink{
+    display: none;
+  }
+}
 
 /* Mobile */
 @media (max-width: 767px) {

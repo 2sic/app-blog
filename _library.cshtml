@@ -37,7 +37,7 @@
     // return composed sized and sanitized image URL 
     public string GetSizedImgUrl(string imgUrl, bool isSquare) {
         // skip this if currently in search-index mode without request object
-        if(Request == null) 
+        if(Request == null || String.IsNullOrEmpty(imgUrl)) 
             return imgUrl;
 
         if (String.IsNullOrEmpty(imgUrl)) throw new Exception("string is empty");
@@ -72,8 +72,8 @@
     }
 
     // populate and generate open graph headers
-    public void SetOpenGraphHeaders(string type, string title, string siteName, string url, string teaser, string imgUrl, bool isSquare){
-        AddMeta("og:type", type);
+    public void SetOpenGraphHeaders(string title, string siteName, string url, string teaser, string imgUrl, bool isSquare){
+        AddMeta("og:type", "article");
 		AddMeta("og:title", title);
 		AddMeta("og:site_name", siteName);
 		AddMeta("og:url", url);

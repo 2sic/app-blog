@@ -17,7 +17,7 @@
 
 		var metaDesc = !String.IsNullOrEmpty(post.SharingDescription) ? post.SharingDescription : lib.StripHtml(post.Teaser);
 
-		lib.SetOpenGraphHeaders("article", 
+		lib.SetOpenGraphHeaders( 
 			post.Title, 
 			App.Settings.Title, 
 			Link.To(parameters: "post=" + post.UrlKey), 
@@ -26,7 +26,6 @@
 			post.ImageSquare);
 	}
 }
-@Edit.Toolbar(post)
 @if(post.IsPublished || Permissions.UserMayEditContent){
 <div class="app-blog sc-element">
 	@Edit.Toolbar(post, actions: "edit")	
@@ -41,21 +40,28 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
+		@RenderPage("_Post micro preview.cshtml", new { post = previousPost, css = "app-blog-previouslink" })
+		@*
 		<div class="app-blog-previouslink">
 
-		@if(previousPost != null){
+			@if(previousPost != null){
 				<a href="@Link.To(parameters: "post=" + previousPost.UrlKey)" >
-					<strong>@App.Resources.previousPost @App.Resources.PublicatedOn <time pubdate datetime="@previousPost.PublicationMoment.ToString("d")">@previousPost.PublicationMoment.ToString("d")</time></strong>
-					<img src="@previousPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@previousPost.Title">
+					<strong>@App.Resources.previousPost @* @App.Resources.PublicatedOn <time pubdate datetime="@previousPost.PublicationMoment.ToString("d")">@previousPost.PublicationMoment.ToString("d")</time>* @</strong>
+					@if(!String.IsNullOrEmpty(@previousPost.Image)) {
+					    <img src="@previousPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@previousPost.Title">
+					}
 					<span class="app-blog-previouslink-title">@previousPost.Title</span>
 				</a>
 			}
 		</div>
+		*@
 		<div class="app-blog-nextlink">
 			@if(nextPost != null){
 				<a href="@Link.To(parameters: "post=" + nextPost.UrlKey)" >
-					<strong>@App.Resources.NextPost @App.Resources.PublicatedOn <time pubdate datetime="@nextPost.PublicationMoment.ToString("d")">@nextPost.PublicationMoment.ToString("d")</time></strong>
-					<img src="@nextPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@nextPost.Title">
+					<strong>@App.Resources.NextPost @*@App.Resources.PublicatedOn <time pubdate datetime="@nextPost.PublicationMoment.ToString("d")">@nextPost.PublicationMoment.ToString("d")</time>*@</strong>
+					@if(!String.IsNullOrEmpty(@nextPost.Image)) {
+					    <img src="@nextPost.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@nextPost.Title">
+					}
 					<span>@nextPost.Title</span>
 				</a>
 			}
