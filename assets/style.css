@@ -8,12 +8,13 @@
 .app-blog-col1 { width:70%;}
 .app-blog-col2 { width:30%; }
 
-a.app-blog-link:hover, a.app-blog-link:focus { background-color: #eee; text-decoration:none;}
+a.app-blog-link:hover, a.app-blog-link:focus {  
+    text-decoration:none;
+}
 a.app-blog-link {  
     display: block;
     text-decoration: none;
     color: #666;
-    background-color: #fcfcfc;
     padding: 10px;
     overflow: hidden;
     -webkit-transition: all 1s ease;
@@ -65,7 +66,10 @@ a.app-blog-link {
 
 /* Tag-Cloud */
 .app-blog-tagcloud { text-align:center;}
-.app-blog-tags { text-align:left;}
+.app-blog-tags { 
+  text-align:left;
+  padding: 5px 0;
+}
 .app-blog-tags ul, .app-blog-tagcloud ul { margin:1em 0;}
 .app-blog-tags li, .app-blog-tagcloud li { padding:0; list-style:none; display:inline;}
 .app-blog-tagcloud.sorted li a { margin:0 3px;}
@@ -85,7 +89,6 @@ a.app-blog-link {
 	}
 
 .app-blog-tags li a:hover, .app-blog-tags li a:focus, .app-blog-tagcloud li a:hover, .app-blog-tagcloud li a:focus{	
-  background-color: #eee;
 	text-decoration:none;
     color:black;
     -webkit-transition: all 0.5s ease;
@@ -101,9 +104,10 @@ a.app-blog-link {
 .app-blog-tag5{font-size:180%;}
 
 /* Categories */
-.app-blog-category{
-  list-style-type: none;
+.app-blog-categories {
+  padding: 5px 0;
 }
+
 
 
 
