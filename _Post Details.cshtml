@@ -84,11 +84,11 @@
 			<img style="float: right; margin-left: 5px; width: 200px; height: 200px; border: none;" src='@author.Image'/> @Html.Raw(author.ShortBio)
 		</div>
 		<div>
-		Read more posts by <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
+		@App.Resources.ReadMore <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
 		</div>
 	</div>
 	<div class="app-blog-backlinks">
-		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">Back to blog home </a>
+		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
 	</div>
 </div>
 } else {

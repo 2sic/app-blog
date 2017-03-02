@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-01T15:16:29.475482+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T15:28:39.5589698+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -10,7 +10,57 @@
   </Header>
   <AttributeSets>
     <AttributeSet StaticName="App-Resources" Name="App-Resources" Description="Stores resources like translations for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
-      <Attributes />
+      <Attributes>
+        <Attribute StaticName="Category" Type="String" IsTitle="true">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b0211876-b43a-438f-b8aa-3f3521e303b5" KeyNumber="1160">
+            <Value Key="Name" Value="Category" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Categories" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="e2715381-219c-4163-904b-02dcf2ba94ac" KeyNumber="1161">
+            <Value Key="Name" Value="Categories" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Tag" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="722f2f47-3b91-4ba2-913e-3079800f290c" KeyNumber="1162">
+            <Value Key="Name" Value="Tag" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Tags" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="419ab363-623b-41bf-a06c-e1b68605f2f0" KeyNumber="1163">
+            <Value Key="Name" Value="Tags" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="BackToHome" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c7305b68-4761-4b2c-9c33-c2b4520e818a" KeyNumber="1164">
+            <Value Key="Name" Value="BackToHome" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="ReadMore" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="a5260f4d-8297-4741-9898-ff3eccdaeb53" KeyNumber="1166">
+            <Value Key="Name" Value="ReadMore" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="PostsBy" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="2996b839-2dc2-4f38-a9cf-f2bc8d8e4776" KeyNumber="1167">
+            <Value Key="Name" Value="PostsBy" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+      </Attributes>
     </AttributeSet>
     <AttributeSet StaticName="App-Settings" Name="App-Settings" Description="Stores settings for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
       <Attributes>
@@ -89,27 +139,64 @@
       <Attributes>
         <Attribute StaticName="FullName" Type="String" IsTitle="true">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="04b2a531-ec5f-42ad-8170-50ba7408d417" KeyNumber="379">
-            <Value Key="Name" Value="Author Full Name" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="True" Type="Boolean" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="Name" Value="Author Full Name" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Name des Authors" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="40a20963-1428-45a5-8a24-4938f5d18730" KeyNumber="379" />
         </Attribute>
         <Attribute StaticName="Image" Type="Hyperlink" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ad4b0040-93d5-4d61-9b55-afa3c1e64f38" KeyNumber="380">
-            <Value Key="Name" Value="Image" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="Name" Value="Image" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Foto" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="0f4e7341-8e77-42e4-9db4-1c16c215da43" KeyNumber="380">
-            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
-            <Value Key="ShowImageManager" Value="True" Type="Boolean" />
-            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
-            <Value Key="Paths" Value="Blog/Authors" Type="String" />
-            <Value Key="DefaultDialog" Value="ImageManager" Type="String" />
-            <Value Key="FileFilter" Value="" Type="String" />
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowImageManager" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowFileManager" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Paths" Value="Blog/Authors" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultDialog" Value="ImageManager" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="FileFilter" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
         <Attribute StaticName="Twitter" Type="String" IsTitle="false">
@@ -134,12 +221,27 @@
         </Attribute>
         <Attribute StaticName="PostFooter" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="900579b6-2041-4f48-b66c-1bca776561ce" KeyNumber="383">
-            <Value Key="Name" Value="Post Footer" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;This block will be added to the bottom of every post to show this author.&amp;nbsp;&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="Name" Value="Post Footer" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;This block will be added to the bottom of every post to show this author.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Dieser Block wird am Ende jedes Beitrags des Authors angezeigt.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="8e20b848-ae9a-4a78-9568-1f86448358d9" KeyNumber="383">
             <Value Key="DropdownValues" Value="" Type="String" />
@@ -154,9 +256,18 @@
         </Attribute>
         <Attribute StaticName="ShortBio" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="63311041-af43-42c0-8a06-8a3b7d80fece" KeyNumber="384">
-            <Value Key="Name" Value="ShortBio" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="Name" Value="ShortBio" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Kurze Biografie" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="5ede5e0d-1c36-4bd8-84e9-aaed5ab02569" KeyNumber="384">
             <Value Key="DropdownValues" Value="" Type="String" />
@@ -178,7 +289,7 @@
             <Value Key="Name" Value="Content" Type="String">
               <Dimension DimensionID="47" ReadOnly="false" />
             </Value>
-            <Value Key="Name" Value="Inhalt" Type="String">
+            <Value Key="Name" Value="Beitrag" Type="String">
               <Dimension DimensionID="48" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="" Type="String">
@@ -983,10 +1094,20 @@
         </Attribute>
         <Attribute StaticName="Description" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="06aad457-f14e-4477-8646-2251c29fbd19" KeyNumber="1159">
-            <Value Key="Name" Value="Description" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
+            <Value Key="Name" Value="Description" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Beschreibung" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-wysiwyg" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="e7e0aa64-ad3e-4418-864f-6049ab48ed5b" KeyNumber="1159" />
         </Attribute>
       </Attributes>
     </AttributeSet>
@@ -994,31 +1115,78 @@
       <Attributes>
         <Attribute StaticName="Title" Type="String" IsTitle="true">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="74d997b5-982c-4e22-a3ab-3c8c3094746d" KeyNumber="1157">
-            <Value Key="Name" Value="Title" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Title" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Titel" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-default" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="7d1e1c2e-d6d5-4a19-ac73-914b4728b120" KeyNumber="1157" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="348cf4de-0fd2-4487-bf1b-e605d62151e6" KeyNumber="1157" />
         </Attribute>
         <Attribute StaticName="Category" Type="Entity" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="31fa60cc-9a2f-44a7-a8e3-a884909b3615" KeyNumber="1155">
-            <Value Key="Name" Value="Category (optional)" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Show only posts of this category (optional)&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="entity-default" Type="String" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="Name" Value="Category (optional)" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Kategorie (optional)" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Show only posts of this category (optional)&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Zeige nur Beitr&amp;auml;ge dieser Kategorie (optional)&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="entity-default" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
             <Value Key="CustomJavaScript" Value="" Type="String" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="b37093f6-dc7e-43bc-af04-11bd00e637ad" KeyNumber="1155">
-            <Value Key="EnableEdit" Value="False" Type="Boolean" />
-            <Value Key="EnableCreate" Value="False" Type="Boolean" />
-            <Value Key="EnableAddExisting" Value="True" Type="Boolean" />
-            <Value Key="EnableRemove" Value="True" Type="Boolean" />
-            <Value Key="EnableDelete" Value="False" Type="Boolean" />
-            <Value Key="AllowMultiValue" Value="False" Type="Boolean" />
-            <Value Key="EntityType" Value="Category" Type="String" />
+            <Value Key="EnableEdit" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableCreate" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableAddExisting" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableRemove" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableDelete" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="EntityType" Value="Category" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
       </Attributes>
@@ -1041,12 +1209,47 @@
         </Attribute>
         <Attribute StaticName="ManualWeight" Type="Number" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8f1a108e-2ba3-455f-8c9c-5d7aa3179b05" KeyNumber="397">
-            <Value Key="Name" Value="Manual Weight" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Use this to give the tag a higher importance in your tag clouds. 1 is less important than 10&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="1" Type="String" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="Name" Value="Manual Weight" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Manuelle Gewichtung" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Use this to give the tag a higher importance in your tag clouds. 1 is less important than 10&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Nutze diese Funktion um einen Tag h&amp;ouml;her zu gewichten z.b. um ihn in einer Tag Cloud gr&amp;ouml;sser anzuzeigen. 1 ist weniger wichtig als 10.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="48" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="1" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="074142f9-fd3b-4cf0-a1c5-dccc4f0649f3" KeyNumber="397">
+            <Value Key="Decimals" Value="0" Type="Number">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Min" Value="" Type="Number">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Max" Value="" Type="Number">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
       </Attributes>
@@ -1085,17 +1288,39 @@
   </AttributeSets>
   <Entities>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="51f89e07-b06a-46b0-b9e4-7821bb5c3675" KeyNumber="4">
-      <Value Key="DisplayName" Value="Blog" Type="String" />
-      <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String" />
-      <Value Key="Version" Value="02.01.06" Type="String" />
-      <Value Key="Folder" Value="Blog App" Type="String" />
-      <Value Key="AllowTokenTemplates" Value="True" Type="Boolean" />
-      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
-      <Value Key="Hidden" Value="False" Type="Boolean" />
-      <Value Key="OriginalId" Value="3a5ad280-e261-4a49-abec-00ad1429f70e" Type="String" />
-      <Value Key="RequiredVersion" Value="08.04.04" Type="String" />
-      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
-      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean" />
+      <Value Key="DisplayName" Value="Blog" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Version" Value="02.02.00" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Folder" Value="Blog App" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="AllowTokenTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Hidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="OriginalId" Value="3a5ad280-e261-4a49-abec-00ad1429f70e" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredVersion" Value="08.04.04" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="059facb3-0968-4021-92a7-72984522fcf2" KeyNumber="4">
       <Value Key="Title" Value="2blog - the ultimate simple blog (change this in app-settings)" Type="String" />
@@ -1103,14 +1328,75 @@
       <Value Key="RssDescription" Value="This is a simple blog app using dnn and 2sxc. Change this description in the app settings." Type="String" />
       <Value Key="DetailsPage" Value="page:96" Type="Hyperlink" />
     </Entity>
-    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="0de2a0eb-adf8-4b8d-ac76-7ca214269daf" KeyNumber="4" />
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="0de2a0eb-adf8-4b8d-ac76-7ca214269daf" KeyNumber="4">
+      <Value Key="Category" Value="Category" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Category" Value="Kategorie" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="Categories" Value="Categories" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Categories" Value="Kategorien" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="Tag" Value="Tag" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Tag" Value="Tag" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="Tags" Value="Tags" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Tags" Value="Tags" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="BackToHome" Value="Back to blog home" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="BackToHome" Value="Zurück zur Blog-Startseite" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="ReadMore" Value="Read more posts by" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="ReadMore" Value="Lesen Sie mehr Beiträge von" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="PostsBy" Value="Posts by" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PostsBy" Value="Beiträge von" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="3d5500b3-8d0c-4ff2-8114-fb839f4ec869" AttributeSetName="Author" EntityGUID="81a38949-78b1-428c-ba0d-27a2acf4e2d3">
-      <Value Key="FullName" Value="Daniel Mettler" Type="String" />
-      <Value Key="Image" Value="File:404" Type="Hyperlink" />
-      <Value Key="Twitter" Value="@iJungleBoy" Type="String" />
-      <Value Key="Facebook" Value="" Type="String" />
-      <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String" />
-      <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String" />
+      <Value Key="FullName" Value="Daniel Mettler" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="File:404" Type="Hyperlink">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Twitter" Value="@iJungleBoy" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Facebook" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PostFooter" Value="&lt;p&gt;&lt;iframe style=&quot;float: right; margin-left: 5px; width: 200px; height: 200px; border: none;&quot; src=&quot;http://2sxc.org/Portals/0/2sxc/Blog%20App/authors/Daniel_Mettler.html&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/iframe&gt;&lt;em&gt;Daniel Mettler wuchs&amp;nbsp;in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in der Schweiz und Liechtenstein, ein 20-k&amp;ouml;pfiger Web-Spezialist mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von &lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(siehe&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler grew up in the jungles of Indonesia and is founder and CEO of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.2sic.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sic internet solutions&lt;/a&gt;&amp;nbsp;in Switzerland and Liechtenstein, an 20-head web specialist with over 800 DNN projects since 1999. He is also chief architect of&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://2sxc.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2sxc&lt;/a&gt;&amp;nbsp;(see&amp;nbsp;&lt;a tabindex=&quot;0&quot; href=&quot;http://www.dnnsoftware.com/forge/2sxc-2sexycontent-create-amazing-content-and-apps/view/extensiondetail/project/sexycontent&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;forge&lt;/a&gt;), an open source module for creating &lt;em&gt;attractive content&lt;/em&gt; and DNN Apps.&lt;/em&gt;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="ShortBio" Value="&lt;p&gt;&lt;em&gt;Daniel Mettler wuchs in den Dschungeln von Indonesien auf und ist der Gr&amp;uuml;nder und CEO der 2sic internet solutions in der Schweiz und Liechtenstein, ein 20-k&amp;ouml;pfiger Web-Spezialist mit &amp;uuml;ber 800 DNN Projekten seit 1999. Er ist auch der leitende Architekt von 2sxc (siehe forge), einem Open-Source Modul f&amp;uuml;r die Erstellung von attraktivem Inhalt und DNN Applikationen.&lt;/em&gt;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="64108884-5611-4edc-a766-269385b2ecd2" AttributeSetName="Tag" EntityGUID="7705c17a-79d8-43b4-81c3-03b69fbc996f">
       <Value Key="Tag" Value="video" Type="String" />
@@ -1118,19 +1404,40 @@
       <Value Key="ManualWeight" Value="2" Type="Number" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="4fa46405-b429-4e9b-98b3-533e154fc713">
-      <Value Key="Title" Value="Getting Started with the Blog App" Type="String" />
-      <Value Key="UrlKey" Value="getting-started-with-the-blog-app" Type="String" />
-      <Value Key="PublicationMoment" Value="2016-05-02T00:00:00" Type="DateTime" />
-      <Value Key="Image" Value="File:406" Type="Hyperlink" />
-      <Value Key="Teaser" Value="&lt;p&gt;The 2sxc Blog is a&amp;nbsp;simple, highly&amp;nbsp;customizable blog. You can use it just as it is, or change everything to fit your needs. It uses the best WYSIWYG on DNN, can be Multi-Language and way more...&lt;/p&gt;" Type="String" />
-      <Value Key="Body" Value="&lt;p&gt;The 2sxc Blog is a simple, highly customizable blog. You can use it just as it is, or change everything to fit your needs. It uses the best WYSIWYG on DNN, can be Multi-Language and way more...&lt;/p&gt;&#xA;&lt;h2&gt;This blog offers&amp;nbsp;load of stuff, like&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Responsive List Views&#xA;&lt;ol&gt;&#xA;&lt;li&gt;home-list&amp;nbsp;view with the newest entries and paging&lt;/li&gt;&#xA;&lt;li&gt;posts by tag&lt;/li&gt;&#xA;&lt;li&gt;posts by author - which also shows the authors bio&lt;/li&gt;&#xA;&lt;li&gt;automatic image resizing - with different rules for wide/square pictures&lt;/li&gt;&#xA;&lt;li&gt;easy to adapt the look and feel to your own needs&lt;/li&gt;&#xA;&lt;li&gt;easy extensibility to create your own views as you need them&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Details view&lt;br /&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;default view with post, author and tags&lt;/li&gt;&#xA;&lt;li&gt;automatic&amp;nbsp;main image resizing&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Content Editing&lt;br /&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;In-Page editing&lt;/li&gt;&#xA;&lt;li&gt;Best of breed WYSIWYG content-editor with drag-drop image &amp;amp; document upload and&amp;nbsp;way more&lt;/li&gt;&#xA;&lt;li&gt;Advanced content-editing using app-mashups enables you to add galleries, sliders or any other app you want with in-page editing&lt;/li&gt;&#xA;&lt;li&gt;Content-mashup also allows you to use content-templates&amp;nbsp;to build your post to look awesome and in line with all other content in your web site&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Rss Feeds&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;Getting More Infos about this Blog&lt;/h2&gt;&#xA;&lt;p&gt;And way more. Just so you know: this blog app&amp;nbsp;demonstrates many of the features of 2sxc content management, so we'll write about it a lot in our own blog (which of course is made with this blog).&amp;nbsp;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&quot;/desktopmodules/tosic_sexycontent/dist/dnn/2sxc.org/en/blog&quot; target=&quot;_blank&quot;&gt;The 2sxc blog&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&quot;/desktopmodules/tosic_sexycontent/dist/dnn/2sxc.org/en/blog/tag/blog&quot; target=&quot;_blank&quot;&gt;Posts about this blog and about blogging&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;Some Setup-Tips&lt;/h2&gt;&#xA;&lt;p&gt;In general the blog-app is self-contained - so if you put it on some page, it will automatically show a list of items&amp;nbsp;with links to the details, and the details appear on the same page. Very simple. If you want to use the tag-cloud, then that should know what page to link to, since the cloud will usually not be on the same page as the blog itself. in that case you can set the main link in the app settings.&lt;/p&gt;" Type="String" />
-      <Value Key="MetaDescription" Value="" Type="String" />
-      <Value Key="Categories" Value="" Type="Entity" />
+      <Value Key="Title" Value="Getting Started with the Blog App" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlKey" Value="getting-started-with-the-blog-app" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PublicationMoment" Value="2016-05-02T00:00:00" Type="DateTime">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="File:406" Type="Hyperlink">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Teaser" Value="&lt;p&gt;The 2sxc Blog is a&amp;nbsp;simple, highly&amp;nbsp;customizable blog. You can use it just as it is, or change everything to fit your needs. It uses the best WYSIWYG on DNN, can be Multi-Language and way more...&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Body" Value="&lt;p&gt;The 2sxc Blog is a simple, highly customizable blog. You can use it just as it is, or change everything to fit your needs. It uses the best WYSIWYG on DNN, can be Multi-Language and way more...&lt;/p&gt;&#xA;&lt;h2&gt;This blog offers&amp;nbsp;load of stuff, like&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Responsive List Views&#xA;&lt;ol&gt;&#xA;&lt;li&gt;home-list&amp;nbsp;view with the newest entries and paging&lt;/li&gt;&#xA;&lt;li&gt;posts by tag&lt;/li&gt;&#xA;&lt;li&gt;posts by author - which also shows the authors bio&lt;/li&gt;&#xA;&lt;li&gt;automatic image resizing - with different rules for wide/square pictures&lt;/li&gt;&#xA;&lt;li&gt;easy to adapt the look and feel to your own needs&lt;/li&gt;&#xA;&lt;li&gt;easy extensibility to create your own views as you need them&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Details view&lt;br /&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;default view with post, author and tags&lt;/li&gt;&#xA;&lt;li&gt;automatic&amp;nbsp;main image resizing&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Content Editing&lt;br /&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;In-Page editing&lt;/li&gt;&#xA;&lt;li&gt;Best of breed WYSIWYG content-editor with drag-drop image &amp;amp; document upload and&amp;nbsp;way more&lt;/li&gt;&#xA;&lt;li&gt;Advanced content-editing using app-mashups enables you to add galleries, sliders or any other app you want with in-page editing&lt;/li&gt;&#xA;&lt;li&gt;Content-mashup also allows you to use content-templates&amp;nbsp;to build your post to look awesome and in line with all other content in your web site&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Rss Feeds&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;Getting More Infos about this Blog&lt;/h2&gt;&#xA;&lt;p&gt;And way more. Just so you know: this blog app&amp;nbsp;demonstrates many of the features of 2sxc content management, so we'll write about it a lot in our own blog (which of course is made with this blog).&amp;nbsp;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&quot;/desktopmodules/tosic_sexycontent/dist/dnn/2sxc.org/en/blog&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;The 2sxc blog&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&quot;/desktopmodules/tosic_sexycontent/dist/dnn/2sxc.org/en/blog/tag/blog&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Posts about this blog and about blogging&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;Some Setup-Tips&lt;/h2&gt;&#xA;&lt;p&gt;In general the blog-app is self-contained - so if you put it on some page, it will automatically show a list of items&amp;nbsp;with links to the details, and the details appear on the same page. Very simple. If you want to use the tag-cloud, then that should know what page to link to, since the cloud will usually not be on the same page as the blog itself. in that case you can set the main link in the app settings.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="MetaDescription" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="SharingDescription" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Categories" Value="debd8d7e-7f52-48b7-b1e4-94f316373761" Type="Entity" />
       <Value Key="Tags" Value="7705c17a-79d8-43b4-81c3-03b69fbc996f,056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
       <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
-      <Value Key="ImageSquare" Value="True" Type="Boolean" />
+      <Value Key="ImageSquare" Value="True" Type="Boolean">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
       <Value Key="DesignedContent" Value="" Type="Entity" />
-      <Value Key="MetaTitle" Value="" Type="String" />
+      <Value Key="MetaTitle" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="070032b2-4f5e-44a1-86f4-16cd81c73434">
       <Value Key="Name" Value="1 Main blog view showing newest items" Type="String" />
@@ -1156,33 +1463,33 @@
       <Value Key="Name" Value="Blog Posts for Home and Tags" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="AllowEdit" Value="True" Type="Boolean" />
-      <Value Key="StreamsOut" Value="ListContent,Default,Paging,SearchIndex" Type="String" />
-      <Value Key="StreamWiring" Value="298de0e3-67d8-45ec-a864-c84132ad1ea6:Default&gt;376cd440-59fd-493c-b791-f0b526d7255c:Default&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Drafts&gt;376cd440-59fd-493c-b791-f0b526d7255c:Drafts&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Published&gt;376cd440-59fd-493c-b791-f0b526d7255c:Published&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d974619-a658-422f-88e5-8cd5340f62d6:Default&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:XLastDefaultList&#xD;&#xA;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:1st&#xD;&#xA;4c8da744-fd5b-4f10-871e-54a4976f13d0:Default&gt;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Paging&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&gt;Out:Default&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&gt;Out:Paging&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&#xD;&#xA;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:2nd&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&gt;Out:SearchIndex&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d3696ac-509a-42cb-be92-aa52ff56e6e8:Default&#xD;&#xA;0d3696ac-509a-42cb-be92-aa52ff56e6e8:ListContent&gt;Out:ListContent" Type="String" />
-      <Value Key="TestParameters" Value="[Module:ModuleID]=665&#xA;[QueryString:Tag]=&#xA;[QueryString:Author]=Daniel Mettler&#xA;[QueryString:Page]=2" Type="String" />
+      <Value Key="StreamsOut" Value="ListContent,Default,Paging,SearchIndex,Category" Type="String" />
+      <Value Key="StreamWiring" Value="298de0e3-67d8-45ec-a864-c84132ad1ea6:Default&gt;376cd440-59fd-493c-b791-f0b526d7255c:Default&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Drafts&gt;376cd440-59fd-493c-b791-f0b526d7255c:Drafts&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Published&gt;376cd440-59fd-493c-b791-f0b526d7255c:Published&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d974619-a658-422f-88e5-8cd5340f62d6:Default&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:XLastDefaultList&#xD;&#xA;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:1st&#xD;&#xA;4c8da744-fd5b-4f10-871e-54a4976f13d0:Default&gt;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Paging&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&gt;Out:Default&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&gt;Out:Paging&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&#xD;&#xA;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:2nd&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&gt;Out:SearchIndex&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d3696ac-509a-42cb-be92-aa52ff56e6e8:Default&#xD;&#xA;0d3696ac-509a-42cb-be92-aa52ff56e6e8:ListContent&gt;Out:ListContent&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:Category&gt;3be8c162-1469-48ef-b677-eac8518bf1ec:Default&#xD;&#xA;0d3696ac-509a-42cb-be92-aa52ff56e6e8:ListContent&gt;47dc7570-310d-4d58-8ce0-478fcf194c16:Settings&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:Category&gt;47dc7570-310d-4d58-8ce0-478fcf194c16:Default&#xD;&#xA;3be8c162-1469-48ef-b677-eac8518bf1ec:Default&gt;95d437f3-d6bc-4d42-b050-dcf75f2447fe:1Url&#xD;&#xA;47dc7570-310d-4d58-8ce0-478fcf194c16:Default&gt;95d437f3-d6bc-4d42-b050-dcf75f2447fe:2Setting&#xD;&#xA;95d437f3-d6bc-4d42-b050-dcf75f2447fe:Default&gt;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Filter&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Default&#xD;&#xA;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:3rd&#xD;&#xA;95d437f3-d6bc-4d42-b050-dcf75f2447fe:Default&gt;Out:Category" Type="String" />
+      <Value Key="TestParameters" Value="[Module:ModuleID]=665&#xA;[QueryString:Tag]=&#xA;[QueryString:Author]=Daniel Mettler&#xA;[QueryString:Page]=2&#xA;[QueryString:Category]=default" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="298de0e3-67d8-45ec-a864-c84132ad1ea6" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="ICache" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.ICache, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1620,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 2000,&#xD;&#xA;  &quot;Left&quot;: 433&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="376cd440-59fd-493c-b791-f0b526d7255c" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="PublishingFilter" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.PublishingFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1460,&#xD;&#xA;  &quot;Left&quot;: 434&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1780,&#xD;&#xA;  &quot;Left&quot;: 431&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="0d974619-a658-422f-88e5-8cd5340f62d6" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="App" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.App, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1293,&#xD;&#xA;  &quot;Left&quot;: 429&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1600,&#xD;&#xA;  &quot;Left&quot;: 260&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="e8128768-dcba-4cb0-a011-e662579e9b2c" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="ValueSort" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 600,&#xD;&#xA;  &quot;Left&quot;: 340&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 600,&#xD;&#xA;  &quot;Left&quot;: 431&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="064dfb9a-91db-4cae-a2fb-4b62c7d6b408" KeyGuid="e8128768-dcba-4cb0-a011-e662579e9b2c">
       <Value Key="Attributes" Value="PublicationMoment" Type="String" />
@@ -1192,13 +1499,13 @@
       <Value Key="Name" Value="Paging" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Paging, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 413,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 440,&#xD;&#xA;  &quot;Left&quot;: 233&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="afa30b05-64b9-4498-b89e-5055ce686b8f" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="Post by Tag" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.RelationshipFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 988,&#xD;&#xA;  &quot;Left&quot;: 120&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 989,&#xD;&#xA;  &quot;Left&quot;: 51&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.RelationshipFilter" AttributeSetName="|Config ToSic.Eav.DataSources.RelationshipFilter" EntityGUID="c81f1b15-0ff7-4a15-a6ee-4a7d1e2b8e2f" KeyGuid="afa30b05-64b9-4498-b89e-5055ce686b8f">
       <Value Key="Relationship" Value="Tags" Type="String" />
@@ -1208,7 +1515,7 @@
       <Value Key="Name" Value="StreamFallback" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.StreamFallback, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 766,&#xD;&#xA;  &quot;Left&quot;: 460&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 789,&#xD;&#xA;  &quot;Left&quot;: 460&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="63aef3af-16ca-435e-a716-ddc16a077158">
       <Value Key="Name" Value="Post Details" Type="String" />
@@ -1290,13 +1597,13 @@
       <Value Key="Name" Value="CacheAllStreams" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.CacheAllStreams, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 220,&#xD;&#xA;  &quot;Left&quot;: 353&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 240,&#xD;&#xA;  &quot;Left&quot;: 380&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="34203a06-fa42-4429-9cb1-8a2d708f89b3" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="Post by Author" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.RelationshipFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 987,&#xD;&#xA;  &quot;Left&quot;: 360&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 988,&#xD;&#xA;  &quot;Left&quot;: 260&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.RelationshipFilter" AttributeSetName="|Config ToSic.Eav.DataSources.RelationshipFilter" EntityGUID="4101d839-b718-4415-a21d-05aaf3d22907" KeyGuid="34203a06-fa42-4429-9cb1-8a2d708f89b3">
       <Value Key="Relationship" Value="Author" Type="String" />
@@ -1448,7 +1755,7 @@
       <Value Key="Body" Value="&lt;p&gt;This blog can easily be enhanced with many more apps like galleries, designed content, sliders or even real-estate apps.&lt;/p&gt;&#xA;&lt;p&gt;2sxc Apps can be combined in unique ways, while still preserving&amp;nbsp;content integrity and more. This allows us to&amp;nbsp;create &lt;a href=&quot;https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;app mashups&lt;/a&gt; instead of&amp;nbsp;adding features to any specific app.&amp;nbsp;&lt;/p&gt;&#xA;&lt;h2&gt;Enhance the Blog with more Apps&lt;/h2&gt;&#xA;&lt;p&gt;By the way - apps are lightweight simple things - and you can combine them with other apps to create awesome solutions. I recommend that you also check out&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The &lt;a href=&quot;http://2sxc.org/en/Apps/Details?AppGuid=f704663d-b04a-40c9-a154-8ac7b2efc8e6&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;disqus app&lt;/a&gt; - to provide Q&amp;amp;A threads for each post&lt;/li&gt;&#xA;&lt;li&gt;The &lt;a href=&quot;http://2sxc.org/en/Apps/Details?AppGuid=b1a62298-9c72-44f0-bfee-dfecdab6fe69&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;OWL Slider app&lt;/a&gt;&amp;nbsp;for cool image sliders which you can use in the content of your posts&lt;/li&gt;&#xA;&lt;li&gt;The &lt;a href=&quot;http://2sxc.org/en/Apps/Details?AppGuid=76fde5a1-7a9d-4e60-ab98-9f17930bfbfb&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;blueimp gallery / slider app&lt;/a&gt; for cool image galleries inside your posts&lt;/li&gt;&#xA;&lt;li&gt;The &lt;a href=&quot;http://2sxc.org/en/Apps/Details?AppGuid=f5ddb0b5-8f3f-4d85-b63e-de5d88caf096&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;image-compare app&lt;/a&gt; to provide interactive, touch-enabled image-compare in your posts&lt;/li&gt;&#xA;&lt;li&gt;The &lt;a href=&quot;http://2sxc.org/en/Apps/Details?AppGuid=58c02a22-9e89-42c0-a2d7-7cd8db105de5&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;timeline-app&lt;/a&gt; to&amp;nbsp;enhance your posts with awesome, responsive timelines&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;Discover more&lt;/h2&gt;&#xA;&lt;p&gt;If you want to&amp;nbsp;discover more, you should&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Check out the &lt;a href=&quot;http://2sxc.org/en/apps&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;App catalog&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Read more about &lt;a href=&quot;http://2sxc.org/en/blog/tag/mashup&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;mashups on the 2sxc blog&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;" Type="String" />
       <Value Key="MetaDescription" Value="" Type="String" />
       <Value Key="SharingDescription" Value="" Type="String" />
-      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7" Type="Entity" />
+      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7,debd8d7e-7f52-48b7-b1e4-94f316373761" Type="Entity" />
       <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
       <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
       <Value Key="ImageSquare" Value="False" Type="Boolean" />
@@ -1602,13 +1909,58 @@
       <Value Key="Name" Value="ModuleDataSource" Type="String" />
       <Value Key="Description" Value="contains filter-settings" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.SexyContent.DataSources.ModuleDataSource, ToSic.SexyContent" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1287,&#xD;&#xA;  &quot;Left&quot;: 800&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1588,&#xD;&#xA;  &quot;Left&quot;: 674&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2d990f54-d003-4767-88ac-50346f27c3ab" AttributeSetName="ListSettings" EntityGUID="cb896dea-9ec7-49a5-9e9d-8e9c54e351c4">
       <Value Key="Category" Value="" Type="Entity" />
       <Value Key="Title" Value="" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="3be8c162-1469-48ef-b677-eac8518bf1ec" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
+      <Value Key="Name" Value="Category from URL" Type="String" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1350,&#xD;&#xA;  &quot;Left&quot;: 827&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueFilter" AttributeSetName="|Config ToSic.Eav.DataSources.ValueFilter" EntityGUID="06d6172c-3985-4b63-b10b-4e7da15a3307" KeyGuid="3be8c162-1469-48ef-b677-eac8518bf1ec">
+      <Value Key="Attribute" Value="Name" Type="String" />
+      <Value Key="Value" Value="[QueryString:category]" Type="String" />
+      <Value Key="Operator" Value="==" Type="String" />
+      <Value Key="Take" Value="1" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="47dc7570-310d-4d58-8ce0-478fcf194c16" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
+      <Value Key="Name" Value="Category from Settings" Type="String" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1351,&#xD;&#xA;  &quot;Left&quot;: 1080&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueFilter" AttributeSetName="|Config ToSic.Eav.DataSources.ValueFilter" EntityGUID="2ad6ecaf-cbab-4ebd-acd0-0c7c21b5490b" KeyGuid="47dc7570-310d-4d58-8ce0-478fcf194c16">
+      <Value Key="Attribute" Value="EntityId" Type="String" />
+      <Value Key="Value" Value="[In:Settings:Category]" Type="String" />
+      <Value Key="Operator" Value="==" Type="String" />
+      <Value Key="Take" Value="1" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="95d437f3-d6bc-4d42-b050-dcf75f2447fe" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
+      <Value Key="Name" Value="Cat from Url or Setting" Type="String" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.StreamFallback, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1169,&#xD;&#xA;  &quot;Left&quot;: 953&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="1a675243-04c2-4bf2-9cc0-588e4cbf5061" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
+      <Value Key="Name" Value="Post by Category" Type="String" />
+      <Value Key="Description" Value="only if in url or settings" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.RelationshipFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 986,&#xD;&#xA;  &quot;Left&quot;: 860&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.RelationshipFilter" AttributeSetName="|Config ToSic.Eav.DataSources.RelationshipFilter" EntityGUID="be7e527a-32df-4588-a4ab-0dd841318b93" KeyGuid="1a675243-04c2-4bf2-9cc0-588e4cbf5061">
+      <Value Key="Relationship" Value="Categories" Type="String" />
+      <Value Key="Filter" Value="[In:Filter:Name]" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="1ea28652-a051-4c80-acd7-4d2e3f288f9c" AttributeSetName="Category" EntityGUID="debd8d7e-7f52-48b7-b1e4-94f316373761">
+      <Value Key="Name" Value="Test" Type="String" />
+      <Value Key="Key" Value="test" Type="String" />
+      <Value Key="Description" Value="&lt;p&gt;A test category&lt;/p&gt;" Type="String" />
     </Entity>
   </Entities>
   <PortalFiles>

@@ -14,7 +14,7 @@
 }
 
 <div class="app-todo">
-   <h1>Posts by @author.FullName</h1>
+   <h1>@App.Resources.PostsBy @author.FullName</h1>
    <div class="todo">
 		@Html.Raw(author.ShortBio)
    </div>
@@ -25,6 +25,5 @@
 	{
 		@RenderPage("_list-item.cshtml", new { Post = post })
 	}
-
 	@RenderPage("_pager.cshtml")
 </div>
