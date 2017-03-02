@@ -5,8 +5,6 @@
 	var lib = CreateInstance("_library.cshtml"); 
 
 	var post = AsDynamic(Data["Default"]).First();
-	var previousPost = AsDynamic(Data["Previous"]).FirstOrDefault();
-	var nextPost = AsDynamic(Data["Next"]).FirstOrDefault();
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
 	var imgUrl = lib.GetSizedImgUrl(post.Image, post.ImageSquare);
 
@@ -26,7 +24,7 @@
 			post.ImageSquare);
 	}
 }
-@if(post.IsPublished || Permissions.UserMayEditContent){
+@if(post.IsPublished || Permissions.UserMayEditContent) {
 <div class="app-blog sc-element">
 	@Edit.Toolbar(post, actions: "edit")	
 	<div class="app-blog-detail"> <!-- Add class: app-blog-small -->
@@ -40,8 +38,10 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
-		@RenderPage("_Post micro preview.cshtml", new { post = previousPost, css = "app-blog-previouslink", title = App.Resources.PreviousPost})
-		@RenderPage("_Post micro preview.cshtml", new { post = nextPost, css = "app-blog-nextlink", title = App.Resources.NextPost })
+
+		@* show micro-previews for previous/next post *@
+		@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Previous"]).FirstOrDefault(), css = "app-blog-previouslink", title = App.Resources.PreviousPost})
+		@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Next"]).FirstOrDefault(), css = "app-blog-nextlink", title = App.Resources.NextPost })
 
 		@if(!String.IsNullOrEmpty(post.Image)){
 			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
@@ -51,24 +51,25 @@
 		</div>
 	</div>
 	<hr />
-	<div class="app-blog-tags">
-		<strong> @(post.Tags.Count > 1 ? App.Resources.Tags : App.Resources.Tag): </strong>
-		@{
-				var tagsList = (post.Tags as IEnumerable<dynamic>)
-					.Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
-		}
-		@Html.Raw(string.Join(", ", tagsList))
-	</div>
+
+	@* show categories and tags *@
+	@{
+		var categoryList = (post.Categories as IEnumerable<dynamic>)
+			.Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
+		var tagsList = (post.Tags as IEnumerable<dynamic>)
+			.Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
+	}
 	<div class="app-blog-categories">
 		<strong> @(post.Categories.Count > 1 ? App.Resources.Categories : App.Resources.Category): </strong>
-		@{
-				var categoryList = (post.Categories as IEnumerable<dynamic>)
-					.Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
-			}
 		@Html.Raw(string.Join(", ", categoryList))
+	</div>
+	<div class="app-blog-tags">
+		<strong> @(post.Tags.Count > 1 ? App.Resources.Tags : App.Resources.Tag): </strong>
+		@Html.Raw(string.Join(", ", tagsList))
 	</div>
 	<hr />
 
+	@* show the author *@
 	<div class="app-blog-authordetails">
 		<div>
 			<img style="float: right; margin-left: 5px; width: 200px; height: 200px; border: none;" src='@author.Image'/> @Html.Raw(author.ShortBio)
@@ -82,6 +83,7 @@
 	</div>
 </div>
 } else {
+	@* this happens when an article isn't published yet *@
 	Response.StatusCode = 404;
 	Response.TrySkipIisCustomErrors = true;
 	<h1>404 (not found)</h1>
