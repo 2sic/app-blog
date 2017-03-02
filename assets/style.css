@@ -27,18 +27,30 @@ a.app-blog-link {
   position: absolute;
 }
 .app-blog-previouslink{
-  left: -10%; 
+  width: 130px;
+  right: -20%; 
 }
 .app-blog-nextlink{
-  right: -10%; 
+  width: 130px;
+  left: -20%; 
 }
 .app-blog-nextlink > a, .app-blog-previouslink > a {
-  font-size: 28px;
+  font-size: 14px;
   background-color: #fff;
   display: inline-block;
-  padding: 0 15px 7px 15px;
+  padding: 15px;
 }
-
+.app-blog-nextlink > a:hover, .app-blog-previouslink > a:hover{
+  text-decoration: none;
+}
+.app-blog-nextlink > a > span, .app-blog-previouslink > a > span{
+  padding: 10px 0 0 0;
+  display: block;
+}
+.app-blog-nextlink > a > strong, .app-blog-previouslink > a > strong{
+  display: inline-block;
+  color: #888;
+}
 
 /* Detail */
 .app-blog-detail-top { overflow:hidden;}

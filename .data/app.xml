@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T15:28:39.5589698+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T16:26:06.3106402+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -56,6 +56,27 @@
         <Attribute StaticName="PostsBy" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="2996b839-2dc2-4f38-a9cf-f2bc8d8e4776" KeyNumber="1167">
             <Value Key="Name" Value="PostsBy" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="PreviousPost" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3b78a927-dd06-431c-b037-db4c52fd4a09" KeyNumber="1170">
+            <Value Key="Name" Value="PreviousPost" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="NextPost" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="15dcc6d8-37df-4cd7-ac48-55d6f81172e6" KeyNumber="1171">
+            <Value Key="Name" Value="NextPost" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="PublicatedOn" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="75bf6e1d-56db-42c5-9f15-7d4472fd926c" KeyNumber="1172">
+            <Value Key="Name" Value="PublicatedOn" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
           </Entity>
@@ -1369,6 +1390,24 @@
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="PostsBy" Value="Beiträge von" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="PreviousPost" Value="Older post" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PreviousPost" Value="Älterer Beitrag" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="NextPost" Value="More recent post" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="NextPost" Value="Aktuellerer Beitrag" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="PublicatedOn" Value="published on" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="PublicatedOn" Value="vom" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
     </Entity>
