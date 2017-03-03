@@ -26,14 +26,6 @@
 					@Html.Raw(post.Teaser)
                 </div>
             </a>
-            <div class="app-blog-tags">
-                <strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
-                @{
-                        var tagsList = (post.Tags as IEnumerable<dynamic>)
-                            .Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
-                }
-                @Html.Raw(string.Join(", ", tagsList))
-            </div>
             <div class="app-blog-categories">
                 <strong> @(post.Categories.Count > 1 ? @App.Resources.Categories : @App.Resources.Category): </strong>
                 @{
@@ -50,15 +42,15 @@
                     <h4>@author.FullName</h4>
                 </a>
             </div>
-            <!--<hr />
+            <hr />
             <div class="app-blog-tags">
-                <h3>Tags</h3>
-                <ul>
-					@foreach(var tag in post.Tags) {
-                    	<li class="app-blog-tag1"><a href="@Link.To(parameters: "tag=" +tag.Tag)" title="@tag.Name">@tag.Name</a></li>
-					}
-                </ul>
-            </div> -->
+                <strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+                @{
+                        var tagsList = (post.Tags as IEnumerable<dynamic>)
+                            .Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
+                }
+                @Html.Raw(string.Join(", ", tagsList))
+            </div>
         </div>
     </article>
 	

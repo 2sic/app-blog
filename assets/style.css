@@ -15,7 +15,6 @@ a.app-blog-link {
     display: block;
     text-decoration: none;
     color: #666;
-    padding: 10px;
     overflow: hidden;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -40,6 +39,12 @@ a.app-blog-link {
   display: inline-block;
   padding: 15px;
 }
+.app-blog-previouslink > a {
+  text-align: left;
+}
+.app-blog-nextlink > a{
+   
+}
 .app-blog-nextlink > a:hover, .app-blog-previouslink > a:hover{
   text-decoration: none;
 }
@@ -50,7 +55,20 @@ a.app-blog-link {
 .app-blog-nextlink > a > strong, .app-blog-previouslink > a > strong{
   display: inline-block;
   color: #888;
+  padding-bottom: 10px; 
 }
+.app-blog-nextlink > a > strong{
+  float: right;
+}
+.app-blog-leftIcon{
+  display: inline-block;
+  padding: 0 3px 0 0;
+}
+.app-blog-rightIcon{
+  display: inline-block;
+  padding: 0 0 0 3px;
+}
+
 
 /* Detail */
 .app-blog-detail-top { overflow:hidden;}

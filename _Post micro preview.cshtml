@@ -2,11 +2,13 @@
     var post = PageData["post"];
     var cls = PageData["css"];
     var title = PageData["title"];
+    var leftIcon = PageData["leftIcon"];
+    var rightIcon = PageData["rightIcon"];
 }
 @if(post != null){
     <div class="@cls">
         <a href="@Link.To(parameters: "post=" + post.UrlKey)" >
-            <strong>@title</strong>
+            <strong><i class="glyphicon @leftIcon app-blog-leftIcon"></i>@title<i class="glyphicon @rightIcon app-blog-rightIcon"></i> </strong>
             @if(!String.IsNullOrEmpty(@post.Image)) {
                 <img src="@post.Image.ToLower()?w=100&amp;h=100&amp;mode=crop&amp;scale=both" alt="@post.Title">
             }

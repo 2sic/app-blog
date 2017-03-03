@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-02T22:22:45.2349834+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-03T10:31:53.7899672+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -70,13 +70,6 @@
         <Attribute StaticName="NextPost" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="15dcc6d8-37df-4cd7-ac48-55d6f81172e6" KeyNumber="1171">
             <Value Key="Name" Value="NextPost" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
-          </Entity>
-        </Attribute>
-        <Attribute StaticName="PublicatedOn" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="75bf6e1d-56db-42c5-9f15-7d4472fd926c" KeyNumber="1172">
-            <Value Key="Name" Value="PublicatedOn" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
           </Entity>
@@ -1344,10 +1337,24 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="059facb3-0968-4021-92a7-72984522fcf2" KeyNumber="4">
-      <Value Key="Title" Value="2blog - the ultimate simple blog (change this in app-settings)" Type="String" />
-      <Value Key="BlogHomePage" Value="http://2sxc.org/#change-this-in-app-settings" Type="Hyperlink" />
-      <Value Key="RssDescription" Value="This is a simple blog app using dnn and 2sxc. Change this description in the app settings." Type="String" />
-      <Value Key="DetailsPage" Value="page:96" Type="Hyperlink" />
+      <Value Key="Title" Value="2blog - the ultimate simple blog (change this in app-settings)" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="2blog - der ultimativ simple blog (änderen Sie diese Beschreibung in den App-Einstellungen)" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="BlogHomePage" Value="http://2sxc.org/#change-this-in-app-settings" Type="Hyperlink">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="RssDescription" Value="This is a simple blog app using dnn and 2sxc. Change this description in the app settings." Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="RssDescription" Value="Dies ist ein einfacher Blog, der auf DNN und 2sxc aufgebaut ist. Änderen Sie diese Beschreibung in den App-Einstellungen)" Type="String">
+        <Dimension DimensionID="48" ReadOnly="false" />
+      </Value>
+      <Value Key="DetailsPage" Value="page:96" Type="Hyperlink">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="0de2a0eb-adf8-4b8d-ac76-7ca214269daf" KeyNumber="4">
       <Value Key="Category" Value="Category" Type="String">
@@ -1395,19 +1402,13 @@
       <Value Key="PreviousPost" Value="Read previous" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="PreviousPost" Value="Älterer Beitrag" Type="String">
+      <Value Key="PreviousPost" Value="Vorheriger Beitrag" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
       <Value Key="NextPost" Value="Read next" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="NextPost" Value="Aktuellerer Beitrag" Type="String">
-        <Dimension DimensionID="48" ReadOnly="false" />
-      </Value>
-      <Value Key="PublicatedOn" Value="published on" Type="String">
-        <Dimension DimensionID="47" ReadOnly="false" />
-      </Value>
-      <Value Key="PublicatedOn" Value="vom" Type="String">
+      <Value Key="NextPost" Value="Nächster Beitrag" Type="String">
         <Dimension DimensionID="48" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2002,7 +2003,7 @@
       <Value Key="Description" Value="&lt;p&gt;A test category&lt;/p&gt;" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="0b00a9a5-6fa4-4eae-9068-9e5b68bc60be">
-      <Value Key="Title" Value="Introducing the Blog App 3.0" Type="String">
+      <Value Key="Title" Value="Introducing the Blog App 3.0 (todo: 2dm - finish this)" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="UrlKey" Value="introducing-the-blog-app-3-0" Type="String">
