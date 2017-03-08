@@ -35,14 +35,12 @@
     }
 
     // return composed sized and sanitized image URL 
-    public string GetSizedImgUrl(string imgUrl, bool isSquare) {
+    public string GetSizedImgUrl(string imgUrl, string imageHeight, string imageWidth) {
         // skip this if currently in search-index mode without request object
         if(Request == null || String.IsNullOrEmpty(imgUrl)) 
             return imgUrl;
 
         if (String.IsNullOrEmpty(imgUrl)) throw new Exception("string is empty");
-        var imageHeight = isSquare ? "300" : "500";
-        var imageWidth = isSquare ? "300" : "1000";
         imgUrl = Request.Url.Scheme + "://" + Request.Url.Host 
             + imgUrl.ToLower() 
                 + "?w=" + imageWidth + "&amp;h=" + imageHeight 
@@ -72,13 +70,15 @@
     }
 
     // populate and generate open graph headers
-    public void SetOpenGraphHeaders(string title, string siteName, string url, string teaser, string imgUrl, bool isSquare){
+    public void SetOpenGraphHeaders(string title, string siteName, string url, string teaser, string imgUrl, bool isSquare, string imgHeight, string imgWidth){
         AddMeta("og:type", "article");
 		AddMeta("og:title", title);
 		AddMeta("og:site_name", siteName);
 		AddMeta("og:url", url);
 		AddMeta("og:description", teaser);
 	    AddMeta("og:image", imgUrl);
+        AddMeta("og:image:height", imgHeight);
+        AddMeta("og:image:width", imgWidth);
 
 		AddMeta("twitter:card", imgUrl != "" && !isSquare ? "summary_large_image" : "summary");
 		AddMeta("twitter:title", title);
