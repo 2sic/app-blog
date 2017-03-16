@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.10.01" ExportDate="2017-03-03T10:31:53.7899672+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:21:30.2162789+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -145,6 +145,13 @@
             <Value Key="Paths" Value="" Type="String" />
             <Value Key="DefaultDialog" Value="" Type="String" />
             <Value Key="FileFilter" Value="" Type="String" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="SocialSharing" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="57ac14b5-2b02-4634-8de8-063651eb9ba3" KeyNumber="1210">
+            <Value Key="Name" Value="SocialSharing" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
           </Entity>
         </Attribute>
       </Attributes>
@@ -1355,6 +1362,9 @@
       <Value Key="DetailsPage" Value="page:96" Type="Hyperlink">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
+      <Value Key="SocialSharing" Value="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ca48503007cca1" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="0de2a0eb-adf8-4b8d-ac76-7ca214269daf" KeyNumber="4">
       <Value Key="Category" Value="Category" Type="String">
@@ -1503,7 +1513,7 @@
       <Value Key="Name" Value="Blog Posts for Home and Tags" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="AllowEdit" Value="True" Type="Boolean" />
-      <Value Key="StreamsOut" Value="ListContent,Default,Paging,SearchIndex,Category" Type="String" />
+      <Value Key="StreamsOut" Value="ListContent,Default,Paging,SearchIndex,Category,Tag" Type="String" />
       <Value Key="StreamWiring" Value="298de0e3-67d8-45ec-a864-c84132ad1ea6:Default&gt;376cd440-59fd-493c-b791-f0b526d7255c:Default&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Drafts&gt;376cd440-59fd-493c-b791-f0b526d7255c:Drafts&#xD;&#xA;298de0e3-67d8-45ec-a864-c84132ad1ea6:Published&gt;376cd440-59fd-493c-b791-f0b526d7255c:Published&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d974619-a658-422f-88e5-8cd5340f62d6:Default&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:XLastDefaultList&#xD;&#xA;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:1st&#xD;&#xA;4c8da744-fd5b-4f10-871e-54a4976f13d0:Default&gt;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;afa30b05-64b9-4498-b89e-5055ce686b8f:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&#xD;&#xA;ad6acded-b4c7-4ad9-b33b-57bc2a659716:Paging&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Default&gt;Out:Default&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:Paging&gt;Out:Paging&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&#xD;&#xA;34203a06-fa42-4429-9cb1-8a2d708f89b3:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:2nd&#xD;&#xA;e8128768-dcba-4cb0-a011-e662579e9b2c:Default&gt;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&#xD;&#xA;04b62d31-ccf0-4cc9-aa14-6864d1ab26d4:SearchIndex&gt;Out:SearchIndex&#xD;&#xA;376cd440-59fd-493c-b791-f0b526d7255c:Default&gt;0d3696ac-509a-42cb-be92-aa52ff56e6e8:Default&#xD;&#xA;0d3696ac-509a-42cb-be92-aa52ff56e6e8:ListContent&gt;Out:ListContent&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:Category&gt;3be8c162-1469-48ef-b677-eac8518bf1ec:Default&#xD;&#xA;0d3696ac-509a-42cb-be92-aa52ff56e6e8:ListContent&gt;47dc7570-310d-4d58-8ce0-478fcf194c16:Settings&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:Category&gt;47dc7570-310d-4d58-8ce0-478fcf194c16:Default&#xD;&#xA;3be8c162-1469-48ef-b677-eac8518bf1ec:Default&gt;95d437f3-d6bc-4d42-b050-dcf75f2447fe:1Url&#xD;&#xA;47dc7570-310d-4d58-8ce0-478fcf194c16:Default&gt;95d437f3-d6bc-4d42-b050-dcf75f2447fe:2Setting&#xD;&#xA;95d437f3-d6bc-4d42-b050-dcf75f2447fe:Default&gt;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Filter&#xD;&#xA;0d974619-a658-422f-88e5-8cd5340f62d6:BlogPost&gt;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Default&#xD;&#xA;1a675243-04c2-4bf2-9cc0-588e4cbf5061:Default&gt;4c8da744-fd5b-4f10-871e-54a4976f13d0:3rd&#xD;&#xA;95d437f3-d6bc-4d42-b050-dcf75f2447fe:Default&gt;Out:Category" Type="String" />
       <Value Key="TestParameters" Value="[Module:ModuleID]=665&#xA;[QueryString:Tag]=&#xA;[QueryString:Author]=Daniel Mettler&#xA;[QueryString:Page]=2&#xA;[QueryString:Category]=default" Type="String" />
     </Entity>
@@ -1964,10 +1974,18 @@
       <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1350,&#xD;&#xA;  &quot;Left&quot;: 827&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueFilter" AttributeSetName="|Config ToSic.Eav.DataSources.ValueFilter" EntityGUID="06d6172c-3985-4b63-b10b-4e7da15a3307" KeyGuid="3be8c162-1469-48ef-b677-eac8518bf1ec">
-      <Value Key="Attribute" Value="Name" Type="String" />
-      <Value Key="Value" Value="[QueryString:category]" Type="String" />
-      <Value Key="Operator" Value="==" Type="String" />
-      <Value Key="Take" Value="1" Type="String" />
+      <Value Key="Attribute" Value="Key" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Value" Value="[QueryString:category]" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Operator" Value="==" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Take" Value="1" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="47dc7570-310d-4d58-8ce0-478fcf194c16" KeyGuid="2ba9ceb5-fdcc-48bb-adb3-7608c098dd26">
       <Value Key="Name" Value="Category from Settings" Type="String" />
@@ -2027,7 +2045,7 @@
       <Value Key="SharingDescription" Value="" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7" Type="Entity" />
+      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7,3c6eba74-d8f1-4f74-bc67-a97361fb9aef" Type="Entity" />
       <Value Key="Tags" Value="" Type="Entity" />
       <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
       <Value Key="ImageSquare" Value="False" Type="Boolean">
@@ -2035,6 +2053,17 @@
       </Value>
       <Value Key="DesignedContent" Value="" Type="Entity" />
       <Value Key="MetaTitle" Value="" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="1ea28652-a051-4c80-acd7-4d2e3f288f9c" AttributeSetName="Category" EntityGUID="3c6eba74-d8f1-4f74-bc67-a97361fb9aef">
+      <Value Key="Name" Value="test testän" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Key" Value="test-testaen" Type="String">
+        <Dimension DimensionID="47" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
     </Entity>
