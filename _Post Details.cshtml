@@ -56,7 +56,8 @@
 		</div>
 	</div>
 	<hr />
-
+	@* render social sharing here *@
+	<div class="addthis_inline_share_toolbox"></div>
 	@* show categories and tags *@
 	@{
 		var categoryList = (post.Categories as IEnumerable<dynamic>)
@@ -87,6 +88,7 @@
 		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
 	</div>
 </div>
+<script type="text/javascript" src="@App.Settings.SocialSharing"></script> 
 } else {
 	@* this happens when an article isn't published yet *@
 	Response.StatusCode = 404;
