@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:21:30.2162789+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:56:39.3297163+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -147,11 +147,38 @@
             <Value Key="FileFilter" Value="" Type="String" />
           </Entity>
         </Attribute>
-        <Attribute StaticName="SocialSharing" Type="String" IsTitle="false">
+        <Attribute StaticName="SocialAddThisJS" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="57ac14b5-2b02-4634-8de8-063651eb9ba3" KeyNumber="1210">
-            <Value Key="Name" Value="SocialSharing" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="AddThis JS" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;The full path to the AddThis javascript include. Create your own account / profile on&amp;nbsp;&lt;a href=&quot;http://www.addthis.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;www.addthis.com&lt;/a&gt;&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-default" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="50ec1bd7-4840-4776-8bb0-4c8e3e149038" KeyNumber="1210" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="21d264b4-7d04-4d74-861a-b09585122434" KeyNumber="1210">
+            <Value Key="RowCount" Value="" Type="Number">
+              <Dimension DimensionID="47" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
       </Attributes>
@@ -1315,7 +1342,7 @@
       <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="02.02.00" Type="String">
+      <Value Key="Version" Value="03.00.00" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="Folder" Value="Blog App" Type="String">
@@ -1362,7 +1389,7 @@
       <Value Key="DetailsPage" Value="page:96" Type="Hyperlink">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="SocialSharing" Value="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ca48503007cca1" Type="String">
+      <Value Key="SocialAddThisJS" Value="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58ca48503007cca1" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
     </Entity>

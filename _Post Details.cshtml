@@ -6,8 +6,8 @@
 
 	var post = AsDynamic(Data["Default"]).First();
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
-	var imgWidth = post.ImageSquare == true ? "300" : "1000";
-	var imgHeight = post.ImageSquare == true ? "300" : "500";
+	var imgWidth = post.ImageSquare ? "300" : "1000";
+	var imgHeight = post.ImageSquare ? "300" : "500";
 	var imgUrl = lib.GetSizedImgUrl(post.Image, imgHeight, imgWidth);
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
@@ -57,6 +57,7 @@
 	</div>
 	<hr />
 	@* render social sharing here *@
+    <script type="text/javascript" src="@App.Settings.SocialAddThisJS&dnn-cdv-param" data-enableoptimizations="bottom" ></script> 
 	<div class="addthis_inline_share_toolbox"></div>
 	@* show categories and tags *@
 	@{
@@ -88,7 +89,6 @@
 		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
 	</div>
 </div>
-<script type="text/javascript" src="@App.Settings.SocialSharing"></script> 
 } else {
 	@* this happens when an article isn't published yet *@
 	Response.StatusCode = 404;
