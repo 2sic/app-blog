@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:56:39.3297163+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-23T22:03:58.5705501+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -1342,7 +1342,7 @@
       <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="03.00.00" Type="String">
+      <Value Key="Version" Value="03.00.01" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="Folder" Value="Blog App" Type="String">
@@ -1878,32 +1878,32 @@
       <Value Key="Description" Value="" Type="String" />
       <Value Key="AllowEdit" Value="True" Type="Boolean" />
       <Value Key="StreamsOut" Value="ListContent,Default,Next,Previous" Type="String" />
-      <Value Key="StreamWiring" Value="9f4d6071-31b3-4d03-aab7-cfd755507845:Default&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Default&#xD;&#xA;9f4d6071-31b3-4d03-aab7-cfd755507845:Drafts&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Drafts&#xD;&#xA;9f4d6071-31b3-4d03-aab7-cfd755507845:Published&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Published&#xD;&#xA;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Default&gt;5ee12d82-918d-4d91-b246-c28a925d527e:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;3357c2f2-22e6-477c-97ab-9f405511b502:Default&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Next&gt;Out:Next&#xD;&#xA;3357c2f2-22e6-477c-97ab-9f405511b502:Default&gt;8254cb6f-1396-4857-9b80-3fd23bdebb68:Default&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;8254cb6f-1396-4857-9b80-3fd23bdebb68:CurrentPost&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:CurrentPost&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;b78cf283-e9e4-4fc8-ae22-1ed075c28a7e:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&#xD;&#xA;b78cf283-e9e4-4fc8-ae22-1ed075c28a7e:Default&gt;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:Default&#xD;&#xA;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Next&#xD;&#xA;8254cb6f-1396-4857-9b80-3fd23bdebb68:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Previous&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Previous&gt;Out:Previous&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Default&gt;Out:Default" Type="String" />
+      <Value Key="StreamWiring" Value="9f4d6071-31b3-4d03-aab7-cfd755507845:Default&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Default&#xD;&#xA;9f4d6071-31b3-4d03-aab7-cfd755507845:Drafts&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Drafts&#xD;&#xA;9f4d6071-31b3-4d03-aab7-cfd755507845:Published&gt;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Published&#xD;&#xA;530ad27b-2a07-4fd5-90c9-0584e29c1bcd:Default&gt;5ee12d82-918d-4d91-b246-c28a925d527e:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;3357c2f2-22e6-477c-97ab-9f405511b502:Default&#xD;&#xA;3357c2f2-22e6-477c-97ab-9f405511b502:Default&gt;8254cb6f-1396-4857-9b80-3fd23bdebb68:Default&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;8254cb6f-1396-4857-9b80-3fd23bdebb68:CurrentPost&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:CurrentPost&#xD;&#xA;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;b78cf283-e9e4-4fc8-ae22-1ed075c28a7e:Default&#xD;&#xA;5ee12d82-918d-4d91-b246-c28a925d527e:BlogPost&gt;14a03b71-ff4a-4e56-ae43-c6b97b03b0bd:Default&#xD;&#xA;b78cf283-e9e4-4fc8-ae22-1ed075c28a7e:Default&gt;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:Default&#xD;&#xA;71fbe496-e7e0-4dbc-9702-a0ef0b84325a:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Next&#xD;&#xA;8254cb6f-1396-4857-9b80-3fd23bdebb68:Default&gt;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Previous&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Next&gt;Out:Next&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Default&gt;Out:Default&#xD;&#xA;41d8a4e1-7f87-43bc-99c1-f6aba6bde367:Previous&gt;Out:Previous" Type="String" />
       <Value Key="TestParameters" Value="[Module:ModuleID]=541&#xA;[Querystring:post]=getting-started-with-the-blog-app" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="9f4d6071-31b3-4d03-aab7-cfd755507845" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
       <Value Key="Name" Value="ICache" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.ICache, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1280,&#xD;&#xA;  &quot;Left&quot;: 272&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1300,&#xD;&#xA;  &quot;Left&quot;: 307&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="530ad27b-2a07-4fd5-90c9-0584e29c1bcd" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
       <Value Key="Name" Value="PublishingFilter" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.PublishingFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1080,&#xD;&#xA;  &quot;Left&quot;: 280&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 1080,&#xD;&#xA;  &quot;Left&quot;: 320&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="5ee12d82-918d-4d91-b246-c28a925d527e" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
       <Value Key="Name" Value="App" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.App, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 870,&#xD;&#xA;  &quot;Left&quot;: 280&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 900,&#xD;&#xA;  &quot;Left&quot;: 320&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="8254cb6f-1396-4857-9b80-3fd23bdebb68" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
       <Value Key="Name" Value="Get one with smaller date" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 390,&#xD;&#xA;  &quot;Left&quot;: 146&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 400,&#xD;&#xA;  &quot;Left&quot;: 152&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueFilter" AttributeSetName="|Config ToSic.Eav.DataSources.ValueFilter" EntityGUID="943cd755-d4dc-4bd0-9e1c-1709a0a7fc2c" KeyGuid="8254cb6f-1396-4857-9b80-3fd23bdebb68">
       <Value Key="Attribute" Value="PublicationMoment" Type="String" />
@@ -1915,7 +1915,7 @@
       <Value Key="Name" Value="CacheAllStreams" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.CacheAllStreams, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 200,&#xD;&#xA;  &quot;Left&quot;: 320&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 220,&#xD;&#xA;  &quot;Left&quot;: 340&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.Caches.CacheAllStreams" AttributeSetName="|Config ToSic.Eav.DataSources.Caches.CacheAllStreams" EntityGUID="29c57e06-3710-4212-b51c-f0360f840a60" KeyGuid="41d8a4e1-7f87-43bc-99c1-f6aba6bde367">
       <Value Key="Title" Value="Cache All Streams Data Source" Type="String" />
@@ -1923,16 +1923,16 @@
       <Value Key="CacheDurationInSeconds" Value="86400" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="14a03b71-ff4a-4e56-ae43-c6b97b03b0bd" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
-      <Value Key="Name" Value="ValueFilter" Type="String" />
+      <Value Key="Name" Value="Current post from url param" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 652,&#xD;&#xA;  &quot;Left&quot;: 272&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 673,&#xD;&#xA;  &quot;Left&quot;: 320&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="3357c2f2-22e6-477c-97ab-9f405511b502" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
-      <Value Key="Name" Value="ValueSort Z-A" Type="String" />
+      <Value Key="Name" Value="Sort by date Z-A" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 590,&#xD;&#xA;  &quot;Left&quot;: 40&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 606,&#xD;&#xA;  &quot;Left&quot;: 88&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="a1377925-63ec-44fd-8902-32bf37c52d7d" KeyGuid="3357c2f2-22e6-477c-97ab-9f405511b502">
       <Value Key="Attributes" Value="PublicationMoment" Type="String" />
@@ -1945,10 +1945,10 @@
       <Value Key="Take" Value="" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="71fbe496-e7e0-4dbc-9702-a0ef0b84325a" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
-      <Value Key="Name" Value="All with larger date" Type="String" />
+      <Value Key="Name" Value="The next one with larger date" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 374,&#xD;&#xA;  &quot;Left&quot;: 460&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 406,&#xD;&#xA;  &quot;Left&quot;: 520&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueFilter" AttributeSetName="|Config ToSic.Eav.DataSources.ValueFilter" EntityGUID="7227dbd9-46e7-4e0f-879b-dd336f9ccd0d" KeyGuid="71fbe496-e7e0-4dbc-9702-a0ef0b84325a">
       <Value Key="Attribute" Value="PublicationMoment" Type="String" />
@@ -1963,10 +1963,10 @@
       <Value Key="Take" Value="1" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="b78cf283-e9e4-4fc8-ae22-1ed075c28a7e" KeyGuid="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0">
-      <Value Key="Name" Value="Sort A-Z" Type="String" />
+      <Value Key="Name" Value="Sort by date A-Z" Type="String" />
       <Value Key="Description" Value="" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 580,&#xD;&#xA;  &quot;Left&quot;: 488&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 600,&#xD;&#xA;  &quot;Left&quot;: 546&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="0adea916-ca05-4899-908c-891f7c0d38ff" KeyGuid="b78cf283-e9e4-4fc8-ae22-1ed075c28a7e">
       <Value Key="Attributes" Value="PublicationMoment" Type="String" />

@@ -27,17 +27,18 @@ a.app-blog-link {
 }
 .app-blog-nextlink{
   width: 130px;
-  right: -20%; 
+  right: -140px; 
 }
 .app-blog-previouslink{
   width: 130px;
-  left: -20%; 
+  left: -140px; 
 }
 .app-blog-nextlink > a, .app-blog-previouslink > a {
   font-size: 12px;
   background-color: #fff;
   display: inline-block;
   padding: 15px;
+  min-height: 250px;
 }
 .app-blog-previouslink > a {
   text-align: left;
