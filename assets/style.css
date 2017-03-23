@@ -42,9 +42,13 @@ a.app-blog-link {
 .app-blog-previouslink > a {
   text-align: left;
 }
-.app-blog-image{
+.app-blog-image {
   width: 100%;
-  max-width: 100%;
+  max-width: 10
+  0%;
+}
+.app-blog-image.pull-right {
+  width: auto;
 }
 .app-blog-nextlink > a:hover, .app-blog-previouslink > a:hover{
   text-decoration: none;
