@@ -52,14 +52,14 @@
     // determine and set meta description and meta title
     public void SetMetaAndTitle(string title, string titleFallback, string meta, string metaFallback){
         var pageHandler = HttpContext.Current.Handler as Page;
-        meta = String.IsNullOrEmpty(meta) ? meta : metaFallback;
+        meta = !String.IsNullOrEmpty(meta) ? meta : metaFallback;
 
 		((DotNetNuke.Framework.CDefault)pageHandler).Description = meta;
 		var metaTag = (HtmlMeta)pageHandler.FindControl("metaDescription");
 		metaTag.Visible = true;
 		metaTag.Content = HttpUtility.HtmlAttributeEncode(meta);
 
-		pageHandler.Title = String.IsNullOrEmpty(title) ? title : titleFallback;	
+		pageHandler.Title = !String.IsNullOrEmpty(title) ? title : titleFallback;	
     }
 
     // strip html from original content
