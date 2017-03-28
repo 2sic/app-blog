@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-23T22:03:58.5705501+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-28T08:07:25.1717268+02:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
     <Language Default="en-US" />
@@ -1342,7 +1342,7 @@
       <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="03.00.01" Type="String">
+      <Value Key="Version" Value="03.00.02" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="Folder" Value="Blog App" Type="String">
@@ -2048,22 +2048,22 @@
       <Value Key="Description" Value="&lt;p&gt;A test category&lt;/p&gt;" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="0b00a9a5-6fa4-4eae-9068-9e5b68bc60be">
-      <Value Key="Title" Value="Introducing the Blog App 3.0 (todo: 2dm - finish this)" Type="String">
+      <Value Key="Title" Value="New Blog App 3.0 with Details-Paging, Open-Graph, Share-This and Very-Rich-Content" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="UrlKey" Value="introducing-the-blog-app-3-0" Type="String">
+      <Value Key="UrlKey" Value="new-blog-app-3-0" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2017-03-05T00:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2017-03-23T00:00:00" Type="DateTime">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Image" Value="" Type="Hyperlink">
+      <Value Key="Image" Value="File:591" Type="Hyperlink">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Teaser" Value="&lt;p&gt;The latest edition of the Blog-App provides many new features you'll love. Check it out...&lt;/p&gt;" Type="String">
+      <Value Key="Teaser" Value="&lt;p&gt;The new Blog App offers loads of new, neat features, including Multi-Language, Share-This integration, paging in read-mode, social headers and Very-Rich Content.&lt;/p&gt;" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Body" Value="&lt;p&gt;The latest&amp;nbsp;edition of the Blog-App provides many new features you'll love.&amp;nbsp;Here's the rundown:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The blog body now uses &lt;a href=&quot;http://2sxc.org/en/blog/post/2sxc-8-9-with-very-rich-text-inner-content-2-item-delete-and-more&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Very Rich Text&lt;/a&gt;, allowing you to add apps inline&amp;nbsp;to your posts.&amp;nbsp;&lt;/li&gt;&#xA;&lt;li&gt;The details-view now&amp;nbsp;provide paging to the next/previous blog-post&lt;/li&gt;&#xA;&lt;li&gt;Publishing / unpublishing now uses the 2sxc standard method&lt;/li&gt;&#xA;&lt;li&gt;The entire blog-UI is now in multi-language and translated into English and&amp;nbsp;Deutsch&lt;/li&gt;&#xA;&lt;li&gt;In addition to tagging, the blog now also supports categories. These also have additional descriptions which are shown when a category-filter is applied.&lt;/li&gt;&#xA;&lt;li&gt;We've added full support for &lt;a href=&quot;http://ogp.me/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;OpenGraph &lt;/a&gt;- which improves social sharing and previews of the post both on facebook and twitter.&lt;/li&gt;&#xA;&lt;/ol&gt;" Type="String">
+      <Value Key="Body" Value="&lt;p&gt;The new Blog App offers loads of new, neat features, including Multi-Language, Share-This integration, paging in read-mode and Very-Rich Content. Le'ts look at the highlights:&lt;/p&gt;&#xA;&lt;h1&gt;Paging in Read / Details&amp;nbsp;View&lt;/h1&gt;&#xA;&lt;p&gt;This is something we copied from large online newspapers,&amp;nbsp;allowing a reader to page to the next (or previous) blog-post while reading.&amp;nbsp;You can design it as you wish - this is what it looks like by default:&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;h2&gt;Very Rich Content&lt;/h2&gt;&#xA;&lt;p&gt;Previous version of the Blog App already supported adding apps to the details-page, but the editing experience got a bit complicated. Thanks to the new &lt;a href=&quot;/en/blog/post/tutorial-create-very-rich-text-inner-content-2-with-2sxc&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Very-Rich-Content feature in 2sxc 8.9&lt;/a&gt;, this is now awesome. So you can just add any app inline into your blog-post, and write more text right after it. Here's what it looks like in the&amp;nbsp;TinyMCE wysiwyg editor:&lt;/p&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;h2&gt;Open-Graph Headers for Social Sharing&lt;/h2&gt;&#xA;&lt;p&gt;We're now including all facebook and twitter &lt;a href=&quot;http://ogp.me/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;open-graph headers&lt;/a&gt; on the details-page, to allow great social sharing :).&lt;/p&gt;&#xA;&lt;p&gt;TODO&lt;/p&gt;&#xA;&lt;h2&gt;Share-This Integration Built in&lt;/h2&gt;&#xA;&lt;p&gt;Most&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;h2&gt;Multi-Language EN / DE included&lt;/h2&gt;&#xA;&lt;p&gt;We now made the blog-app multi-language, so all&amp;nbsp;fields and all buttons/labels are ML and pre-translated for English and Deutsch/German.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;TODO&lt;/p&gt;&#xA;&lt;h2&gt;Categories&amp;nbsp;&lt;em&gt;and&lt;/em&gt; Tags&lt;/h2&gt;&#xA;&lt;p&gt;Wordpress uses a combination of&amp;nbsp;&lt;em&gt;Categories&lt;/em&gt; and&amp;nbsp;&lt;em&gt;Tags&lt;/em&gt; to mark their contributions. Basically categories are more stable taxonomies (usually there is a page just for that category), and tags are more volatile folksonomies (spontaneously assigned). This is now the default on the Blog App.&lt;/p&gt;&#xA;&lt;p&gt;TODO&lt;/p&gt;&#xA;&lt;h2&gt;Minor Improvements&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Publishing / unpublishing now uses the 2sxc standard method&lt;/li&gt;&#xA;&lt;li&gt;Special optional header-fields available for more SEO control&lt;/li&gt;&#xA;&lt;li&gt;Cleaned up and re-organized fields to make it easier to edit&lt;/li&gt;&#xA;&lt;li&gt;Improved post-management&amp;nbsp;with admin-list&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&quot;/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Download the DNN Blog App 3.0 from the App-Catalog&lt;/a&gt; or check out the &lt;a href=&quot;https://github.com/2sic/app-blog&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;code on GitHub&lt;/a&gt;. Note that it's using some newer features of 2sxc, so you'll need 2sxc 8.9+.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Love from Switzerland,&lt;br /&gt;Daniel&lt;/p&gt;&#xA;&lt;p&gt;PS: I'd like to welcome&amp;nbsp;Raphael Hirscher to the sexy-team. He also implemented some of the features of the Blog 3 :).&amp;nbsp;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
       <Value Key="MetaDescription" Value="" Type="String">
@@ -2072,8 +2072,8 @@
       <Value Key="SharingDescription" Value="" Type="String">
         <Dimension DimensionID="47" ReadOnly="false" />
       </Value>
-      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7,3c6eba74-d8f1-4f74-bc67-a97361fb9aef" Type="Entity" />
-      <Value Key="Tags" Value="" Type="Entity" />
+      <Value Key="Categories" Value="3595bd17-99db-4197-b390-6c4fe6894ea7" Type="Entity" />
+      <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
       <Value Key="Author" Value="81a38949-78b1-428c-ba0d-27a2acf4e2d3" Type="Entity" />
       <Value Key="ImageSquare" Value="False" Type="Boolean">
         <Dimension DimensionID="47" ReadOnly="false" />
@@ -2100,6 +2100,7 @@
     <File Id="406" RelativePath="adam/Blog App/BWSkTym0m06Ys1M-FU_HEw/Image/Dnn Blog Logo.png" />
     <File Id="405" RelativePath="adam/Blog App/He6UU4TUSkafV9gGCkzg2w/Image/Apps for the Blog.png" />
     <File Id="408" RelativePath="adam/Blog App/pF96QbLyR0uypVZwY-q2kQ/Image/Banner may the fourth for blog.png" />
+    <File Id="591" RelativePath="adam/Blog App/pakAC6Rvrk6QaJ5baLxgvg/Image/Banner New Blog App Version 3.jpg" />
     <File Id="590" RelativePath="adam/Blog App/oIsyjlMOf0uYH28aJpPMJA/Image/header.jpg" />
   </PortalFiles>
   <PortalFolders>
@@ -2107,11 +2108,13 @@
     <Folder Id="236" RelativePath="adam/Blog App/BWSkTym0m06Ys1M-FU_HEw/Image/" />
     <Folder Id="249" RelativePath="adam/Blog App/He6UU4TUSkafV9gGCkzg2w/Image/" />
     <Folder Id="251" RelativePath="adam/Blog App/pF96QbLyR0uypVZwY-q2kQ/Image/" />
+    <Folder Id="688" RelativePath="adam/Blog App/pakAC6Rvrk6QaJ5baLxgvg/Image/" />
     <Folder Id="668" RelativePath="adam/Blog App/oIsyjlMOf0uYH28aJpPMJA/Image/" />
     <Folder Id="64" RelativePath="adam/Blog App/" />
     <Folder Id="235" RelativePath="adam/Blog App/BWSkTym0m06Ys1M-FU_HEw/" />
     <Folder Id="248" RelativePath="adam/Blog App/He6UU4TUSkafV9gGCkzg2w/" />
     <Folder Id="667" RelativePath="adam/Blog App/oIsyjlMOf0uYH28aJpPMJA/" />
+    <Folder Id="687" RelativePath="adam/Blog App/pakAC6Rvrk6QaJ5baLxgvg/" />
     <Folder Id="250" RelativePath="adam/Blog App/pF96QbLyR0uypVZwY-q2kQ/" />
     <Folder Id="246" RelativePath="adam/Blog App/SYmjgbF4jEK6DSeirPTi0w/" />
   </PortalFolders>
