@@ -43,11 +43,6 @@
 			<h1>@post.Title</h1>
 			<time pubdate datetime="@post.PublicationMoment.ToString("d")">@post.PublicationMoment.ToString("d")</time>
 		</div>
-
-		@* show micro-previews for previous/next post *@
-		@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Previous"]).FirstOrDefault(), css = "app-blog-previouslink", title = App.Resources.PreviousPost, leftIcon="glyphicon-arrow-left"})
-		@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Next"]).FirstOrDefault(), css = "app-blog-nextlink", title = App.Resources.NextPost, rightIcon="glyphicon-arrow-right"})
-
 		@if(!String.IsNullOrEmpty(post.Image)){
 			<img class="app-blog-image @(post.ImageSquare ? " pull-right" : "") " src="@imgUrl" alt="" />
 		}
@@ -55,6 +50,11 @@
 		    @ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body)
 		</div>
 	</div>
+
+	@* show micro-previews for previous/next post *@
+	@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Previous"]).FirstOrDefault(), css = "app-blog-previouslink", title = App.Resources.PreviousPost, leftIcon="glyphicon-arrow-left"})
+	@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Next"]).FirstOrDefault(), css = "app-blog-nextlink", title = App.Resources.NextPost, rightIcon="glyphicon-arrow-right"})
+
 	<hr />
 	@* render social sharing here - to update the link, change it in the App settings *@
     <script type="text/javascript" src="@App.Settings.SocialAddThisJS&dnn-cdv-param" data-enableoptimizations="bottom" ></script> 

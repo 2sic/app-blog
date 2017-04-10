@@ -299,3 +299,111 @@ a:hover .app-blog-btn, a:focus .app-blog-btn, a.app-blog-btn:hover, a.app-blog-b
   background-color: #fff;
   cursor: default;
 }
+
+a.app-blog-link:hover, a.app-blog-link:focus {  
+    text-decoration:none;
+}
+a.app-blog-link {  
+    display: block;
+    text-decoration: none;
+    color: #666;
+    overflow: hidden;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.app-blog-nextlink, .app-blog-previouslink{
+  display: inline-block;
+  position: fixed;
+}
+.app-blog-nextlink, .app-blog-previouslink{
+  width: 130px;
+  top: 33%;
+  box-shadow: 0px 0px 80px #616161; 
+}
+.app-blog-previouslink{
+  left: 5%;
+}
+.app-blog-nextlink{
+  right: 5%;
+}
+.app-blog-nextlink > a, .app-blog-previouslink > a {
+  font-size: 12px;
+  background-color: #fff;
+  display: inline-block;
+  padding: 15px;
+  min-height: 250px;
+}
+.app-blog-previouslink > a {
+  text-align: left;
+}
+.app-blog-image {
+  width: 100%;
+  max-width: 10
+  0%;
+}
+.app-blog-image.pull-right {
+  width: auto;
+}
+.app-blog-nextlink > a:hover, .app-blog-previouslink > a:hover{
+  text-decoration: none;
+}
+.app-blog-nextlink > a > span, .app-blog-previouslink > a > span{
+  padding: 10px 0 0 0;
+  display: block;
+}
+.app-blog-nextlink > a > strong, .app-blog-previouslink > a > strong{
+  display: inline-block;
+  color: #888;
+  padding-bottom: 10px; 
+}
+.app-blog-nextlink > a > strong{
+  float: right;
+}
+.app-blog-leftIcon{
+  display: inline-block;
+  padding: 0 3px 0 0;
+}
+.app-blog-rightIcon{
+  display: inline-block;
+  padding: 0 0 0 3px;
+}
+
+@media all and (max-width: 1450px){
+  .app-blog-nextlink, .app-blog-previouslink{
+    position: relative;
+    box-shadow: none;
+    width: 140px;
+    top: 0;
+    margin: 30px 0 15px 0;
+  }
+  .app-blog-nextlink{
+     float: right;
+     right: 0;
+  }
+  .app-blog-previouslink{
+    float: left;
+    left: 0;
+  }
+  .app-blog-previouslink img, .app-blog-nextlink img{
+    margin-top: 30px;
+  }
+  .app-blog-previouslink a, .app-blog-nextlink a{
+    min-height: 100%;
+    padding: 0;
+  }
+  .app-blog-previouslink a span, .app-blog-nextlink a span{
+    font-size: 16px;
+    padding: 0;
+    display: block;
+    margin: 30px 0 0 0;
+  }
+  .app-blog-previouslink a strong, .app-blog-nextlink a strong{
+    float: none;
+    margin: 0 0 0 -2px;
+    font-size: 16px;
+    padding: 0;
+    position: absolute;
+  }
+}
