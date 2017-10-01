@@ -1,4 +1,4 @@
-﻿/* 2sxc Blog-App by 2sxc */
+/* 2sxc Blog-App by 2sxc */
 
 /* List */
 .app-blog-item { margin:0 -15px; position:relative; overflow:hidden; box-sizing:border-box; padding:10px 0; min-height:200px;}
@@ -74,6 +74,26 @@ a.app-blog-link {
   display: inline-block;
   padding: 0 0 0 3px;
 }
+
+/* comma separated lists like tags, categories, etc. */
+.app-blog-csv {
+  display: inline;
+  list-style: none;
+  padding-left: 0;
+}
+
+.app-blog-csv li {
+  display: inline;
+}
+
+.app-blog-csv li:after {
+  content: ", ";
+}
+
+.app-blog-csv li:last-child:after {
+    content: "";
+}
+
 
 
 /* Detail */

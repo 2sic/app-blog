@@ -51,6 +51,21 @@
     	@* Paging Bar *@
     	@RenderPage("_pager.cshtml")
     </div>
+    
+    @* archive links to each year *@
+    @if(string.IsNullOrEmpty(Request.QueryString["Year"])) {
+          var years = postsToShow
+            .Where(p => p.PublicationMoment != null)
+            .GroupBy(p => p.PublicationMoment.Year)
+            .Select(g => new { 
+                Year = g.Key, 
+                Link = Link.To(parameters: "year=" + g.Key),
+                Text = g.Key, 
+                Title = "blog archive for " + g.Key
+            });
+        <div>@App.Resources.Archive @RenderPage("_csv-list.cshtml", new { Items = years })
+        </div>
+    }
 
 </div>
 
