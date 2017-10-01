@@ -58,12 +58,16 @@
             .Where(p => p.PublicationMoment != null)
             .GroupBy(p => p.PublicationMoment.Year)
             .Select(g => new { 
-                Year = g.Key, 
                 Link = Link.To(parameters: "year=" + g.Key),
                 Text = g.Key, 
                 Title = "blog archive for " + g.Key
             });
-        <div>@App.Resources.Archive @RenderPage("_csv-list.cshtml", new { Items = years })
+        <div>@App.Resources.Archive
+        <ol class="app-blog-csv">
+            @foreach(dynamic li in years){
+                <li><a href="@li.Link" title="@li.Title">@li.Text</a></li>
+            }
+        </ol>
         </div>
     }
 
