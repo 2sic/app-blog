@@ -39,6 +39,7 @@
     public string LinkToPageNumber(int pageNumber){
         string url = Link.To(parameters: 
             (!String.IsNullOrEmpty(Request.QueryString["tag"]) ? "tag=" + Request.QueryString["tag"] + "&" : "") 
+            + (!String.IsNullOrEmpty(Request.QueryString["category"]) ? "category=" + Request.QueryString["category"] + "&" : "")
             + (!String.IsNullOrEmpty(Request.QueryString["author"]) ? "author=" + Request.QueryString["author"] + "&" : "")
             + "page=" + pageNumber
             );
