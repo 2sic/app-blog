@@ -1,0 +1,33 @@
+@{
+    var currUrl = DotNetNuke.Entities.Tabs.TabController.CurrentPage.FullUrl;
+    var currCategory = Request.QueryString["category"];
+    var cats = (IEnumerable<dynamic>)AsDynamic(App.Data["Category"]);
+
+    var postsToShow = (IEnumerable<dynamic>)AsDynamic(App.Data["BlogPost"]).OrderByDescending(bp => bp.PublicationMoment);;
+
+    // only apply this filter for non-editors
+    if (!Permissions.UserMayEditContent)
+    {
+        postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
+    }
+
+    var postAllCategories = postsToShow;
+    var categoryNumbers = cats.Select(ca => new {
+        Category = ca,
+        Count = postAllCategories.Where(p => ((IEnumerable<dynamic>)p.Categories).Any(c => c.EntityId == ca.EntityId)).Count()
+    });
+}
+
+<nav class="co-category-list-container">
+    <h3>Kategorien</h3>
+    <ul>
+        <li class=""><a href="@Link.To()">Alle <span class="badge pull-right">@postAllCategories.Count()</span></a></li>
+        @* Categories will be appended to here *@
+        @foreach (var c in categoryNumbers)
+        {
+            var caturl = @currUrl + "/category/" + @c.Category.Key;
+            <li class="@((c.Category.Key == currCategory) ? "app-blog-cat-active" : "")"><a href="@caturl">@c.Category.Name <span class="badge pull-right">@c.Count</span></a></li>
+        }
+        
+    </ul>
+</nav>

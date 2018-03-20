@@ -1,0 +1,45 @@
+<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
+@{	
+	var lib = CreateInstance("_library.cshtml"); 
+	var author = AsDynamic(Data["Author"]).FirstOrDefault() ?? lib.unknownAuthor;
+}
+@{
+    // get all posts as delived from the standard query
+	var postsToShow = AsDynamic(Data["Default"]);
+	
+	// only apply this filter for non-editors
+	if (!Permissions.UserMayEditContent) {
+		postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now).Where(p => p.IsPublished);
+	}
+}
+
+<div class="container-fluid">
+    <div class="ly-container-inner co-main-blog-container" >
+		<div class="row">
+			<div class="col col-xs-12 col-md-8">
+				<div class="app-todo">
+					<h1>@App.Resources.PostsBy @author.FullName</h1>
+					<div class="todo">
+							@Html.Raw(author.ShortBio)
+					</div>
+				</div>
+
+				<div class="app-blog">
+					@foreach(var post in postsToShow)
+					{
+						@RenderPage("_list-item.cshtml", new { Post = post })
+					}
+					@RenderPage("_pager.cshtml")
+				</div>
+			</div>
+			<div class="col col-xs-12 col-md-4 hidden-sm hidden-xs">
+				<div id="sidebar" class="sidebar app-blog-detail-right">
+					<div class="sidebar__inner">
+						@RenderPage("_category_sidebar.cshtml")			
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

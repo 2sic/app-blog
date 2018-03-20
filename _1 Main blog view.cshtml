@@ -1,0 +1,110 @@
+<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/dist/style.css" />
+<script src="@App.Path/dist/scripts.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
+@using Connect.Koi;
+@{
+
+    // get all posts as delived from the standard query
+    var currCategory = Request.QueryString["category"];
+    var currTag = Request.QueryString["tag"];
+    var currUrl = DotNetNuke.Entities.Tabs.TabController.CurrentPage.FullUrl;
+
+    // get all posts as delived from the standard query
+    var cats = (IEnumerable<dynamic>)AsDynamic(App.Data["Category"]);
+    var cat = AsDynamic(Data["Category"]).FirstOrDefault(); // get category if, if a category is selected
+    var postsToShow = (IEnumerable<dynamic>)AsDynamic(App.Data["BlogPost"]).OrderByDescending(bp => bp.PublicationMoment);
+
+    // only apply this filter for non-editors
+    if (!Permissions.UserMayEditContent)
+    {
+        postsToShow = postsToShow.Where(p => p.PublicationMoment <= DateTime.Now);
+    }
+
+    var postAllCategories = postsToShow;
+    var categoryNumbers = cats.Select(ca => new {
+        Category = ca,
+        Count = postAllCategories.Where(p => ((IEnumerable<dynamic>)p.Categories).Any(c => c.EntityId == ca.EntityId)).Count()
+    });
+
+    if (!String.IsNullOrEmpty(currCategory))
+    {
+        postsToShow = postsToShow.Where(p => ((IEnumerable<dynamic>)p.Categories).Any(c => c.Key == currCategory));
+    }
+
+
+}
+
+<div class="container-fluid">
+    <div class="ly-container-inner co-main-blog-container" >
+        @* optionaly show category header *@
+        @if(cat != null) {
+            <div class="blog-category-header">
+                <h1>@cat.Name</h1>
+                @Html.Raw(cat.Description)
+            </div>
+        }
+            
+        <div class="sc-element">
+            @* toolbar for add / manage posts *@
+        	@Edit.Toolbar(toolbar: new object[] { 
+        	    new { 
+                    command = new { 
+            			action = "new", 
+            			contentType = "BlogPost"
+        		    } 
+        		},
+        		new { 
+                    command = new { 
+                        action = "contentitems", 
+                        contentType = "BlogPost"
+                    },
+                    showCondition = true
+        		}
+        	}, settings: new { hover="left", show = "hover" })
+    
+        @* toolbar to manage list/view settings *@
+        @Edit.Toolbar(ListContent)
+
+            <div class="row">
+                <div class="col col-xs-12 col-md-8">
+                    <div class="app-blog">
+                    	@* the posts *@
+                    	@foreach(var post in postsToShow)
+                    	{
+                    		@RenderPage("_list-item.cshtml", new { Post = post })
+                    	}
+                    
+                    	@* Paging Bar *@
+                    	@RenderPage("_pager.cshtml")
+                    </div>
+                </div>
+                <div class="col col-xs-12 col-md-4 hidden-sm hidden-xs">
+                    <div id="sidebar" class="sidebar app-blog-detail-right">
+                        <div class="sidebar__inner">
+                            @RenderPage("_category_sidebar.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+@functions{
+    /// <summary>
+    /// Populate the search - ensure that each entity has an own url/page
+    /// </summary>
+    /// <param name="searchInfos"></param>
+    /// <param name="moduleInfo"></param>
+    /// <param name="startDate"></param>
+    public override void CustomizeSearch(Dictionary<string, List<ToSic.SexyContent.Search.ISearchInfo>> searchInfos, DotNetNuke.Entities.Modules.ModuleInfo moduleInfo, DateTime startDate)
+    {
+         foreach (var si in searchInfos["SearchIndex"])
+		{
+			si.QueryString = "post=" + AsDynamic(si.Entity).UrlKey;
+		}
+    }
+}
