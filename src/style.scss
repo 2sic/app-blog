@@ -1,3 +1,11 @@
+// local variables file
+@import "_variables.scss";
+// later on it's usually better to use variables from the skins
+// so that you can re-build the css using the same values used in the skin
+// it would then look a bit like this:
+// @import "../../../_default/skins/2sxc-bootstrap-skin/src/_variables.scss";
+/*Bootstrap Style Gallery Album*/
+
 /* 2sxc Blog-App by 2sxc */
 
 .app-blog,
@@ -859,3 +867,39 @@ a.app-blog-btn:focus {
   padding: 0;
   margin: 0;
 }
+
+
+
+/*=========================================================
+                2sxc App Blog with koi
+=========================================================*/
+section {
+  &.app-blog {
+    /*Article list item*/
+    article {
+      &.list-item {
+        /*list item header*/
+        .header {
+          picture {
+            img {
+
+            }
+          }
+          h2 {
+
+          }
+          time {
+
+          }
+        }
+        /*list item content*/
+
+        /*list item footer*/
+      }
+    }
+    /* END Article list item*/
+
+  }
+}
+
+/*Article llist*/

@@ -1,0 +1,30 @@
+<section class="app-blog">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <!-- Your Content -->
+
+            <!-- Article -->
+            <article>
+                <header>
+                    @if(!String.IsNullOrEmpty(post.Image)){
+                        <picture>
+                            <img src="@post.Image.ToLower()?w=800&amp;h=400&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
+                        </picture>        
+                    }
+                    <h2>@Html.Raw(post.Title.Replace("\n","<br/>"))</h2>
+                    <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d") | </time>
+                    <p>@Html.Raw(post.Teaser)</p>
+                    <span class="co-readmore">Mehr lesen </span>
+                </header>
+                
+              </article>
+              <!-- END Article -->
+
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <aside>
+                Sidebar
+            </aside>
+        </div>
+    </div>
+</section>

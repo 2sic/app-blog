@@ -3,61 +3,55 @@
 	var post = PageData["Post"];
     var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
 }
-    
-    <article class="app-blog-item ">
-	    <div class="sc-element">
-		    	@Edit.Toolbar(post, toolbar: new { 
-                    entityId = post.EntityId, 
-                    entityGuid = post.EntityGuid, 
-                    entityTitle = post.EntityTitle }
-                )
-		
-		
-            <div onclick="window.open('@Link.To(parameters: "post=" + post.UrlKey)', '_self')" title="@post.Title" class="app-blog-link" style="cursor:pointer;">
-                
-                
-                 @if(!String.IsNullOrEmpty(post.Image)){
-                     <div class="app-blog-img-wrapper">
-					    <img style="width:100%;" class="app-blog-article-img" src="@post.Image.ToLower()?w=800&amp;h=400&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" alt="@post.Title" />
-                     </div>          
+    @* Article *@
+    <article class="sc-element app-blog-list-item">
+        @Edit.Toolbar(post, toolbar: new { 
+            entityId = post.EntityId, 
+            entityGuid = post.EntityGuid, 
+            entityTitle = post.EntityTitle }
+        )
+        @* readmore onclick *@
+        <div onclick="window.open('@Link.To(parameters: "post=" + post.UrlKey)', '_self')" title="@post.Title" class="app-blog-readmorelink" style="cursor:pointer;">
+            <div class="header">
+                @if(!String.IsNullOrEmpty(post.Image)){
+                <picture>
+                    <img src="@post.Image.ToLower()?w=800&amp;h=400&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
+                </picture>
                 }
-                <div class="app-blog-content">
-                    <h2>@Html.Raw(post.Title.Replace("\n","<br/>"))</h2>
-                    <div class="app-blog-categories">
-                        <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d") | </time>
-
-                        @{
-                                var categoryList = (post.Categories as IEnumerable<dynamic>)
-                                    .Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
-                        }
-                        @Html.Raw(string.Join("", categoryList))
-                    </div>
-                    <div class="app-blog-introtext">
-                        @Html.Raw(post.Teaser) <span class="co-readmore">Mehr lesen </span>
-                    </div>
-                    </div>
-                </div>
-           
-        </div>
-         
-        @*<div class="app-blog-col2 col col-xs-12">
-              <div class="app-blog-tags">
-              <strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+                <h2>@Html.Raw(post.Title.Replace("\n","<br/>"))</h2>
+                <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
                 @{
-                        var tagsList = (post.Tags as IEnumerable<dynamic>)
-                            .Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
+                    var categoryList = (post.Categories as IEnumerable <dynamic>)
+                        .Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray();
+                }
+                @Html.Raw(string.Join("", categoryList))
+            </div>
+            <div class="content">
+                @Html.Raw(post.Teaser)
+                <span class="co-readmore">@App.Resources.ReadMore</span>
+            </div>
+        </div>
+        @* END readmore onclick *@
+        <div class="footer">
+            @* Article tags *@
+            <div class="tags">
+                <strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+                @{ var tagsList = (post.Tags as IEnumerable <dynamic>)
+                    .Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray();
                 }
                 @Html.Raw(string.Join("", tagsList))
             </div>
-            
-            <hr />
-            <div class="app-blog-person">
-                <a href="@Link.To(parameters: "author=" + author.FullName)">
+            @* END Article tags *@
+            @* Article author *@
+            <div class="person">
+                <a href="@Link.To(parameters: " author=" + author.FullName)">
                     <img src="@author.Image.ToLower()?w=64&amp;h=65&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
                     <h4>@author.FullName</h4>
                 </a>
             </div>
-        </div>*@
+            @* END Article author *@
+        </footer>
     </article>
+    @* END Article *@
 	
 	

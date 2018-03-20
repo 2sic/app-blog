@@ -1,8 +1,8 @@
 @using System.Web.UI.HtmlControls
 
-<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/assets/style.css" />
-<script src="@App.Path/assets/scripts.js"></script>
-<script src="@App.Path/assets/sticky-sidebar.min.js"></script>
+<link rel="stylesheet" href="@App.Path/assets/style.css" data-enableoptimizations="true" />
+<script src="@App.Path/dist/scripts.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
 @using Connect.Koi;
 @{	
 	var lib = CreateInstance("_library.cshtml"); 
@@ -116,7 +116,7 @@
 							<img src='@author.Image.ToLower()?w=120&amp;h=120&amp;mode=crop&amp;quality=70' alt="@author.FullName"/> @Html.Raw(author.ShortBio)
 						</div>
 						<div>
-						@App.Resources.ReadMore <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
+						@App.Resources.ReadMoreAuthor <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
 						</div>
 					</div>
 					<div class="app-blog-backlinks">

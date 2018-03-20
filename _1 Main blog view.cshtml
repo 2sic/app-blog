@@ -1,9 +1,8 @@
-<link rel="stylesheet" data-enableoptimizations="true" href="@App.Path/dist/style.css" />
+<link rel="stylesheet" href="@App.Path/dist/style.css" data-enableoptimizations="true" />
 <script src="@App.Path/dist/scripts.js" data-enableoptimizations="true"></script>
 <script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
 @using Connect.Koi;
 @{
-
     // get all posts as delived from the standard query
     var currCategory = Request.QueryString["category"];
     var currTag = Request.QueryString["tag"];
@@ -30,69 +29,54 @@
     {
         postsToShow = postsToShow.Where(p => ((IEnumerable<dynamic>)p.Categories).Any(c => c.Key == currCategory));
     }
-
-
 }
-
-<div class="container-fluid">
-    <div class="ly-container-inner co-main-blog-container" >
-        @* optionaly show category header *@
-        @if(cat != null) {
-            <div class="blog-category-header">
-                <h1>@cat.Name</h1>
-                @Html.Raw(cat.Description)
-            </div>
+<section class="app-blog sc-element">
+    @* toolbar for add / manage posts *@
+    @Edit.Toolbar(toolbar: new object[] { 
+        new { 
+            command = new { 
+                action = "new", 
+                contentType = "BlogPost"
+            } 
+        },
+        new { 
+            command = new { 
+                action = "contentitems", 
+                contentType = "BlogPost"
+            },
+            showCondition = true
         }
-            
-        <div class="sc-element">
-            @* toolbar for add / manage posts *@
-        	@Edit.Toolbar(toolbar: new object[] { 
-        	    new { 
-                    command = new { 
-            			action = "new", 
-            			contentType = "BlogPost"
-        		    } 
-        		},
-        		new { 
-                    command = new { 
-                        action = "contentitems", 
-                        contentType = "BlogPost"
-                    },
-                    showCondition = true
-        		}
-        	}, settings: new { hover="left", show = "hover" })
-    
-        @* toolbar to manage list/view settings *@
-        @Edit.Toolbar(ListContent)
+    }, settings: new { hover="left", show = "hover" })
 
-            <div class="row">
-                <div class="col col-xs-12 col-md-8">
-                    <div class="app-blog">
-                    	@* the posts *@
-                    	@foreach(var post in postsToShow)
-                    	{
-                    		@RenderPage("_list-item.cshtml", new { Post = post })
-                    	}
-                    
-                    	@* Paging Bar *@
-                    	@RenderPage("_pager.cshtml")
+    @* optionaly show category header *@
+    @if(cat != null) {
+        <div class="category-header">
+            <h1>@cat.Name</h1>
+            @Html.Raw(cat.Description)
+        </div>
+    }
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            @* the posts *@
+            @foreach(var post in postsToShow)
+            {
+                @RenderPage("_list-item.cshtml", new { Post = post })
+            }
+        
+            @* Paging Bar *@
+            @RenderPage("_pager.cshtml")
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <aside>
+                <div id="sidebar" class="sidebar app-blog-detail-right">
+                    <div class="sidebar__inner">
+                        @RenderPage("_category_sidebar.cshtml")
                     </div>
                 </div>
-                <div class="col col-xs-12 col-md-4 hidden-sm hidden-xs">
-                    <div id="sidebar" class="sidebar app-blog-detail-right">
-                        <div class="sidebar__inner">
-                            @RenderPage("_category_sidebar.cshtml")
-                        </div>
-                    </div>
-                </div>
-            </div>
-                
-            
+            </aside>
         </div>
     </div>
-</div>
-
-
+</section>
 @functions{
     /// <summary>
     /// Populate the search - ensure that each entity has an own url/page

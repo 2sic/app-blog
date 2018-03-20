@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* note: this file name must start with an underscore "_" so it wont be generated in the output */
+/*Bootstrap Style Gallery Album*/
 /* 2sxc Blog-App by 2sxc */
 .app-blog,
 .app-todo {
@@ -693,5 +695,18 @@ a.app-blog-btn:focus {
 .co-fixed-sidebar h3 {
   padding: 0;
   margin: 0; }
+
+/*=========================================================
+                2sxc App Blog with koi
+=========================================================*/
+section.app-blog {
+  /*Article list item*/
+  /* END Article list item*/ }
+  section.app-blog article.list-item {
+    /*list item header*/
+    /*list item content*/
+    /*list item footer*/ }
+
+/*Article llist*/
 
 /*# sourceMappingURL=style.css.map */
