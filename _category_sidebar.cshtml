@@ -17,16 +17,17 @@
         Count = postAllCategories.Where(p => ((IEnumerable<dynamic>)p.Categories).Any(c => c.EntityId == ca.EntityId)).Count()
     });
 }
+@using Connect.Koi;
 
 <nav class="co-category-list-container">
-    <h3>Kategorien</h3>
+    <h3>@App.Resources.Categories</h3>
     <ul>
-        <li class=""><a href="@Link.To()">Alle <span class="badge pull-right">@postAllCategories.Count()</span></a></li>
+        <li class=""><a href="@Link.To()">@App.Resources.ShowAll<span @Koi.Class(@"bs3,unk='badge pull-right' bs4='badge badge-pill badge-primary float-right'")>@postAllCategories.Count()</span></a></li>
         @* Categories will be appended to here *@
         @foreach (var c in categoryNumbers)
         {
-            var caturl = @currUrl + "/category/" + @c.Category.Key;
-            <li class="@((c.Category.Key == currCategory) ? "app-blog-cat-active" : "")"><a href="@caturl">@c.Category.Name <span class="badge pull-right">@c.Count</span></a></li>
+            @*var caturl = @currUrl + "/category/" + @c.Category.Key;*@
+            <li class="@((c.Category.Key == currCategory) ? "app-blog-cat-active" : "")"><a href="@Link.To(parameters: "category=" + c.Category.Key)">@c.Category.Name <span @Koi.Class(@"bs3,unk='badge pull-right' bs4='badge badge-pill badge-primary float-right'")>@c.Count</span></a></li>
         }
         
     </ul>

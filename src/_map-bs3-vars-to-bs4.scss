@@ -1,0 +1,53 @@
+// generate the variable primary, IF it doesn't exist yet
+/*this is to ensure that this SCSS works for both BS3 & BS4*/
+/* primary color*/
+@if variable-exists(primary) and variable-exists(brand-primary) {
+	@warn "both $primary and $brand-primary exist. Will use $brand-primary" 
+}
+
+$dummy: "this should never be the color used";
+$primary: $dummy !default;	/*try to use default, otherwise just use red*/
+
+@if variable-exists(brand-primary) {
+	$primary: $brand-primary;
+}
+
+@if $primary == $dummy {
+	@error "trying to set primary based on colors, but something failed - your variables seem to be missing BOTH $primary and $brand-primary";
+}
+
+/* gray light */
+@if variable-exists(gray-200) and variable-exists(gray-light) {
+	@warn "both $gray-200 and $gray-light exist. Will use $gray-light";
+}
+
+$gray-dummy: "this should never be the color used";
+$gray-200: $gray-dummy !default;	// try to use default, otherwise just use red
+
+@if variable-exists(gray-light) {
+	$gray-200: $gray-light;
+}
+
+@if $gray-200 == $gray-dummy {
+	@error "trying to set gray-200 based on colors, but something failed - your variables seem to be missing BOTH $gray-200 and $gray-light";
+}
+
+/* body color vs text-color */
+@if variable-exists(body-color) and variable-exists(text-color) {
+	@warn "both $gray-200 and $gray-light exist. Will use $gray-light";
+}
+
+$color-dummy: "this should never be the color used";
+$body-color: $color-dummy !default;	// try to use default, otherwise just use red
+
+@if variable-exists(text-color) {
+	$body-color: $text-color;
+}
+
+@if $body-color == $color-dummy {
+	@error "trying to set body-color based on colors, but something failed - your variables seem to be missing BOTH $body-color and $text-color";
+}
+
+
+
+

@@ -10,7 +10,7 @@
         <a href="@Link.To(parameters: "post=" + post.UrlKey)" >
            
             @if(!String.IsNullOrEmpty(@post.Image)) {
-                <img src="@post.Image.ToLower()?w=80&amp;h=74&amp;mode=crop&amp;scale=both&amp;quality=70" alt="@post.Title">
+                <img src="@post.Image.ToLower()?w=80&amp;h=80&amp;mode=crop&amp;scale=both&amp;quality=70" alt="@post.Title">
             }
             <span class="app-blog-previouslink-title">
                 <strong>@title:</strong>

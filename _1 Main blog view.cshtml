@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="@App.Path/dist/style.css" data-enableoptimizations="true" />
-<script src="@App.Path/dist/scripts.js" data-enableoptimizations="true"></script>
-<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/scripts.js" data-enableoptimizations="bottom"></script>
+<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="bottom"></script>
 @using Connect.Koi;
 @{
     // get all posts as delived from the standard query
@@ -51,12 +51,15 @@
     @* optionaly show category header *@
     @if(cat != null) {
         <div class="category-header">
-            <h1>@cat.Name</h1>
+            <h1>@App.Resources.Category @cat.Name</h1>
             @Html.Raw(cat.Description)
         </div>
+    
     }
     <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+
+        
+        <div @Koi.Class(@"all='' bs3,unk='col-xs-12 col-sm-12 col-md-8 col-lg-8' bs4='col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8'")>
             @* the posts *@
             @foreach(var post in postsToShow)
             {
@@ -66,14 +69,23 @@
             @* Paging Bar *@
             @RenderPage("_pager.cshtml")
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <div @Koi.Class(@"all='' bs3,unk='col-xs-12 col-sm-12 col-md-4 col-lg-4' bs4='col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4'")>
+           
             <aside>
-                <div id="sidebar" class="sidebar app-blog-detail-right">
+                <div id="sidebar"  @Koi.Class(@"all='sidebar app-blog-detail-right' bs3,unk='hidden-xs hidden-sm' bs4='d-none d-sm-none d-md-none d-lg-block'")>
                     <div class="sidebar__inner">
                         @RenderPage("_category_sidebar.cshtml")
                     </div>
                 </div>
+                @*only show on mobile view*@
+					<div @Koi.Class(@"all='sidebar app-blog-detail-right' bs3,unk='visible-xs-block visible-sm-block hidden-md hidden-lg' bs4='d-lg-none d-xl-none'")>
+						<div class="sidebar__inner">
+							@RenderPage("_category_sidebar.cshtml")
+						</div>
+						
+					</div>
             </aside>
+
         </div>
     </div>
 </section>

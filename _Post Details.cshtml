@@ -1,14 +1,12 @@
 @using System.Web.UI.HtmlControls
-
-<link rel="stylesheet" href="@App.Path/assets/style.css" data-enableoptimizations="true" />
-<script src="@App.Path/dist/scripts.js" data-enableoptimizations="true"></script>
-<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
+<link rel="stylesheet" href="@App.Path/dist/style.css" data-enableoptimizations="true" />
+<script src="@App.Path/dist/scripts.js" data-enableoptimizations="bottom"></script>
+<script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="bottom"></script>
 @using Connect.Koi;
 @{	
 	var lib = CreateInstance("_library.cshtml"); 
-
 	var post = AsDynamic(Data["Default"]).First();
-    var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
+        var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
 	var imgWidth = "800";
 	var imgHeight = "400";
 	var imgUrl = lib.GetSizedImgUrl(post.Image, imgHeight, imgWidth);
@@ -56,72 +54,72 @@
 @if(post.IsPublished || Permissions.UserMayEditContent) {
 
 	
-<div class="container-fluid">
-    <div class="ly-container-inner co-main-blog-container" >
-		<div class="app-blog row ">
-			
-
-            <div class="col col-xs-12 col-md-8 sc-element">
-                @Edit.Toolbar(post, actions: "edit")
-				<div class="app-blog-detail">
-				@if(!String.IsNullOrEmpty(post.Image)) {
-						<img class="app-blog-image" src="@imgUrl" alt="" />
-					}
-					<div class="app-blog-detail-top">
-						<div class="app-blog-person">
-							<a href="@Link.To(parameters: "author=" + author.FullName)">
-								<img src="@author.Image.ToLower()?w=50&amp;h=50&amp;mode=crop&amp;scale=both" alt="@author.FullName" />
-							</a>
-						</div>
-						<h1>@post.Title</h1>
-						 <div class="app-blog-categories">
-							<time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d") | </time>
-
+<section class="app-blog">
+ 	
+	<div class="row">
+         <div @Koi.Class(@"bs3,unk='col-xs-12 col-sm-12 col-md-8 col-lg-8' bs4='col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8'")>
+               
+				<article class="sc-element post-detail">
+				@Edit.Toolbar(post, actions: "edit")
+					<div class="header">
+						@if(!String.IsNullOrEmpty(post.Image)){
+						<picture>
+							<img src="@post.Image.ToLower()?w=800&amp;h=450&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
+						</picture>
+						}
+						
+						<h1>@Html.Raw(post.Title.Replace("\n","<br/>"))</h1>
+						<div class="details">
+							<div class="person">
+								<a href="@Link.To(parameters: "author=" + author.FullName)">
+									<img src="@author.Image.ToLower()?w=40&amp;h=40&amp;mode=crop&amp;scale=both&amp;quality=80" alt="@author.FullName" />
+								</a>
+							</div>
+							<time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
 							@{
-									var categoryList = (post.Categories as IEnumerable<dynamic>)
-										.Select(cat => "<a href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray(); 
+								var categoryList = (post.Categories as IEnumerable <dynamic>)
+									.Select(cat => "<a class='category' href='" + Link.To(parameters: "category=" + cat.Key) + "' title='" + cat.Name + "'>" + cat.Name + "</a>").ToArray();
 							}
 							@Html.Raw(string.Join("", categoryList))
-                   		 </div>
-					
-						
+						</div>
 					</div>
-
-					
-
-					
-					<div class="app-blog-text">
+										
+					<div class="content">
 						@ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body) 
 					</div>
-
-					@* show categories and tags *@
-					@{
-						 
-						var tagsList = (post.Tags as IEnumerable<dynamic>)
-							.Select(tag => "<a href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray(); 
-					}
+					<div class="footer">
+						@* show categories and tags *@
+						<div class="tags">
+							<strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+							@{ var tagsList = (post.Tags as IEnumerable <dynamic>)
+								.Select(tag => "<a " + @Koi.Class(@"bs3,unk='btn btn-sm btn-default' bs4='btn btn-sm btn-light'") + " href='" + Link.To(parameters: "tag=" + tag.Tag) + "' title='" + tag.Name + "'>" + tag.Name + "</a>").ToArray();
+							}
+							@Html.Raw(string.Join("", tagsList))
+						</div>
+						@* render social sharing here - to update the link, change it in the App settings *@
+						<script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script> 
+						<div class="addthis_inline_share_toolbox hidden-md hidden-lg"></div>
+						<hr />
+						@* show the author *@
+						<div class="authordetails">
+							<div>
+								<img src='@author.Image.ToLower()?w=120&amp;h=120&amp;mode=crop&amp;quality=70' alt="@author.FullName"/> @Html.Raw(author.ShortBio)
+							</div>
+							<div>
+								@App.Resources.ReadMoreAuthor <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
+							</div>
+						</div>
+						<hr />
+						<div class="article-links">
+						@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Previous"]).FirstOrDefault(), css = "previous", title = App.Resources.PreviousPost, leftIcon="glyphicon-arrow-left"})
+						@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Next"]).FirstOrDefault(), css = "next", title = App.Resources.NextPost, rightIcon="glyphicon-arrow-right"})
+						</div>
+						<hr />
+						<div class="backlink">
+							<a @Koi.Class(@"all='btn' bs3,unk='btn-primary' bs4='btn-outline-primary'") href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
+						</div>
+					</div>
 					
-					<div class="app-blog-tags">
-						<strong> @(post.Tags.Count > 1 ? App.Resources.Tags : App.Resources.Tag): </strong>
-						@Html.Raw(string.Join(", ", tagsList))
-					</div>
-					<hr />
-					@* render social sharing here - to update the link, change it in the App settings *@
-					<script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script> 
-					<div class="addthis_inline_share_toolbox hidden-md hidden-lg"></div>
-					<hr class="hidden-md hidden-lg" />
-					@* show the author *@
-					<div class="app-blog-authordetails">
-						<div>
-							<img src='@author.Image.ToLower()?w=120&amp;h=120&amp;mode=crop&amp;quality=70' alt="@author.FullName"/> @Html.Raw(author.ShortBio)
-						</div>
-						<div>
-						@App.Resources.ReadMoreAuthor <a href="@Link.To(parameters: "author=" + author.FullName)">@author.FullName</a>
-						</div>
-					</div>
-					<div class="app-blog-backlinks">
-						<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
-					</div>
 					<div id="disqus_thread"></div>
 					<script>
 
@@ -142,33 +140,43 @@
 					})();
 					</script>
 					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-				</div>
+				</article>
 			</div>
 			
-			<div class="col col-xs-12 col-md-4 hidden-sm hidden-xs">
-				<div id="sidebar" class="sidebar app-blog-detail-right">
-					<div class="sidebar__inner">
-						@RenderPage("_category_sidebar.cshtml")
-						@* render social sharing here - to update the link, change it in the App settings *@
-						<script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script> 
-						<div class="addthis_inline_share_toolbox"></div>
-						@* show micro-previews for previous/next post *@
-						@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Previous"]).FirstOrDefault(), css = "app-blog-previouslink", title = App.Resources.PreviousPost, leftIcon="glyphicon-arrow-left"})
-						@RenderPage("_Post micro preview.cshtml", new { post = AsDynamic(Data["Next"]).FirstOrDefault(), css = "app-blog-nextlink", title = App.Resources.NextPost, rightIcon="glyphicon-arrow-right"})
+			<div  @Koi.Class(@"bs3,unk='col-xs-12 col-sm-12 col-md-4 col-lg-4' bs4='col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4'")>
+				<aside>
+                	<div id="sidebar"  @Koi.Class(@"all='sidebar app-blog-detail-right' bs3,unk='hidden-xs hidden-sm' bs4='d-none d-sm-none d-md-none d-lg-block'")>
+						<div class="sidebar__inner">
+							@RenderPage("_category_sidebar.cshtml")
+							@* render social sharing here - to update the link, change it in the App settings *@
+							<script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script> 
+							<div class="addthis_inline_share_toolbox"></div>
+							@* show micro-previews for previous/next post *@
+						
+						</div>
 						
 					</div>
-					
-				</div>
+					@*only show on mobile view*@
+					<div @Koi.Class(@"all='sidebar app-blog-detail-right' bs3,unk='visible-xs-block visible-sm-block hidden-md hidden-lg' bs4='d-lg-none d-xl-none'")>
+						<div class="sidebar__inner">
+							@RenderPage("_category_sidebar.cshtml")
+						
+						</div>
+						
+					</div>
+
+				</aside>
 			</div>
 		</div>
-	</div>
-</div>
+		
+</section>
+
 } else {
 	@* this happens when an article isn't published yet *@
 	Response.StatusCode = 404;
 	Response.TrySkipIisCustomErrors = true;
 	<h1>404 (not found)</h1>
 	<p>
-		<a class="app-blog-btn app-blog-back" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
+		<a class="@Koi.Class(@"bs3,unk='btn btn-primary' bs4='btn btn-outline-primary'")" href="@Link.To()" title="Home">@App.Resources.BackToHome</a>
 	</p>
 }

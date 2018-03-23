@@ -1,12 +1,16 @@
 /* note: this file name must start with an underscore "_" so it wont be generated in the output */
 $grid-gutter-width: 30px;
-$brand-primary: #337ab7;
-$text-color: #333;
-$gray-light: #eee;
-$font-size-base: 16px;
-$screen-sm-min: 768px;  //  > 768px small tablet
-$screen-md-min: 992px;  //  > 992px (medium laptop)
-$screen-lg-min: 1200px; //  > 1200px (large desktop)
-$screen-xs-max: 768px;  //  < 768px xsmall phone)
-$screen-sm-max: 992px;  //  < 992px small tablet)
-$screen-md-max: 1200px; //  < 1200px medium laptop)
+$primary: #0088F4;
+$body-color: #555;
+$gray-200:#e9ecef;
+
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+$screen-lg-max: ($screen-xl-min - 1);

@@ -26,9 +26,9 @@ $(document).ready(function () {
 	$('.app-blog-tagcloud').append(sortstrength);
 	
 	var sidebar = new StickySidebar('#sidebar', {
-        containerSelector: '.co-main-blog-container',
+        containerSelector: '.app-blog',
         innerWrapperSelector: '.sidebar__inner',
-        topSpacing: 180,
+        topSpacing: 160,
         bottomSpacing: 20
     });
 });
