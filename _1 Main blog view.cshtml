@@ -47,15 +47,18 @@
             showCondition = true
         }
     }, settings: new { hover="left", show = "hover" })
-
-    @* optionaly show category header *@
-    @if(cat != null) {
-        <div class="category-header">
-            <h1>@App.Resources.Category @cat.Name</h1>
-            @Html.Raw(cat.Description)
+    <div class="row">
+		<div @Koi.Class(@"bs3,unk='col-xs-12 col-sm-12 col-md-8 col-lg-8' bs4='col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8'")>
+            @* optionaly show category header *@
+            @if(cat != null) {
+                <div class="category-header">
+                    <h1>@App.Resources.Category @cat.Name</h1>
+                    @Html.Raw(cat.Description)
+                </div>
+            
+            }
         </div>
-    
-    }
+    </div>
     <div class="row">
 
         
@@ -89,6 +92,8 @@
         </div>
     </div>
 </section>
+@Koi.IfUnknown("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>")
+
 @functions{
     /// <summary>
     /// Populate the search - ensure that each entity has an own url/page
