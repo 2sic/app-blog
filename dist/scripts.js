@@ -30,6 +30,5 @@ $(document).ready(function () {
         innerWrapperSelector: '.sidebar__inner',
         topSpacing: 160,
 		bottomSpacing: 20,
-		resizeSensor: true,
     });
 });
