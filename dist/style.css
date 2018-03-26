@@ -35,7 +35,6 @@ section.app-blog article {
   section.app-blog article.list-item .header picture {
     display: block;
     margin-bottom: 30px;
-    background-color: #FFF;
     transition: background-color .3s ease-in-out; }
     section.app-blog article.list-item .header picture img {
       transition: opacity .3s ease-in-out;

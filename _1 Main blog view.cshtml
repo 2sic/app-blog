@@ -11,7 +11,7 @@
     // get all posts as delived from the standard query
     var cats = (IEnumerable<dynamic>)AsDynamic(App.Data["Category"]);
     var cat = AsDynamic(Data["Category"]).FirstOrDefault(); // get category if, if a category is selected
-    var postsToShow = (IEnumerable<dynamic>)AsDynamic(App.Data["BlogPost"]).OrderByDescending(bp => bp.PublicationMoment);
+    var postsToShow = (IEnumerable<dynamic>)AsDynamic(Data["Default"]).OrderByDescending(bp => bp.PublicationMoment);
 
     // only apply this filter for non-editors
     if (!Permissions.UserMayEditContent)
@@ -54,6 +54,13 @@
                 <div class="category-header">
                     <h1>@App.Resources.Category @cat.Name</h1>
                     @Html.Raw(cat.Description)
+                </div>
+            }
+             @* optionaly show tags header *@
+            @if(Request.QueryString["tag"] != null) {
+                var currentTag = AsDynamic(App.Data["Tag"]).Where(t => t.Tag == Request.QueryString["tag"]).FirstOrDefault();
+                <div class="category-header">
+                    <h1>@App.Resources.Filter @currentTag.Name</h1>
                 </div>
             
             }

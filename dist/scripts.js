@@ -29,6 +29,7 @@ $(document).ready(function () {
         containerSelector: '.app-blog',
         innerWrapperSelector: '.sidebar__inner',
         topSpacing: 160,
-        bottomSpacing: 20
+		bottomSpacing: 20,
+		resizeSensor: true,
     });
 });
