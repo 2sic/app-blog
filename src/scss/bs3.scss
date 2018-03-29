@@ -1,10 +1,10 @@
-// later on it's usually better to use variables from the skins
-// so that you can re-build the css using the same values used in the skin
-// it would then look a bit like this:
+// Include needed variables from Bootstrap 3
+// You might need to adapt the path to match your Bootstrap 3 skin
 @import "../../../_default/skins/2sxcBootstrap-B3/src/_variables.scss";
 
-// For skins using bs3, we map all variables to bs4
+// Map all variables to bs4 so we can use bs4 syntax in the app
 @import "bs4-polyfills/_map-bs3-vars-to-bs4.scss";
+// Include mixins which are defined in Boostrap 4 but not in Bootstrap 3
 @import "bs4-polyfills/_breakpoints.scss";
 
 @import "_post-list.scss";

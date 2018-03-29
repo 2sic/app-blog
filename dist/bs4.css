@@ -1,13 +1,4 @@
 @charset "UTF-8";
-/** 
-	Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
-	by mapping all variables.
-**/
-/* primary color*/
-/*try to use default, otherwise just use red*/
-/* gray light */
-/* body color vs text-color */
-/* grid-breakpoints */
 body.va-layout-full section.app-blog article {
   background: #FFF;
   padding-bottom: 15px;

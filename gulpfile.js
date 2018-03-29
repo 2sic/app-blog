@@ -37,4 +37,4 @@ gulp.task('javascript', function() {
 		.pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('default', ['sass', 'javascript', 'watch-sass-all', 'watch-javascript']);
+gulp.task('default', ['sass-all', 'javascript', 'watch-sass-all', 'watch-javascript']);

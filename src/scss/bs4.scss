@@ -1,11 +1,7 @@
-// later on it's usually better to use variables from the skins
-// so that you can re-build the css using the same values used in the skin
-// it would then look a bit like this:
+// Include needed variables and mixins from Bootstrap 4
+// You might need to adapt these paths to match your Bootstrap 4 skin
 @import "../../../_default/Skins/2sxcBootstrap-B4/src/_variables.scss";
 @import "../../../_default/Skins/2sxcBootstrap-B4/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
-
-// For skins using bs3, we map all variables to bs4
-@import "bs4-polyfills/_map-bs3-vars-to-bs4.scss";
 
 @import "_post-list.scss";
 @import "_post-detail.scss";
