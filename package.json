@@ -1,0 +1,14 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "![2sxc blog logo](app-icon.png)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "npm run start-all",
+    "start-bs3": "gulp watch-sass-bs3",
+    "start-bs4": "gulp watch-sass-bs4",
+    "start-all": "gulp"
+  },
+  "author": "2sic internet solutions",
+  "license": "MIT"
+}

@@ -1,20 +1,20 @@
-/*
- * Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
- * by mapping all variables from the bootstrap 3 convention to the bootstrap 4 convention
- *
-*/
+//
+// Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
+// by mapping all variables from the bootstrap 3 convention to the bootstrap 4 convention
+//
+//
 
 // The dummy value is used below to check whether a variable has been set or not
 $dummy: "this is just a test value, use it to see if a real value was found";
 
 
 // generate the variable primary, IF it doesn't exist yet
-/* primary color*/
+// Translate primary color
 @if variable-exists(primary) and variable-exists(brand-primary) {
 	@warn "both bs3 and bs4 variable exists - will use bs3" 
 }
 
-$primary: $dummy !default;	/*try to use default, otherwise just use red*/
+$primary: $dummy !default;	// try to use default, otherwise just use red
 
 @if variable-exists(brand-primary) {
 	$primary: $brand-primary;
@@ -27,7 +27,7 @@ $primary: $dummy !default;	/*try to use default, otherwise just use red*/
 
 
 
-/* gray light */
+// Translate gray light
 @if variable-exists(gray-200) and variable-exists(gray-light) {
 	@warn "both bs3 and bs4 variable exists - will use bs3";
 }
@@ -44,7 +44,7 @@ $gray-200: $dummy !default;	// try to use default, otherwise just use red
 
 
 
-/* body color vs text-color */
+// Translate body color vs text-color
 @if variable-exists(body-color) and variable-exists(text-color) {
 	@warn "both bs3 and bs4 variable exists - will use bs3";
 }
@@ -61,7 +61,7 @@ $body-color: $dummy !default;	// try to use default, otherwise just use red
 
 
 
-/* grid-breakpoints */
+// Translate grid-breakpoints
 @if variable-exists(grid-breakpoints) and variable-exists(screen-sm-min) {
 	@warn "both bs3 and bs4 variable exists - will use bs3";
 }
