@@ -1,8 +1,17 @@
+/*
+ * This SCSS generates the css file for bootstrap 4 themes
+ *
+ * To regenerate the SCSS using your variables (custom colors, etc.)
+ * update the reference to your _variables.scss of your skin
+ * and re-run [todo 2rm]
+ *
+*/
+
 // Include needed variables and mixins from Bootstrap 4
-// You might need to adapt these paths to match your Bootstrap 4 skin
+// You must adapt these paths to match your Bootstrap 4 skin
 @import "../../../_default/Skins/2sxcBootstrap-B4/src/_variables.scss";
 @import "../../../_default/Skins/2sxcBootstrap-B4/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
 
-@import "_post-list.scss";
-@import "_post-detail.scss";
-@import "_style.scss";
+@import "_post-list.scss";      // CSS for the list-view
+@import "_post-detail.scss";    // CSS for the details view
+@import "_style.scss";          // General CSS stuff for everything
