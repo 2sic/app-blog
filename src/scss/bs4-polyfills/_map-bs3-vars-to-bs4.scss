@@ -1,7 +1,8 @@
-/** 
-	Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
-	by mapping all variables.
-**/
+/*
+ * Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
+ * by mapping all variables from the bootstrap 3 convention to the bootstrap 4 convention
+ *
+*/
 
 // The dummy value is used below to check whether a variable has been set or not
 $dummy: "this is just a test value, use it to see if a real value was found";
