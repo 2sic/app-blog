@@ -1,10 +1,13 @@
 @charset "UTF-8";
-/* note: this file name must start with an underscore "_" so it wont be generated in the output */
-/*this is to ensure that this SCSS works for both BS3 & BS4*/
+/** 
+	Including this file will ensure that the SCSS which uses Bootstrap 4 features also works in Bootstrap 3 skins
+	by mapping all variables.
+**/
 /* primary color*/
 /*try to use default, otherwise just use red*/
 /* gray light */
 /* body color vs text-color */
+/* grid-breakpoints */
 body.va-layout-full section.app-blog article {
   background: #FFF;
   padding-bottom: 15px;
@@ -64,7 +67,7 @@ section.app-blog article {
   section.app-blog article.list-item .footer .tags {
     font-size: 0.85em;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid #777777;
     margin-bottom: 10px; }
     section.app-blog article.list-item .footer .tags a {
       display: inline-block;
@@ -84,7 +87,7 @@ section.app-blog article {
   section.app-blog article.list-item .app-blog-readmorelink:hover picture img {
     opacity: 0.8; }
   section.app-blog article.list-item .app-blog-readmorelink:hover h2 {
-    color: #0088F4; }
+    color: #5C4483; }
 
 section.app-blog article {
   margin-bottom: 45px; }
@@ -150,11 +153,11 @@ section.app-blog article {
   section.app-blog article.post-detail .footer .backlink {
     margin-bottom: 30px; }
   section.app-blog article.post-detail .app-blog-readmorelink:hover picture {
-    background-color: #0088F4; }
+    background-color: #5C4483; }
     section.app-blog article.post-detail .app-blog-readmorelink:hover picture img {
       opacity: 0.5; }
   section.app-blog article.post-detail .app-blog-readmorelink:hover h2 {
-    color: #0088F4; }
+    color: #5C4483; }
 
 section.app-blog .addthis_inline_share_toolbox {
   margin: 30px 0; }
@@ -181,11 +184,11 @@ section .previous, section .next {
     font-weight: 300;
     font-size: 50px;
     transition: color .3s ease-in-out;
-    color: #0088F4; }
+    color: #5C4483; }
   section .previous a:hover, section .next a:hover {
     text-decoration: none; }
     section .previous a:hover:before, section .next a:hover:before {
-      color: #555; }
+      color: #555555; }
   section .previous a strong, section .next a strong {
     display: block;
     font-weight: 500; }
@@ -202,7 +205,7 @@ section .previous {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #555; }
+    color: #555555; }
     section .previous a:before {
       content: "‹";
       margin-right: 5px; }
@@ -217,7 +220,7 @@ section .next {
     flex-direction: row-reverse;
     align-items: center;
     text-align: right;
-    color: #555; }
+    color: #555555; }
     section .next a:before {
       content: "›";
       margin-left: 5px; }
@@ -231,7 +234,7 @@ body.va-layout-full nav.co-category-list-container {
 
 nav.co-category-list-container {
   padding: 0px;
-  border-left: 5px solid #0088F4;
+  border-left: 5px solid #5C4483;
   padding-left: 30px;
   min-width: 100%; }
   @media (min-width: 992px) {
@@ -250,7 +253,7 @@ nav.co-category-list-container {
       display: block;
       transition: color .3s ease-in-out; }
     nav.co-category-list-container ul li span {
-      background: #e9ecef;
+      background: #777777;
       color: #a2a2a2; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=bs3.css.map */

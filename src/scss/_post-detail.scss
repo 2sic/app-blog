@@ -140,7 +140,7 @@ section {
 			max-width: 48%;
 			font-size: 13px;
 			font-weight:700;
-			@media(min-width:$screen-sm-min) {
+			@include media-breakpoint-up(sm) {
 				max-width: 300px;
 			}
 			a {
@@ -161,7 +161,7 @@ section {
 				img {
 					display:none;
 					width:70px;
-					@media(min-width:$screen-lg-min) {
+					@include media-breakpoint-up(lg) {
 						display:block;
 					}
 				}

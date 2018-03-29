@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="@App.Path/dist/style.css" data-enableoptimizations="true" />
+<link rel="stylesheet" href="@App.Path/dist/@(Koi.Css == "bs4" ? "bs4" : "bs3").css" data-enableoptimizations="true" />
 <script src="@App.Path/dist/scripts.js" data-enableoptimizations="bottom"></script>
 <script src="@App.Path/dist/sticky-sidebar.min.js" data-enableoptimizations="bottom"></script>
 @using Connect.Koi;
