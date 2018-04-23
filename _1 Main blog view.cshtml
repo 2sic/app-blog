@@ -37,7 +37,8 @@
         new { 
             command = new { 
                 action = "new", 
-                contentType = "BlogPost"
+                contentType = "BlogPost",
+                prefill = new { PublicationMoment = @DateTime.Now }
             } 
         },
         new { 
