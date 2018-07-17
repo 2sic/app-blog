@@ -16,7 +16,7 @@
             <div class="header">
                 @if(!String.IsNullOrEmpty(post.Image)){
                 <picture class="bg-primary">
-                    <img src="@post.Image.ToLower()?w=800&amp;h=450&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
+                    <img src="@post.Image.ToLower()?w=1200&amp;h=630&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
                 </picture>
                 }
                 <h2>@Html.Raw(post.Title.Replace("\n","<br/>"))</h2>

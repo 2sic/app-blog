@@ -7,8 +7,8 @@
 	var lib = CreateInstance("_library.cshtml"); 
 	var post = AsDynamic(Data["Default"]).First();
         var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
-	var imgWidth = "800";
-	var imgHeight = "400";
+	var imgWidth = "1200";
+	var imgHeight = "630";
 	var imgUrl = lib.GetSizedImgUrl(post.Image, imgHeight, imgWidth);
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
@@ -64,7 +64,7 @@
 					<div class="header">
 						@if(!String.IsNullOrEmpty(post.Image)){
 						<picture>
-							<img src="@post.Image.ToLower()?w=800&amp;h=450&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
+							<img src="@post.Image.ToLower()?w=1200&amp;h=630&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@post.CropAnchor" class="img-fluid" alt="@post.Title" />
 						</picture>
 						}
 						
