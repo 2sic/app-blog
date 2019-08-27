@@ -114,9 +114,11 @@
     /// <param name="startDate"></param>
     public override void CustomizeSearch(Dictionary<string, List<ToSic.SexyContent.Search.ISearchInfo>> searchInfos, DotNetNuke.Entities.Modules.ModuleInfo moduleInfo, DateTime startDate)
     {
-         foreach (var si in searchInfos["SearchIndex"])
+        foreach (var si in searchInfos["SearchIndex"])
 		{
 			si.QueryString = "post=" + AsDynamic(si.Entity).UrlKey;
 		}
+        // Remove primary stream from search results
+        searchInfos.Remove("Default");
     }
 }
