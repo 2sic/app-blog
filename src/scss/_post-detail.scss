@@ -20,8 +20,8 @@ section {
                   margin-bottom: $grid-gutter-width;
                   transition: background-color .3s ease-in-out;
                   img {
-							transition: opacity .3s ease-in-out;
-							width:100%;
+                        transition: opacity .3s ease-in-out;
+                        width:100%;
                   }
                }
                h2 {
@@ -116,12 +116,6 @@ section {
                   h2 {
                      color: $primary;
                   }
-                  time {}
-                  span {
-                     &.category {
-                        a {}
-                     }
-                  }
                }
             }
          }
@@ -179,20 +173,20 @@ section {
 		float:left;
 		
       a {
-         display: flex;
-         flex-direction: row;
-			align-items: center;
-			color: $body-color;
-			&:before {
-				content:"‹";
-				margin-right:5px;
-			}
-			
-			
-         img {
-				border-radius: 50%;
-				margin-right:$grid-gutter-width/3;
-         }
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: $body-color;
+            
+            &:before {
+                  content:"‹";
+                  margin-right:5px;
+            }      
+                  
+            img {
+            border-radius: 50%;
+            margin-right:$grid-gutter-width/3;
+            }
          
       }
 	}

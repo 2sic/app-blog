@@ -1,0 +1,30 @@
+@using Connect.Koi;
+
+@{
+    var postsToShow = AsDynamic(Data["Default"]).OrderByDescending(bp => bp.PublicationMoment).Take((int)App.Settings.NumberOnStartpage);
+}
+
+
+<link rel="stylesheet" href="@App.Path/dist/@(Koi.PickCss("bs3,bs4", "bs3")).css" data-enableoptimizations="true" />
+<script src="@App.Path/dist/scripts.js" data-enableoptimizations="bottom"></script>
+
+<div class="app-blog-3col card-deck">
+    @foreach(var p in postsToShow) {
+    <div class="card sc-element" style="cursor:pointer;"  >
+         @Edit.Toolbar(p)
+        <div class="d-flex flex-column app-blog-container" onclick="window.open('@Link.To(parameters: "post=" + p.UrlKey)', '_self')">
+           
+            <img class="card-img-top" src="@p.Image.ToLower()?w=286&amp;h=180&amp;mode=crop&amp;scale=both&amp;quality=90&amp;anchor=@p.CropAnchor" alt="Card image cap">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">@p.Title</h5>
+                <p class="card-text  text">@Html.Raw(p.Teaser.Replace("<p>", "").Replace("</p>", ""))</p>
+                <p class="card-text"><span @Koi.Class(@"all='readmore' bs3,unk='btn btn-primary' bs4='btn btn-outline-primary'")>@App.Resources.ReadMore</span></p>
+            </div>
+        </div>
+
+    </div>
+    }
+</div>
+<style>
+    .app-blog-container{flex:1;}
+</style>

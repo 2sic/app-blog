@@ -26,6 +26,9 @@ body.va-layout-full section.app-blog aside .addthis_inline_share_toolbox {
   margin-top: 1px;
   padding: 30px; }
 
+.app-blog-3col .text {
+  flex: 1; }
+
 section.app-blog .category-header {
   margin-bottom: 30px; }
 
@@ -83,7 +86,7 @@ section.app-blog article {
   section.app-blog article.list-item .app-blog-readmorelink:hover picture img {
     opacity: 0.8; }
   section.app-blog article.list-item .app-blog-readmorelink:hover h2 {
-    color: #0088F4; }
+    color: #4A148C; }
 
 section.app-blog article {
   margin-bottom: 45px; }
@@ -149,11 +152,11 @@ section.app-blog article {
   section.app-blog article.post-detail .footer .backlink {
     margin-bottom: 30px; }
   section.app-blog article.post-detail .app-blog-readmorelink:hover picture {
-    background-color: #0088F4; }
+    background-color: #4A148C; }
     section.app-blog article.post-detail .app-blog-readmorelink:hover picture img {
       opacity: 0.5; }
   section.app-blog article.post-detail .app-blog-readmorelink:hover h2 {
-    color: #0088F4; }
+    color: #4A148C; }
 
 section.app-blog .addthis_inline_share_toolbox {
   margin: 30px 0; }
@@ -180,7 +183,7 @@ section .previous, section .next {
     font-weight: 300;
     font-size: 50px;
     transition: color .3s ease-in-out;
-    color: #0088F4; }
+    color: #4A148C; }
   section .previous a:hover, section .next a:hover {
     text-decoration: none; }
     section .previous a:hover:before, section .next a:hover:before {
@@ -230,7 +233,7 @@ body.va-layout-full nav.co-category-list-container {
 
 nav.co-category-list-container {
   padding: 0px;
-  border-left: 5px solid #0088F4;
+  border-left: 5px solid #4A148C;
   padding-left: 30px;
   min-width: 100%; }
   @media (min-width: 992px) {

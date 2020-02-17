@@ -5,7 +5,7 @@
 @using Connect.Koi;
 @{	
 	var lib = CreateInstance("_library.cshtml"); 
-	var post = AsDynamic(Data["Default"]).First();
+	var post = AsDynamic(Data["Default"]).FirstOrDefault();
         var author = (post.Author.Count > 0) ? post.Author[0] : lib.unknownAuthor;
 	var imgWidth = "1200";
 	var imgHeight = "630";

@@ -9,8 +9,9 @@
 // Styling for post list items in va-layout-full
 body.va-layout-full {
    section {
-      &.app-blog {
-         article {
+      &.app-blog { 
+          
+        article {
             background: #FFF;
             padding-bottom: $grid-gutter-width/2;
             transition: box-shadow .3s ease-in-out;
@@ -40,10 +41,35 @@ body.va-layout-full {
       }
    }
 }
-
+.app-blog-3col {
+  .text {
+    flex: 1;
+  }
+}
 // Styling for post list items
 section {
    &.app-blog {
+    // &.card-deck {
+    //     display: flex;
+    //     flex-wrap: wrap;
+
+    //     .app-blog-card {
+    //         display: flex;
+    //         //width: 100%;
+
+    //         .app-blog-card-content {
+    //             display: flex;
+    //             //flex-direction: column;
+    //             //width: 100%;
+                
+
+    //             .card-text {
+    //                 flex: 1;
+    //             }
+    //         }
+    //     }
+    //   }
+
       .category-header {
          margin-bottom: $grid-gutter-width;
       }

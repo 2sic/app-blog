@@ -19,14 +19,14 @@
   <channel>
     <title>@App.Settings.Title</title>
     @Html.Raw("<link>")
-        @App.Settings.BlogHomePage 
+        @App.Settings.BlogHomePage
     @Html.Raw("</link>")
     <description>@App.Settings.RssDescription</description>
     @foreach(var post in postsToShow)
     {
         <item>
           <title>@post.EntityTitle</title>
-          @Html.Raw("<link>") 
+          @Html.Raw("<link>")
               @(App.Settings.DetailsPage + "/post/" + post.UrlKey)
           @Html.Raw("</link>")
         <description>@post.Teaser</description>
@@ -34,7 +34,6 @@
         <pubDate>@post.PublicationMoment.ToString("R")</pubDate>
       </item>
     }
-    
   </channel>
 </rss>
 }
