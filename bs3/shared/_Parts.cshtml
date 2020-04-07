@@ -1,0 +1,340 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
+
+@* Show warning that the details page needs to be changed *@
+@helper DetailsPageConfigWarning() {
+  if(App.Settings.DetailsPageShowWarning) {
+    <div class="alert alert-danger" role="alert">@Html.Raw(@App.Resources.LabelAdminDetailPageWarning)</div>
+  }
+}
+
+@* Show Menu of toolbars to add / manage posts *@
+@helper AdminToolbarMenu() {
+  @*
+    Create iso-date for date pre-filling
+    FIXME: why do we need to add one hour that the time is correct?
+  *@
+  var today = DateTime.Now.AddHours(1).ToString("yyyy-MM-dd HH:mm");
+
+  <div class="app-blog-admin-menu">
+    <div class="toolbar">
+      @Edit.Toolbar(actions: "new", contentType: "BlogPost", prefill: new { PublicationMoment = today })
+      <span>@App.Resources.LabelAdminMenuNew</span>
+
+      @Edit.Toolbar(toolbar: new object[] {
+        new {
+          showCondition = true,
+          command = new {
+            action = "contentitems",
+            contentType = "BlogPost",
+            filters = new { ModuleId = Dnn.Module.ModuleID }
+          }
+        }
+      })
+      <span>@App.Resources.LabelAdminMenuManage</span>
+    </div>
+    <div>@Edit.Toolbar(Content)</div>
+  </div>
+}
+
+@* TODO: add comment *@
+@helper FilterInformationHeader(dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor, dynamic viewConfiguration) {
+  if(filteredCategory != null || filteredTag != null || filteredAuthor != null) {
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+        @* optionaly show category header *@
+        @if(filteredCategory != null) {
+          <div class="category-header">
+            <h1>@App.Resources.Category @filteredCategory.Name</h1>
+            @Html.Raw(filteredCategory.Description)
+          </div>
+        }
+        @* optionaly show tags header *@
+        @if(filteredTag != null) {
+          @* TODO: change class *@
+          <div class="category-header">
+            <h1>@App.Resources.Filter @filteredTag.Name</h1>
+          </div>
+        }
+        @* opionaly show author header *@
+        @if(filteredAuthor != null) {
+          @* TODO: change class *@
+          <div class="category-header">
+            <h1>@App.Resources.PostsBy @filteredAuthor.FullName</h1>
+            @Html.Raw(filteredAuthor.ShortBio)
+          </div>
+        }
+      </div>
+    </div>
+  } else {
+    @*
+      Show Title from viewConfiguration
+      TODO: change class
+    *@
+    <div class="category-header">
+      <h1>@viewConfiguration.Title</h1>
+    </div>
+  }
+}
+
+@* TODO: add comment *@
+@helper ListPostsSingleCol(dynamic posts, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+  foreach(var post in posts) {
+    var author = (post.Author as Dynlist).FirstOrDefault();
+    var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
+
+    <article class="list-item" @Edit.TagToolbar(post)>
+      <div class="app-blog-readmorelink">
+        @Tag.A().Class("link-overlay").Href(Link.To(pageId: GetDetailsPageTabId(), parameters: DetailPageQueryString(post, filteredCategory, filteredTag, filteredAuthor, Request.QueryString["Page"])))
+
+        <div class="header">
+          @* Picture of the post *@
+          <picture class="bg-primary">
+            @Tag.Img().Class("img-responsive").Src(imageUrl + "?w=1200&h=630&mode=crop&scale=both&quality=90&anchor=" + post.CropAnchor).Alt(post.Title)
+          </picture>
+          @PostPublishInfoAdmin(post)
+
+          @PostInformation(post, "h2", author)
+        </div>
+
+        <div class="content">
+          @Html.Raw(post.Teaser)
+          <span class="readmore btn btn-primary">@App.Resources.ReadMore</span>
+        </div>
+      </div>
+
+      @* FIXME: What to do with this? *@
+      @* <div class="footer">
+        <div class="tags">
+          @if ((post.Tags as Dynlist).Any()) {
+            <strong> @(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+            foreach(var tag in post.Tags) {
+              @Tag.A().Href(Link.To(parameters: "tag=" + tag.Tag)).Title(tag.Name).Wrap(tag.Name)
+            }
+          }
+        </div>
+        <div class="person">
+          @Tag.A().Href(Link.To(parameters: "author=" + author.FullName)).TagStart
+            @Tag.Img().Src(author.Image + "?w=50&h=50&mode=crop&scale=both").Alt(author.FullName)
+            <h4>@author.FullName</h4>
+          @Tag.A().TagEnd
+        </div>
+      </div> *@
+
+    </article>
+  }
+}
+
+@* TODO: add comment *@
+@helper ListPostsMultiCol(dynamic posts, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+  <div class="row card-deck">
+    @foreach (var post in posts) {
+      var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
+
+      <article class="multi-col list-item col-12 col-md-6 col-lg-4" @Edit.TagToolbar(post)>
+        <div class="app-blog-readmorelink card">
+          @Tag.A().Class("link-overlay").Href(Link.To(pageId: GetDetailsPageTabId(), parameters: DetailPageQueryString(post, filteredCategory, filteredTag, filteredAuthor, Request.QueryString["Page"])))
+
+          @* Picture of the post *@
+          <picture class="bg-primary">
+            @Tag.Img().Class("img-responsive").Src(imageUrl + "?w=800&h=480&mode=crop&scale=both&quality=90&anchor=" + post.CropAnchor).Alt("Card image cap")
+          </picture>
+          @PostPublishInfoAdmin(post)
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">@post.Title</h5>
+            <p class="card-text text">@Html.Raw(Tags.Strip(post.Teaser))</p>
+          </div>
+          <div class="card-footer"><span class="readmore btn btn-primary">@App.Resources.ReadMore</span></div>
+        </div>
+      </article>
+    }
+  </div>
+}
+
+@* TODO: add comment *@
+@helper PostInformation(dynamic post, string headingType, dynamic author) {
+  @((Tag.Custom(headingType)).Wrap(Tags.Nl2Br(post.Title)))
+
+  <div class="details">
+    @* Link to authors post *@
+    <div class="person">
+      @Tag.A().Href(Link.To(parameters: "author=" + author.FullName)).TagStart
+        @if(Text.Has(author.Image)) {
+          @Tag.Img().Src(author.Image + "?w=40&h=40&mode=crop&scale=both&quality=80").Alt(author.FullName)
+        } else {
+          @author.FullName
+        }
+      @Tag.A().TagEnd
+    </div>
+    <time pubdate datetime='@post.PublicationMoment.ToString("d")'>@post.PublicationMoment.ToString("d")</time>
+
+    @* List categories of post *@
+    @foreach(var category in post.Categories) {
+      @Tag.A().Class("category").Href(Link.To(parameters: "category=" + category.Key)).Title(category.Name).Wrap(category.Name)
+    }
+  </div>
+}
+
+@* Show info to admin when the post will publish *@
+@helper PostPublishInfoAdmin(dynamic post) {
+  if(Edit.Enabled && post.PublicationMoment.CompareTo(DateTime.Now) > 0) {
+    <div class="alert alert-warning mb-0" role="alert">@(App.Resources.LabelAdminPostPublishInfo + " " + post.PublicationMoment.Date.ToString("d") + " " + post.PublicationMoment.TimeOfDay)</div>
+  }
+}
+
+@* TODO: add comment *@
+@helper CategorySidebar(dynamic filteredCategory, bool desktopSidebar, bool enableSocialSharing) {
+  var categories = AsList(App.Data["Category"]);
+  var posts = Edit.Enabled
+  ? AsList(App.Data["BlogPost"])
+  : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
+  var categoryNumbers = categories.Select(ca => new {
+      Category = ca,
+      Count = posts.Where(p => (p.Categories as Dynlist).Any(c => c.EntityId == ca.EntityId)).Count()
+  });
+
+  var wrapperId = desktopSidebar ? "sidebar" : "";
+  var wrapperClasses = desktopSidebar
+    ? "hidden-xs visible-lg"
+    : "hidden-lg";
+
+  <div id="@wrapperId" class="sidebar app-blog-detail-right @wrapperClasses">
+    <div class="sidebar__inner">
+      <nav class="co-category-list-container">
+        <h5 class="pb-2">@App.Resources.Categories</h5>
+        <ul>
+          <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
+            @Tag.A().Href(Link.To()).TagStart
+              @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@posts.Count()</span>
+            @Tag.A().TagEnd
+          </li>
+          @* Categories will be appended to here *@
+          @foreach (var c in categoryNumbers) {
+            var active = "";
+            if(filteredCategory != null) {
+              active = c.Category.Key == filteredCategory.Key ? "font-weight-bold" : active;
+            }
+
+            <li class="@active">
+              @Tag.A().Href(Link.To(parameters: "category=" + c.Category.Key)).TagStart
+                @c.Category.Name <span class="badge badge-pill badge-primary float-right">@c.Count</span>
+              @Tag.A().TagEnd
+            </li>
+          }
+        </ul>
+      </nav>
+      @if(enableSocialSharing) {
+        <script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script>
+        <div class="addthis_inline_share_toolbox"></div>
+      }
+    </div>
+  </div>
+}
+
+@* Displays a page navigation with numbered buttons for every page and previous/next buttons *@
+@helper Paging(dynamic paging, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+  int pageNumber = (int)paging.PageNumber;
+  var previousDisabled = pageNumber == 1 ? "disabled" : "";
+  var nextDisabled = pageNumber == paging.PageCount ? "disabled" : "";
+
+  if(paging.PageCount > 1) {
+    <nav>
+      <ul class="pagination justify-content-center">
+        @* Show previous button *@
+        <li class="page-item @previousDisabled">
+          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber - 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
+            <span aria-hidden="true">&laquo;</span>
+          @Tag.A().TagEnd
+        </li>
+
+        @* Show button for every page *@
+        @for (int i = 1; i <= paging.PageCount; i++) {
+          @* Active Page *@
+          if (i == pageNumber) {
+            <li class="page-item active"><a class="page-link" href="#">@i</a></li>
+          } else {
+            <li class="page-item">
+              @Tag.A().Class("page-link").Href(LinkToPageNumber(i, filteredCategory, filteredTag, filteredAuthor)).Wrap(i.ToString())
+            </li>
+          }
+        }
+
+        @* Show next button *@
+        <li class="page-item @nextDisabled">
+          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber + 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
+            <span aria-hidden="true">&raquo;</span>
+          @Tag.A().TagEnd
+        </li>
+      </ul>
+    </nav>
+  }
+}
+
+@* TODO: Add comment *@
+@helper PostMicroPreview(dynamic post, string cssClass, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+  var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
+  var title = cssClass == "previous"
+    ? App.Resources.PreviousPost
+    : App.Resources.NextPost;
+
+  <div class="@cssClass">
+    @Tag.A().Href(Link.To(pageId: GetDetailsPageTabId(), parameters: DetailPageQueryString(post, filteredCategory, filteredTag, filteredAuthor, Request.QueryString["Page"]))).TagStart
+      @Tag.Img().Src(imageUrl + "?w=80&h=80&mode=crop&scale=both&quality=70").Alt(post.Title)
+      <span class="app-blog-previouslink-title">
+        <strong>@title:</strong>@post.Title
+      </span>
+    @Tag.A().TagEnd
+  </div>
+}
+
+@functions {
+  /**
+  * Returns the tabID of the details page, configured in the app settings
+  */
+  public int GetDetailsPageTabId() {
+    return int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1]);
+  }
+
+  /**
+  * Generate the query string for the detail link of a post, preserving current filter parameters
+  */
+  public string DetailPageQueryString(dynamic post, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor, string page) {
+    var categoryParam = filteredCategory != null
+      ? "category=" + filteredCategory.Key + "&"
+      : "";
+    var tagParam = filteredTag != null
+      ? "tag=" + filteredTag.Tag + "&"
+      : "";
+    var authorParam = filteredAuthor != null
+      ? "author=" + filteredAuthor.FullName + "&"
+      : "";
+
+    return  PreserveCurrentFilters(filteredCategory, filteredTag, filteredAuthor, page) + "details=" + post.EntityId.ToString() + "&" + post.UrlKey;
+  }
+
+  public string PreserveCurrentFilters(dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor, string page) {
+    var categoryParam = filteredCategory != null
+      ? "category=" + filteredCategory.Key + "&"
+      : "";
+    var tagParam = filteredTag != null
+      ? "tag=" + filteredTag.Tag + "&"
+      : "";
+    var authorParam = filteredAuthor != null
+      ? "author=" + filteredAuthor.FullName + "&"
+      : "";
+    var pageParam = Text.Has(page)
+      ? "page=" + page + "&"
+      : "";
+
+    return categoryParam + tagParam + authorParam + pageParam;
+  }
+
+  /**
+  * generate a paging-link number, preserving current category/tag/author parameters
+  */
+  public string LinkToPageNumber(int pageNumber, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+    return Link.To(parameters: PreserveCurrentFilters(filteredCategory, filteredTag, filteredAuthor, "") + "page=" + pageNumber);
+  }
+}
