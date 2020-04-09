@@ -2,7 +2,7 @@
 
 /* 2sxc Blog-App by 2sxc */
 $(function() {
-  StickySidebar('#sidebar', {
+  new StickySidebar('#sidebar', {
     containerSelector: '.app-blog',
     innerWrapperSelector: '.sidebar__inner',
     topSpacing: 160,
