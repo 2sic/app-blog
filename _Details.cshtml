@@ -162,10 +162,10 @@
     @* Category sidebar *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside>
-        @parts.CategorySidebar(filteredCategory, true, true)
+        @parts.CategorySidebar(filteredCategory, desktopSidebar: true, enableSocialSharing: true)
 
         @*only show on mobile view*@
-        @parts.CategorySidebar(filteredCategory, false, false)
+        @parts.CategorySidebar(filteredCategory)
       </aside>
     </div>
   </div>
