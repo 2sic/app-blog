@@ -51,8 +51,9 @@
 
       @* Show pagination if configured *@
       @if (viewConfiguration.ShowPagination) {
+        var paging = CreateInstance("shared/_List Paging.cshtml");
         var pages = AsList(Data["Paging"]).FirstOrDefault();
-        @parts.Paging(pages, filteredCategory, filteredTag, filteredAuthor)
+        @paging.Paging(pages, filteredCategory, filteredTag, filteredAuthor)
       }
     </div>
 

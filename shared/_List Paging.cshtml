@@ -1,0 +1,60 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+
+@* Displays a page navigation with numbered buttons for every page and previous/next buttons *@
+@helper Paging(dynamic paging, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+  int pageNumber = (int)paging.PageNumber;
+  var previousDisabled = pageNumber == 1 ? "disabled" : "";
+  var nextDisabled = pageNumber == paging.PageCount ? "disabled" : "";
+
+  if(paging.PageCount > 1) {
+    <nav>
+      <ul class="pagination justify-content-center">
+        @* Show previous button *@
+        <li class="page-item @previousDisabled">
+          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber - 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
+            <span aria-hidden="true">&laquo;</span>
+          @Tag.A().TagEnd
+        </li>
+
+        @* Show button for every page *@
+        @for (int i = 1; i <= paging.PageCount; i++) {
+          @* Active Page *@
+          if (i == pageNumber) {
+            <li class="page-item active"><a class="page-link" href="#">@i</a></li>
+          } else {
+            <li class="page-item">
+              @Tag.A().Class("page-link").Href(LinkToPageNumber(i, filteredCategory, filteredTag, filteredAuthor)).Wrap(i.ToString())
+            </li>
+          }
+        }
+
+        @* Show next button *@
+        <li class="page-item @nextDisabled">
+          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber + 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
+            <span aria-hidden="true">&raquo;</span>
+          @Tag.A().TagEnd
+        </li>
+      </ul>
+    </nav>
+  }
+}
+
+@functions {
+  dynamic _parts;
+  dynamic Parts {
+    get {
+      if(_parts == null) {
+        _parts = CreateInstance("_Parts.cshtml");
+      }
+      return _parts;
+    }
+  }
+
+  /**
+  * generate a paging-link number, preserving current category/tag/author parameters
+  */
+  public string LinkToPageNumber(int pageNumber, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
+    return Link.To(parameters: Parts.PreserveCurrentFilters(filteredCategory, filteredTag, filteredAuthor, "") + "page=" + pageNumber);
+  }
+}
