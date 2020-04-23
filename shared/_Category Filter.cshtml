@@ -1,0 +1,55 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
+
+@*
+  Lists all Categories for filtering
+*@
+
+@{
+  var filteredCategory = PageData["FilteredCategory"];
+  var wrapperId = PageData["MobileView"] == true ? "" : "sidebar";
+  var categories = AsList(App.Data["Category"]);
+
+  @* Get all Blog Posts from the App, to ignore filters *@
+  var posts = Edit.Enabled
+    ? AsList(App.Data["BlogPost"])
+    : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
+
+  var categoryNumbers = categories.Select(ca => new {
+    Category = ca,
+    Count = posts.Where(p => (p.Categories as Dynlist).Any(c => c.EntityId == ca.EntityId)).Count()
+  });
+}
+
+<div id="@wrapperId" class="sidebar app-blog-detail-right">
+  <div class="sidebar__inner">
+    <nav class="co-category-list-container mb-3">
+      <h5 class="pb-2">@App.Resources.Categories</h5>
+      <ul>
+        <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
+          <a href='@Tags.SafeUrl(Link.To())'>
+            @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@posts.Count()</span>
+          </a>
+        </li>
+        @* Categories will be appended to here *@
+        @foreach (var c in categoryNumbers) {
+          var active = "";
+          if(filteredCategory != null) {
+            active = c.Category.Key == filteredCategory.Key ? "font-weight-bold" : active;
+          }
+
+          <li class="@active">
+            <a href='@Tags.SafeUrl(Link.To(parameters: "category=" + c.Category.Key))'>
+              @c.Category.Name <span class="badge badge-pill badge-primary float-right">@c.Count</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    @if(PageData["EnableSocialSharing"] == true) {
+      <script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script>
+      <div class="addthis_inline_share_toolbox"></div>
+    }
+  </div>
+</div>

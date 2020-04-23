@@ -1,82 +1,109 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
-@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 @using ToSic.Sxc.Search;
 @using ToSic.Eav.Run;
-
-@*
-  Case #1: Bootstrap 3 - read the readme.md section "CSS Framework Detection"
-*@
-@if(Connect.Koi.Koi.Is("bs3")) {
-  @RenderPage("bs3/_List.cshtml")
-  return;
-}
-@*
-  Case #2: Bootstrap 4 or Unknown CSS Framework
-*@
 
 @RenderPage("shared/_Assets.cshtml", new {scripts = true})
 
 @{
-  var parts = CreateInstance("shared/_Parts.cshtml");
+  var helpers = CreateInstance("shared/_Helpers.cshtml");
 
-  @*
-    Get all posts if user is admin and only publicated ones if visitor
-    FIXME: As soon as Time Comparison is fixed in Query Desginer, outsource logic
-  *@
-  var posts = Edit.Enabled
-    ? AsList(Data["Posts"])
-    : AsList(Data["Posts"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
-
-  var viewConfiguration = Content;
-  var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
-  var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
+  var posts = AsList(Data["Posts"]);
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
 }
 
-@* Show Toolbar Menu if admin *@
-@if(Edit.Enabled) {
-  @parts.AdminToolbarMenu()
-  @parts.DetailsPageConfigWarning()
-}
-
-<section class="app-blog">
-  @* Show information about the applied filter *@
-  @parts.FilterInformationHeader(filteredCategory, filteredTag, filteredAuthor, viewConfiguration)
+<section class="app-blog" @Edit.TagToolbar(Content)>
+  @* Show title and if filtered, additional descriptions *@
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+      <div class="category-header">
+        <h1>@GetListHeaderInformation(filteredCategory).Title</h1>
+        @Html.Raw(GetListHeaderInformation(filteredCategory).Description)
+      </div>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+      @* Mobile Category filter *@
+      <aside class="d-xs-block d-lg-none">
+        @RenderPage("shared/_Category Filter.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
+      </aside>
+
       @* List the posts *@
-      @parts.ListPostsSingleCol(posts, filteredCategory, filteredTag, filteredAuthor)
+      @foreach(var post in posts) {
+        <article class="list-item" @Edit.TagToolbar(post, toolbar: new [] {
+          "-layout",
+          "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm"),
+          "%delete&show=true"
+        })>
+          <div class="app-blog-readmorelink">
+            <a class="link-overlay"
+              href="@Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId(), parameters: helpers.DetailPageQueryString(post)))">
+            </a>
+
+            <div class="header">
+              @* Image of the post *@
+              @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+
+              @* Information about the post like title, author, categories *@
+              @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
+            </div>
+
+            <div class="content">
+              @Html.Raw(post.Teaser)
+              <span class="readmore btn btn-outline-primary">@App.Resources.ReadMore</span>
+            </div>
+          </div>
+        </article>
+      }
 
       @* Show pagination if configured *@
-      @if (viewConfiguration.ShowPagination) {
-        var paging = CreateInstance("shared/_List Paging.cshtml");
-        var pages = AsList(Data["Paging"]).FirstOrDefault();
-        @paging.Paging(pages, filteredCategory, filteredTag, filteredAuthor)
+      @if (Content.ShowPagination) {
+        @RenderPage("shared/_List Paging.cshtml")
       }
     </div>
 
-    @* Category sidebar *@
+    @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <aside>
-        @parts.CategorySidebar(filteredCategory, desktopSidebar: true)
-
-        @*only show on mobile view*@
-        @parts.CategorySidebar(filteredCategory)
+      <aside class="d-none d-lg-block">
+        @RenderPage("shared/_Category Filter.cshtml", new { FilteredCategory = filteredCategory })
       </aside>
     </div>
   </div>
 </section>
 
 @functions{
+  /**
+  * Returns Title and optional description to show in the header of the list
+  */
+  public dynamic GetListHeaderInformation(dynamic filteredCategory) {
+    var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
+    var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
+    var title = Content.Title;
+    var description = "";
+
+    if (filteredCategory != null) {
+      title = App.Resources.Category + " " + filteredCategory.Name;
+      description = filteredCategory.Description;
+    } else if (filteredTag != null) {
+      title = App.Resources.Filter + " " + filteredTag.Name;
+    } else if (filteredAuthor != null) {
+      title = App.Resources.PostsBy + " " + filteredAuthor.FullName;
+      description = filteredAuthor.ShortBio;
+    }
+
+    return new { Title = title , Description = description };
+  }
+
   /// <summary>
   /// Populate the search - ensure that each entity has an own url/page
   /// </summary>
-
   public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
+    var helpers = CreateInstance("shared/_Helpers.cshtml");
     foreach (var si in searchInfos["SearchIndex"]) {
-      si.QueryString = "post=" + AsDynamic(si.Entity).UrlKey;
+      var post = AsDynamic(si.Entity);
+      si.QueryString = helpers.DetailPageQueryString(post);
     }
 
     // Remove not needed streams

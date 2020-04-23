@@ -1,0 +1,20 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+
+@functions {
+  /**
+  * Returns the tabID of the details page or the tabID of the current page if non configured
+  */
+  public int GetDetailsPageTabId() {
+    return Text.Has(App.Settings.DetailsPage)
+      ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
+      : Dnn.Tab.TabID;
+  }
+
+  /**
+  * Generate the query string for the detail link of a post, preserving current filter parameters
+  */
+  public string DetailPageQueryString(dynamic post) {
+    return "details=" + post.EntityId.ToString() + "&" + post.UrlKey;
+  }
+}

@@ -1,42 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+<?xml version="1.0" encoding="utf-8"?>
+
 @{
+  var helpers = CreateInstance("shared/_Helpers.cshtml");
+
   @*
     Get all posts if user is admin and only publicated ones if visitor
-    FIXME: As soon as Time Comparison is fixed in Query Desginer, outsource logic
+    NOTE: We don't get the posts from the query, because the view configuration
+    of the main page can lead to problems
   *@
   var posts = Edit.Enabled
-    ? AsList(Data["Posts"])
-    : AsList(Data["Posts"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
-
-	/*  Just a note to anybody editing this file
-	    The @Html.Raw("<link>") is necessary, because otherwise the
-	    <link> tag gets parsed by Razor in an attempt to do something
-	*/
+    ? AsList(App.Data["BlogPost"])
+    : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
 }
+
 @if(Request.QueryString["standalone"] == "true") {
 <rss version="2.0">
   <channel>
-    <title>@App.Settings.Title</title>
-    @Html.Raw("<link>")
-      @* FIXME: Take Details Page *@
-      @App.Settings.BlogHomePage
-    @Html.Raw("</link>")
-    <description>@App.Settings.RssDescription</description>
+    @Tag.Custom("title", App.Settings.Title)
+    @Tag.Custom("link", Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId())))
+    @Tag.Custom("description", App.Settings.RssDescription)
     @foreach(var post in posts) {
       <item>
-        <title>@post.EntityTitle</title>
-          @Html.Raw("<link>")
-            @(App.Settings.DetailsPage + "/post/" + post.UrlKey)
-          @Html.Raw("</link>")
-        <description>@post.Teaser</description>
-        <guid isPermaLink="true">@(App.Settings.DetailsPage + "/post/" + post.UrlKey)</guid>
-        <pubDate>@post.PublicationMoment.ToString("R")</pubDate>
+        @Tag.Custom("title", post.EntityTitle)
+        @Tag.Custom("link", Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId(), parameters: helpers.DetailPageQueryString(post))))
+        @Tag.Custom("description", post.Teaser)
+        @Tag.Custom("guid", post.EntityGuid.ToString()).Attr("isPermaLink", false)
+        @Tag.Custom("pubDate", post.PublicationMoment.ToString("R"))
       </item>
     }
   </channel>
 </rss>
 } else {
-  <span>you are seeing this because you are currently viewing a normal page. to use this feed correctly, you must add ?standalone=true to the url, so it doesn't show dnn stuff or html. note that you can put the feed on an own page and then link to it <a href="@Link.To(parameters: "standalone=true")" target="_blank">(with ?standalone=true)</a> or you can also auto-use it by using the normal blog-page and where you would usually see things like /tag/something replace with /feed/all?standalone=true
-  @Content.Toolbar
+  <span @Edit.TagToolbar(Content)>
+    You are seeing this because you are currently viewing a normal page.
+    To use this feed correctly, you must add ?standalone=true to the url, so it doesn't show dnn stuff or html.
+    Note that you can put the feed on an own page and then link to it
+    <a href="@Link.To(parameters: "standalone=true")" target="_blank">(with ?standalone=true)</a>
+    or you can also auto-use it by using the normal blog-page and where you would usually see things like /tag/something replace with /feed/all?standalone=true
   </span>
 }

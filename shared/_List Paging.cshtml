@@ -1,60 +1,63 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
 
-@* Displays a page navigation with numbered buttons for every page and previous/next buttons *@
-@helper Paging(dynamic paging, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
-  int pageNumber = (int)paging.PageNumber;
+@*
+  Displays a page navigation with numbered buttons for every page and previous/next buttons
+*@
+
+@{
+  var pages = AsList(Data["Paging"]).FirstOrDefault();
+  int pageNumber = (int)pages.PageNumber;
   var previousDisabled = pageNumber == 1 ? "disabled" : "";
-  var nextDisabled = pageNumber == paging.PageCount ? "disabled" : "";
+  var nextDisabled = pageNumber == pages.PageCount ? "disabled" : "";
+}
 
-  if(paging.PageCount > 1) {
-    <nav>
-      <ul class="pagination justify-content-center">
-        @* Show previous button *@
-        <li class="page-item @previousDisabled">
-          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber - 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
-            <span aria-hidden="true">&laquo;</span>
-          @Tag.A().TagEnd
+@if(pages.PageCount > 1) {
+  <nav>
+    <ul class="pagination justify-content-center">
+      @* Show previous button *@
+      <li class="page-item @previousDisabled">
+        <a class="page-link" href='@Tags.SafeUrl(LinkToPageNumber(pageNumber - 1))'>
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+      @* Show button for every page *@
+      @for (int i = 1; i <= pages.PageCount; i++) {
+        <li class='page-item @(i == pageNumber ? "active" : "")'>
+          <a class="page-link" href='@Tags.SafeUrl(LinkToPageNumber(i))'>@i</a>
         </li>
+      }
 
-        @* Show button for every page *@
-        @for (int i = 1; i <= paging.PageCount; i++) {
-          @* Active Page *@
-          if (i == pageNumber) {
-            <li class="page-item active"><a class="page-link" href="#">@i</a></li>
-          } else {
-            <li class="page-item">
-              @Tag.A().Class("page-link").Href(LinkToPageNumber(i, filteredCategory, filteredTag, filteredAuthor)).Wrap(i.ToString())
-            </li>
-          }
-        }
-
-        @* Show next button *@
-        <li class="page-item @nextDisabled">
-          @Tag.A().Class("page-link").Href(LinkToPageNumber(pageNumber + 1, filteredCategory, filteredTag, filteredAuthor)).TagStart
-            <span aria-hidden="true">&raquo;</span>
-          @Tag.A().TagEnd
-        </li>
-      </ul>
-    </nav>
-  }
+      @* Show next button *@
+      <li class="page-item @nextDisabled">
+        <a class="page-link" href='@Tags.SafeUrl(LinkToPageNumber(pageNumber + 1))'>
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 }
 
 @functions {
-  dynamic _parts;
-  dynamic Parts {
-    get {
-      if(_parts == null) {
-        _parts = CreateInstance("_Parts.cshtml");
-      }
-      return _parts;
-    }
-  }
-
   /**
-  * generate a paging-link number, preserving current category/tag/author parameters
+  * Generate a paging-link, preserving current category parameters
   */
-  public string LinkToPageNumber(int pageNumber, dynamic filteredCategory, dynamic filteredTag, dynamic filteredAuthor) {
-    return Link.To(parameters: Parts.PreserveCurrentFilters(filteredCategory, filteredTag, filteredAuthor, "") + "page=" + pageNumber);
+  public string LinkToPageNumber(int pageNumber){
+    var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
+    var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
+    var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+
+    var categoryParam = filteredCategory != null
+      ? "category=" + filteredCategory.Key + "&"
+      : "";
+    var tagParam = filteredTag != null
+      ? "tag=" + filteredTag.Tag + "&"
+      : "";
+    var authorParam = filteredAuthor != null
+      ? "author=" + filteredAuthor.FullName + "&"
+      : "";
+
+    return Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber);
   }
 }
