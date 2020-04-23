@@ -1,15 +1,10 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Search;
-@using ToSic.Eav.Run;
-
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
 
 @{
   var helpers = CreateInstance("shared/_Helpers.cshtml");
-
-  var posts = AsList(Data["Posts"]);
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+  var headerInfo = Code.GetListHeader(filteredCategory);
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
@@ -17,8 +12,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       <div class="category-header">
-        <h1>@GetListHeaderInformation(filteredCategory).Title</h1>
-        @Html.Raw(GetListHeaderInformation(filteredCategory).Description)
+        <h1>@headerInfo.Title</h1>
+        @Html.Raw(headerInfo.Description)
       </div>
     </div>
   </div>
@@ -31,16 +26,15 @@
       </aside>
 
       @* List the posts *@
-      @foreach(var post in posts) {
+      @foreach(var post in AsList(Data["Posts"])) {
+        @* FIXME: Test if prefill still works *@
         <article class="list-item" @Edit.TagToolbar(post, toolbar: new [] {
           "-layout",
-          "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm"),
+          "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.ToString("yyyy-MM-dd"),
           "%delete&show=true"
         })>
           <div class="app-blog-readmorelink">
-            <a class="link-overlay"
-              href="@Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId(), parameters: helpers.DetailPageQueryString(post)))">
-            </a>
+            <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
 
             <div class="header">
               @* Image of the post *@
@@ -73,45 +67,4 @@
   </div>
 </section>
 
-@functions{
-  /**
-  * Returns Title and optional description to show in the header of the list
-  */
-  public dynamic GetListHeaderInformation(dynamic filteredCategory) {
-    var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
-    var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
-    var title = Content.Title;
-    var description = "";
-
-    if (filteredCategory != null) {
-      title = App.Resources.Category + " " + filteredCategory.Name;
-      description = filteredCategory.Description;
-    } else if (filteredTag != null) {
-      title = App.Resources.Filter + " " + filteredTag.Name;
-    } else if (filteredAuthor != null) {
-      title = App.Resources.PostsBy + " " + filteredAuthor.FullName;
-      description = filteredAuthor.ShortBio;
-    }
-
-    return new { Title = title , Description = description };
-  }
-
-  /// <summary>
-  /// Populate the search - ensure that each entity has an own url/page
-  /// </summary>
-  public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    var helpers = CreateInstance("shared/_Helpers.cshtml");
-    foreach (var si in searchInfos["SearchIndex"]) {
-      var post = AsDynamic(si.Entity);
-      si.QueryString = helpers.DetailPageQueryString(post);
-    }
-
-    // Remove not needed streams
-    var keys = searchInfos.Keys.ToList();
-    foreach(var key in keys) {
-      if (key != "SearchIndex") {
-        searchInfos.Remove(key);
-      }
-    }
-  }
-}
+@RenderPage("shared/_Assets.cshtml", new {scripts = true})

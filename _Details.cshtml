@@ -2,48 +2,31 @@
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
-
 @{
-  var helpers = CreateInstance("shared/_Helpers.cshtml");
-
   var post = AsList(Data).FirstOrDefault();
-}
+  @* Show post not found notification and stop processing *@
+  if(post == null) {
+    @* Displays post not found info *@
+    <h1>@App.Resources.LabelPostNotExists</h1>
+    <p>@App.Resources.LabelPostNotExistsText</p>
+    @Code.BackToListButton()
+    @Code.SetNotFoundHttpHeaders()
+    return;
+  }
 
-@* Show post not found notification and stop processing *@
-@if(post == null) {
-
-  Response.StatusCode = 404;
-	Response.TrySkipIisCustomErrors = true;
-
-  @* Displays post not found info *@
-  <h1>@App.Resources.LabelPostNotExists</h1>
-  <p>@App.Resources.LabelPostNotExistsText</p>
-
-  @* Show "Back to list" button *@
-  <div class="backlink">
-    <a class="btn btn-outline-primary" href="@Tags.SafeUrl(Link.To())">@App.Resources.BackToHome</a>
-  </div>
-  return;
-}
-
-@{
   var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
   var author = post.Author;
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
 	if (HttpContext.Current.Handler is Page) {
-		AddMetaTags(post, imageUrl);
+		Code.AddMetaTags(post, imageUrl);
 	}
 }
 
 <section class="app-blog">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-      <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] {
-        "-layout",
-        "%delete&show=true"
-      })>
+      <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
         <div class="header">
           @* Image of the post *@
           @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
@@ -75,8 +58,8 @@
             <div>
               @if(Text.Has(author.Image)) {
                 <img src='@Tags.SafeUrl(author.Image + "?w=120&h=120&mode=crop&quality=70")' alt="@author.FullName" />
-                @Html.Raw(author.ShortBio)
               }
+              @Html.Raw(author.ShortBio)
             </div>
             <div>
               @App.Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
@@ -86,24 +69,21 @@
 
           @* Show preview of previous and next post *@
           <div class="article-links d-flex justify-content-between align-items-center">
-            @if (AsList(Data["Previous"]).FirstOrDefault() != null) {
-              @RenderPage("shared/_Post Micro Preview.cshtml", new {
-                Post = AsList(Data["Previous"]).FirstOrDefault(),
-                Context = "previous"})
+            @{
+              var previousPost = AsList(Data["Previous"]).FirstOrDefault();
+              var nextPost = AsList(Data["Next"]).FirstOrDefault();
             }
-            @if (AsList(Data["Next"]).FirstOrDefault() != null) {
-              @RenderPage("shared/_Post Micro Preview.cshtml", new {
-                Post = AsList(Data["Next"]).FirstOrDefault(),
-                Context = "next"}
-              )
+            @if (previousPost != null) {
+              @Code.PostMicroPreview(previousPost, imageUrl, "previous")
+            }
+            @if (nextPost != null) {
+              @Code.PostMicroPreview(nextPost, imageUrl, "next")
             }
           </div>
           <hr />
 
           @* Show "Back to list" button *@
-          <div class="backlink">
-            <a class="btn btn-outline-primary" href="@Tags.SafeUrl(Link.To())">@App.Resources.BackToHome</a>
-          </div>
+          @Code.BackToListButton()
 
           @* Mobile Category filter *@
           <aside class="d-xs-block d-lg-none">
@@ -120,36 +100,6 @@
       </aside>
     </div>
   </div>
-
 </section>
 
-@functions {
-  /**
-  * TODO: improve code, test, add comment
-  */
-  public void AddMetaTags(dynamic post, string imageUrl) {
-    var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
-    var metaImageUrl = Uri.EscapeUriString(
-      Request.Url.Scheme + "://" + Request.Url.Host
-      + imageUrl.ToLower() + "?w=1200&h=630&mode=crop&scale=both&quality=70");
-
-    HtmlPage.Title = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title; // Adjust page title
-    HtmlPage.AddMeta("description", Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser)); // Add Meta tag
-
-    // Add open graph meta information
-    HtmlPage.AddOpenGraph("og:type", "article");
-    HtmlPage.AddOpenGraph("og:title", post.Title);
-    HtmlPage.AddOpenGraph("og:site_name", App.Settings.Title);
-    HtmlPage.AddOpenGraph("og:url", Link.To(parameters: "post=" + post.UrlKey));
-    HtmlPage.AddOpenGraph("og:description", sharingDescription);
-    HtmlPage.AddOpenGraph("og:image", metaImageUrl);
-    HtmlPage.AddOpenGraph("og:image:height", "1200");
-    HtmlPage.AddOpenGraph("og:image:width", "630");
-
-    // Add twitter meta information
-    HtmlPage.AddMeta("twitter:card", "summary_large_image");
-    HtmlPage.AddMeta("twitter:title", post.Title);
-    HtmlPage.AddMeta("twitter:description", sharingDescription);
-    HtmlPage.AddMeta("twitter:image", metaImageUrl);
-  }
-}
+@RenderPage("shared/_Assets.cshtml", new {scripts = true})

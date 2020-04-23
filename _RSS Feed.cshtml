@@ -19,12 +19,12 @@
 <rss version="2.0">
   <channel>
     @Tag.Custom("title", App.Settings.Title)
-    @Tag.Custom("link", Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId())))
+    @Tag.Custom("link", Tags.SafeUrl(Link.To()))
     @Tag.Custom("description", App.Settings.RssDescription)
     @foreach(var post in posts) {
       <item>
         @Tag.Custom("title", post.EntityTitle)
-        @Tag.Custom("link", Tags.SafeUrl(Link.To(pageId: helpers.GetDetailsPageTabId(), parameters: helpers.DetailPageQueryString(post))))
+        @Tag.Custom("link", helpers.LinkToDetailsPage(post))
         @Tag.Custom("description", post.Teaser)
         @Tag.Custom("guid", post.EntityGuid.ToString()).Attr("isPermaLink", false)
         @Tag.Custom("pubDate", post.PublicationMoment.ToString("R"))

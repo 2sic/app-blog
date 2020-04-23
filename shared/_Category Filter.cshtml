@@ -12,13 +12,13 @@
   var categories = AsList(App.Data["Category"]);
 
   @* Get all Blog Posts from the App, to ignore filters *@
-  var posts = Edit.Enabled
+  var postsForCounting = Edit.Enabled
     ? AsList(App.Data["BlogPost"])
     : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
 
   var categoryNumbers = categories.Select(ca => new {
     Category = ca,
-    Count = posts.Where(p => (p.Categories as Dynlist).Any(c => c.EntityId == ca.EntityId)).Count()
+    Count = postsForCounting.Where(p => (p.Categories as Dynlist).Any(c => c.EntityId == ca.EntityId)).Count()
   });
 }
 
@@ -29,7 +29,7 @@
       <ul>
         <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
           <a href='@Tags.SafeUrl(Link.To())'>
-            @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@posts.Count()</span>
+            @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@postsForCounting.Count()</span>
           </a>
         </li>
         @* Categories will be appended to here *@
