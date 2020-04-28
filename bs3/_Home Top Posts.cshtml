@@ -1,50 +1,51 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Search;
-@using ToSic.Eav.Run;
-
-@RenderPage("shared/_Assets.cshtml")
-
 @{
-  var parts = CreateInstance("shared/_Parts.cshtml");
-  @*
-    Get all posts if user is admin and only publicated ones if visitor
-    FIXME: As soon as Time Comparison is fixed in Query Desginer, outsource logic
-  *@
-  var posts = Edit.Enabled
-    ? AsList(Data["Posts"])
-    : AsList(Data["Posts"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
-
-  var viewConfiguration = Content;
-  var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
-  var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
-  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+  var helpers = CreateInstance("shared/_Helpers.cshtml");
 }
 
-@* Show Toolbar Menu if admin *@
+@* Show details page warning *@
 @if(Edit.Enabled) {
-  @parts.AdminToolbarMenu()
-  @parts.DetailsPageConfigWarning()
+  if(!Text.Has(App.Settings.DetailsPage)) {
+    <div class="alert alert-danger" role="alert">@Html.Raw(@App.Resources.LabelAdminDetailPageWarning)</div>
+  }
 }
 
-<section class="app-blog">
-  @parts.FilterInformationHeader(filteredCategory, filteredTag, filteredAuthor, viewConfiguration)
+<section class="app-blog" @Edit.TagToolbar(Content)>
+  <div class="category-header"><h1>@Content.Title</h1></div>
 
-  @parts.ListPostsMultiCol(posts, filteredCategory, filteredTag, filteredAuthor)
+  @* List the posts in 3 columns *@
+  <div class="row">
+    @foreach (var post in AsList(Data["Posts"])) {
+      var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
+
+      <article class="list-item multi-col col-12 col-md-6 col-lg-4" @Edit.TagToolbar(post, toolbar: new [] {
+        "-layout",
+        "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.ToString("yyyy-MM-dd"),
+        "%delete&show=true"
+      })>
+        <div class="app-blog-readmorelink panel panel-default m-0">
+          <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
+
+          @* Image of the post *@
+          @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 800, Height = 480 })
+
+          <div class="panel-body">
+            <h5 class="card-title">@post.Title</h5>
+            <p class="card-text text">@Html.Raw(Tags.Strip(post.Teaser))</p>
+          </div>
+          <div class="panel-footer">
+            <span class="readmore btn btn-primary">@App.Resources.ReadMore</span>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
 
   @* Show pagination if configured *@
-  @if (viewConfiguration.ShowPagination) {
-    var pages = AsList(Data["Paging"]).FirstOrDefault();
-    @parts.Paging(pages, filteredCategory, filteredTag, filteredAuthor)
+  @if (Content.ShowPagination) {
+    @RenderPage("shared/_List Paging.cshtml")
   }
 </section>
 
-@functions{
-  /// <summary>
-  /// Prevent duplicated search results.
-  /// Since the main list will already add all the items to the search, this view should not add them again.
-  /// </summary>
-  public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    searchInfos.Clear();
-  }
-}
+@RenderPage("shared/_Assets.cshtml")

@@ -1,78 +1,69 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
-@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
-@using ToSic.Sxc.Search;
-@using ToSic.Eav.Run;
-
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
 
 @{
-  var parts = CreateInstance("shared/_Parts.cshtml");
-
-  @*
-    Get all posts if user is admin and only publicated ones if visitor
-    FIXME: As soon as Time Comparison is fixed in Query Desginer, outsource logic
-  *@
-  var posts = Edit.Enabled
-    ? AsList(Data["Posts"])
-    : AsList(Data["Posts"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
-
-  var viewConfiguration = Content;
-  var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
-  var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
+  var helpers = CreateInstance("shared/_Helpers.cshtml");
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+  var headerInfo = Code.GetListHeader(filteredCategory);
 }
 
-@* Show Toolbar Menu if admin *@
-@if(Edit.Enabled) {
-  @parts.AdminToolbarMenu()
-  @parts.DetailsPageConfigWarning()
-}
-
-<section class="app-blog">
-  @* Show information about the applied filter *@
-  @parts.FilterInformationHeader(filteredCategory, filteredTag, filteredAuthor, viewConfiguration)
+<section class="app-blog" @Edit.TagToolbar(Content)>
+  @* Show title and if filtered, additional descriptions *@
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+      <div class="category-header">
+        <h1>@headerInfo.Title</h1>
+        @Html.Raw(headerInfo.Description)
+      </div>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+      @* Mobile Category filter *@
+      <aside class="hidden-lg">
+        @RenderPage("shared/_Category Filter.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
+      </aside>
+
       @* List the posts *@
-      @parts.ListPostsSingleCol(posts, filteredCategory, filteredTag, filteredAuthor)
+      @foreach(var post in AsList(Data["Posts"])) {
+        <article class="list-item panel panel-default" @Edit.TagToolbar(post, toolbar: new [] {
+          "-layout",
+          "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.ToString("yyyy-MM-dd"),
+          "%delete&show=true"
+        })>
+          <div class="app-blog-readmorelink">
+            <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
+
+            <div class="header">
+              @* Image of the post *@
+              @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+
+              @* Information about the post like title, author, categories *@
+              @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
+            </div>
+
+            <div class="content">
+              @Html.Raw(post.Teaser)
+              <span class="readmore btn btn-primary">@App.Resources.ReadMore</span>
+            </div>
+          </div>
+        </article>
+      }
 
       @* Show pagination if configured *@
-      @if (viewConfiguration.ShowPagination) {
-        var pages = AsList(Data["Paging"]).FirstOrDefault();
-        @parts.Paging(pages, filteredCategory, filteredTag, filteredAuthor)
+      @if (Content.ShowPagination) {
+        @RenderPage("shared/_List Paging.cshtml")
       }
     </div>
 
-    @* Category sidebar *@
+    @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <aside>
-        @parts.CategorySidebar(filteredCategory, true, false)
-
-        @*only show on mobile view*@
-        @parts.CategorySidebar(filteredCategory, false, false)
+      <aside class="visible-lg">
+        @RenderPage("shared/_Category Filter.cshtml", new { FilteredCategory = filteredCategory })
       </aside>
     </div>
   </div>
 </section>
 
-@functions{
-  /// <summary>
-  /// Populate the search - ensure that each entity has an own url/page
-  /// </summary>
-
-  public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    foreach (var si in searchInfos["SearchIndex"]) {
-      si.QueryString = "post=" + AsDynamic(si.Entity).UrlKey;
-    }
-
-    // Remove not needed streams
-    var keys = searchInfos.Keys.ToList();
-    foreach(var key in keys) {
-      if (key != "SearchIndex") {
-        searchInfos.Remove(key);
-      }
-    }
-  }
-}
+@RenderPage("shared/_Assets.cshtml")

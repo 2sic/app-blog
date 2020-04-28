@@ -12,7 +12,8 @@ body.va-layout-full {
    nav {
 		&.co-category-list-container {
 			background:#FFF;
-			padding: $grid-gutter-width/2  $grid-gutter-width;
+      padding: $grid-gutter-width/2  $grid-gutter-width;
+      margin-bottom: 20px;
 		}
 	}
 }
@@ -43,10 +44,6 @@ nav {
 					{
 
 					}
-				}
-				span {
-					background:$gray-200;
-					color:lighten($body-color, 30%);
 				}
 			}
 		}

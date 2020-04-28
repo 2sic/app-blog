@@ -19,7 +19,7 @@
       <ul>
         <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
           <a href='@Tags.SafeUrl(Link.To())'>
-            @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@postsForCounting.Count()</span>
+            @App.Resources.ShowAll<span class="badge badge-pill badge-primary pull-right">@postsForCounting.Count()</span>
           </a>
         </li>
         @* Categories will be appended to here *@
@@ -33,7 +33,7 @@
           <li class="@active">
             <a href='@Tags.SafeUrl(Link.To(parameters: "category=" + cat.Key))'>
               @cat.Name
-              <span class="badge badge-pill badge-primary float-right">@catCount</span>
+              <span class="badge badge-pill badge-primary pull-right">@catCount</span>
             </a>
           </li>
         }

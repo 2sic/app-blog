@@ -27,7 +27,6 @@
 
       @* List the posts *@
       @foreach(var post in AsList(Data["Posts"])) {
-        @* FIXME: Test if prefill still works *@
         <article class="list-item" @Edit.TagToolbar(post, toolbar: new [] {
           "-layout",
           "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.ToString("yyyy-MM-dd"),

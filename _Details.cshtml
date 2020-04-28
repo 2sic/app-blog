@@ -6,7 +6,6 @@
   var post = AsList(Data).FirstOrDefault();
   @* Show post not found notification and stop processing *@
   if(post == null) {
-    @* Displays post not found info *@
     <h1>@App.Resources.LabelPostNotExists</h1>
     <p>@App.Resources.LabelPostNotExistsText</p>
     @Code.BackToListButton()
