@@ -34,7 +34,16 @@
           @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})
         </div>
 
-        <div class="content">@Html.Raw(post.Body)</div>
+        @* Body of the post *@
+        <div class="content">
+          @Html.Raw(post.Body)
+          @* Inner Content *@
+          <div class="sc-content-block-list" @Edit.ContextAttributes(post, field: "InnerContent")>
+            @foreach (var innerContent in post.InnerContent) {
+              @ToSic.Sxc.Blocks.Render.One(innerContent);
+            }
+          </div>
+        </div>
 
         <div class="footer">
           @* List tags of post *@
@@ -67,16 +76,16 @@
           <hr />
 
           @* Show preview of previous and next post *@
-          <div class="article-links d-flex justify-content-between align-items-center">
-            @{
-              var previousPost = AsList(Data["Previous"]).FirstOrDefault();
-              var nextPost = AsList(Data["Next"]).FirstOrDefault();
-            }
+          @{
+            var previousPost = AsList(Data["Previous"]).FirstOrDefault();
+            var nextPost = AsList(Data["Next"]).FirstOrDefault();
+          }
+          <div class='article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
             @if (previousPost != null) {
-              @Code.PostMicroPreview(previousPost, imageUrl, "previous")
+              @Code.PostMicroPreview(previousPost, "previous")
             }
             @if (nextPost != null) {
-              @Code.PostMicroPreview(nextPost, imageUrl, "next")
+              @Code.PostMicroPreview(nextPost, "next")
             }
           </div>
           <hr />

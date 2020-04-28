@@ -7,8 +7,9 @@
 	Response.TrySkipIisCustomErrors = true;
 }
 
-@helper PostMicroPreview(dynamic post, string imageUrl, string context) {
+@helper PostMicroPreview(dynamic post, string context) {
   var helpers = CreateInstance("shared/_Helpers.cshtml");
+  var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
   var title = context == "previous"
     ? App.Resources.PreviousPost
     : App.Resources.NextPost;
