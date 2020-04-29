@@ -3,13 +3,6 @@
 
 @functions {
   /**
-  * Generate the query string for the detail link of a post, preserving current filter parameters
-  */
-  public string DetailPageQueryString(dynamic post) {
-    return "details=" + post.UrlKey;
-  }
-
-  /**
   * Returns a safe url to a post details page
   */
   public dynamic LinkToDetailsPage(dynamic post) {
@@ -17,6 +10,6 @@
       ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
       : Dnn.Tab.TabID;
 
-    return Tags.SafeUrl(Link.To(pageId: detailsPageTabId, parameters: DetailPageQueryString(post)));
+    return Tags.SafeUrl(Link.To(pageId: detailsPageTabId, parameters: "details=" + post.UrlKey));
   }
 }

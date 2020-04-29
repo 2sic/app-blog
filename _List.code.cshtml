@@ -29,10 +29,9 @@
   /// Populate the search - ensure that each entity has an own url/page
   /// </summary>
   public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    var helpers = CreateInstance("shared/_Helpers.cshtml");
     foreach (var si in searchInfos["SearchIndex"]) {
       var post = AsDynamic(si.Entity);
-      si.QueryString = helpers.DetailPageQueryString(post);
+      si.QueryString = "details=" + post.UrlKey;
     }
 
     // Remove not needed streams
@@ -46,7 +45,7 @@
 
 
   /// Typed result set for GetListHeader
-  public class HeaderInfo { 
-    public string Title, Description; 
+  public class HeaderInfo {
+    public string Title, Description;
   }
 }
