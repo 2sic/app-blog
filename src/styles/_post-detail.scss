@@ -2,8 +2,8 @@
 //  This SCSS generates the css for the details-view
 //
 //  It is used by all CSS generators (Bootstrap3/4, etc.)
-//  To keep things simple, it uses the standard variables of 
-//  bootstrap 4 conventions. 
+//  To keep things simple, it uses the standard variables of
+//  bootstrap 4 conventions.
 //
 
 
@@ -95,11 +95,12 @@ section {
                      float: right;
                      display: block;
                      margin-left: $grid-gutter-width;
+                     margin-bottom: 20px;
 						}
 						p {
 							font-size: 13px;
 						}
-                  
+
                }
                .backlink {
                   margin-bottom: $grid-gutter-width;
@@ -156,7 +157,7 @@ section {
 					text-decoration: none;
 					&:before {
 						color:$body-color;
-						
+
 					}
 				}
 				strong {display:block; font-weight:500;}
@@ -170,36 +171,34 @@ section {
 			}
 	}
    .previous {
-		float:left;
-		
+
       a {
             display: flex;
             flex-direction: row;
             align-items: center;
             color: $body-color;
-            
+
             &:before {
                   content:"‹";
                   margin-right:5px;
-            }      
-                  
+            }
+
             img {
             border-radius: 50%;
             margin-right:$grid-gutter-width/3;
             }
-         
+
       }
 	}
 	.next {
-		float:right;
-		
+
       a {
          display: flex;
          flex-direction:row-reverse;
 			align-items: center;
 			text-align:right;
 			color: $body-color;
-			
+
 			&:before {
 				content:"›";
 				margin-left:5px;
@@ -208,7 +207,7 @@ section {
 				border-radius: 50%;
 				margin-left:$grid-gutter-width/3;
          }
-         
+
       }
    }
 }

@@ -2,106 +2,56 @@
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
-@*
-  Case #1: Bootstrap 3 - read the readme.md section "CSS Framework Detection"
-*@
-@if(Connect.Koi.Koi.Is("bs3")) {
-  @RenderPage("bs3/_Details.cshtml")
-  return;
-}
-@*
-  Case #2: Bootstrap 4 or Unknown CSS Framework
-*@
-
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
-
 @{
-  var parts = CreateInstance("shared/_Parts.cshtml");
+  var post = AsList(Data).FirstOrDefault();
+  @* Show post not found notification and stop processing *@
+  if(post == null) {
+    <h1>@App.Resources.LabelPostNotExists</h1>
+    <p>@App.Resources.LabelPostNotExistsText</p>
+    @Code.BackToListButton()
+    @Code.SetNotFoundHttpHeaders()
+    return;
+  }
 
-  var post = AsList(Data["Default"]).FirstOrDefault();
-  var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
-  var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
-  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
-}
-
-@* Show post not found notification and stop processing *@
-@if(post == null) {
-
-  Response.StatusCode = 404;
-	Response.TrySkipIisCustomErrors = true;
-
-  @* Displays post not found info *@
-  <h1>@App.Resources.LabelPostNotExists</h1>
-  <p>@App.Resources.LabelPostNotExistsText</p>
-
-  @* Show "Back to list" button *@
-  @BackToListButton(filteredCategory, filteredTag, filteredAuthor)
-  return;
-}
-
-@{
-  var previousPost = AsList(Data["Previous"]).FirstOrDefault();
-  var nextPost = AsList(Data["Next"]).FirstOrDefault();
   var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
-  var author = (post.Author as Dynlist).FirstOrDefault();
-
-	var imgWidth = "1200";
-	var imgHeight = "630";
-	var metaImageUrl = GetSizedImgUrl(imageUrl, imgHeight, imgWidth);
+  var author = post.Author;
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
 	if (HttpContext.Current.Handler is Page) {
-    var pageTitle = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title;
-		var metaDescription = Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser);
-		var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
-
-    HtmlPage.Title = pageTitle; // Adjust page title
-    HtmlPage.AddMeta("description", metaDescription); // Add Meta tag
-    @* Add open graph meta information *@
-    HtmlPage.AddOpenGraph("og:type", "article");
-    HtmlPage.AddOpenGraph("og:title", post.Title);
-    HtmlPage.AddOpenGraph("og:site_name", App.Settings.Title);
-    HtmlPage.AddOpenGraph("og:url", Link.To(parameters: "post=" + post.UrlKey));
-    HtmlPage.AddOpenGraph("og:description", sharingDescription);
-    HtmlPage.AddOpenGraph("og:image", metaImageUrl);
-    HtmlPage.AddOpenGraph("og:image:height", imgHeight);
-    HtmlPage.AddOpenGraph("og:image:width", imgWidth);
-    @*
-      FIXME: AddOpenGraph() automatically prefixes "og:"
-      --> Test if twitter sharing still works
-    *@
-    HtmlPage.AddOpenGraph("twitter:card", "summary_large_image");
-    HtmlPage.AddOpenGraph("twitter:title", post.Title);
-    HtmlPage.AddOpenGraph("twitter:description", sharingDescription);
-    HtmlPage.AddOpenGraph("twitter:image", metaImageUrl);
+		Code.AddMetaTags(post, imageUrl);
 	}
 }
-
 
 <section class="app-blog">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-      <article class="post-detail" @Edit.TagToolbar(post, actions: "edit")>
+      <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
         <div class="header">
-          <picture class="mb-0">
-            @Tag.Img().Class("img-fluid").Src(imageUrl + "?w=1200&h=630&mode=crop&scale=both&quality=90&anchor=" + post.CropAnchor).Alt(post.Title)
-          </picture>
-          @parts.PostPublishInfoAdmin(post)
+          @* Image of the post *@
+          @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
 
-          @parts.PostInformation(post, "h1", author)
+          @* Information about the post like title, author, categories *@
+          @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})
         </div>
 
+        @* Body of the post *@
         <div class="content">
-          @ToSic.SexyContent.ContentBlocks.Render.All(post, field: "DesignedContent", merge: post.Body)
+          @Html.Raw(post.Body)
+          @* Inner Content *@
+          <div class="sc-content-block-list" @Edit.ContextAttributes(post, field: "InnerContent")>
+            @foreach (var innerContent in post.InnerContent) {
+              @ToSic.Sxc.Blocks.Render.One(innerContent);
+            }
+          </div>
         </div>
 
         <div class="footer">
+          @* List tags of post *@
           @if((post.Tags as Dynlist).Any()) {
-            @* List tags of post *@
             <div class="tags">
               <strong>@(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
               @foreach (var tag in post.Tags) {
-                @Tag.A().Class("btn btn-sm btn-light").Href(Link.To(parameters: "tag=" + tag.Tag)).Title(tag.Name).Wrap(tag.Name)
+                <a class="btn btn-sm btn-light" href='@Tags.SafeUrl(Link.To(parameters: "tag=" + tag.Tag))' title="@tag.Name">@tag.Name</a>
               }
             </div>
           }
@@ -115,88 +65,49 @@
           <div class="authordetails">
             <div>
               @if(Text.Has(author.Image)) {
-                @Tag.Img().Src(author.Image + "?w=120&h=120&mode=crop&quality=70").Alt(author.FullName) @Html.Raw(author.ShortBio)
+                <img src='@Tags.SafeUrl(author.Image + "?w=120&h=120&mode=crop&quality=70")' alt="@author.FullName" />
               }
+              @Html.Raw(author.ShortBio)
             </div>
             <div>
-              @App.Resources.ReadMoreAuthor @Tag.A().Href(Link.To(parameters: "author" + author.FullName)).Wrap(author.FullName)
+              @App.Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
             </div>
           </div>
           <hr />
-          <div class="article-links">
-            @* TODO: Refactor with flexbox (to center the previews verticaly) *@
+
+          @* Show preview of previous and next post *@
+          @{
+            var previousPost = AsList(Data["Previous"]).FirstOrDefault();
+            var nextPost = AsList(Data["Next"]).FirstOrDefault();
+          }
+          <div class='article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
             @if (previousPost != null) {
-              @parts.PostMicroPreview(previousPost, "previous", filteredCategory, filteredTag, filteredAuthor)
+              @Code.PostMicroPreview(previousPost, "previous")
             }
             @if (nextPost != null) {
-              @parts.PostMicroPreview(nextPost, "next", filteredCategory, filteredTag, filteredAuthor)
+              @Code.PostMicroPreview(nextPost, "next")
             }
           </div>
           <hr />
-          @BackToListButton(filteredCategory, filteredTag, filteredAuthor)
+
+          @* Show "Back to list" button *@
+          @Code.BackToListButton()
+
+          @* Mobile Category filter *@
+          <aside class="d-xs-block d-lg-none">
+            @RenderPage("shared/_Category Filter.cshtml", new { MobileView = true})
+          </aside>
         </div>
-
-        <div id="disqus_thread"></div>
-        <script>
-
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://2sic-com.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </article>
     </div>
 
-    @* Category sidebar *@
+    @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <aside>
-        @parts.CategorySidebar(filteredCategory, desktopSidebar: true, enableSocialSharing: true)
-
-        @*only show on mobile view*@
-        @parts.CategorySidebar(filteredCategory)
+      <aside class="d-none d-lg-block">
+        @RenderPage("shared/_Category Filter.cshtml", new { EnableSocialSharing = true})
       </aside>
     </div>
   </div>
-
 </section>
 
-@* Shows a back to list button *@
-@helper BackToListButton(dynamic filteredCategory,dynamic filteredTag,dynamic filteredAuthor) {
-  var parts = CreateInstance("shared/_Parts.cshtml");
-  <div class="backlink">
-    @Tag.A().Class("btn btn-outline-primary").Href(Link.To(parameters: parts.PreserveCurrentFilters(filteredCategory, filteredTag, filteredAuthor, Request.QueryString["Page"]))).Wrap(App.Resources.BackToHome)
-  </div>
-}
-
-@functions {
-  public string GetSizedImgUrl(string imgUrl, string imageHeight, string imageWidth) {
-    // skip this if currently in search-index mode without request object
-    if(Request == null || String.IsNullOrEmpty(imgUrl))  {
-      return imgUrl;
-    }
-
-    if (String.IsNullOrEmpty(imgUrl)) {
-      throw new Exception("string is empty");
-    }
-
-    imgUrl = Request.Url.Scheme + "://" + Request.Url.Host
-      + imgUrl.ToLower()
-      + "?w=" + imageWidth + "&h=" + imageHeight
-      + "&mode=crop&scale=both&quality=70";
-
-    imgUrl = Uri.EscapeUriString(imgUrl);
-    return imgUrl;
-  }
-}
+@RenderPage("shared/_Assets.cshtml", new {scripts = true})
