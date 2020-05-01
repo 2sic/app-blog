@@ -29,7 +29,7 @@
   /// Populate the search - ensure that each entity has an own url/page
   /// </summary>
   public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    foreach (var si in searchInfos["SearchIndex"]) {
+    foreach (var si in searchInfos["AllPosts"]) {
       var post = AsDynamic(si.Entity);
       si.QueryString = "details=" + post.UrlKey;
     }
@@ -37,7 +37,7 @@
     // Remove not needed streams
     var keys = searchInfos.Keys.ToList();
     foreach(var key in keys) {
-      if (key != "SearchIndex") {
+      if (key != "AllPosts") {
         searchInfos.Remove(key);
       }
     }

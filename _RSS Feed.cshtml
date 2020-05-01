@@ -3,28 +3,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 @{
-  var helpers = CreateInstance("shared/_Helpers.cshtml");
-
-  @*
-    Get all posts if user is admin and only publicated ones if visitor
-    NOTE: We don't get the posts from the query, because the view configuration
-    of the main page can lead to problems
-  *@
-  var posts = Edit.Enabled
-    ? AsList(App.Data["BlogPost"])
-    : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
+  var detailsPageTabId = Text.Has(App.Settings.DetailsPage)
+    ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
+    : Dnn.Tab.TabID;
 }
 
 @if(Request.QueryString["standalone"] == "true") {
 <rss version="2.0">
   <channel>
     @Tag.Custom("title", App.Settings.Title)
-    @Tag.Custom("link", Tags.SafeUrl(Link.To()))
+    @Tag.Custom("link", Link.To())
     @Tag.Custom("description", App.Settings.RssDescription)
-    @foreach(var post in posts) {
+    @foreach(var post in AsList(Data["AllPosts"])) {
       <item>
         @Tag.Custom("title", post.EntityTitle)
-        @Tag.Custom("link", helpers.LinkToDetailsPage(post))
+        @Tag.Custom("link", Link.To(pageId: detailsPageTabId, parameters: "details=" + post.UrlKey))
         @Tag.Custom("description", post.Teaser)
         @Tag.Custom("guid", post.EntityGuid.ToString()).Attr("isPermaLink", false)
         @Tag.Custom("pubDate", post.PublicationMoment.ToString("R"))
