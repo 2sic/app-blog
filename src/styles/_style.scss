@@ -26,7 +26,10 @@ nav {
 				width:310px;
 			}
 		h5 {
-			color: lighten( $body-color, 10% );
+      color: lighten( $body-color, 10% );
+      .rss-button {
+        width: 30px;
+      }
 		}
 		ul {
 			list-style-type: none;

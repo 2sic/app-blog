@@ -32,9 +32,6 @@
 }
 
 @functions {
-  /**
-  * TODO: improve code, test, add comment
-  */
   public void AddMetaTags(dynamic post, string imageUrl) {
     var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
     var metaImageUrl = Uri.EscapeUriString(

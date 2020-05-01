@@ -15,7 +15,14 @@
 <div id="@wrapperId" class="sidebar app-blog-detail-right">
   <div class="sidebar__inner">
     <nav class="co-category-list-container mb-3">
-      <h5 class="pb-2">@App.Resources.Categories</h5>
+      <h5 class="pb-2 d-flex justify-content-between">
+        @App.Resources.Categories
+        <a class="badge badge-pill bg-primary rss-button"
+          href='@Tags.SafeUrl(Link.To(parameters: "mid/" + Dnn.Module.ModuleID + "/feed/true/standalone/true"))'
+          target="_blank">
+          <i class="fas fa-rss align-self-center text-white"></i>
+        </a>
+      </h5>
       <ul>
         <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
           <a href='@Tags.SafeUrl(Link.To())'>
