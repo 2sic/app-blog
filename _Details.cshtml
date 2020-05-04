@@ -36,7 +36,7 @@
 
         @* Body of the post *@
         <div class="content">
-          @Html.Raw(post.Body)
+          @Html.Raw(post.Content)
           @* Inner Content *@
           <div class="sc-content-block-list" @Edit.ContextAttributes(post, field: "InnerContent")>
             @foreach (var innerContent in post.InnerContent) {
