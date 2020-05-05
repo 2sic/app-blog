@@ -1,7 +1,24 @@
-# The popular 2sxc Blog App
+<image src="app-icon.png" align="right" width="200px">
 
-![2sxc blog logo](app-icon.png)
+# Blog App for DNN (DotNetNuke)
 
-* Check out a [live demo](http://2sxc.org/en/blog)
-* Read more about it in this [release-post](http://2sxc.org/en/blog/post/may-the-4th-be-with-you-again-presenting-the-dnn-blog-app)
-* download the 2sxc app for installation in the [app-catalog](http://2sxc.org/en/apps/app/dnn-blog-app-for-dnn-dotnetnuke)
+A standard blog app to use with 2sxc
+
+## Installing the app
+
+You can install the app with the ["Installing Blog" checklist](https://azing.org/2sxc/r/vgApEx0X)
+
+## Customizing the app
+
+### Configuration (Settings, Resources)
+
+If you want to use the "Home top posts" template, you need to ["Configure Main-List and Details Page"](https://azing.org/2sxc/r/c42g7EjU) in the app settings.
+There are also a lot of app resources you can adjust to your needs.
+
+### Style
+
+If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
+
+## Screenshots
+
+Read more about it in the [App Catalog](#)
