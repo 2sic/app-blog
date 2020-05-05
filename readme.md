@@ -21,4 +21,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 ## Screenshots
 
-Read more about it in the [App Catalog](#)
+Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/blog-app-v4)
