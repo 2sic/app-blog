@@ -34,15 +34,9 @@
           @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})
         </div>
 
-        @* Body of the post *@
+        @* Body of the post - will also create inner content blocks / apps *@
         <div class="content">
-          @Html.Raw(post.Content)
-          @* Inner Content *@
-          <div class="sc-content-block-list" @Edit.ContextAttributes(post, field: "InnerContent")>
-            @foreach (var innerContent in post.InnerContent) {
-              @ToSic.Sxc.Blocks.Render.One(innerContent);
-            }
-          </div>
+          @ToSic.Sxc.Blocks.Render.All(post, field: "InnerContent", merge: post.Content)
         </div>
 
         <div class="footer">
