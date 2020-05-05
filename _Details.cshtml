@@ -13,12 +13,11 @@
     return;
   }
 
-  var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
   var author = post.Author;
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
 	if (HttpContext.Current.Handler is Page) {
-		Code.AddMetaTags(post, imageUrl);
+		Code.AddMetaTags(post);
 	}
 }
 

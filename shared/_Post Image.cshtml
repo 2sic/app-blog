@@ -2,7 +2,6 @@
 @using ToSic.Razor.Blade;
 @{
   var post = PageData["Post"];
-  var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
   var imageResizerParams = "?w=" + PageData["Width"]
     + "&h=" + PageData["Height"]
     + "&mode=crop&scale=both&quality=90"
@@ -10,13 +9,15 @@
 }
 
 @* Image of the post *@
-<picture class="bg-primary mb-0">
-  <img class="img-fluid" src="@Tags.SafeUrl(imageUrl + imageResizerParams)" alt="@post.Tile" />
-</picture>
+@if (Text.Has(post.Image)) {
+  <picture class="bg-primary mb-0">
+    <img class="img-fluid" src="@Tags.SafeUrl(post.Image + imageResizerParams)" alt="@post.Tile" />
+  </picture>
+}
 
 @* Show info to admin when the post will publish *@
 @if(Edit.Enabled && post.PublicationMoment.CompareTo(DateTime.Now) > 0) {
-  <div class="alert alert-warning mb-0" role="alert">
+  <div class='alert alert-warning @(Text.Has(post.Image) ? "mb-0" : "mb-n3")' role="alert">
     @(App.Resources.LabelAdminPostPublishInfo + " " + post.PublicationMoment.Date.ToString("d") + " " + post.PublicationMoment.TimeOfDay)
   </div>
 }

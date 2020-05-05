@@ -9,14 +9,15 @@
 
 @helper PostMicroPreview(dynamic post, string context) {
   var helpers = CreateInstance("shared/_Helpers.cshtml");
-  var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
   var title = context == "previous"
     ? App.Resources.PreviousPost
     : App.Resources.NextPost;
 
   <div class="@context">
     <a href="@helpers.LinkToDetailsPage(post)">
-      <img src='@Tags.SafeUrl(imageUrl + "?w=80&h=80&mode=crop&scale=both&quality=70")' alt="@post.Title" />
+      @if (Text.Has(post.Image)) {
+        <img src='@Tags.SafeUrl(post.Image + "?w=80&h=80&mode=crop&scale=both&quality=70")' alt="@post.Title" />
+      }
       <span class="app-blog-previouslink-title">
         <strong>@title:</strong>@post.Title
       </span>
@@ -32,11 +33,11 @@
 }
 
 @functions {
-  public void AddMetaTags(dynamic post, string imageUrl) {
+  public void AddMetaTags(dynamic post) {
     var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
-    var metaImageUrl = Uri.EscapeUriString(
-      Request.Url.Scheme + "://" + Request.Url.Host
-      + imageUrl.ToLower() + "?w=1200&h=630&mode=crop&scale=both&quality=70");
+    var metaImageUrl = Text.Has(post.Image)
+      ? Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower() + "?w=1200&h=630&mode=crop&scale=both&quality=70")
+      : "";
 
     HtmlPage.Title = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title; // Adjust page title
     HtmlPage.AddMeta("description", Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser)); // Add Meta tag
