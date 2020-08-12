@@ -11,7 +11,7 @@
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
   <picture class="bg-primary mb-0">
-    <img class="img-fluid" src="@Tags.SafeUrl(post.Image + imageResizerParams)" alt="@post.Tile" />
+    <img class="img-fluid" src="@Tags.SafeUrl(post.Image + imageResizerParams)" alt="@post.Title" />
   </picture>
 }
 
