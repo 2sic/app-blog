@@ -46,7 +46,7 @@
     HtmlPage.AddOpenGraph("og:type", "article");
     HtmlPage.AddOpenGraph("og:title", post.Title);
     HtmlPage.AddOpenGraph("og:site_name", App.Settings.Title);
-    HtmlPage.AddOpenGraph("og:url", Link.To(parameters: "post=" + post.UrlKey));
+    HtmlPage.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.UrlKey));
     HtmlPage.AddOpenGraph("og:description", sharingDescription);
     HtmlPage.AddOpenGraph("og:image", metaImageUrl);
     HtmlPage.AddOpenGraph("og:image:height", "1200");
