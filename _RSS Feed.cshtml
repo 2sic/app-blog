@@ -16,9 +16,9 @@
     @Tag.Custom("description", App.Settings.RssDescription)
     @foreach(var post in AsList(Data["AllPosts"])) {
       <item>
-        @Tag.Custom("title", post.EntityTitle)
+        @Tag.Custom("title", "<![CDATA["+post.EntityTitle+"]]>")
         @Tag.Custom("link", Link.To(pageId: detailsPageTabId, parameters: "details=" + post.UrlKey))
-        @Tag.Custom("description", post.Teaser)
+        @Tag.Custom("description", "<![CDATA["+post.Teaser+"]]>")
         @Tag.Custom("guid", post.EntityGuid.ToString()).Attr("isPermaLink", false)
         @Tag.Custom("pubDate", post.PublicationMoment.ToString("R"))
       </item>

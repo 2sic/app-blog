@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.04.01" ExportDate="2020-08-12T11:56:45.642065+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.07.03" ExportDate="2020-11-04T12:54:51.5395495+01:00">
   <Header>
     <App Guid="3a5ad280-e261-4a49-abec-00ad1429f70e" />
-    <Language Default="en-US" />
+    <Language Default="en-us" />
     <Dimensions>
       <Dimension DimensionID="97" Name="English (United States)" SystemKey="" ExternalKey="en-US" Active="true" />
       <Dimension DimensionID="98" Name="Deutsch (Deutschland)" SystemKey="" ExternalKey="de-DE" Active="true" />
@@ -1876,7 +1876,7 @@
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="04.01.00" Type="String">
+      <Value Key="Version" Value="04.02.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -3365,7 +3365,7 @@
       <Value Key="MetaTitle" Value="Demo - Meta Title" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2020-05-04T00:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2020-11-03T00:00:00" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="Demo - Sharing Description" Type="String">
@@ -3404,7 +3404,7 @@
       <Value Key="MetaTitle" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2019-06-26T12:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2020-10-03T12:00:00" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="" Type="String">
@@ -3613,6 +3613,10 @@
     <Folder Id="7712" RelativePath="adam/Blog4/" />
     <Folder Id="7815" RelativePath="adam/Blog4/AdttIZyPjUuxt0T3NFl0mQ/" />
     <Folder Id="7809" RelativePath="adam/Blog4/eNNVoICvLUGKZM7FWXYyYA/" />
+    <Folder Id="10317" RelativePath="adam/Blog4/HAp2zIKQzEqZm9LVG4_h8g/" />
+    <Folder Id="10318" RelativePath="adam/Blog4/HAp2zIKQzEqZm9LVG4_h8g/Image/" />
     <Folder Id="7811" RelativePath="adam/Blog4/rkOvVN4ESU-rXYp01WEEJQ/" />
+    <Folder Id="10289" RelativePath="adam/Blog4/YXVGoWmRjUShjcoQl0cTMw/" />
+    <Folder Id="10290" RelativePath="adam/Blog4/YXVGoWmRjUShjcoQl0cTMw/Image/" />
   </PortalFolders>
 </SexyContent>
