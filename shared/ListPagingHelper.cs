@@ -1,6 +1,9 @@
 using ToSic.Razor.Blade;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
-public class ListHelper: Custom.Hybrid.Code12 {
+public class ListPagingHelper: Custom.Hybrid.Code12 {
   /**
   * Generate a paging-link, preserving current filter parameters
   */
