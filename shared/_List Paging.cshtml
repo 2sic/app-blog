@@ -1,7 +1,8 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @{
   var pages = AsList(Data["Paging"]).FirstOrDefault();
   int pageNumber = (int)pages.PageNumber;
+  var listPagingHelper = CreateInstance("ListPagingHelper.cs");
 }
 
 @if(pages.PageCount > 1) {
@@ -9,7 +10,7 @@
     <ul class="pagination justify-content-center">
       @* Show previous button *@
       <li class='page-item @(pageNumber == 1 ? "disabled" : "")'>
-        <a class="page-link" href='@Code.LinkToPageNumber(pageNumber - 1)'>
+        <a class="page-link" href='@listPagingHelper.LinkToPageNumber(pageNumber - 1)'>
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -17,13 +18,13 @@
       @* Show button for every page *@
       @for (int i = 1; i <= pages.PageCount; i++) {
         <li class='page-item @(i == pageNumber ? "active" : "")'>
-          <a class="page-link" href='@Code.LinkToPageNumber(i)'>@i</a>
+          <a class="page-link" href='@listPagingHelper.LinkToPageNumber(i)'>@i</a>
         </li>
       }
 
       @* Show next button *@
       <li class='page-item @(pageNumber == pages.PageCount ? "disabled" : "")'>
-        <a class="page-link" href='@Code.LinkToPageNumber(pageNumber + 1)'>
+        <a class="page-link" href='@listPagingHelper.LinkToPageNumber(pageNumber + 1)'>
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

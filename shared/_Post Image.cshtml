@@ -1,9 +1,9 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
-  var post = PageData["Post"];
-  var imageResizerParams = "?w=" + PageData["Width"]
-    + "&h=" + PageData["Height"]
+  var post = DynamicModel.Post;
+  var imageResizerParams = "?w=" + DynamicModel.Width
+    + "&h=" + DynamicModel.Height
     + "&mode=crop&scale=both&quality=90"
     + "&anchor=" + post.CropAnchor;
 }

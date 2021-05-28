@@ -1,24 +1,26 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
 @{
   var post = AsList(Data).FirstOrDefault();
+  var detailsHelpers = CreateInstance("DetailsHelper.cs");
+
   @* Show post not found notification and stop processing *@
   if(post == null) {
     <h1>@App.Resources.LabelPostNotExists</h1>
     <p>@App.Resources.LabelPostNotExistsText</p>
-    @Code.BackToListButton()
-    @Code.SetNotFoundHttpHeaders()
+    @detailsHelpers.BackToListButton()
+    @detailsHelpers.SetNotFoundHttpHeaders()
     return;
   }
 
   var author = post.Author;
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
-	if (HttpContext.Current.Handler is Page) {
-		Code.AddMetaTags(post);
-	}
+	@* if (HttpContext.Current.Handler is Page) {
+		detailsHelpers.AddMetaTags(post);
+	} *@
 }
 
 <section class="app-blog">
@@ -27,10 +29,10 @@
       <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
         <div class="header">
           @* Image of the post *@
-          @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+          @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
 
           @* Information about the post like title, author, categories *@
-          @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})
+          @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})
         </div>
 
         @* Body of the post - will also create inner content blocks / apps *@
@@ -75,20 +77,20 @@
           }
           <div class='article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
             @if (previousPost != null) {
-              @Code.PostMicroPreview(previousPost, "previous")
+              @detailsHelpers.PostMicroPreview(previousPost, "previous")
             }
             @if (nextPost != null) {
-              @Code.PostMicroPreview(nextPost, "next")
+              @detailsHelpers.PostMicroPreview(nextPost, "next")
             }
           </div>
           <hr />
 
           @* Show "Back to list" button *@
-          @Code.BackToListButton()
+          @detailsHelpers.BackToListButton()
 
           @* Mobile Category filter *@
           <aside class="d-xs-block d-lg-none">
-            @RenderPage("shared/_Category Filter.cshtml", new { MobileView = true})
+            @Html.Partial("shared/_Category Filter.cshtml", new { MobileView = true})
           </aside>
         </div>
       </article>
@@ -97,10 +99,10 @@
     @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
-        @RenderPage("shared/_Category Filter.cshtml", new { EnableSocialSharing = true})
+        @Html.Partial("shared/_Category Filter.cshtml", new { EnableSocialSharing = true})
       </aside>
     </div>
   </div>
 </section>
 
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
+@Html.Partial("shared/_Assets.cshtml", new {scripts = true})

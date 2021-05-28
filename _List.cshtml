@@ -1,10 +1,11 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 
 @{
-  var helpers = CreateInstance("shared/_Helpers.cshtml");
+  var helpers = CreateInstance("shared/Helpers.cs");
+  var listHelpers = CreateInstance("ListHelper.cs");
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
-  var headerInfo = Code.GetListHeader(filteredCategory);
+  var headerInfo = listHelpers.GetListHeader(filteredCategory);
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
@@ -22,7 +23,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       @* Mobile Category filter *@
       <aside class="d-xs-block d-lg-none">
-        @RenderPage("shared/_Category Filter.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
+        @Html.Partial("shared/_Category Filter.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
       </aside>
 
       @* List the posts *@
@@ -37,10 +38,10 @@
 
             <div class="header">
               @* Image of the post *@
-              @RenderPage("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+              @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
 
               @* Information about the post like title, author, categories *@
-              @RenderPage("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
+              @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
             </div>
 
             <div class="content">
@@ -52,18 +53,18 @@
       }
 
       @* Show pagination if configured *@
-      @if (Content.ShowPagination) {
-        @RenderPage("shared/_List Paging.cshtml")
+      @if (Content.ShowPagination != null && Content.ShowPagination) {
+        @Html.Partial("shared/_List Paging.cshtml")
       }
     </div>
 
     @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
-        @RenderPage("shared/_Category Filter.cshtml", new { FilteredCategory = filteredCategory })
+        @Html.Partial("shared/_Category Filter.cshtml", new { FilteredCategory = filteredCategory })
       </aside>
     </div>
   </div>
 </section>
 
-@RenderPage("shared/_Assets.cshtml", new {scripts = true})
+@Html.Partial("shared/_Assets.cshtml", new {scripts = true})

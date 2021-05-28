@@ -1,10 +1,10 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
 @{
-  var filteredCategory = PageData["FilteredCategory"];
-  var wrapperId = PageData["MobileView"] == true ? "" : "sidebar";
+  var filteredCategory = DynamicModel.FilteredCategory;
+  var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
 
   @* Get all Blog Posts from the App, to ignore filters *@
   var postsForCounting = Edit.Enabled
@@ -18,7 +18,7 @@
       <h5 class="pb-2 d-flex justify-content-between">
         @App.Resources.Categories
         <a class="badge badge-pill bg-primary rss-button"
-          href='@Tags.SafeUrl(Link.To(parameters: "mid/" + Dnn.Module.ModuleID + "/feed/true/standalone/true"))'
+          href='@Tags.SafeUrl(Link.To(parameters: "mid/" + CmsContext.Module.Id + "/feed/true/standalone/true"))'
           target="_blank">
           <i class="fas fa-rss align-self-center text-white"></i>
         </a>
@@ -48,7 +48,7 @@
         }
       </ul>
     </nav>
-    @if(PageData["EnableSocialSharing"] == true) {
+    @if(DynamicModel.EnableSocialSharing == true) {
       <script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script>
       <div class="addthis_inline_share_toolbox"></div>
     }

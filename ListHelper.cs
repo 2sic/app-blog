@@ -1,8 +1,11 @@
-@inherits ToSic.Sxc.Dnn.RazorComponentCode
-@using ToSic.Sxc.Search;
-@using ToSic.Eav.Run;
+using ToSic.Sxc.Search;
+using ToSic.Eav.Run;
+using ToSic.Razor.Blade;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
-@functions {
+public class ListHelper: Custom.Hybrid.Code12 {
   /**
   * Returns Title and optional description to show in the header of the list
   */
@@ -28,20 +31,20 @@
   /// <summary>
   /// Populate the search - ensure that each entity has an own url/page
   /// </summary>
-  public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-    foreach (var si in searchInfos["AllPosts"]) {
-      var post = AsDynamic(si.Entity);
-      si.QueryString = "details=" + post.UrlKey;
-    }
+  // public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
+  //   foreach (var si in searchInfos["AllPosts"]) {
+  //     var post = AsDynamic(si.Entity);
+  //     si.QueryString = "details=" + post.UrlKey;
+  //   }
 
-    // Remove not needed streams
-    var keys = searchInfos.Keys.ToList();
-    foreach(var key in keys) {
-      if (key != "AllPosts") {
-        searchInfos.Remove(key);
-      }
-    }
-  }
+  //   // Remove not needed streams
+  //   var keys = searchInfos.Keys.ToList();
+  //   foreach(var key in keys) {
+  //     if (key != "AllPosts") {
+  //       searchInfos.Remove(key);
+  //     }
+  //   }
+  // }
 
 
   /// Typed result set for GetListHeader

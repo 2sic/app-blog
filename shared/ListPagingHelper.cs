@@ -1,7 +1,6 @@
-@inherits ToSic.Sxc.Dnn.RazorComponentCode
-@using ToSic.Razor.Blade;
+using ToSic.Razor.Blade;
 
-@functions {
+public class ListHelper: Custom.Hybrid.Code12 {
   /**
   * Generate a paging-link, preserving current filter parameters
   */
@@ -20,6 +19,7 @@
       ? "author=" + filteredAuthor.FullName + "&"
       : "";
 
-    return Tags.SafeUrl(Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber));
+    // return Tags.SafeUrl(Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber));
+    return Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber);
   }
 }
