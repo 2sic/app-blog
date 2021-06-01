@@ -18,9 +18,9 @@
   var author = post.Author;
 
 	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
-	@* if (HttpContext.Current.Handler is Page) {
+	if (HttpContext.Current.Handler is Page) {
 		detailsHelpers.AddMetaTags(post);
-	} *@
+	}
 }
 
 <section class="app-blog">

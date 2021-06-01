@@ -1,3 +1,4 @@
+using System;
 using ToSic.Razor.Blade;
 
 public class DetailsHelper: Custom.Hybrid.Code12 {
@@ -49,30 +50,41 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
   }
 
   public void AddMetaTags(dynamic post) {
+    // variable which will receive a different base path based on Oqtane or Dnn
+    string metaImageUrl = "";
+    
     #if !NETCOREAPP
-      var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
-      var metaImageUrl = Text.Has(post.Image)
-        ? Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower() + "?w=1200&h=630&mode=crop&scale=both&quality=70")
-        : "";
-
-      HtmlPage.Title = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title; // Adjust page title
-      HtmlPage.AddMeta("description", Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser)); // Add Meta tag
-
-      // Add open graph meta information
-      HtmlPage.AddOpenGraph("og:type", "article");
-      HtmlPage.AddOpenGraph("og:title", post.Title);
-      HtmlPage.AddOpenGraph("og:site_name", App.Settings.Title);
-      HtmlPage.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.UrlKey));
-      HtmlPage.AddOpenGraph("og:description", sharingDescription);
-      HtmlPage.AddOpenGraph("og:image", metaImageUrl);
-      HtmlPage.AddOpenGraph("og:image:height", "1200");
-      HtmlPage.AddOpenGraph("og:image:width", "630");
-
-      // Add twitter meta information
-      HtmlPage.AddMeta("twitter:card", "summary_large_image");
-      HtmlPage.AddMeta("twitter:title", post.Title);
-      HtmlPage.AddMeta("twitter:description", sharingDescription);
-      HtmlPage.AddMeta("twitter:image", metaImageUrl);
+      var Request = System.Web.HttpContext.Current.Request;
+      if(Text.Has(post.Image)) metaImageUrl = Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
     #endif
+
+    if(Text.Has(metaImageUrl))
+      metaImageUrl += "?w=1200&h=630&mode=crop&scale=both&quality=70";
+
+    var page = GetService<ToSic.Sxc.Web.IPageService>();
+    var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
+
+    // Try to replace the term PostTitle in the page title with the post title, otherwise prefix the existing title
+    page.SetTitle(Text.First(post.MetaTitle, post.Title) + " ", "PostTitle");
+    // OLD and wrong: FYI 2ro - HtmlPage.Title = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title; // Adjust page title
+
+    page.SetDescription(Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser));
+    // OLD and wrong: FYI 2ro - HtmlPage.AddMeta("description", Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser)); // Add Meta tag
+
+    // Add open graph meta information
+    page.AddOpenGraph("og:type", "article");
+    page.AddOpenGraph("og:title", post.Title);
+    page.AddOpenGraph("og:site_name", App.Settings.Title);
+    page.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.UrlKey));
+    page.AddOpenGraph("og:description", sharingDescription);
+    page.AddOpenGraph("og:image", metaImageUrl);
+    page.AddOpenGraph("og:image:height", "1200");
+    page.AddOpenGraph("og:image:width", "630");
+
+    // Add twitter meta information
+    page.AddMeta("twitter:card", "summary_large_image");
+    page.AddMeta("twitter:title", post.Title);
+    page.AddMeta("twitter:description", sharingDescription);
+    page.AddMeta("twitter:image", metaImageUrl);
   }
 }
