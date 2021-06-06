@@ -4,9 +4,8 @@ using ToSic.Razor.Blade;
 public class DetailsHelper: Custom.Hybrid.Code12 {
 
   public void SetNotFoundHttpHeaders() {
-    // TODO:
-    // Response.StatusCode = 404;
-    // Response.TrySkipIisCustomErrors = true;
+    var page = GetService<ToSic.Sxc.Web.IPageService>();
+    page.SetHttpStatus(404, "Error: Blog Post not Found.");
   }
 
   public dynamic PostMicroPreview(dynamic post, string context) {
