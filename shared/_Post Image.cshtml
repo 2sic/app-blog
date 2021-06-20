@@ -18,6 +18,6 @@
 @* Show info to admin when the post will publish *@
 @if(Edit.Enabled && post.PublicationMoment.CompareTo(DateTime.Now) > 0) {
   <div class='alert alert-warning @(Text.Has(post.Image) ? "mb-0" : "mb-n3")' role="alert">
-    @(App.Resources.LabelAdminPostPublishInfo + " " + post.PublicationMoment.Date.ToString("d") + " " + post.PublicationMoment.TimeOfDay)
+    @(Resources.LabelAdminPostPublishInfo + " " + post.PublicationMoment.Date.ToString("d") + " " + post.PublicationMoment.TimeOfDay)
   </div>
 }

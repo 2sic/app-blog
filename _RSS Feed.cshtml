@@ -3,7 +3,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 @{
-  var detailsPageTabId = Text.Has(App.Settings.DetailsPage)
+  var detailsPageTabId = Text.Has(Settings.DetailsPage)
     ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
     : Dnn.Tab.TabID;
 }
@@ -11,9 +11,9 @@
 @if(Request.QueryString["standalone"] == "true") {
 <rss version="2.0">
   <channel>
-    @Tag.Custom("title", App.Settings.Title)
+    @Tag.Custom("title", Settings.Title)
     @Tag.Custom("link", Link.To())
-    @Tag.Custom("description", App.Settings.RssDescription)
+    @Tag.Custom("description", Settings.RssDescription)
     @foreach(var post in AsList(Data["AllPosts"])) {
       <item>
         @Tag.Custom("title", "<![CDATA["+post.EntityTitle+"]]>")

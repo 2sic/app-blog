@@ -16,7 +16,7 @@
   <div class="sidebar__inner">
     <nav class="co-category-list-container mb-3">
       <h5 class="pb-2 d-flex justify-content-between">
-        @App.Resources.Categories
+        @Resources.Categories
         <a class="badge badge-pill bg-primary rss-button"
           href='@Tags.SafeUrl(Link.To(parameters: "mid/" + CmsContext.Module.Id + "/feed/true/standalone/true"))'
           target="_blank">
@@ -26,7 +26,7 @@
       <ul>
         <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
           <a href='@Tags.SafeUrl(Link.To())'>
-            @App.Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@postsForCounting.Count()</span>
+            @Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@postsForCounting.Count()</span>
           </a>
         </li>
         @* Categories will be appended to here *@
@@ -49,7 +49,7 @@
       </ul>
     </nav>
     @if(DynamicModel.EnableSocialSharing == true) {
-      <script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script>
+      <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
       <div class="addthis_inline_share_toolbox"></div>
     }
   </div>

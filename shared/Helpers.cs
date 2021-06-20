@@ -6,7 +6,7 @@ public class Helpers: Custom.Hybrid.Code12
   * Returns a safe url to a post details page
   */
   public dynamic LinkToDetailsPage(dynamic post) {
-    var detailsPageTabId = Text.Has(App.Settings.DetailsPage)
+    var detailsPageTabId = Text.Has(Settings.DetailsPage)
       ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
       : CmsContext.Page.Id;
 

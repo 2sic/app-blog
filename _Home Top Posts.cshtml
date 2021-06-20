@@ -6,8 +6,8 @@
 
 @* Show details page warning *@
 @if(Edit.Enabled) {
-  if(!Text.Has(App.Settings.DetailsPage)) {
-    <div class="alert alert-danger" role="alert">@Html.Raw(@App.Resources.LabelAdminDetailPageWarning)</div>
+  if(!Text.Has(Settings.DetailsPage)) {
+    <div class="alert alert-danger" role="alert">@Html.Raw(@Resources.LabelAdminDetailPageWarning)</div>
   }
 }
 
@@ -17,7 +17,7 @@
   @* List the posts in 3 columns *@
   <div class="row card-deck">
     @foreach (var post in AsList(Data["Posts"])) {
-      var imageUrl = Text.Has(post.Image) ? post.Image : App.Resources.PlaceholderMissingImage;
+      var imageUrl = Text.Has(post.Image) ? post.Image : Resources.PlaceholderMissingImage;
 
       <article class="list-item col-12 col-md-6 col-lg-4" @Edit.TagToolbar(post, toolbar: new [] {
         "-layout",
@@ -35,7 +35,7 @@
             <p class="card-text text">@Html.Raw(Tags.Strip(post.Teaser))</p>
           </div>
           <div class="card-footer">
-            <span class="readmore btn btn-outline-primary float-right">@App.Resources.ReadMore</span>
+            <span class="readmore btn btn-outline-primary float-right">@Resources.ReadMore</span>
           </div>
         </div>
       </article>

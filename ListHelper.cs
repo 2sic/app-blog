@@ -16,12 +16,12 @@ public class ListHelper: Custom.Hybrid.Code12 {
     var description = "";
 
     if (filteredCategory != null) {
-      title = App.Resources.Category + " " + filteredCategory.Name;
+      title = Resources.Category + " " + filteredCategory.Name;
       description = filteredCategory.Description;
     } else if (filteredTag != null) {
-      title = App.Resources.Filter + " " + filteredTag.Name;
+      title = Resources.Filter + " " + filteredTag.Name;
     } else if (filteredAuthor != null) {
-      title = App.Resources.PostsBy + " " + filteredAuthor.FullName;
+      title = Resources.PostsBy + " " + filteredAuthor.FullName;
       description = filteredAuthor.ShortBio;
     }
 

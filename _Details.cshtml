@@ -8,8 +8,8 @@
 
   @* Show post not found notification and stop processing *@
   if(post == null) {
-    <h1>@App.Resources.LabelPostNotExists</h1>
-    <p>@App.Resources.LabelPostNotExistsText</p>
+    <h1>@Resources.LabelPostNotExists</h1>
+    <p>@Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
     detailsHelpers.SetNotFoundHttpHeaders();
     return;
@@ -45,7 +45,7 @@
           @* List tags of post *@
           @if((post.Tags as Dynlist).Any()) {
             <div class="tags">
-              <strong>@(post.Tags.Count > 1 ? @App.Resources.Tags : @App.Resources.Tag): </strong>
+              <strong>@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
               @foreach (var tag in post.Tags) {
                 <a class="btn btn-sm btn-light" href='@Tags.SafeUrl(Link.To(parameters: "tag=" + tag.Tag))' title="@tag.Name">@tag.Name</a>
               }
@@ -53,7 +53,7 @@
           }
 
           @* render social sharing here - to update the link, change it in the App settings *@
-          <script type="text/javascript" src="@App.Settings.SocialAddThisJS" ></script>
+          <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
           <div class="addthis_inline_share_toolbox d-sm-block d-md-none"></div>
           <hr />
 
@@ -66,7 +66,7 @@
               @Html.Raw(author.ShortBio)
             </div>
             <div>
-              @App.Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
+              @Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
             </div>
           </div>
           <hr />
