@@ -10,7 +10,7 @@
 @Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Wrap(Tags.Nl2Br(post.Title))
 
 <div class="details">
-  @* Link to authors post *@
+  @* Author Info & Link to Authors Posts *@
   <div class="person">
     <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>
       @if(Text.Has(author.Image)) {

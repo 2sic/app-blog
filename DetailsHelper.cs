@@ -14,38 +14,24 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
       ? Resources.PreviousPost
       : Resources.NextPost;
 
-    // <div class="@context">
-    //   <a href="@helpers.LinkToDetailsPage(post)">
-    //     @if (Text.Has(post.Image)) {
-    //       <img src='@Tags.SafeUrl(post.Image + "?w=80&h=80&mode=crop&scale=both&quality=70")' alt="@post.Title" />
-    //     }
-    //     <span class="app-blog-previouslink-title">
-    //       <strong>@title:</strong>@post.Title
-    //     </span>
-    //   </a>
-    // </div>
-
-    return Tag.Div(
-      Tag.A(
+    return Tag.Div().Class(context).Wrap(
+      Tag.A().Href(helpers.LinkToDetailsPage(post)).Wrap(
         (Text.Has(post.Image) 
-          ? Tag.Img().Attr("src", post.Image + "?w=80&h=80&mode=crop&scale=both&quality=70").Alt(post.Title)
-          : "") + "" +        
+          ? Tag.Img().Src(post.Image + "?w=80&h=80&mode=crop&scale=both&quality=70").Alt(post.Title)
+          : ""),
         Tag.Span(
           Tag.Strong(title) + " " + post.Title
         ).Class("app-blog-previouslink-title")
-      ).Attr("href", helpers.LinkToDetailsPage(post))
-    ).Class(context);
+      )
+    );
   }
 
   public dynamic BackToListButton() {
-    // <div class="backlink">
-    //   <a class="btn btn-outline-primary" href="@Tags.SafeUrl(Link.To())">@Resources.BackToHome</a>
-    // </div>
-    return Tag.Div(
+    return Tag.Div().Class("backlink").Wrap(
       Tag.A(Resources.BackToHome)
         .Class("btn btn-outline-primary")
-        .Attr("href", Link.To()))
-      .Class("backlink");
+        .Href(Link.To())
+    );
   }
 
   public void AddMetaTags(dynamic post) {
@@ -65,10 +51,8 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
 
     // Try to replace the term PostTitle in the page title with the post title, otherwise prefix the existing title
     page.SetTitle(Text.First(post.MetaTitle, post.Title) + " ", "PostTitle");
-    // OLD and wrong: FYI 2ro - HtmlPage.Title = Text.Has(post.MetaTitle) ? post.MetaTitle : post.Title; // Adjust page title
 
     page.SetDescription(Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser));
-    // OLD and wrong: FYI 2ro - HtmlPage.AddMeta("description", Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser)); // Add Meta tag
 
     // Add open graph meta information
     page.AddOpenGraph("og:type", "article");

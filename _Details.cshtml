@@ -11,17 +11,15 @@
     <h1>@Resources.LabelPostNotExists</h1>
     <p>@Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
-    detailsHelpers.SetNotFoundHttpHeaders();
+    // Set 404 status if the post was not found
+    GetService<ToSic.Sxc.Web.IPageService>().SetHttpStatus(404, "Error: Blog Post not Found.");
     return;
   }
 
   var author = post.Author;
 
-	// only add meta-tags if it's rendered as page - not when the search-index is accessing the template
-  // WIP: in future the page will never be used for search again
-	// if (HttpContext.Current.Handler is Page) {
-		detailsHelpers.AddMetaTags(post);
-	// }
+	// Add meta-tags 
+  detailsHelpers.AddMetaTags(post);
 }
 
 <section class="app-blog">

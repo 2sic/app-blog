@@ -42,7 +42,6 @@
     var tagParam = filteredTag != null ? "tag=" + filteredTag.Tag + "&" : "";
     var authorParam = filteredAuthor != null ? "author=" + filteredAuthor.FullName + "&" : "";
 
-    // return Tags.SafeUrl(Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber));
     return Link.To(parameters: categoryParam + tagParam + authorParam + "page=" + pageNumber);
   }
 }
