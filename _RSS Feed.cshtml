@@ -5,7 +5,7 @@
 @{
   var detailsPageTabId = Text.Has(Settings.DetailsPage)
     ? int.Parse((AsEntity(App.Settings).GetBestValue("DetailsPage")).Split(':')[1])
-    : Dnn.Tab.TabID;
+    : CmsContext.Page.Id;
 }
 
 @if(Request.QueryString["standalone"] == "true") {
