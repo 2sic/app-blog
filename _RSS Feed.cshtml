@@ -11,9 +11,9 @@
 @if(Request.QueryString["standalone"] == "true") {
 <rss version="2.0">
   <channel>
-    @Tag.Custom("title", Settings.Title)
+    @Tag.Custom("title", Resources.BlogTitle)
     @Tag.Custom("link", Link.To())
-    @Tag.Custom("description", Settings.RssDescription)
+    @Tag.Custom("description", Resources.RssDescription)
     @foreach(var post in AsList(Data["AllPosts"])) {
       <item>
         @Tag.Custom("title", "<![CDATA["+post.EntityTitle+"]]>")

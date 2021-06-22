@@ -40,7 +40,8 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     
     #if !NETCOREAPP
       var Request = System.Web.HttpContext.Current.Request;
-      if(Text.Has(post.Image)) metaImageUrl = Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
+      if(Text.Has(post.Image))
+        metaImageUrl = Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
     #endif
 
     if(Text.Has(metaImageUrl))
@@ -49,7 +50,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     var page = GetService<ToSic.Sxc.Web.IPageService>();
     var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
 
-    // Try to replace the term PostTitle in the page title with the post title, otherwise prefix the existing title
+    // Try to replace the term "PostTitle" in the page title with the post title, otherwise prefix the existing title
     page.SetTitle(Text.First(post.MetaTitle, post.Title) + " ", "PostTitle");
 
     page.SetDescription(Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser));
@@ -57,7 +58,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     // Add open graph meta information
     page.AddOpenGraph("og:type", "article");
     page.AddOpenGraph("og:title", post.Title);
-    page.AddOpenGraph("og:site_name", Settings.Title);
+    page.AddOpenGraph("og:site_name", Resources.BlogTitle);
     page.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.UrlKey));
     page.AddOpenGraph("og:description", sharingDescription);
     page.AddOpenGraph("og:image", metaImageUrl);

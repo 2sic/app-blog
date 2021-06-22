@@ -31,7 +31,7 @@
         </li>
         @* Categories will be appended to here *@
         @foreach (var cat in AsList(App.Data["Category"])) {
-          var catCount = postsForCounting.Where(p => (p.Categories as Dynlist).Any(postC => postC == cat)).Count();
+          var catCount = postsForCounting.Count(p => (p.Categories as Dynlist).Any(postC => postC == cat));
           if (catCount > 0) {
             var active = "";
             if(filteredCategory != null) {

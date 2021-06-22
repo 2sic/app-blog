@@ -2,9 +2,10 @@
 @using ToSic.Razor.Blade;
 @{
   var post = DynamicModel.Post;
-  var imageResizerParams = "?w=" + DynamicModel.Width
-    + "&h=" + DynamicModel.Height
-    + "&mode=crop&scale=both&quality=90"
+  var imgSettings = DynamicModel.Settings ?? Settings.Images.Blog;
+  var imageResizerParams = "?w=" + imgSettings.Width
+    + "&h=" + imgSettings.Height
+    + "&mode=crop&scale=both&quality=" + imgSettings.Quality
     + "&anchor=" + post.CropAnchor;
 }
 

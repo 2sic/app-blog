@@ -28,7 +28,7 @@
       <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
         <div class="header">
           @* Image of the post *@
-          @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+          @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630, Settings = Settings.Images.Blog })
 
           @* Information about the post like title, author, categories *@
           @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h1"})

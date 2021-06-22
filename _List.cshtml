@@ -6,6 +6,8 @@
   var listHelpers = CreateInstance("ListHelper.cs");
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
   var headerInfo = listHelpers.GetListHeader(filteredCategory);
+
+  // Settings.SetDebug(true);
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
@@ -38,7 +40,7 @@
 
             <div class="header">
               @* Image of the post *@
-              @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 1200, Height = 630 })
+              @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Settings = Settings.Images.Blog })
 
               @* Information about the post like title, author, categories *@
               @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
