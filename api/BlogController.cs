@@ -1,5 +1,11 @@
+// Add namespaces to enable security in Oqtane & Dnn despite the differences
+#if NETCOREAPP
+using Microsoft.AspNetCore.Authorization; // .net core [AllowAnonymous] & [Authorize]
+using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] etc.
+#else
 using System.Web.Http;		// this enables [HttpGet] and [AllowAnonymous]
 using DotNetNuke.Web.Api;	// this is to verify the AntiForgeryToken
+#endif
 using System.Xml;
 using System.IO;
 using ToSic.Razor.Blade;
@@ -16,10 +22,9 @@ public class BlogController : Custom.Hybrid.Api12
   [HttpGet]
   public dynamic Rss()
   {
-
-    var detailsPageTabId = Text.Has(Settings.DetailsPage)
-      ? int.Parse(Settings.DetailsPage.Split(':')[1])
-      : CmsContext.Page.Id;
+      var detailsPageTabId = Text.Has(Settings.DetailsPage)
+        ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
+        : CmsContext.Page.Id;
 
     var rssDoc = new XmlDocument();
     rssDoc.PreserveWhitespace = true;
@@ -32,6 +37,7 @@ public class BlogController : Custom.Hybrid.Api12
     var channel = rssDoc.CreateElement("channel");
     root.AppendChild(channel);
     AddTag(channel, "title", Resources.BlogTitle);
+    //AddTag(channel, "link", Link.To(api: "api/Blog/Rss"));
     AddTag(channel, "link", Link.To(pageId: detailsPageTabId));
     AddTag(channel, "description", Resources.RssDescription);
 
@@ -47,10 +53,16 @@ public class BlogController : Custom.Hybrid.Api12
       AddTag(itemNode, "pubDate", post.PublicationMoment.ToString("R"));
     }
 
-    var xmlStream = new MemoryStream();
-    rssDoc.Save(xmlStream);
+    //var xmlStream = new MemoryStream();
+    //rssDoc.Save(xmlStream);
 
-    return File(download: false, fileDownloadName: "rss.xml", contents: xmlStream);
+    ////var xmlWriter = XmlWriter.Create(xmlStream);
+    ////rssDoc.WriteTo(xmlWriter);
+    ////xmlWriter.Flush();
+
+    //xmlStream.Position = 0;
+
+    return File(download: false, fileDownloadName: "rss.xml", contents: rssDoc);
   }
 
   private XmlElement AddTag(XmlElement parent, string name, string value) {
