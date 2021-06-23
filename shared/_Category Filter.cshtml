@@ -19,7 +19,7 @@
         @Resources.Categories
         <a class="badge badge-pill bg-primary rss-button"
           xhref='@Tags.SafeUrl(Link.To(parameters: "mid/" + CmsContext.Module.Id + "/feed/true/standalone/true"))'
-          href='@Link.To(api: "api/blog/rss")'
+          href='@Link.To(api: "api/Blog/Rss", parameters: "PageId=" + CmsContext.Page.Id + "&ModuleId=" + CmsContext.Module.Id)'
           target="_blank">
           <i class="fas fa-rss align-self-center text-white"></i>
         </a>
