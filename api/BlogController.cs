@@ -13,18 +13,14 @@ using ToSic.Razor.Blade;
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class BlogController : Custom.Hybrid.Api12
 {
-
-  // TODO: SPM
-  // - Then modify the link to point to Link.To(api: ...)
-  // - test with an RSS reader
-  // - verify it works on Oqtane
-
   [HttpGet]
   public dynamic Rss()
   {
-      var detailsPageTabId = Text.Has(Settings.DetailsPage)
-        ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
-        : CmsContext.Page.Id;
+    var detailsPageTabId = Text.Has(Settings.DetailsPage)
+      ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
+      : CmsContext.Page.Id;
+
+    var moduleId = CmsContext.Module.Id;
 
     var rssDoc = new XmlDocument();
     rssDoc.PreserveWhitespace = true;
@@ -37,8 +33,7 @@ public class BlogController : Custom.Hybrid.Api12
     var channel = rssDoc.CreateElement("channel");
     root.AppendChild(channel);
     AddTag(channel, "title", Resources.BlogTitle);
-    //AddTag(channel, "link", Link.To(api: "api/Blog/Rss"));
-    AddTag(channel, "link", Link.To(pageId: detailsPageTabId));
+    AddTag(channel, "link", Link.To(api: "api/Blog/Rss", parameters: "PageId=" + detailsPageTabId + "&ModuleId=" + moduleId));
     AddTag(channel, "description", Resources.RssDescription);
 
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
