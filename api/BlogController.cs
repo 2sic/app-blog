@@ -18,7 +18,7 @@ public class BlogController : Custom.Hybrid.Api12
   {
     var detailsPageTabId = Text.Has(Settings.DetailsPage)
       ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
-      : CmsContext.Page.Id;
+      : 0;
 
     var moduleId = CmsContext.Module.Id;
 
@@ -33,7 +33,8 @@ public class BlogController : Custom.Hybrid.Api12
     var channel = rssDoc.CreateElement("channel");
     root.AppendChild(channel);
     AddTag(channel, "title", Resources.BlogTitle);
-    AddTag(channel, "link", Link.To(api: "api/Blog/Rss", parameters: "PageId=" + detailsPageTabId + "&ModuleId=" + moduleId));
+    AddTag(channel, "rss-link", Link.To(api: "api/Blog/Rss"));
+    AddTag(channel, "link", Link.To(pageId: detailsPageTabId));
     AddTag(channel, "description", Resources.RssDescription);
 
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
