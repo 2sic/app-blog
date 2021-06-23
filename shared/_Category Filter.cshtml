@@ -6,6 +6,8 @@
   var filteredCategory = DynamicModel.FilteredCategory;
   var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
 
+
+
   @* Get all Blog Posts from the App, to ignore filters *@
   var postsForCounting = Edit.Enabled
     ? AsList(App.Data["BlogPost"])
@@ -18,8 +20,7 @@
       <h5 class="pb-2 d-flex justify-content-between">
         @Resources.Categories
         <a class="badge badge-pill bg-primary rss-button"
-          xhref='@Tags.SafeUrl(Link.To(parameters: "mid/" + CmsContext.Module.Id + "/feed/true/standalone/true"))'
-          href='@Link.To(api: "api/Blog/Rss")'
+          href='@Link.To(api: "api/Blog/Rss", parameters: filteredCategory == null ? "" : "category=" + filteredCategory.Key)'
           target="_blank">
           <i class="fas fa-rss align-self-center text-white"></i>
         </a>

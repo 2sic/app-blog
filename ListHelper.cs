@@ -28,27 +28,9 @@ public class ListHelper: Custom.Hybrid.Code12 {
     return new HeaderInfo { Title = title , Description = description };
   }
 
-  /// <summary>
-  /// Populate the search - ensure that each entity has an own url/page
-  /// </summary>
-  // public override void CustomizeSearch(Dictionary<string, List<ISearchItem>> searchInfos, IContainer moduleInfo, DateTime beginDate) {
-  //   foreach (var si in searchInfos["AllPosts"]) {
-  //     var post = AsDynamic(si.Entity);
-  //     si.QueryString = "details=" + post.UrlKey;
-  //   }
-
-  //   // Remove not needed streams
-  //   var keys = searchInfos.Keys.ToList();
-  //   foreach(var key in keys) {
-  //     if (key != "AllPosts") {
-  //       searchInfos.Remove(key);
-  //     }
-  //   }
-  // }
-
-
   /// Typed result set for GetListHeader
   public class HeaderInfo {
-    public string Title, Description;
+    public string Title;
+    public string Description;
   }
 }
