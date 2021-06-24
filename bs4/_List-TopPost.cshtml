@@ -1,7 +1,7 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
-  var helpers = CreateInstance("shared/Helpers.cs");
+  var helpers = CreateInstance("Links.cs");
 }
 
 @* Show details page warning *@
@@ -28,7 +28,7 @@
           @* <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a> *@
 
           @* Image of the post *@
-          @Html.Partial("shared/_Part Main Image.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+          @Html.Partial("_Part Main Image.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">@post.Title</h5>
@@ -44,8 +44,8 @@
 
   @* Show pagination if configured *@
   @if (Content.ShowPagination != null && Content.ShowPagination) {
-    @Html.Partial("shared/_Part List Paging.cshtml")
+    @Html.Partial("_Part List Paging.cshtml")
   }
 </section>
 
-@Html.Partial("shared/_Part Assets.cshtml")
+@Html.Partial("_Part Assets.cshtml")

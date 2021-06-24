@@ -9,7 +9,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
   }
 
   public dynamic PostMicroPreview(dynamic post, string context) {
-    var helpers = CreateInstance("shared/Helpers.cs");
+    var helpers = CreateInstance("Links.cs");
     var title = context == "previous"
       ? Resources.PreviousPost
       : Resources.NextPost;

@@ -1,6 +1,6 @@
 using ToSic.Razor.Blade;
 
-public class Helpers: Custom.Hybrid.Code12
+public class Links : Custom.Hybrid.Code12
 {
   // Returns a safe url to a post details page
   public dynamic LinkToDetailsPage(dynamic post) {
