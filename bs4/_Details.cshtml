@@ -59,7 +59,7 @@
           <div class="authordetails">
             <div>
               @if(Text.Has(author.Image)) {
-                <img src='@Link.Image(author.Image, width: 120, height: 120, resizeMode: "crop", quality: 70)' alt="@author.FullName" />
+                <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" />
               }
               @Html.Raw(author.ShortBio)
             </div>
