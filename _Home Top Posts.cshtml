@@ -28,7 +28,7 @@
           @* <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a> *@
 
           @* Image of the post *@
-          @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Width = 800, Height = 480 })
+          @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">@post.Title</h5>

@@ -40,7 +40,7 @@
 
             <div class="header">
               @* Image of the post *@
-              @Html.Partial("shared/_Post Image.cshtml", new { Post = post, Settings = Settings.Images.Blog })
+              @Html.Partial("shared/_Post Image.cshtml", new { Post = post })
 
               @* Information about the post like title, author, categories *@
               @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})

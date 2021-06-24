@@ -3,16 +3,13 @@
 @{
   var post = DynamicModel.Post;
   var imgSettings = DynamicModel.Settings ?? Settings.Images.Blog;
-  var imageResizerParams = "?w=" + imgSettings.Width
-    + "&h=" + imgSettings.Height
-    + "&mode=crop&scale=both&quality=" + imgSettings.Quality
-    + "&anchor=" + post.CropAnchor;
+  var blogImg = Link.Image(post.Image, imgSettings)+ "&anchor=" + post.CropAnchor;
 }
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
   <picture class="bg-primary mb-0">
-    <img class="img-fluid" src="@Tags.SafeUrl(post.Image + imageResizerParams)" alt="@post.Title" />
+    <img class="img-fluid" src="@blogImg" alt="@post.Title" />
   </picture>
 }
 

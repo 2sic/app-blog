@@ -17,7 +17,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(helpers.LinkToDetailsPage(post)).Wrap(
         (Text.Has(post.Image) 
-          ? Tag.Img().Src(post.Image + "?w=80&h=80&mode=crop&scale=both&quality=70").Alt(post.Title)
+          ? Tag.Img().Src(Link.Image(post.Image, Settings.Images.NextPost)).Alt(post.Title)
           : ""),
         Tag.Span(
           Tag.Strong(title) + " " + post.Title
@@ -45,7 +45,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     #endif
 
     if(Text.Has(metaImageUrl))
-      metaImageUrl += "?w=1200&h=630&mode=crop&scale=both&quality=70";
+      metaImageUrl = Link.Image(metaImageUrl, Settings.Images.Blog);
 
     var page = GetService<ToSic.Sxc.Web.IPageService>();
     var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
