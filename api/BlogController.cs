@@ -13,6 +13,7 @@ using ToSic.Razor.Blade;
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class BlogController : Custom.Hybrid.Api12
 {
+  public const string AtomNs = "http://www.w3.org/2005/Atom";
   [HttpGet]
   public dynamic Rss()
   {
@@ -26,16 +27,17 @@ public class BlogController : Custom.Hybrid.Api12
     rssDoc.PreserveWhitespace = true;
     rssDoc.LoadXml(
       "<?xml version='1.0' encoding='utf-8'?>"
-      + "<rss version='2.0'>"
+      + "<rss version='2.0' xmlns:atom='" + AtomNs + "'>"
       + "</rss>"
     );
     var root = rssDoc.DocumentElement;
     var channel = rssDoc.CreateElement("channel");
     root.AppendChild(channel);
     AddTag(channel, "title", Resources.BlogTitle);
-    AddTag(channel, "rss-link", Link.To(api: "api/Blog/Rss"));
     AddTag(channel, "link", Link.To(pageId: detailsPageTabId));
     AddTag(channel, "description", Resources.RssDescription);
+    var atom = AddNamespaceTag(channel, "atom", "link", AtomNs);
+    FillAtomLinkTag(atom);
 
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
       var itemNode = AddTag(channel, "item", null);
@@ -49,15 +51,6 @@ public class BlogController : Custom.Hybrid.Api12
       AddTag(itemNode, "pubDate", post.PublicationMoment.ToString("R"));
     }
 
-    //var xmlStream = new MemoryStream();
-    //rssDoc.Save(xmlStream);
-
-    ////var xmlWriter = XmlWriter.Create(xmlStream);
-    ////rssDoc.WriteTo(xmlWriter);
-    ////xmlWriter.Flush();
-
-    //xmlStream.Position = 0;
-
     return File(download: false, fileDownloadName: "rss.xml", contents: rssDoc);
   }
 
@@ -67,5 +60,23 @@ public class BlogController : Custom.Hybrid.Api12
     parent.AppendChild(node);
     return node;
   }
+  private XmlElement AddNamespaceTag(XmlElement parent, string name, string tagNs, string link) {
+    var node = parent.OwnerDocument.CreateElement(name, tagNs, link);
+    parent.AppendChild(node);
+    return node;
+  }
 
+  private XmlElement FillAtomLinkTag(XmlElement atom) {
+    var rssDoc = atom.OwnerDocument;
+    var atomRel = rssDoc.CreateAttribute("rel");
+    atomRel.Value = "self";
+    atom.Attributes.Append(atomRel);
+    var atomType = rssDoc.CreateAttribute("type");
+    atomType.Value = "application/rss+xml";
+    atom.Attributes.Append(atomType);
+    var atomHref = rssDoc.CreateAttribute("href");
+    atomHref.Value = Link.To(api: "api/Blog/Rss");
+    atom.Attributes.Append(atomHref);
+    return null;
+  }
 }
