@@ -30,6 +30,7 @@ Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/blog-app-v4
 ### V5 June 2021
 
 * New folder `Blog5` to allow side-by side install with previous versions
-* TODO: GUID RESET
+* Guid Reset to `6f8b157e-400a-4dcb-9769-b464b94a1471` to allow side-by-side install with previous version
 * Updated to 2sxc 12.03 features like using global settings, images etc.
 * Dropped Bootstrap3 support because of the many changes - if you need that, use the previous version 4
+* Updated Search-mechanisms to be mostly configuration and otherwise separate from Razor as is now v12 standard

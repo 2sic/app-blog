@@ -25,7 +25,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       @* Mobile Category filter *@
       <aside class="d-xs-block d-lg-none">
-        @Html.Partial("shared/_Category Filter.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
+        @Html.Partial("shared/_Part Categories.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
       </aside>
 
       @* List the posts *@
@@ -40,10 +40,10 @@
 
             <div class="header">
               @* Image of the post *@
-              @Html.Partial("shared/_Post Image.cshtml", new { Post = post })
+              @Html.Partial("shared/_Part Main Image.cshtml", new { Post = post })
 
               @* Information about the post like title, author, categories *@
-              @Html.Partial("shared/_Post Information.cshtml", new { Post = post, HeadingType = "h2"})
+              @Html.Partial("shared/_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h2"})
             </div>
 
             <div class="content">
@@ -56,17 +56,17 @@
 
       @* Show pagination if configured *@
       @if (Content.ShowPagination != null && Content.ShowPagination) {
-        @Html.Partial("shared/_List Paging.cshtml")
+        @Html.Partial("shared/_Part List Paging.cshtml")
       }
     </div>
 
     @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
-        @Html.Partial("shared/_Category Filter.cshtml", new { FilteredCategory = filteredCategory })
+        @Html.Partial("shared/_Part Categories.cshtml", new { FilteredCategory = filteredCategory })
       </aside>
     </div>
   </div>
 </section>
 
-@Html.Partial("shared/_Assets.cshtml", new {scripts = true})
+@Html.Partial("shared/_Part Assets.cshtml", new {scripts = true})
