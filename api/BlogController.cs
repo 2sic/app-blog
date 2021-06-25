@@ -31,8 +31,14 @@ public class BlogController : Custom.Hybrid.Api12
       + "</rss>"
     );
     var root = rssDoc.DocumentElement;
+    if(detailsPageTabId == 0) {
+      var warningTag = AddNamespaceTag(root, "warning", "warning", "warning");
+      warningTag.InnerText = "The links for the details cannot work yet, because the App isn't fully configured. You must set a details page.";
+    }
+
     var channel = rssDoc.CreateElement("channel");
     root.AppendChild(channel);
+
     AddTag(channel, "title", Resources.BlogTitle);
     AddTag(channel, "link", Link.To(pageId: detailsPageTabId));
     AddTag(channel, "description", Resources.RssDescription);
