@@ -19,7 +19,7 @@ public class BlogController : Custom.Hybrid.Api12
   {
     var detailsPageTabId = Text.Has(Settings.DetailsPage)
       ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
-      : 0;
+      : 0; // when 'DetailsPage' app setting is missing.
 
     var moduleId = CmsContext.Module.Id;
 
@@ -42,7 +42,7 @@ public class BlogController : Custom.Hybrid.Api12
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
       var itemNode = AddTag(channel, "item", null);
       AddTag(itemNode, "title", post.EntityTitle);
-      AddTag(itemNode, "link", Link.To(pageId: detailsPageTabId, parameters: "details=" + post.UrlKey));
+      AddTag(itemNode, "link", (detailsPageTabId == 0) ? "Error: 'DetailsPage' app setting is missing." : Link.To(pageId: detailsPageTabId, parameters: "details=" + post.UrlKey));
       AddTag(itemNode, "description", post.Teaser);
       var guidNode = AddTag(itemNode, "guid", post.EntityGuid.ToString());
       var isPermaAttr = rssDoc.CreateAttribute("isPermaLink");
