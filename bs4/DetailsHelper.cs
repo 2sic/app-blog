@@ -1,12 +1,7 @@
 using System;
 using ToSic.Razor.Blade;
-
+// todo: make sure image link works in Oqtane
 public class DetailsHelper: Custom.Hybrid.Code12 {
-
-  public void SetNotFoundHttpHeaders() {
-    var page = GetService<ToSic.Sxc.Web.IPageService>();
-    page.SetHttpStatus(404, "Error: Blog Post not Found.");
-  }
 
   public dynamic PostMicroPreview(dynamic post, string context) {
     var helpers = CreateInstance("Links.cs");

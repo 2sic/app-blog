@@ -3,6 +3,8 @@
   // Pages come from the Query, in the "Paging" stream
   var pages = AsList(Data["Paging"]).FirstOrDefault();
   int pageNumber = (int)pages.PageNumber;
+
+  // todo: make sure the page doesn't have links to pages beyond PageCount
 }
 @if(pages.PageCount > 1) {
   <nav>

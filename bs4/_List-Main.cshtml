@@ -1,17 +1,18 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
-
 @{
+  // Prepare helpers
   var helpers = CreateInstance("Links.cs");
   var listHelpers = CreateInstance("ListHelper.cs");
-  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
-  var headerInfo = listHelpers.GetListHeader(filteredCategory);
 
-  // Settings.SetDebug(true);
+  // Get data to show from Query
+  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+  var headerInfo = listHelpers.GetListHeader();
+
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
-  @* Show title and if filtered, additional descriptions *@
+  @* Blog-title (not post) and if filtered, additional descriptions *@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       <div class="category-header">
@@ -38,11 +39,9 @@
           <div class="app-blog-readmorelink">
             <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
 
+            @* Header-block with Image / Author, Title, Categories *@
             <div class="header">
-              @* Image of the post *@
               @Html.Partial("_Part Main Image.cshtml", new { Post = post })
-
-              @* Information about the post like title, author, categories *@
               @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h2"})
             </div>
 

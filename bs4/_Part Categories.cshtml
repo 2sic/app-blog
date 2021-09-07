@@ -1,12 +1,10 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
-
 @{
+  // Params from calling Razor
   var filteredCategory = DynamicModel.FilteredCategory;
   var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
-
-
 
   @* Get all Blog Posts from the App, to ignore filters *@
   var postsForCounting = Edit.Enabled

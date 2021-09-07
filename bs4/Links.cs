@@ -1,5 +1,6 @@
 using ToSic.Razor.Blade;
 
+// todo: change to use Get
 public class Links : Custom.Hybrid.Code12
 {
   // Returns a safe url to a post details page

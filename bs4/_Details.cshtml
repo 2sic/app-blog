@@ -1,12 +1,12 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
-
 @{
+  // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
 
-  @* Show post not found notification and stop processing *@
+  @* Preflight: check if post found, else show notification and stop processing *@
   if(post == null) {
     <h1>@Resources.LabelPostNotExists</h1>
     <p>@Resources.LabelPostNotExistsText</p>
@@ -18,29 +18,31 @@
 
   var author = post.Author;
 
-	// Add meta-tags 
+	// Add open-graph meta-tags to page header
   detailsHelpers.AddMetaTags(post);
 }
 
+@* todo: probably merge these two divs*@
 <section class="app-blog">
   <div class="row">
+    @* todo: probably merge the div and the article tag? *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
-        <div class="header">
-          @* Image of the post *@
-          @Html.Partial("_Part Main Image.cshtml", new { Post = post })
 
-          @* Information about the post like title, author, categories *@
+        @* 1. Header containing the main image, title and date information *@
+        <div class="header">
+          @Html.Partial("_Part Main Image.cshtml", new { Post = post })
           @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h1"})
         </div>
 
-        @* Body of the post - will also create inner content blocks / apps *@
+        @* 2. Body of the post - will also create inner content blocks / apps *@
         <div class="content">
           @ToSic.Sxc.Blocks.Render.All(post, field: "InnerContent", merge: post.Content)
         </div>
 
+        @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
         <div class="footer">
-          @* List tags of post *@
+          @* 3.1 Tags of post *@
           @if((post.Tags as Dynlist).Any()) {
             <div class="tags">
               <strong>@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
@@ -50,13 +52,14 @@
             </div>
           }
 
-          @* render social sharing here - to update the link, change it in the App settings *@
+          @* 3.2 Social sharing - to update the link, change it in the App settings *@
           <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
           <div class="addthis_inline_share_toolbox d-sm-block d-md-none"></div>
           <hr />
 
-          @* show the author *@
+          @* 3.3 Author *@
           <div class="authordetails">
+            @* todo: probabbly too many divs*@
             <div>
               @if(Text.Has(author.Image)) {
                 <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" />
@@ -69,7 +72,7 @@
           </div>
           <hr />
 
-          @* Show preview of previous and next post *@
+          @* 3.4 Preview of previous and next post *@
           @{
             var previousPost = AsList(Data["Previous"]).FirstOrDefault();
             var nextPost = AsList(Data["Next"]).FirstOrDefault();
@@ -84,10 +87,10 @@
           </div>
           <hr />
 
-          @* Show "Back to list" button *@
+          @* 3.5 "Back to list" button *@
           @detailsHelpers.BackToListButton()
 
-          @* Mobile Category filter *@
+          @* 4a Mobile Category filter *@
           <aside class="d-xs-block d-lg-none">
             @Html.Partial("_Part Categories.cshtml", new { MobileView = true})
           </aside>
@@ -95,7 +98,7 @@
       </article>
     </div>
 
-    @* Desktop Category filter *@
+    @* 4b Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
         @Html.Partial("_Part Categories.cshtml", new { EnableSocialSharing = true})

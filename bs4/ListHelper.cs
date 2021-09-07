@@ -9,23 +9,27 @@ public class ListHelper: Custom.Hybrid.Code12 {
   /**
   * Returns Title and optional description to show in the header of the list
   */
-  public HeaderInfo GetListHeader(dynamic filteredCategory) {
+  public HeaderInfo GetListHeader() {
+    var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
     var filteredTag = AsList(Data["Tag"]).FirstOrDefault();
     var filteredAuthor = AsList(Data["Author"]).FirstOrDefault();
-    var title = Content.Title;
-    var description = "";
 
-    if (filteredCategory != null) {
-      title = Resources.Category + " " + filteredCategory.Name;
-      description = filteredCategory.Description;
-    } else if (filteredTag != null) {
-      title = Resources.Filter + " " + filteredTag.Name;
-    } else if (filteredAuthor != null) {
-      title = Resources.PostsBy + " " + filteredAuthor.FullName;
-      description = filteredAuthor.ShortBio;
-    }
+    if (filteredCategory != null) 
+      return new HeaderInfo() {
+        Title = Resources.Category + " " + filteredCategory.Name,
+        Description = filteredCategory.Description
+      };
+    if (filteredTag != null)
+      return new HeaderInfo() {
+        Title = Resources.Filter + " " + filteredTag.Name
+      };
+    if (filteredAuthor != null)
+      return new HeaderInfo() {
+        Title = Resources.PostsBy + " " + filteredAuthor.FullName,
+        Description = filteredAuthor.ShortBio
+      };
 
-    return new HeaderInfo { Title = title , Description = description };
+    return new HeaderInfo { Title = Content.Title , Description = "" };
   }
 
   /// Typed result set for GetListHeader
