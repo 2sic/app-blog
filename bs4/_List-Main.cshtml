@@ -3,22 +3,16 @@
 @{
   // Prepare helpers
   var helpers = CreateInstance("Links.cs");
-  var listHelpers = CreateInstance("ListHelper.cs");
 
   // Get data to show from Query
   var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
-  var headerInfo = listHelpers.GetListHeader();
-
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
   @* Blog-title (not post) and if filtered, additional descriptions *@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-      <div class="category-header">
-        <h1>@headerInfo.Title</h1>
-        @Html.Raw(headerInfo.Description)
-      </div>
+      @Html.Partial("_List-Main.Header.cshtml")
     </div>
   </div>
 

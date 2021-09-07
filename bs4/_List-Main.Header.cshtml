@@ -1,0 +1,30 @@
+@inherits Custom.Hybrid.Razor12
+@using System.Linq;
+@{
+  // These variables will be filled with different infos depending on the filter that was set
+  string Title = null;
+  string Description = null;
+
+  // Look at the streams of the current Query to determine which filter was set, if any
+  if (Data["Category"].Any()) {
+    var filteredCategory = AsDynamic(Data["Category"].First());
+    Title = Resources.Category + " " + filteredCategory.Name;
+    Description = filteredCategory.Description;
+  }
+  else if (Data["Tag"].Any()) {
+    var filteredTag = AsDynamic(Data["Tag"].First());
+    Title = Resources.Filter + " " + filteredTag.Name;
+  }
+  else if (Data["Author"].Any()) {
+    var filteredAuthor = AsDynamic(Data["Author"].First());
+    Title = Resources.PostsBy + " " + filteredAuthor.FullName;
+    Description = filteredAuthor.ShortBio;
+  }
+  else {
+    Title = Content.Title;
+  }
+}
+<div class="category-header">
+  <h1>@Title</h1>
+  @Html.Raw(Description)
+</div>
