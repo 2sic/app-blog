@@ -3,9 +3,6 @@
 @{
   // Prepare helpers
   var helpers = CreateInstance("Links.cs");
-
-  // Get data to show from Query
-  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
@@ -20,7 +17,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       @* Mobile Category filter *@
       <aside class="d-xs-block d-lg-none">
-        @Html.Partial("_Part Categories.cshtml", new { MobileView = true, FilteredCategory = filteredCategory })
+        @Html.Partial("_Part Categories.cshtml", new { MobileView = true })
       </aside>
 
       @* List the posts *@
@@ -56,7 +53,7 @@
     @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
-        @Html.Partial("_Part Categories.cshtml", new { FilteredCategory = filteredCategory })
+        @Html.Partial("_Part Categories.cshtml")
       </aside>
     </div>
   </div>

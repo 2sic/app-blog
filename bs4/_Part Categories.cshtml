@@ -3,8 +3,10 @@
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 @{
   // Params from calling Razor
-  var filteredCategory = DynamicModel.FilteredCategory;
   var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
+
+  // Optionally get selected category from Query (can also be null)
+  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
 
   @* Get all Blog Posts from the App, to ignore filters *@
   var postsForCounting = Edit.Enabled
