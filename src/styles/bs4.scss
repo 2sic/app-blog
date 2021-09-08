@@ -6,6 +6,12 @@
 // npm run start-bs4
 //
 
+// TODO: 2RO
+// - probably remove bs4 polyfills - they were only for bs3
+// - probably simplify SCSS
+// - probably change css classes to start with app-blog5-
+// - probably check for classes which currently don't have that prefix
+
 
 // Add header-comments to the final file
 @import "sass-comments.scss";

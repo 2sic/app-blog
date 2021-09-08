@@ -9,6 +9,7 @@
 
 // Styling for post detail item
 section {
+  // todo: 2ro - I think this should be section.app-blog and everything else should be inside it! ? 
    &.app-blog {
       article {
          margin-bottom: $grid-gutter-width*1.5;
