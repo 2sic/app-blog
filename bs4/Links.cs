@@ -2,16 +2,16 @@ using ToSic.Razor.Blade;
 
 public class Links : Custom.Hybrid.Code12
 {
-  /// <Summary>
+  /// <summary>
   /// Returns a safe url to a post details page
-  /// </Summary>
+  /// </summary>
   public dynamic LinkToDetailsPage(dynamic post) {
     return Link.To(pageId: DetailsPageId, parameters: "details=" + post.UrlKey);
   }
 
-  /// <Summary>
+  /// <summary>
   /// Get / cache the page which will show the details of a post
-  /// </Summary>
+  /// </summary>
   private int DetailsPageId
   {
     get
