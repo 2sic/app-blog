@@ -1,52 +1,57 @@
 @inherits Custom.Hybrid.Razor12
+@using System.Linq;
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 @{
   // Params from calling Razor
+  // TODO: @2ro - is this really necessary?
   var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
 
-  // Optionally get selected category from Query (can also be null)
-  var filteredCategory = AsList(Data["Category"]).FirstOrDefault();
+  // Optionally get selected category from Query 
+  // If there is nothing in the Category-filter, then it's a virtualy entity with all properties being null
+  var filterCat = AsDynamic(Data["Category"].FirstOrDefault()).Key;
 
-  @* Get all Blog Posts from the App, to ignore filters *@
-  var postsForCounting = Edit.Enabled
-    ? AsList(App.Data["BlogPost"])
-    : AsList(App.Data["BlogPost"]).Where(p => p.PublicationMoment.CompareTo(DateTime.Now) <= 0);
+  // 1.1. Get all Blog Posts from the App, to ignore filters (note that admins also get unpublished posts)
+  var allPosts = AsList(App.Data["BlogPost"]);
+  
+  // 1.2 Get all categories which have posts and keep the Count for showing
+  var catsWithPosts = AsList(App.Data["Category"]).Select(Cat => new {
+    Cat,
+    PostsCount = Cat.Parents("BlogPost").Count  // Count all the BlogPosts pointing to this category
+  })
+  .Where(set => set.PostsCount > 0);            // ...and only keep categories which have posts
 }
 
 <div id="@wrapperId" class="sidebar app-blog-detail-right">
+  @* Todo: this is probably not a class-name we should use? probably app-blog5-sidebar__inner? *@
   <div class="sidebar__inner">
     <nav class="co-category-list-container mb-3">
+      @* 2. Categories Title + RSS Link*@
       <h5 class="pb-2 d-flex justify-content-between">
         @Resources.Categories
         <a class="badge badge-pill bg-primary rss-button"
-          href='@Link.To(api: "api/Blog/Rss", parameters: filteredCategory == null ? "" : "category=" + filteredCategory.Key)'
+          href='@Link.To(api: "api/Blog/Rss", parameters: filterCat == null ? "" : "category=" + filterCat)'
           target="_blank">
           <i class="fas fa-rss align-self-center text-white"></i>
         </a>
       </h5>
+
       <ul>
-        <li class="@(filteredCategory == null ? "font-weight-bold" : "")">
-          <a href='@Tags.SafeUrl(Link.To())'>
-            @Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@postsForCounting.Count()</span>
+        @* 3.1. Link for the all-categories *@
+        <li class='@(filterCat == null ? "font-weight-bold" : "")'>
+          <a href='@Link.To()'>
+            @Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@allPosts.Count()</span>
           </a>
         </li>
-        @* Categories will be appended to here *@
-        @foreach (var cat in AsList(App.Data["Category"])) {
-          var catCount = postsForCounting.Count(p => (p.Categories as Dynlist).Any(postC => postC == cat));
-          if (catCount > 0) {
-            var active = "";
-            if(filteredCategory != null) {
-              active = cat.Key == filteredCategory.Key ? "font-weight-bold" : active;
-            }
 
-            <li class="@active">
-              <a href='@Tags.SafeUrl(Link.To(parameters: "category=" + cat.Key))'>
-                @cat.Name
-                <span class="badge badge-pill badge-primary float-right">@catCount</span>
-              </a>
-            </li>
-          }
+        @* 3.2 Show each used Category + count *@
+        @foreach (var cat in catsWithPosts) {
+          <li class='@(cat.Cat.Key == filterCat ? "font-weight-bold" : "")'>
+            <a href='@Link.To(parameters: "category=" + cat.Cat.Key)'>
+              @cat.Cat.Name
+              <span class="badge badge-pill badge-primary float-right">@cat.PostsCount</span>
+            </a>
+          </li>
         }
       </ul>
     </nav>
