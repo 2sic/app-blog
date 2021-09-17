@@ -9,7 +9,7 @@
 
   // Optionally get selected category from Query 
   // If there is nothing in the Category-filter, then it's a virtualy entity with all properties being null
-  var filterCat = AsDynamic(Data["Category"].FirstOrDefault()).Key;
+  var filterCat = AsDynamic(Data.GetStream("Category", emptyIfNotFound: true).FirstOrDefault()).Key;
 
   // 1.1. Get all Blog Posts from the App, to ignore filters (note that admins also get unpublished posts)
   var allPosts = AsList(App.Data["BlogPost"]);

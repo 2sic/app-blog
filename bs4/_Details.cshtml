@@ -92,6 +92,7 @@
 
           @* 4a Mobile Category filter *@
           <aside class="d-xs-block d-lg-none">
+            @* TODO: @2ro - on the details page I don't see this - why? *@
             @Html.Partial("_Part Categories.cshtml", new { MobileView = true})
           </aside>
         </div>
@@ -101,6 +102,7 @@
     @* 4b Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <aside class="d-none d-lg-block">
+        @* TODO: @2ro - on the details page I don't see this - why? *@
         @Html.Partial("_Part Categories.cshtml", new { EnableSocialSharing = true})
       </aside>
     </div>
