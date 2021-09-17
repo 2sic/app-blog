@@ -25,9 +25,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
       @* Mobile Category filter *@
-      <aside class="d-xs-block d-lg-none">
-        @Html.Partial("_Part Categories.cshtml", new { MobileView = true })
-      </aside>
+      <div class="d-xs-block d-lg-none">
+      @Html.Partial("_Part Categories.cshtml", new { MobileView = true })
+      </div>
 
       @* List the posts *@
       @foreach(var post in AsList(Data["Posts"])) {
@@ -57,11 +57,9 @@
 
     @* Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <aside class="d-none d-lg-block">
         @Html.Partial("_Part Categories.cshtml")
-      </aside>
     </div>
   </div>
 </section>
 
-@Html.Partial("_Part Assets.cshtml", new {scripts = true})
+@Html.Partial("_Part Assets.cshtml")

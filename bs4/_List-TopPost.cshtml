@@ -19,10 +19,7 @@
 }
 
 <section class="app-blog" @Edit.TagToolbar(Content)>
-  @* todo: @2ro - probably merge div/h1 ? *@
-  <div class="category-header">
-    <h1>@Content.Title</h1>
-  </div>
+  <h1 class="category-header">@Content.Title</h1>
 
   @* List the posts in 3 columns *@
   <div class="row card-deck">

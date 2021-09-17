@@ -16,16 +16,9 @@
   if(pageCss.IsUnknown) {
     pageService.Activate("Bootstrap4");
   }
-
-// todo: unsure if scripts==true makes sense, it's probably used everywhere?
-// TODO: 2ro - do we really need this sticky sidebar? or is there a more modern CSS alternative?
 }
 
 @* Include styles of the App *@
 <link rel="stylesheet" href="@App.Path/dist/bs4.min.css" data-enableoptimizations="true" />
-
 @* Include libaries / scripts *@
-@if(DynamicModel.scripts == true) {
-  <script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="true"></script>
-  <script src="@App.Path/dist/lib/sticky-sidebar.min.js" data-enableoptimizations="true"></script>
-}
+<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="true"></script>

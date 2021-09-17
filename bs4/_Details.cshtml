@@ -22,91 +22,80 @@
   detailsHelpers.AddMetaTags(post);
 }
 
-@* todo: @2ro probably merge these two divs*@
-<section class="app-blog">
-  <div class="row">
-    @* todo: @2ro probably merge the div and the article tag? *@
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-      <article class="post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
+<section class="row app-blog">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 post-detail" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
 
-        @* 1. Header containing the main image, title and date information *@
-        <div class="header">
-          @Html.Partial("_Part Main Image.cshtml", new { Post = post })
-          @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h1"})
-        </div>
+      @* 1. Header containing the main image, title and date information *@
+      <div class="header">
+        @Html.Partial("_Part Main Image.cshtml", new { Post = post })
+        @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h1"})
+      </div>
 
-        @* 2. Body of the post - will also create inner content blocks / apps *@
-        <div class="content">
-          @ToSic.Sxc.Blocks.Render.All(post, field: "InnerContent", merge: post.Content)
-        </div>
+      @* 2. Body of the post - will also create inner content blocks / apps *@
+      <div class="content">
+        @ToSic.Sxc.Blocks.Render.All(post, field: "InnerContent", merge: post.Content)
+      </div>
 
-        @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
-        <div class="footer">
-          @* 3.1 Tags of post *@
-          @if((post.Tags as Dynlist).Any()) {
-            <div class="tags">
-              <strong>@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
-              @foreach (var tag in post.Tags) {
-                <a class="btn btn-sm btn-light" href='@Tags.SafeUrl(Link.To(parameters: "tag=" + tag.Tag))' title="@tag.Name">@tag.Name</a>
-              }
-            </div>
-          }
-
-          @* 3.2 Social sharing - to update the link, change it in the App settings *@
-          <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
-          <div class="addthis_inline_share_toolbox d-sm-block d-md-none"></div>
-          <hr />
-
-          @* 3.3 Author *@
-          <div class="authordetails">
-            @* todo: probabbly too many divs*@
-            <div>
-              @if(Text.Has(author.Image)) {
-                <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" />
-              }
-              @Html.Raw(author.ShortBio)
-            </div>
-            <div>
-              @Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
-            </div>
-          </div>
-          <hr />
-
-          @* 3.4 Preview of previous and next post *@
-          @{
-            var previousPost = AsList(Data["Previous"]).FirstOrDefault();
-            var nextPost = AsList(Data["Next"]).FirstOrDefault();
-          }
-          <div class='article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
-            @if (previousPost != null) {
-              @detailsHelpers.PostMicroPreview(previousPost, "previous")
-            }
-            @if (nextPost != null) {
-              @detailsHelpers.PostMicroPreview(nextPost, "next")
+      @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
+      <div class="footer">
+        @* 3.1 Tags of post *@
+        @if((post.Tags as Dynlist).Any()) {
+          <div class="tags">
+            <strong>@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
+            @foreach (var tag in post.Tags) {
+              <a class="btn btn-sm btn-light" href='@Tags.SafeUrl(Link.To(parameters: "tag=" + tag.Tag))' title="@tag.Name">@tag.Name</a>
             }
           </div>
-          <hr />
+        }
 
-          @* 3.5 "Back to list" button *@
-          @detailsHelpers.BackToListButton()
+        @* 3.2 Social sharing - to update the link, change it in the App settings *@
+        <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
+        <div class="addthis_inline_share_toolbox d-sm-block d-md-none"></div>
+        <hr />
 
-          @* 4a Mobile Category filter *@
-          <aside class="d-xs-block d-lg-none">
-            @* TODO: @2ro - on the details page I don't see this - why? *@
-            @Html.Partial("_Part Categories.cshtml", new { MobileView = true})
-          </aside>
+        @* 3.3 Author *@
+        <div class="authordetails d-flex">
+          <div>
+            @Html.Raw(author.ShortBio)
+            @Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
+          </div>
+          @if(Text.Has(author.Image)) {
+            <div>
+              <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" />
+            </div>
+          }
         </div>
-      </article>
-    </div>
+        <hr />
+
+        @* 3.4 Preview of previous and next post *@
+        @{
+          var previousPost = AsList(Data["Previous"]).FirstOrDefault();
+          var nextPost = AsList(Data["Next"]).FirstOrDefault();
+        }
+        <div class='article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
+          @if (previousPost != null) {
+            @detailsHelpers.PostMicroPreview(previousPost, "previous")
+          }
+          @if (nextPost != null) {
+            @detailsHelpers.PostMicroPreview(nextPost, "next")
+          }
+        </div>
+        <hr />
+
+        @* 3.5 "Back to list" button *@
+        @detailsHelpers.BackToListButton()
+
+        @* 4a Mobile Category filter *@
+        <div class="d-xs-block d-lg-none">
+          @Html.Partial("_Part Categories.cshtml", new { MobileView = true})
+        </div>
+      </div>
+    </article>
 
     @* 4b Desktop Category filter *@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <aside class="d-none d-lg-block">
-        @* TODO: @2ro - on the details page I don't see this - why? *@
         @Html.Partial("_Part Categories.cshtml", new { EnableSocialSharing = true})
-      </aside>
     </div>
-  </div>
 </section>
 
-@Html.Partial("_Part Assets.cshtml", new {scripts = true})
+@Html.Partial("_Part Assets.cshtml")
