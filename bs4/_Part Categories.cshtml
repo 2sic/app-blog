@@ -3,9 +3,6 @@
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 @{
-  // Params from calling Razor
-  // TODO: @2ro - is this really necessary?
-  var wrapperId = DynamicModel.MobileView == true ? "" : "sidebar";
 
   // Optionally get selected category from Query 
   // If there is nothing in the Category-filter, then it's a virtualy entity with all properties being null
@@ -22,38 +19,35 @@
   .Where(set => set.PostsCount > 0);            // ...and only keep categories which have posts
 }
 
-<div class="app-blog5-sidebar">
-  @* Todo: this is probably not a class-name we should use? probably app-blog5-sidebar__inner? *@
-  <nav class="co-category-list-container mb-3">
-    @* 2. Categories Title + RSS Link*@
-    <h5 class="pb-2 d-flex justify-content-between">
-      @Resources.Categories
-      <a class="badge badge-pill bg-primary rss-button"
-        href='@Link.To(api: "api/Blog/Rss", parameters: filterCat == null ? "" : "category=" + filterCat)'
-        target="_blank">
-        <i class="fas fa-rss align-self-center text-white"></i>
-      </a>
-    </h5>
+<div class="app-blog5-sidebar co-category-list-container mb-3">
+  @* 2. Categories Title + RSS Link*@
+  <h5 class="pb-2 d-flex justify-content-between">
+    @Resources.Categories
+    <a class="badge badge-pill bg-primary rss-button"
+      href='@Link.To(api: "api/Blog/Rss", parameters: filterCat == null ? "" : "category=" + filterCat)'
+      target="_blank">
+      <i class="fas fa-rss align-self-center text-white"></i>
+    </a>
+  </h5>
 
-    <ul>
-      @* 3.1. Link for the all-categories *@
-      <li class='@(filterCat == null ? "font-weight-bold" : "")'>
-        <a href='@Link.To()'>
-          @Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@allPosts.Count()</span>
+  <ul>
+    @* 3.1. Link for the all-categories *@
+    <li class='@(filterCat == null ? "font-weight-bold" : "")'>
+      <a href='@Link.To()'>
+        @Resources.ShowAll<span class="badge badge-pill badge-primary float-right">@allPosts.Count()</span>
+      </a>
+    </li>
+
+    @* 3.2 Show each used Category + count *@
+    @foreach (var cat in catsWithPosts) {
+      <li class='@(cat.Cat.Key == filterCat ? "font-weight-bold" : "")'>
+        <a href='@Link.To(parameters: "category=" + cat.Cat.Key)'>
+          @cat.Cat.Name
+          <span class="badge badge-pill badge-primary float-right">@cat.PostsCount</span>
         </a>
       </li>
-
-      @* 3.2 Show each used Category + count *@
-      @foreach (var cat in catsWithPosts) {
-        <li class='@(cat.Cat.Key == filterCat ? "font-weight-bold" : "")'>
-          <a href='@Link.To(parameters: "category=" + cat.Cat.Key)'>
-            @cat.Cat.Name
-            <span class="badge badge-pill badge-primary float-right">@cat.PostsCount</span>
-          </a>
-        </li>
-      }
-    </ul>
-  </nav>
+    }
+  </ul>
   @if(DynamicModel.EnableSocialSharing == true) {
     <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
     <div class="addthis_inline_share_toolbox"></div>

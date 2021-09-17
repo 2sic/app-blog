@@ -6,53 +6,41 @@
 // bootstrap 4 conventions.
 //
 
-// Kategorie nav
+.co-category-list-container {
+	padding: 0px;
+	border-left: 5px solid $primary;
+	padding-left: $grid-gutter-width;
+	min-width: 100%;
+	
+	@include media-breakpoint-up(lg) {
+		width: 310px;
+	}
 
-body.va-layout-full {
-   nav {
-		&.co-category-list-container {
-			background:#FFF;
-			padding: $grid-gutter-width/2  $grid-gutter-width;
+	h5 {
+		color: lighten( $body-color, 10% );
+		.rss-button {
+			width: 30px;
 		}
 	}
-}
 
-nav {
-	&.co-category-list-container {
-		padding: 0px;
-		border-left: 5px solid $primary;
-		padding-left: $grid-gutter-width;
-		min-width: 100%;
-		
-		@include media-breakpoint-up(lg) {
-			width: 310px;
-		}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
 
-		h5 {
-      color: lighten( $body-color, 10% );
-      .rss-button {
-        width: 30px;
-      }
-		}
-
-		ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-
-			li {
-				a {
-					padding: $grid-gutter-width/4 0;
-					display: block;
-				}
-				span {
-					background: $gray-200;
-					color:lighten($body-color, 30%);
-				}
+		li {
+			a {
+				padding: $grid-gutter-width/4 0;
+				display: block;
+			}
+			span {
+				background: $gray-200;
+				color:lighten($body-color, 30%);
 			}
 		}
 	}
 }
+
 
 .app-blog5-sidebar {
 	position: sticky;
