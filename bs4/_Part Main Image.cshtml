@@ -8,14 +8,14 @@
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
-  <picture class="bg-primary mb-0">
+  <picture class="bg-primary">
     <img class="img-fluid" src="@blogImg" alt="@post.Title" />
   </picture>
 }
 
 @* Show info to admin when the post will publish *@
 @if(Edit.Enabled && post.PublicationMoment.CompareTo(DateTime.Now) > 0) {
-  <div class='alert alert-warning @(Text.Has(post.Image) ? "mb-0" : "mb-n3")' role="alert">
+  <div class='alert alert-warning @(Text.Has(post.Image) ? "mb-0" : "mb-3")' role="alert">
     @(Resources.LabelAdminPostPublishInfo + " " + post.PublicationMoment.Date.ToString("d") + " " + post.PublicationMoment.TimeOfDay)
   </div>
 }

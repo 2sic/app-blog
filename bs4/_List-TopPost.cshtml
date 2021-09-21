@@ -18,15 +18,15 @@
   <div class="alert alert-danger" role="alert">@Html.Raw(@Resources.LabelAdminDetailPageWarning)</div>
 }
 
-<section class="app-blog" @Edit.TagToolbar(Content)>
-  <h1 class="category-header">@Content.Title</h1>
+<section class="app-blog5" @Edit.TagToolbar(Content)>
+  <h1 class="category-header mb-4">@Content.Title</h1>
 
   @* List the posts in 3 columns *@
   <div class="row card-deck">
     @foreach (var post in AsList(Data["Posts"])) {
       var imageUrl = Text.Has(post.Image) ? post.Image : Resources.PlaceholderMissingImage;
 
-      <article class="list-item col-12 col-md-6 col-lg-4" @Edit.TagToolbar(post, toolbar: toolbarConfig)>
+      <article class="list-item col-12 col-md-6 col-lg-4 mb-5" @Edit.TagToolbar(post, toolbar: toolbarConfig)>
         <div class="app-blog-readmorelink card m-0">
           <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
 

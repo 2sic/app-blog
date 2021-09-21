@@ -6,41 +6,10 @@
 // bootstrap 4 conventions.
 //
 
-.app-blog-admin-menu {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  .toolbar {
-    display:flex;
-    ul {
-      padding-left: 10px;
-
-      &:first-child {
-        padding-left: 0;
-      }
-    }
-  }
-  span {
-    line-height:28px;
-    font-size:14px;
-    color:#666;
-  }
-  .sc-menu {
-    li {
-      display:inline-block;
-      a{
-        div{
-          background:#666;
-        }
-      }
-    }
-  }
-}
-
 // Styling for post list items in va-layout-full
 body.va-layout-full {
    section {
-      &.app-blog {
+      &.app-blog5 {
 
         article {
             background: #FFF;
@@ -73,40 +42,12 @@ body.va-layout-full {
       }
    }
 }
-.app-blog-3col {
-  .text {
-    flex: 1;
-  }
-}
+
 // Styling for post list items
 section {
-   &.app-blog {
-    // &.card-deck {
-    //     display: flex;
-    //     flex-wrap: wrap;
-
-    //     .app-blog-card {
-    //         display: flex;
-    //         //width: 100%;
-
-    //         .app-blog-card-content {
-    //             display: flex;
-    //             //flex-direction: column;
-    //             //width: 100%;
-
-
-    //             .card-text {
-    //                 flex: 1;
-    //             }
-    //         }
-    //     }
-    //   }
-
-      .category-header {
-         margin-bottom: $grid-gutter-width;
-      }
+   &.app-blog5 {
       article {
-         margin-bottom: $grid-gutter-width*1.5;
+
          &.list-item {
             // list item header
             .header {
@@ -114,74 +55,31 @@ section {
                   display: block;
                   margin-bottom: $grid-gutter-width;
                   transition: background-color .3s ease-in-out;
+                  
                   img {
                      transition: opacity .3s ease-in-out;
                      backface-visibility: hidden;
                      width: 100%;
                   }
                }
+
                h2 {
                   transition: color .3s ease-in-out
-               }
-               .details {
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  margin-bottom: $grid-gutter-width/3;
-                  .person {
-                     margin-right: $grid-gutter-width/3;
-                     img {
-                        border-radius: 50%;
-                     }
-                  }
-                  time {
-                     font-size: 0.85em;
-                  }
-                  a {
-                     &.category {
-                        font-size: 0.85em;
-                        display: inline-block;
-                        padding: 0 5px;
-                     }
-                  }
-               }
-            } // list item content
+               }               
+            }
+            
+            // list item content
             .content {
-               margin-bottom: $grid-gutter-width;
                span {
                   &.readmore {
                      margin-top: $grid-gutter-width/2;
                   }
                }
-            } // list item footer
-            .footer {
-               .tags {
-                  font-size: 0.85em;
-                  padding-bottom: $grid-gutter-width/2;
-                  border-bottom: 1px solid $gray-200;
-                  margin-bottom: 10px;
-                  a {
-                     display: inline-block;
-                     padding: 0 5px;
-                  }
-               }
-               .person {
-                  overflow: hidden;
-                  a {
-                     display: flex;
-                     flex-direction: row;
-                     align-items: center;
-                     img {
-                        border-radius: 50%;
-                        backface-visibility: hidden;
-                        margin-right: $grid-gutter-width/2;
-                     }
-                     h4 {
-                        font-size: 0.85em;
-                     }
-                  }
-               }
-            } // hover States
+            } 
+            
+            
+            
+            // hover States
             .app-blog-readmorelink {
               position: relative;
               height: 100%;

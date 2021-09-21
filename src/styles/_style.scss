@@ -6,7 +6,131 @@
 // bootstrap 4 conventions.
 //
 
-.co-category-list-container {
+.app-blog5 {
+	hr {
+		margin: $grid-gutter-width 0
+	}
+
+	.header {
+		.details {
+			 time {
+					font-size: 13px;
+			 }
+			 a.category {
+					font-size: 13px;
+					display: inline-block;
+					padding: 0 5px;
+			 }
+		}
+ 	}
+
+	.footer {
+		.tags {
+			font-size: 13px;
+			padding-bottom: $grid-gutter-width/2;
+			margin-bottom: 10px;
+		}
+
+		.authordetails {
+			font-size: 13px;
+
+		img {
+			max-width: 100px;
+			margin-left: $grid-gutter-width;
+		}
+
+		p {
+			font-size: 13px;
+		}
+
+		}
+	} 	
+	 
+ 	// Previous and next article links
+	.article-links {
+		margin-bottom:$grid-gutter-width;
+		overflow: hidden;
+
+		.previous, .next {
+			max-width: 48%;
+			font-size: 13px;
+			font-weight: 700;
+
+			@include media-breakpoint-up(sm) {
+				max-width: 300px;
+			}
+
+			a {
+				display: flex;
+				align-items: center;
+				text-align:right;
+				color: $body-color;
+
+				&:before {
+					font-weight:300;
+					font-size: 50px;
+					transition: color .3s ease-in-out;
+					color: $primary;
+				}
+
+				&:hover {
+					text-decoration: none;
+					&:before {
+						color:$body-color;
+
+					}
+				}
+				strong {
+					display: block;
+					font-weight:500;
+				}
+
+				img {
+					display:none;
+					width:70px;
+
+					@include media-breakpoint-up(lg) {
+						display:block;
+					}
+				}
+			}
+		}
+
+		.previous {
+			a {
+				flex-direction: row;
+
+				&:before {
+					content: "‹";
+					margin-right: 5px;
+				}
+
+				img {
+						margin-right: $grid-gutter-width/3;
+				}
+			}
+		}
+		
+		.next {
+			a {
+				flex-direction: row-reverse;
+
+				&:before {
+					content:"›";
+					margin-left: 5px;
+				}
+
+				img {
+					margin-left: $grid-gutter-width/3;
+				}
+			}
+		}
+	}
+}
+
+.app-blog5-sidebar {
+	position: sticky;
+	top: 145px;
 	padding: 0px;
 	border-left: 5px solid $primary;
 	padding-left: $grid-gutter-width;
@@ -16,33 +140,25 @@
 		width: 310px;
 	}
 
-	h5 {
-		color: lighten( $body-color, 10% );
-		.rss-button {
-			width: 30px;
-		}
+	.rss-button {
+		width: 30px;
 	}
 
 	ul {
 		list-style-type: none;
-		margin: 0;
 		padding: 0;
 
 		li {
 			a {
-				padding: $grid-gutter-width/4 0;
 				display: block;
+				line-height: 32px;
 			}
+			
 			span {
 				background: $gray-200;
-				color:lighten($body-color, 30%);
+				color: $body-color;
 			}
 		}
 	}
 }
 
-
-.app-blog5-sidebar {
-	position: sticky;
-	top: 145px;
-}

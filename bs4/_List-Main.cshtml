@@ -12,18 +12,18 @@
   };
 }
 @* todo: make sure the section is'nt restyled everywhere *@
-<section class="app-blog" @Edit.TagToolbar(Content)>
+<section class="app-blog5" @Edit.TagToolbar(Content)>
   @* Blog-title (not post) and if filtered, additional descriptions *@
   @* todo: @2ro this row with that content makes no sense, probabyl drop*@
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+    <div class="col-12">
       @Html.Partial("_List-Main.Header.cshtml")
     </div>
   </div>
 
   @* todo: @2ro this row makes no sense - the content is always single-column ? *@
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+    <div class="col-lg-8">
       @* Mobile Category filter *@
       <div class="d-xs-block d-lg-none">
       @Html.Partial("_Part Categories.cshtml")
@@ -31,7 +31,7 @@
 
       @* List the posts *@
       @foreach(var post in AsList(Data["Posts"])) {
-        <article class="list-item" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
+        <article class="list-item mb-5" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
           <div class="app-blog-readmorelink">
             <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
 
@@ -56,7 +56,7 @@
     </div>
 
     @* Desktop Category filter *@
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+    <div class="col-lg-4">
         @Html.Partial("_Part Categories.cshtml")
     </div>
   </div>

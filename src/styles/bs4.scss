@@ -7,7 +7,6 @@
 //
 
 // TODO: 2RO
-// - probably remove bs4 polyfills - they were only for bs3
 // - probably simplify SCSS
 // - probably change css classes to start with app-blog5-
 // - probably check for classes which currently don't have that prefix
@@ -16,10 +15,20 @@
 // Add header-comments to the final file
 @import "sass-comments.scss";
 
-// Include needed variables and mixins from Bootstrap 4
-// You must adapt these paths to match your Bootstrap 4 skin
-@import "../../../_default/Skins/2sxcBootstrap-B4/src/scss/_variables.scss";
-@import "../../../_default/Skins/2sxcBootstrap-B4/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "../../node_modules/bootstrap/scss/_functions";
+
+// Choose which variables file you want to use
+// Either the one from the skin. To use the skin variables, adjust the path as needed
+// Or the one on this app - to only make changes here
+// @import "../../../_default/Skins/2sxcBootstrap-B4/src/scss/_variables.scss";
+@import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+
+@import "_variables.scss";
+
+// Now the standard bootstrap functionality
+// It will use our variables
+@import "../../node_modules/bootstrap/scss/variables";
+
 
 @import "_post-list.scss";      // CSS for the list-view
 @import "_post-detail.scss";    // CSS for the details view
