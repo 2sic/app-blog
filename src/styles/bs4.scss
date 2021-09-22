@@ -6,12 +6,6 @@
 // npm run start-bs4
 //
 
-// TODO: 2RO
-// - probably simplify SCSS
-// - probably change css classes to start with app-blog5-
-// - probably check for classes which currently don't have that prefix
-
-
 // Add header-comments to the final file
 @import "sass-comments.scss";
 
@@ -29,6 +23,4 @@
 // It will use our variables
 @import "../../node_modules/bootstrap/scss/variables";
 
-
-@import "_post-list.scss";      // CSS for the list-view
 @import "_style.scss";          // General CSS stuff for everything

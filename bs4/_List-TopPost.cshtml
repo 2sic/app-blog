@@ -11,7 +11,6 @@
   };
 
   // todo: sync effect with gallery? grow instead of darken
-  // todo: update all css-class names to be app-bl5-...
 }
 @* If no Details-page is configured, show warning to Admin *@
 @if(Edit.Enabled && !Text.Has(Settings.DetailsPage)) {
@@ -26,7 +25,7 @@
     @foreach (var post in AsList(Data["Posts"])) {
       var imageUrl = Text.Has(post.Image) ? post.Image : Resources.PlaceholderMissingImage;
 
-      <article class="list-item col-12 col-md-6 col-lg-4 mb-5" @Edit.TagToolbar(post, toolbar: toolbarConfig)>
+      <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @Edit.TagToolbar(post, toolbar: toolbarConfig)>
         <div class="card h-100 m-0">
           @* Image of the post *@
           @Html.Partial("_Part Main Image.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
@@ -35,7 +34,7 @@
             <h5 class="card-title">@post.Title</h5>
             <p class="card-text">@Html.Raw(Tags.Strip(post.Teaser))</p>
           </div>
-          
+
           <div class="card-footer text-right">
             <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link">@Resources.ReadMore</a>
           </div>

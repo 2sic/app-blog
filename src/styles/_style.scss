@@ -7,7 +7,15 @@
 //
 
 .app-blog5 {
-	.list-item {
+	&.app-blog5-post-detail {
+		.app-blog5-post-content {
+			 p:first-of-type {
+					margin-bottom: $grid-gutter-width*1.5;
+			 }
+		}         
+ 	}
+
+	.app-blog5-list-item {
 		position: relative;
 
 		&:hover {
@@ -22,14 +30,6 @@
 			}                  
 	 	}
 	}
-
-	.post-detail {
-		.content {
-			 p:first-of-type {
-					margin-bottom: $grid-gutter-width*1.5;
-			 }
-		}         
- 	}
 
 	picture {
 		display: block;
@@ -50,12 +50,13 @@
 		margin: $grid-gutter-width 0
 	}
 
-	.header {
-		.details {
+	.app-blog5-post-header {
+		.post-meta {
 			 time {
 					font-size: 13px;
 			 }
-			 a.category {
+			 
+			 a.post-category {
 					font-size: 13px;
 					display: inline-block;
 					padding: 0 5px;
@@ -63,30 +64,28 @@
 		}
  	}
 
-	.footer {
-		.tags {
+	.app-blog5-post-footer {
+		.app-blog5-tags {
 			font-size: 13px;
 			padding-bottom: $grid-gutter-width/2;
 			margin-bottom: 10px;
 		}
 
-		.authordetails {
+		.app-blog5-post-author-details {
 			font-size: 13px;
+			img {
+				max-width: 100px;
+				margin-left: $grid-gutter-width;
+			}
 
-		img {
-			max-width: 100px;
-			margin-left: $grid-gutter-width;
-		}
-
-		p {
-			font-size: 13px;
-		}
-
+			p {
+				font-size: 13px;
+			}
 		}
 	} 	
 	 
  	// Previous and next article links
-	.article-links {
+	.app-blog5-article-links {
 		margin-bottom:$grid-gutter-width;
 		overflow: hidden;
 
@@ -193,6 +192,40 @@
 				color: $body-color;
 			}
 		}
+	}
+}
+
+// Styling for post list items in va-layout-full
+body.va-layout-full {
+	section {
+		 &.app-blog5 {
+			 article {
+					 background: #FFF;
+					 padding-bottom: $grid-gutter-width/2;
+					 transition: box-shadow .3s ease-in-out;
+					 .app-blog5-post-header,
+					 .app-blog5-post-content,
+					 .app-blog5-post-footer,
+					 #disqus_thread {
+							padding: 0 $grid-gutter-width;
+					 }
+					 .app-blog5-post-header picture {
+							margin-right: -$grid-gutter-width;
+							margin-left: -$grid-gutter-width;
+					 }
+					 &.app-blog5-list-item:hover {
+							-webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
+							-moz-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
+							box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
+					 }
+				}
+
+				.addthis_inline_share_toolbox {
+					 background: #FFF;
+					 margin-top:1px;
+					 padding: $grid-gutter-width;
+				}
+		 }
 	}
 }
 

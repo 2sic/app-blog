@@ -9,9 +9,9 @@
 @* Post title *@
 @Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Wrap(Tags.Nl2Br(post.Title))
 
-<div class="details d-flex align-items-center flex-row my-3">
+<div class="post-meta d-flex align-items-center flex-row my-3">
   @* Author Info & Link to Authors Posts *@
-  <div class="person mr-2">
+  <div class="post-author mr-2">
     <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>
       @if(Text.Has(author.Image)) {
         <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" style="width: 40px" class="rounded-circle" />
@@ -26,7 +26,7 @@
 
   @* List categories of post *@
   @foreach(var category in post.Categories) {
-    <a class="category" href='@Tags.SafeUrl(Link.To(parameters: "category=" + category.Key))' title="@category.Name">
+    <a class="post-category" href='@Tags.SafeUrl(Link.To(parameters: "category=" + category.Key))' title="@category.Name">
       @category.Name
     </a>
   }
