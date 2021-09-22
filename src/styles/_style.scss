@@ -7,6 +7,45 @@
 //
 
 .app-blog5 {
+	.list-item {
+		position: relative;
+
+		&:hover {
+			picture {
+				 img {
+						opacity: 0.8;
+				 }
+			}
+
+			h2, h5 {
+				 color: $primary;
+			}                  
+	 	}
+	}
+
+	.post-detail {
+		.content {
+			 p:first-of-type {
+					margin-bottom: $grid-gutter-width*1.5;
+			 }
+		}         
+ 	}
+
+	picture {
+		display: block;
+		transition: background-color .3s ease-in-out;
+		
+		img {
+			 transition: opacity .3s ease-in-out;
+			 backface-visibility: hidden;
+			 width: 100%;
+		}
+	}
+
+	h2 {
+			transition: color .3s ease-in-out
+	}
+
 	hr {
 		margin: $grid-gutter-width 0
 	}
@@ -82,16 +121,11 @@
 				}
 				strong {
 					display: block;
-					font-weight:500;
+					font-weight: 500;
 				}
 
 				img {
-					display:none;
-					width:70px;
-
-					@include media-breakpoint-up(lg) {
-						display:block;
-					}
+					width: 70px;
 				}
 			}
 		}

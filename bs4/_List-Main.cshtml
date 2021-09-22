@@ -13,38 +13,30 @@
 }
 @* todo: make sure the section is'nt restyled everywhere *@
 <section class="app-blog5" @Edit.TagToolbar(Content)>
-  @* Blog-title (not post) and if filtered, additional descriptions *@
-  @* todo: @2ro this row with that content makes no sense, probabyl drop*@
   <div class="row">
     <div class="col-12">
+      @* Blog-title (not post) and if filtered, additional descriptions *@
       @Html.Partial("_List-Main.Header.cshtml")
     </div>
-  </div>
 
-  @* todo: @2ro this row makes no sense - the content is always single-column ? *@
-  <div class="row">
     <div class="col-lg-8">
       @* Mobile Category filter *@
       <div class="d-xs-block d-lg-none">
-      @Html.Partial("_Part Categories.cshtml")
+        @Html.Partial("_Part Categories.cshtml")
       </div>
 
       @* List the posts *@
       @foreach(var post in AsList(Data["Posts"])) {
         <article class="list-item mb-5" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
-          <div class="app-blog-readmorelink">
-            <a class="link-overlay" href="@helpers.LinkToDetailsPage(post)"></a>
+          @* Header-block with Image / Author, Title, Categories *@
+          <div class="header">
+            @Html.Partial("_Part Main Image.cshtml", new { Post = post })
+            @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h2"})
+          </div>
 
-            @* Header-block with Image / Author, Title, Categories *@
-            <div class="header">
-              @Html.Partial("_Part Main Image.cshtml", new { Post = post })
-              @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h2"})
-            </div>
-
-            <div class="content">
-              @Html.Raw(post.Teaser)
-              <span class="readmore btn btn-outline-primary">@Resources.ReadMore</span>
-            </div>
+          <div class="content">
+            @Html.Raw(post.Teaser)
+            <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
           </div>
         </article>
       }

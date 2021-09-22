@@ -50,7 +50,8 @@
 
         @* 3.2 Social sharing - to update the link, change it in the App settings *@
         <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
-        <div class="addthis_inline_share_toolbox d-sm-block d-md-none"></div>
+        <div class="addthis_inline_share_toolbox d-sm-block d-md-none my-4"></div>
+
         <hr />
 
         @* 3.3 Author *@
@@ -85,11 +86,6 @@
 
         @* 3.5 "Back to list" button *@
         @detailsHelpers.BackToListButton()
-
-        @* 4a Mobile Category filter *@
-        <div class="d-xs-block d-lg-none">
-          @Html.Partial("_Part Categories.cshtml")
-        </div>
       </div>
     </article>
 
