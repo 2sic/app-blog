@@ -1,6 +1,8 @@
 <image src="app-icon.png" align="right" width="200px">
 
-# Blog App for DNN (DotNetNuke)
+# Blog 5 App for .net CMSs
+
+> This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
 A standard blog app to use with 2sxc
 
@@ -8,14 +10,10 @@ A standard blog app to use with 2sxc
 
 You can install the app with the ["Installing Blog" checklist](https://azing.org/2sxc/r/vgApEx0X)
 
-## Customizing the app
-
-### Configuration (Settings, Resources)
+## Customize the App
 
 If you want to use the "Home top posts" template, you need to ["Configure Main-List and Details Page"](https://azing.org/2sxc/r/c42g7EjU) in the app settings.
 There are also a lot of app resources you can adjust to your needs.
-
-### Style
 
 If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
 
