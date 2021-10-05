@@ -9,7 +9,7 @@
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
   <picture class="bg-primary">
-    <img class="img-fluid" src="@blogImg" alt="@post.Title" />
+    <img loading="lazy" class="img-fluid" src="@blogImg" alt="@post.Title" />
   </picture>
 }
 

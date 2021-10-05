@@ -62,7 +62,7 @@
         </div>
         @if(Text.Has(author.Image)) {
           <div>
-            <img src='@Link.Image(author.Image, Settings.Images.Author)' class="rounded-circle" alt="@author.FullName" />
+            <img loading="lazy" src='@Link.Image(author.Image, Settings.Images.Author)' class="rounded-circle" alt="@author.FullName" />
           </div>
         }
       </div>
