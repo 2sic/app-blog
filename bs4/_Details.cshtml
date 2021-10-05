@@ -43,7 +43,7 @@
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="mr-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
-            <a class="btn btn-sm btn-light mr-2" href='@Tags.SafeUrl(Link.To(parameters: "tag=" + tag.Tag))' title="@tag.Name">@tag.Name</a>
+            <a class="btn btn-sm btn-light mr-2" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
           }
         </div>
       }
@@ -58,7 +58,7 @@
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @Html.Raw(author.ShortBio)
-          @Resources.ReadMoreAuthor <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>@author.FullName</a>
+          @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + author.FullName)'>@author.FullName</a>
         </div>
         @if(Text.Has(author.Image)) {
           <div>

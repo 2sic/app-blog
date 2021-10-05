@@ -12,7 +12,7 @@
 <div class="post-meta d-flex align-items-center flex-row my-3">
   @* Author Info & Link to Authors Posts *@
   <div class="post-author mr-2">
-    <a href='@Tags.SafeUrl(Link.To(parameters: "author=" + author.FullName))'>
+    <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if(Text.Has(author.Image)) {
         <img src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" style="width: 40px" class="rounded-circle" />
       } else {
@@ -26,7 +26,7 @@
 
   @* List categories of post *@
   @foreach(var category in post.Categories) {
-    <a class="post-category" href='@Tags.SafeUrl(Link.To(parameters: "category=" + category.Key))' title="@category.Name">
+    <a class="post-category" href='@Link.To(parameters: "category=" + category.Key)' title="@category.Name">
       @category.Name
     </a>
   }
