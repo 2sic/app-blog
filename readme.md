@@ -6,9 +6,21 @@
 
 A standard blog app to use with 2sxc
 
-## Installing the app
-
-You can install the app with the ["Installing Blog" checklist](https://azing.org/2sxc/r/vgApEx0X)
+| Aspect              | Status | Comments or Version |
+| ------------------- | :----: | ------------------- |
+| 2sxc                | ✅    | requires 2sxc v12.05
+| Dnn                 | ✅    | For v7, v8 and v9
+| Oqtane 2            | ✅    | Requires v2.02
+| No jQuery           | ✅    | 
+| Live Demo           | ➖    | [2sxc blog](https://2sxc.org/en/blog) [Mettlers blog](http://www.mettler.li/blog)
+| Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/vgApEx0X) on [azing.org](https://azing.org/2sxc)
+| Source & License    | ✅    | included, ISC/MIT
+| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-app-v4)
+| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-app-v4)
+| Best Practices      | ✅    | Uses v12.05 conventions
+| Bootstrap 3         | ➖    | Use Blog4 if you need it
+| Bootstrap 4         | ✅    |
+| Bootstrap 5         | ✔️    | Works well, but not optimized
 
 ## Customize the App
 
@@ -17,15 +29,11 @@ There are also a lot of app resources you can adjust to your needs.
 
 If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
 
-## Screenshots
-
-Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/blog-app-v4)
-
 ---
 
 ## History
 
-### V5 June 2021
+### V5 2021-10
 
 * New folder `Blog5` to allow side-by side install with previous versions
 * Guid Reset to allow side-by-side install with previous version

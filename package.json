@@ -1,7 +1,7 @@
 {
-  "name": "blog-app",
-  "version": "04.01.00",
-  "description": "A blog app for 2sxc",
+  "name": "app-blog",
+  "version": "05.00.00",
+  "description": "A blog app for .net CMSs",
   "main": "(none)",
   "scripts": {
     "build-prod": "webpack"
