@@ -1,6 +1,5 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
-@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 @{
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
@@ -27,8 +26,8 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("_Part Main Image.cshtml", new { Post = post })
-      @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/_PartMainImage.cshtml", new { Post = post })
+      @Html.Partial("shared/_PartPostAuthorDate.cshtml", new { Post = post, HeadingType = "h1"})
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -39,7 +38,7 @@
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
-      @if((post.Tags as Dynlist).Any()) {
+      @if(AsList(post.Tags as object).Any()) {
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="mr-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
@@ -91,8 +90,8 @@
 
   @* 4b Desktop Category filter *@
   <div class="col-lg-4">
-      @Html.Partial("_Part Categories.cshtml", new { EnableSocialSharing = true})
+      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
   </div>
 </section>
 
-@Html.Partial("_Part Assets.cshtml")
+@Html.Partial("shared/_Assets.cshtml")

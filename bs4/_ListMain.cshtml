@@ -15,13 +15,13 @@
   <div class="row">
     <div class="col-12">
       @* Blog-title (not post) and if filtered, additional descriptions *@
-      @Html.Partial("_List-Main.Header.cshtml")
+      @Html.Partial("_ListMain.PartHeader.cshtml")
     </div>
 
     <div class="col-lg-8">
       @* Mobile Category filter *@
       <div class="d-xs-block d-lg-none">
-        @Html.Partial("_Part Categories.cshtml")
+        @Html.Partial("shared/_Categories.cshtml")
       </div>
 
       @* List the posts *@
@@ -29,8 +29,8 @@
         <article class="app-blog5-list-item mb-5" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
-            @Html.Partial("_Part Main Image.cshtml", new { Post = post })
-            @Html.Partial("_Part Post Author and Date.cshtml", new { Post = post, HeadingType = "h2"})
+            @Html.Partial("shared/_PartMainImage.cshtml", new { Post = post })
+            @Html.Partial("shared/_PostAuthorDate.cshtml", new { Post = post, HeadingType = "h2"})
           </div>
 
           <div class="app-blog5-post-content">
@@ -42,15 +42,15 @@
 
       @* Show pagination if configured *@
       @if (Content.ShowPagination == true) {
-        @Html.Partial("_Part List Paging.cshtml")
+        @Html.Partial("shared/_ListPaging.cshtml")
       }
     </div>
 
     @* Desktop Category filter *@
     <div class="col-lg-4">
-        @Html.Partial("_Part Categories.cshtml")
+        @Html.Partial("shared/_Categories.cshtml")
     </div>
   </div>
 </section>
 
-@Html.Partial("_Part Assets.cshtml")
+@Html.Partial("shared/_Assets.cshtml")

@@ -28,7 +28,7 @@
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @Edit.TagToolbar(post, toolbar: toolbarConfig)>
         <div class="card h-100 m-0">
           @* Image of the post *@
-          @Html.Partial("_Part Main Image.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+          @Html.Partial("shared/_MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
           <div class="card-body">
             <h5 class="card-title">@post.Title</h5>
@@ -45,8 +45,8 @@
 
   @* Show pagination if configured *@
   @if (Content.ShowPagination == true) {
-    @Html.Partial("_Part List Paging.cshtml")
+    @Html.Partial("shared/_ListPaging.cshtml")
   }
 </section>
 
-@Html.Partial("_Part Assets.cshtml")
+@Html.Partial("shared/_Assets.cshtml")

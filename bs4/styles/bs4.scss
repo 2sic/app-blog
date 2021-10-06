@@ -6,8 +6,13 @@
 // npm run start-bs4
 //
 
-// Add header-comments to the final file
-@import "sass-comments.scss";
+// the following comment is multi-line and will be included in the final CSS
+// which helps users understand where it comes from
+/*!
+ * This file was auto-generated using SASS
+ * You can manually modify it - but usually you will want to 
+ * Re-generate it using the SASS variables of your theme
+*/
 
 @import "../../node_modules/bootstrap/scss/_functions";
 
@@ -22,5 +27,13 @@
 // Now the standard bootstrap functionality
 // It will use our variables
 @import "../../node_modules/bootstrap/scss/variables";
+
+//
+// This SCSS generates the css for the general styles
+//
+// It is used by all CSS generators (Bootstrap3/4, etc.)
+// To keep things simple, it uses the standard variables of
+// bootstrap 4 conventions.
+//
 
 @import "_style.scss";          // General CSS stuff for everything

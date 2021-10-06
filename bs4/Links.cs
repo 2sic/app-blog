@@ -18,7 +18,7 @@ public class Links : Custom.Hybrid.Code12
     {
       if (_detailsPageId != 0) return _detailsPageId;
       if (Text.Has(Settings.DetailsPage))
-        _detailsPageId = int.Parse((App.Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1]);
+        _detailsPageId = int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1]);
       else
         _detailsPageId = CmsContext.Page.Id;
       return _detailsPageId;
