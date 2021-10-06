@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization; // .net core [AllowAnonymous] & [Autho
 using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] etc.
 #else
 using System.Web.Http;		// this enables [HttpGet] and [AllowAnonymous]
+// 2sxclint:disable:no-dnn-namespaces - 2sxclint:disable:no-web-namespace
 using DotNetNuke.Web.Api;	// this is to verify the AntiForgeryToken
 #endif
 using System.Xml;
@@ -50,20 +51,23 @@ public class BlogController : Custom.Hybrid.Api12
     // 3.1 Create <channel> node and set important values
     var channel = AddTag(root, "channel");
     AddTag(channel, "title", Resources.BlogTitle);
-    AddTag(channel, "link", linkErrMessage ?? Link.To(pageId: detailsPageId));
+    AddTag(channel, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, type: "full"));
     AddTag(channel, "description", Resources.RssDescription);
 
     // 3.2 Create the <atom> tag with all the attributes. It needs to have the namespace "atom" for valid RSS
     var atom = AddNamespaceTag(channel, AtomNsCode, "link", AtomNamespace);
     AddAttribute(atom, "rel", "self");
     AddAttribute(atom, "type", "application/rss+xml");
-    AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss"));
+    AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss", type: "full"));
 
     // 3.3 Add all the posts from the query to this channel
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
+
+      // TODO: image in RSS
+
       var itemNode = AddTag(channel, "item");
       AddTag(itemNode, "title", post.EntityTitle);
-      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.UrlKey));
+      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.UrlKey, type: "full"));
       AddTag(itemNode, "description", Tags.Strip(post.Teaser)); // Tags.Strip makes sure no HTML makes it into the teaser
       var guidNode = AddTag(itemNode, "guid", post.EntityGuid.ToString());
       AddAttribute(guidNode, "isPermaLink", "false");
