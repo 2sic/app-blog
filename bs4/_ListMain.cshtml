@@ -29,7 +29,7 @@
         <article class="app-blog5-list-item mb-5" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
-            @Html.Partial("shared/_PartMainImage.cshtml", new { Post = post })
+            @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
             @Html.Partial("shared/_PostAuthorDate.cshtml", new { Post = post, HeadingType = "h2"})
           </div>
 

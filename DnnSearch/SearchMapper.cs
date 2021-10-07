@@ -32,15 +32,5 @@ public class SearchMapper : Custom.Hybrid.Code12, ICustomizeSearch
             si.Title = "Title: " + entity.Title;
             si.QueryString = "details=" + entity.UrlKey;
         }
-
-        // Remove not needed streams
-        var keys = searchInfos.Keys.ToList();
-        foreach (var key in keys)
-        {
-            if (key != "AllPosts")
-            {
-                searchInfos.Remove(key);
-            }
-        }
     }
 }
