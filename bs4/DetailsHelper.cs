@@ -33,11 +33,11 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
     // variable which will receive a different base path based on Oqtane or Dnn
     string metaImageUrl = "";
     
-    #if !NETCOREAPP
-      var Request = System.Web.HttpContext.Current.Request;
-      if(Text.Has(post.Image))
-        metaImageUrl = Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
-    #endif
+    // TODO: 2dm - not working! something probably wrong with the IPageService ???
+    
+    // TODO: 2dm - verify this works, probably add type="full" but test first
+    if(Text.Has(post.Image))
+      metaImageUrl = Link.Image(post.Image); // Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
 
     if(Text.Has(metaImageUrl))
       metaImageUrl = Link.Image(metaImageUrl, Settings.Images.Blog);

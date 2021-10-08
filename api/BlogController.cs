@@ -63,7 +63,7 @@ public class BlogController : Custom.Hybrid.Api12
     // 3.3 Add all the posts from the query to this channel
     foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
 
-      // TODO: image in RSS
+      // TODO: 2dm - image in RSS
 
       var itemNode = AddTag(channel, "item");
       AddTag(itemNode, "title", post.EntityTitle);

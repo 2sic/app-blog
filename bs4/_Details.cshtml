@@ -27,7 +27,7 @@
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
       @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
-      @Html.Partial("shared/_PostAuthorDate.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -46,10 +46,6 @@
           }
         </div>
       }
-
-      @* 3.2 Social sharing - to update the link, change it in the App settings *@
-      <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
-      <div class="addthis_inline_share_toolbox d-sm-block d-md-none my-4"></div>
 
       <hr />
 

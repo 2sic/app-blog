@@ -14,7 +14,7 @@
 <section class="app-blog5" @Edit.TagToolbar(Content)>
   <div class="row">
     <div class="col-12">
-      @* Blog-title (not post) and if filtered, additional descriptions *@
+      @* Title / Description of current filter (Author, Category, etc.) *@
       @Html.Partial("_ListMain.PartHeader.cshtml")
     </div>
 
@@ -30,7 +30,7 @@
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
             @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
-            @Html.Partial("shared/_PostAuthorDate.cshtml", new { Post = post, HeadingType = "h2"})
+            @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2"})
           </div>
 
           <div class="app-blog5-post-content">
