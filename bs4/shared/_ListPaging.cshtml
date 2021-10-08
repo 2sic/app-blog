@@ -36,9 +36,6 @@
 </nav>
 
 @functions {
-  // TODO: 2dm - fix using latest CmsContext.Page.Parameters methods
-
-
   /// <summary>
   /// Generate a paging-link, preserving current filter parameters
   /// </summary>
@@ -51,31 +48,9 @@
 
     // Create page=X parameter
     // Note: We should never have a page=1 parameter, otherwise two different links exist for page 1
-    var pageParam = pageNumber == 1 ? "" : "page=" + pageNumber;
-    return Link.To(parameters: PreservedUrlParams + pageParam);
+    var newParams = pageNumber <= 1
+      ? CmsContext.Page.Parameters.Remove("page")
+      : CmsContext.Page.Parameters.Set("page", pageNumber.ToString());
+    return Link.To(parameters: newParams); 
   }
-
-  /// <summary>
-  /// Get parameters from the URL which should be re-used in paging links
-  /// This preserves existing filters
-  /// </summary>
-  private string PreservedUrlParams {
-    get {
-      // Use previous if this was already accessed before
-      if (_preservedParams != null) { return _preservedParams; }
-
-      // Assemble relevant url filtering parameters
-      var urlParams = CmsContext.Page.Parameters;
-      var filteredTag = urlParams["Tag"];
-      var filteredAuthor = urlParams["Author"];
-      var filteredCategory = urlParams["Category"];
-
-      var categoryParam = filteredCategory == null ? "" : "category=" + filteredCategory + "&";
-      var tagParam = filteredTag == null ? "" : "tag=" + filteredTag + "&";
-      var authorParam = filteredAuthor == null ? "" : "author=" + filteredAuthor + "&";
-
-      return _preservedParams = categoryParam + tagParam + authorParam;
-    }
-  }
-  private string _preservedParams;
 }

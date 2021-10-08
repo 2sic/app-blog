@@ -3,7 +3,6 @@
 @{
   var post = DynamicModel.Post;
   var imgSettings = DynamicModel.Settings ?? Settings.Images.Blog;
-  // TODO: 2dm - parameters? 
   var blogImg = Link.Image(post.Image, imgSettings, parameters: "anchor=" + post.CropAnchor);
 }
 
