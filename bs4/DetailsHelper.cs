@@ -1,6 +1,6 @@
 using System;
 using ToSic.Razor.Blade;
-// todo: make sure image link works in Oqtane
+
 public class DetailsHelper: Custom.Hybrid.Code12 {
 
   public dynamic PostMicroPreview(dynamic post, string context) {
@@ -30,17 +30,9 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
   }
 
   public void AddMetaTags(dynamic post) {
-    // variable which will receive a different base path based on Oqtane or Dnn
-    string metaImageUrl = "";
-    
-    // TODO: 2dm - not working! something probably wrong with the IPageService ???
-    
-    // TODO: 2dm - verify this works, probably add type="full" but test first
-    if(Text.Has(post.Image))
-      metaImageUrl = Link.Image(post.Image); // Uri.EscapeUriString(Request.Url.Scheme + "://" + Request.Url.Host + post.Image.ToLower());
-
-    if(Text.Has(metaImageUrl))
-      metaImageUrl = Link.Image(metaImageUrl, Settings.Images.Blog);
+    var metaImageUrl = Text.Has(post.Image)
+        ? Link.Image(post.Image, Settings.Images.Blog, type: "full")
+        : "";
 
     var page = GetService<ToSic.Sxc.Web.IPageService>();
     var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);

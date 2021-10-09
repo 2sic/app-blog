@@ -15,10 +15,14 @@
     return;
   }
 
-  var author = post.Author;
-
 	// Add open-graph meta-tags to page header
   detailsHelpers.AddMetaTags(post);
+
+  // Shortcut to author, makes the code simpler
+  var author = post.Author;
+
+  // Render Service helps to create inner-content on the main body
+  var renderSvc = GetService<ToSic.Sxc.Blocks.IRenderService>();
 }
 
 <section class="row app-blog5 app-blog5-post-detail">
@@ -32,7 +36,7 @@
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
     <div class="app-blog5-post-content mb-4">
-      @ToSic.Sxc.Blocks.Render.All(post, field: "InnerContent", merge: post.Content)
+      @renderSvc.All(post, field: "InnerContent", merge: post.Content)
     </div>
 
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
