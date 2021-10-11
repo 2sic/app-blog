@@ -10,16 +10,38 @@
   .app-blog5-list-item {
     position: relative;
 
-    &:hover {
+    // https://w3bits.com/css-image-hover-zoom/
+    // https://w3bits.com/labs/css-image-hover-zoom/
+    &.effect-zoom {
       picture {
-        img {
-          opacity: 0.8;
-        }
+        overflow: hidden; /* [1.2] Hide the overflowing of child elements */
       }
 
-      h2,
-      h5 {
-        color: $primary;
+      img {
+        transition: transform .5s ease;
+      }
+      &:hover img {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Effects for Mouse-Over */
+    &.effect-darken {
+      picture {
+        background-color: $primary;
+      }
+      
+      &:hover {
+        picture {
+          img {
+            opacity: 0.8;
+          }
+        }
+  
+        h2,
+        h5 {
+          color: $primary;
+        }
       }
     }
   }
