@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-10-07T08:55:44.5517606+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-10-11T21:04:40.7864731+02:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -2648,13 +2648,13 @@
       <Value Key="OriginalId" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String">
+      <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="RequiredOqtaneVersion" Value="02.02.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="12.03.00" Type="String">
+      <Value Key="RequiredVersion" Value="12.05.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
@@ -2665,7 +2665,7 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="059facb3-0968-4021-92a7-72984522fcf2" KeyNumber="114">
-      <Value Key="DetailsPage" Value="page:1763" Type="Hyperlink">
+      <Value Key="DetailsPage" Value="" Type="Hyperlink">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SocialAddThisJS" Value="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ab20cfafda82b41" Type="String">
@@ -3814,7 +3814,7 @@
       <Value Key="Template" Value="null" Type="Entity" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2d990f54-d003-4767-88ac-50346f27c3ab" AttributeSetName="ListSettings" EntityGUID="6d5c72df-05c2-437a-9591-9ff1ddc25b64">
-      <Value Key="ItemsInPage" Value="2" Type="Number">
+      <Value Key="ItemsInPage" Value="1" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ShowPagination" Value="True" Type="Boolean">
@@ -4224,23 +4224,23 @@
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="54af43ae-04de-4f49-ab5d-8a74d5610425">
       <Value Key="Author" Value="a055d378-af80-412d-8a64-cec559763260" Type="Entity" />
       <Value Key="Categories" Value="6e4bede4-853b-42b6-a28a-3ae29851405e" Type="Entity" />
-      <Value Key="Content" Value="&lt;p&gt;Blog v4.0 released - May the 4th be with you! We recreated everything from scratch using the latest best-practices from 2sxc 11. Enjoy and modify to your 💖's content!&lt;/p&gt;&#xA;&lt;h2&gt;Getting Started with Blog&lt;/h2&gt;&#xA;&lt;p&gt;Read about the blog release, features and more in &lt;a href=&quot;https://2sxc.org/en/blog/post/blog-app-4-0-for-dnn-and-2sxc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;our blog&lt;/a&gt; 😎.&lt;/p&gt;&#xA;&lt;p&gt;Take a look at &lt;a href=&quot;https://azing.org/2sxc/l/tZx-4KRT/app-blog&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;these azing checklists&lt;/a&gt;, if you need help.&lt;/p&gt;&#xA;&lt;h2&gt;This Demo-Post Shows...&lt;/h2&gt;&#xA;&lt;p&gt;This post has &lt;strong&gt;everything&lt;/strong&gt; configured that is possible:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Title&lt;/em&gt; of the post&lt;/li&gt;&#xA;&lt;li&gt;Automated &lt;em&gt;url key&lt;/em&gt; for google optimization&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Date &lt;/em&gt;from which the post is to be shown&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;content of the post&lt;/em&gt; (this text)&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Teaser, &lt;/em&gt;which will be shown in list and detail view&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;main image&amp;nbsp;&lt;/em&gt;of the post&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Image Hotspot&amp;nbsp;&lt;/em&gt;to make sure the most important area of the &lt;em&gt;main image&lt;/em&gt; is always visible&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Categories&lt;/em&gt; and &lt;em&gt;tags&amp;nbsp;&lt;/em&gt;to keep the posts organized&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;author&amp;nbsp;&lt;/em&gt;of the post&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Show on start page&amp;nbsp;&lt;/em&gt;which takes effect if you implement the &lt;em&gt;Home top posts&lt;/em&gt; view&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Meta title&amp;nbsp;&lt;/em&gt;and &lt;em&gt;Meta description&amp;nbsp;&lt;/em&gt;for SEO&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Sharing description&amp;nbsp;&lt;/em&gt;which is used when the post is shared&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;hr sxc=&quot;sxc-content-block&quot; guid=&quot;40f8a747-8939-4de4-99aa-eb0f442390da&quot; /&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;" Type="String">
+      <Value Key="Content" Value="&lt;p&gt;Blog v5.0 released! Hybrid so it runs on Dnn and Oqtane! We recreated everything from scratch using the latest best-practices from 2sxc 12. Enjoy and modify to your 💖's content!&lt;/p&gt;&#xA;&lt;p&gt;oh btw - it also uses &lt;a href=&quot;https://docs.2sxc.org/basics/edit/formulas/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Formulas&lt;/a&gt; extensively 🧪&lt;/p&gt;&#xA;&lt;h2&gt;Getting Started with Blog&lt;/h2&gt;&#xA;&lt;p&gt;Read about the blog release, features and more in &lt;a href=&quot;https://2sxc.org/en/blog/post/blog-app-4-0-for-dnn-and-2sxc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;our blog&lt;/a&gt; 😎.&lt;/p&gt;&#xA;&lt;p&gt;Take a look at &lt;a href=&quot;https://azing.org/2sxc/l/tZx-4KRT/app-blog&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;these azing checklists&lt;/a&gt;, if you need help.&lt;/p&gt;&#xA;&lt;h2&gt;This Demo-Post Shows...&lt;/h2&gt;&#xA;&lt;p&gt;This post has &lt;strong&gt;everything&lt;/strong&gt; configured that is possible:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Title&lt;/em&gt; of the post&lt;/li&gt;&#xA;&lt;li&gt;Automated &lt;em&gt;url key&lt;/em&gt; for google optimization&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Date &lt;/em&gt;from which the post is to be shown&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;content of the post&lt;/em&gt; (this text)&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Teaser, &lt;/em&gt;which will be shown in list and detail view&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;main image&amp;nbsp;&lt;/em&gt;of the post&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Image Hotspot&amp;nbsp;&lt;/em&gt;to make sure the most important area of the &lt;em&gt;main image&lt;/em&gt; is always visible&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Categories&lt;/em&gt; and &lt;em&gt;tags&amp;nbsp;&lt;/em&gt;to keep the posts organized&lt;/li&gt;&#xA;&lt;li&gt;The &lt;em&gt;author&amp;nbsp;&lt;/em&gt;of the post&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Show on start page&amp;nbsp;&lt;/em&gt;which takes effect if you implement the &lt;em&gt;Home top posts&lt;/em&gt; view&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Meta title&amp;nbsp;&lt;/em&gt;and &lt;em&gt;Meta description&amp;nbsp;&lt;/em&gt;for SEO&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Sharing description&amp;nbsp;&lt;/em&gt;which is used when the post is shared&lt;/li&gt;&#xA;&lt;/ul&gt;" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="CropAnchor" Value="middlecenter" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Image" Value="file:4447" Type="Hyperlink">
+      <Value Key="Image" Value="file:6043" Type="Hyperlink">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="InnerContent" Value="40f8a747-8939-4de4-99aa-eb0f442390da,149434cb-9806-4d77-a1e9-6464aa83319a,14c5fea2-51e2-469c-977e-a137ce9acbd3,d1cb9c84-7c01-466b-a6e2-55210d143bfd" Type="Entity" />
       <Value Key="MetaDescription" Value="Demo - Meta Description" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="MetaTitle" Value="Demo - Meta Title" Type="String">
+      <Value Key="MetaTitle" Value="Custom Title for Meta Releasing Blog 12" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2020-11-03T00:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2021-10-11T11:05:07" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="Demo - Sharing Description" Type="String">
@@ -4250,16 +4250,16 @@
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
-      <Value Key="Teaser" Value="&lt;p&gt;Blog v4.0 released - May the 4th be with you! We recreated everything from scratch using the latest best-practices from 2sxc 11. Enjoy and modify to your 💖's content!&lt;/p&gt;" Type="String">
+      <Value Key="Teaser" Value="&lt;p&gt;Blog v5.0 released! Hybrid so it runs on Dnn and Oqtane! We recreated everything from scratch using the latest best-practices from 2sxc 12. Enjoy and modify to your 💖's content!&lt;/p&gt;" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="Releasing Blog 4.0" Type="String">
+      <Value Key="Title" Value="Blog 5.0 - Hybrid for Dnn &amp; Oqtane" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Title" Value="Veröffentlichung Blog 4.0" Type="String">
         <Dimension DimensionID="98" ReadOnly="false" />
       </Value>
-      <Value Key="UrlKey" Value="demo-post-everything" Type="String">
+      <Value Key="UrlKey" Value="releasing-blog-5-0-hybrid-for-dnn-and-oqtane" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -4870,7 +4870,7 @@
   </Entities>
   <PortalFiles>
     <File Id="4400" RelativePath="adam\Blog5\eNNVoICvLUGKZM7FWXYyYA\Image\Daniel-Mettler-Profile-MVP.png" />
-    <File Id="4447" RelativePath="adam\Blog5\rkOvVN4ESU-rXYp01WEEJQ\Image\2020-2SXCv11-New-App-Blog.jpg" />
+    <File Id="6043" RelativePath="adam\Blog5\rkOvVN4ESU-rXYp01WEEJQ\Image\Blog5 for 2sxc 12 Hybrid Released.jpg" />
     <File Id="4403" RelativePath="adam\Blog5\AdttIZyPjUuxt0T3NFl0mQ\Image\starwars.jpg" />
   </PortalFiles>
   <PortalFolders>
