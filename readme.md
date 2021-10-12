@@ -15,8 +15,8 @@ A standard blog app to use with 2sxc
 | Live Demo           | ➖    | [2sxc blog](https://2sxc.org/en/blog) [Mettlers blog](http://www.mettler.li/blog)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/vgApEx0X) on [azing.org](https://azing.org/2sxc)
 | Source & License    | ✅    | included, ISC/MIT
-| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-app-v4)
-| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-app-v4)
+| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
+| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
 | Best Practices      | ✅    | Uses v12.05 conventions
 | Bootstrap 3         | ➖    | Use Blog4 if you need it
 | Bootstrap 4         | ✅    |

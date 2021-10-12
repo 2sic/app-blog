@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-10-11T21:04:40.7864731+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-10-12T08:12:00.2955591+02:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -3814,7 +3814,7 @@
       <Value Key="Template" Value="null" Type="Entity" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2d990f54-d003-4767-88ac-50346f27c3ab" AttributeSetName="ListSettings" EntityGUID="6d5c72df-05c2-437a-9591-9ff1ddc25b64">
-      <Value Key="ItemsInPage" Value="1" Type="Number">
+      <Value Key="ItemsInPage" Value="2" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ShowPagination" Value="True" Type="Boolean">
