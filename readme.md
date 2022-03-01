@@ -44,7 +44,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * Simplified Razor names to new best practices
 * Moved all razor to `bs4` to make it easier for Bootstrap5 which will come soon
 
-### V5 2022-03
+### V5.01 2022-03
 
 * Updated License
 * Changes default view
