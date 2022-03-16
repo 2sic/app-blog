@@ -2,6 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   var discussionDomAttribute = "app-blog5-discussion-" + CmsContext.Module.Id;
+  var isLoggedIn = CmsContext.User.Id > 0;
 }
 
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["BlogComment"])>
@@ -15,9 +16,11 @@
         </div>
       </div>
       <div class="col" app-blog5-discussion-form novalidate="true">
-        <div class="form-group mb-2">
-          <input class="form-control" app-blog5-discussion-pseudonym placeholder="Your name" required data-pristine-required-message="Please enter your name">
-        </div>
+        @if (!isLoggedIn) {
+          <div class="form-group mb-2">
+            <input class="form-control" app-blog5-discussion-pseudonym placeholder="Your name" required data-pristine-required-message="Please enter your name">
+          </div>
+        }
         <div class="form-group mb-3">
           <textarea class="form-control" app-blog5-discussion-content placeholder="Join the discussion..." required minlength="1" data-pristine-required-message="Please write a comment" style="height: 100px"></textarea>
         </div>
@@ -25,11 +28,13 @@
         <div class="container-fluid px-0">
           <div class="row justify-content-between align-items-center">
             <div class="col-auto">
-              <button app-blog5-discussion-button type="button" class="btn btn-outline-primary me-2">Comment as guest</button>
+              <button app-blog5-discussion-button type="button" class="btn btn-outline-primary me-2">@(isLoggedIn ? "Comment" : "Comment as guest")</button>
             </div>
-            <div class="col-auto">
-              <span>or <a href="##">Login</a></span>
-            </div>
+            @if (!isLoggedIn) {
+              <div class="col-auto">
+                <span>or <a href="##">Login</a></span>
+              </div>
+            }
           </div>
         </div>
       </div>
