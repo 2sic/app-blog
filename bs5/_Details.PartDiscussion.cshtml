@@ -16,10 +16,10 @@
       </div>
       <div class="col" app-blog5-discussion-form novalidate="true">
         <div class="form-group mb-2">
-          <input class="form-control" placeholder="Your name" required data-pristine-required-message="Please enter your name">
+          <input class="form-control" app-blog5-discussion-pseudonym placeholder="Your name" required data-pristine-required-message="Please enter your name">
         </div>
         <div class="form-group mb-3">
-          <textarea class="form-control" placeholder="Join the discussion..." required minlength="1" data-pristine-required-message="Please write a comment" style="height: 100px"></textarea>
+          <textarea class="form-control" app-blog5-discussion-content placeholder="Join the discussion..." required minlength="1" data-pristine-required-message="Please write a comment" style="height: 100px"></textarea>
         </div>
         @* TODO: Change Text if logged in *@
         <div class="container-fluid px-0">
@@ -37,4 +37,4 @@
   </div>
 </section>
 
-@Html.Partial("_DiscussionAssets.cshtml", new { DomAttribute = discussionDomAttribute })
+@Html.Partial("_DiscussionAssets.cshtml")
