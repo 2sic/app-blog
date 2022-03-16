@@ -9,11 +9,11 @@ module.exports = (env) => {
   return {
     entry: {
       styles: `./${env.style}/styles/${env.style}.scss`,      
-      // scripts: './src/ts/index.ts',
+      scripts: './src/ts/index.ts',
     },
     output: {
-      path: path.resolve(__dirname, `${env.style}/dist`),
-      // filename: '[name].min.js',
+      path: path.resolve(__dirname, `dist`),
+      filename: '[name].min.js',
     },
     mode: 'production',
     devtool: 'source-map',
@@ -48,7 +48,7 @@ module.exports = (env) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[name].min.css',
+        filename: `${env.style}.min.css`,
       }),
       new WebpackBar(),
       new FriendlyErrorsWebpackPlugin()

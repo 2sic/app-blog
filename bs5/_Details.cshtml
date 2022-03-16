@@ -81,7 +81,7 @@
           @detailsHelpers.PostMicroPreview(nextPost, "next")
         }
       </div>
-      <hr />
+      <hr/>
 
       @* 3.5 "Back to list" button *@
       @detailsHelpers.BackToListButton()
@@ -90,8 +90,17 @@
 
   @* 4b Desktop Category filter *@
   <div class="col-lg-4">
-      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
+    @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
   </div>
 </section>
+
+@* 5 Discussion *@
+<div class="app-blog5 app-blog5-discussion container-fluid px-0">
+  <div class="row">
+    <div class="col-lg-8">
+      @Html.Partial("_Details.PartDiscussion.cshtml")
+    </div>
+  </div>
+</div>
 
 @Html.Partial("shared/_Assets.cshtml")

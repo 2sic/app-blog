@@ -7,6 +7,14 @@
     }
   }
 
+  &.app-blog5-discussion {
+    .pristine-error {
+      display: flex;
+      justify-content: end;
+      color: $danger;
+    }
+  }
+
   .app-blog5-list-item {
     position: relative;
 

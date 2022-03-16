@@ -1,0 +1,40 @@
+@inherits Custom.Hybrid.Razor12
+@using ToSic.Razor.Blade;
+@{
+  var discussionDomAttribute = "app-blog5-discussion-" + CmsContext.Module.Id;
+}
+
+<section @discussionDomAttribute @Edit.TagToolbar(App.Data["BlogComment"])>
+  <hr/>
+  <h3 class="mb-4">Comments (7)</h3>
+  <div class="container-fluid px-0">
+    <div class="row">
+      <div class="col-auto mr-2">
+        @* TODO: User Avatar or guest picture fallback *@
+        <div class="rounded-3" style="height: 64px; width: 64px; background-color: lightgray;">
+        </div>
+      </div>
+      <div class="col" app-blog5-discussion-form novalidate="true">
+        <div class="form-group mb-2">
+          <input class="form-control" placeholder="Your name" required data-pristine-required-message="Please enter your name">
+        </div>
+        <div class="form-group mb-3">
+          <textarea class="form-control" placeholder="Join the discussion..." required minlength="1" data-pristine-required-message="Please write a comment" style="height: 100px"></textarea>
+        </div>
+        @* TODO: Change Text if logged in *@
+        <div class="container-fluid px-0">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+              <button app-blog5-discussion-button type="button" class="btn btn-outline-primary me-2">Comment as guest</button>
+            </div>
+            <div class="col-auto">
+              <span>or <a href="##">Login</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@Html.Partial("_DiscussionAssets.cshtml", new { DomAttribute = discussionDomAttribute })
