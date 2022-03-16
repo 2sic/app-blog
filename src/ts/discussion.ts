@@ -9,36 +9,40 @@ interface Comment {
 }
 
 function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId: number }) {
-  const discussionElement = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
-  const discussionForm = discussionElement.querySelector('[app-blog5-discussion-form]');
-  const commentButton = discussionForm.querySelector('[app-blog5-discussion-button]');
+  const discussionWrapper = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
+  const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
+  const commentButton = discussionFormWrapper.querySelector('[app-blog5-discussion-button]');
   
   commentButton.addEventListener('click', () => {
-    const pristine = new Pristine(discussionForm);
+    const pristine = new Pristine(discussionFormWrapper);
     const isValid = pristine.validate();
     if (!isValid) return;
 
     const comment: Comment = {
       blogPostFK: blogPostId,
-      ...getFormValues(discussionForm)
+      ...getFormValues(discussionFormWrapper)
     };
 
     const commentSvc = $2sxc(moduleId).data('BlogComment');
     commentSvc.create(comment)
       .then((res: any) => {
-        if (res.Created) return;
+        if (res.Created) {
+          location.reload();
+          return;
+        }
+
         alert("Something went wrong, please contact the Admin.")
       });
   });
 }
 
-function getFormValues(discussionForm: Element): { pseudonym?: string, content: string} {
-  const pseudonymInput = (discussionForm.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement);
+function getFormValues(discussionFormWrapper: Element): { pseudonym?: string, content: string} {
+  const pseudonymInput = (discussionFormWrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement);
 
   let formValues: { pseudonym?: string, content: string } = {
-    content: (discussionForm.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement).value
+    content: (discussionFormWrapper.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement).value
   };
-  
+
   if(pseudonymInput != null) formValues.pseudonym = pseudonymInput.value;
   return formValues
 }
