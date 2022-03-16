@@ -3,13 +3,22 @@
 @{
   var discussionDomAttribute = "app-blog5-discussion-" + CmsContext.Module.Id;
   var isLoggedIn = CmsContext.User.Id > 0;
+  var blogPost = AsList(Data).FirstOrDefault();
+  if (blogPost == null) {
+    return;
+  }
+  var blogId = blogPost.EntityId;
 }
 
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["BlogComment"])>
+  @{
+    var comments = AsList(App.Data["BlogComment"]).Where(comment => comment.BlogPostFK == blogId);
+  }
+
   <hr/>
-  <h3 class="mb-4">Comments (7)</h3>
+  <h3 class="mb-4">Comments (@comments.Count())</h3>
   <div class="container-fluid px-0">
-    <div class="row">
+    <div class="row mb-4">
       <div class="col-auto mr-2">
         @* TODO: User Avatar or guest picture fallback *@
         <div class="rounded-3" style="height: 64px; width: 64px; background-color: lightgray;">
@@ -39,7 +48,45 @@
         </div>
       </div>
     </div>
+    <div app-blog5-comments>
+      @foreach (var comment in comments) {
+        <div class="row mb-2">
+          <div class="col-auto mr-2">
+            @* TODO: User Avatar or guest picture fallback *@
+            <div class="rounded-3" style="height: 64px; width: 64px; background-color: lightgray;"></div>
+          </div>
+          <div class="col">
+            <div class="container-fluid px-0">
+              <div class="row">
+                <div class="col-auto">
+                  @{
+                    var owner = comment.Entity.Owner;
+                    var displayName = comment.Pseudonym;
+                    if (owner != "anonymous") {
+                      var userId = owner.Replace("dnn:userid=", "");
+                      if (userId == "1") {
+                        displayName = "Admin";
+                      } else {
+                        var userQuery = App.Query["DNNUser"];
+                        @* userQuery.Params("UserId", userId); *@
+                        var user = AsList(userQuery["Default"]).FirstOrDefault();
+                        displayName = user.DisplayName;
+                      }
+                    }
+                  }
+                  <h4>@displayName</h4>
+                </div>
+                <div class="col-auto">
+                  <span>@comment.Created</span>
+                </div>
+              </div>
+            </div>
+            <p>@comment.Content</p>
+          </div>
+        </div>
+      }
+    </div>
   </div>
 </section>
 
-@Html.Partial("_DiscussionAssets.cshtml")
+@Html.Partial("_DiscussionAssets.cshtml", new { BlogPostId = blogId })

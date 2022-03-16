@@ -4,10 +4,11 @@ declare let $2sxc: any;
 interface Comment {
   pseudonym?: string;
   content: string;
-  parentCommentFK?: number;
+  parentComment?: number;
+  blogPostFK?: number;
 }
 
-function initDiscussion({ moduleId }: { moduleId: string }) {
+function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId: number }) {
   const discussionElement = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
   const discussionForm = discussionElement.querySelector('[app-blog5-discussion-form]');
   const commentButton = discussionForm.querySelector('[app-blog5-discussion-button]');
@@ -17,7 +18,10 @@ function initDiscussion({ moduleId }: { moduleId: string }) {
     const isValid = pristine.validate();
     if (!isValid) return;
 
-    const comment = getCommentValue(discussionForm);
+    const comment: Comment = {
+      blogPostFK: blogPostId,
+      ...getFormValues(discussionForm)
+    };
 
     const commentSvc = $2sxc(moduleId).data('BlogComment');
     commentSvc.create(comment)
@@ -28,11 +32,15 @@ function initDiscussion({ moduleId }: { moduleId: string }) {
   });
 }
 
-function getCommentValue(discussionForm: Element): Comment {
-  return {
-    pseudonym: (discussionForm.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement).value,
-    content: (discussionForm.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement).value,
-  }
+function getFormValues(discussionForm: Element): { pseudonym?: string, content: string} {
+  const pseudonymInput = (discussionForm.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement);
+
+  let formValues: { pseudonym?: string, content: string } = {
+    content: (discussionForm.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement).value
+  };
+  
+  if(pseudonymInput != null) formValues.pseudonym = pseudonymInput.value;
+  return formValues
 }
 
 export default initDiscussion;
