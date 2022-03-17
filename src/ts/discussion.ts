@@ -4,11 +4,11 @@ declare let $2sxc: any;
 interface Comment {
   pseudonym?: string;
   content: string;
-  target?: number;
-  blogPostFK?: number;
+  parentComment?: number;
+  target?: any;
 }
 
-function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId: number }) {
+function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: number }) {
   const discussionWrapper = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
   const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
   const commentButton = discussionFormWrapper.querySelector('[app-blog5-submit-comment-button]');
@@ -22,7 +22,7 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
     if (!isValid) return;
 
     const comment: Comment = {
-      blogPostFK: blogPostId,
+      target: [{ id: targetId }],
       ...getFormValues(discussionFormWrapper)
     };
 
@@ -64,11 +64,10 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
       const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
       const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
       replyButton.parentElement.appendChild(replyFormWrapper);
-      const targetId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
-      console.log(targetId)
+      const parentCommentId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
 
-      setDraftValue(replyForm, targetId);
-      addDraftHandler(replyForm, targetId);
+      setDraftValue(replyForm, parentCommentId);
+      addDraftHandler(replyForm, parentCommentId);
 
       replyButton.parentElement.classList.toggle("reply-form-active")
       
@@ -78,8 +77,8 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
         if (!isValid) return;
 
         const comment: Comment = {
-          target: +targetId,
-          blogPostFK: blogPostId,
+          parentComment: +parentCommentId,
+          target: [{ id: targetId }],
           ...getFormValues(replyForm)
         };
   
@@ -87,7 +86,7 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
         commentSvc.create(comment)
           .then((res: any) => {
             if (res.Created) {
-              clearDraft(targetId);
+              clearDraft(parentCommentId);
               location.reload();
               return;
             }

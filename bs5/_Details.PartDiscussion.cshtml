@@ -7,12 +7,12 @@
   if (blogPost == null) {
     return;
   }
-  var blogId = blogPost.EntityId;
+  var targetId = blogPost.EntityId;
 }
 
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["Comment"])>
   @{
-    var comments = AsList(App.Data["Comment"]).Where(comment => comment.BlogPostFK == blogId).OrderByDescending(comment => comment.Created);
+    var comments = AsList(App.Data["Comment"]).Where(comment => comment.Target.EntityId == targetId).OrderByDescending(comment => comment.Created);
     var commentTotal = comments.Count();
   }
 
@@ -22,21 +22,21 @@
     @Html.Partial("shared/_CommentInput.cshtml", new { IsFirstComment = commentTotal == 0 })
     
     @{
-      var targets = AsList(comments).Where(comment => comment.Target.Count == 0);
+      var parentComments = AsList(comments).Where(comment => comment.ParentComment.Count == 0);
     }
-    @foreach (var target in targets) {
-      @Html.Partial("shared/_Comment.cshtml", new { Comment = target });
+    @foreach (var parentComment in parentComments) {
+      @Html.Partial("shared/_Comment.cshtml", new { Comment = parentComment });
 
       var replies = comments
-        .Where(comment => (comment.Target as IEnumerable<dynamic>)
-        .Any(p => p.EntityId == target.EntityId));
+        .Where(comment => (comment.ParentComment as IEnumerable<dynamic>)
+        .Any(p => p.EntityId == parentComment.EntityId));
 
       for (var i = 0; i < replies.Count(); i++) {
         var reply = replies.ElementAt(i);
-        @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, ParentId = target.EntityId, IsVisible = i < 2 });
+        @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, ParentId = parentComment.EntityId, IsVisible = i < 2 });
       }
       if (replies.Count() > 2) {
-        <button type="button" class="btn btn-light btn-sm mb-4" app-blog5-show-all app-blog5-show-id="@target.EntityId" style="margin-left: 80px;">@Resources.ViewAllComments.Replace("[total]", replies.Count().ToString())</button>
+        <button type="button" class="btn btn-light btn-sm mb-4" app-blog5-show-all app-blog5-show-id="@parentComment.EntityId" style="margin-left: 80px;">@Resources.ViewAllComments.Replace("[total]", replies.Count().ToString())</button>
       }
     }
   </div>
@@ -45,4 +45,4 @@
   </template>
 </section>
 
-@Html.Partial("_DiscussionAssets.cshtml", new { BlogPostId = blogId })
+@Html.Partial("_DiscussionAssets.cshtml", new { TargetId = targetId })
