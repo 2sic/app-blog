@@ -15,11 +15,11 @@
   <div class="col" @(isReply ? "app-blog5-reply-form" : "app-blog5-discussion-form") novalidate="true">
     @if (!isLoggedIn) {
       <div class="form-group mb-2">
-        <input class="form-control" app-blog5-discussion-pseudonym minlength="3" placeholder="@Resources.PlaceholderNameInput" required data-pristine-required-message="@Resources.MessageNameRequired">
+        <input class="form-control" app-blog5-discussion-pseudonym minlength="3" data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "3")' placeholder="@Resources.PlaceholderNameInput" required data-pristine-required-message="@Resources.MessageNameRequired">
       </div>
     }
     <div class="form-group mb-3">
-      <textarea class="form-control" app-blog5-discussion-content minlength="5" placeholder="@(isFirstComment ? Resources.PlaceholderStartDiscussion : Resources.PlaceholderJoinDiscussion)" required minlength="1" data-pristine-required-message="@Resources.MessageCommentRequired" style="height: 100px"></textarea>
+      <textarea class="form-control" app-blog5-discussion-content minlength="5" data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "5")' placeholder="@(isFirstComment ? Resources.PlaceholderStartDiscussion : Resources.PlaceholderJoinDiscussion)" required minlength="1" data-pristine-required-message="@Resources.MessageCommentRequired" style="height: 100px"></textarea>
     </div>
     <div class="container-fluid px-0">
       <div class="row justify-content-between align-items-center">
