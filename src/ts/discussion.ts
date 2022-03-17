@@ -35,6 +35,13 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
       });
   });
 
+  const showAllButton = discussionWrapper.querySelector("[app-blog5-show-all]");
+  showAllButton.addEventListener('click', () => {
+    const parentId = showAllButton.getAttribute("app-blog5-show-id");
+    discussionWrapper.querySelectorAll(`[app-blog5-parent-id="${parentId}"]`).forEach(comment => comment.classList.remove('d-none'));
+    showAllButton.classList.toggle('d-none')
+  });
+
   discussionWrapper.querySelectorAll('[app-blog5-reply-button]')
     .forEach((replyButton: HTMLButtonElement) => {
       const replyFormWrapper = replyButton.parentElement.querySelector("[app-blog5-reply-form-wrapper]");

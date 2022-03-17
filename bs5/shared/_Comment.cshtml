@@ -2,7 +2,8 @@
 @using ToSic.Razor.Blade;
 @{
   var comment = DynamicModel.Comment;
-  var isReply = DynamicModel.IsReply ?? false;
+  var isReply = DynamicModel.ParentId != null;
+  var isVisible = DynamicModel.IsVisible ?? true;
   var owner = comment.Entity.Owner;
   var displayName = comment.Pseudonym;
   if (owner != "anonymous") {
@@ -18,7 +19,7 @@
   }
 }
 
-<div class='row @(isReply ? "mb-2" : "mb-3")' style='@(isReply ? "margin-left: 80px;" : "")' app-blog5-comment-id="@comment.EntityId">
+<div class='row @(isVisible ? "" : "d-none") @(isReply ? "mb-2" : "mb-3")' style='@(isReply ? "margin-left: 80px;" : "")' app-blog5-parent-id="@DynamicModel.ParentId" app-blog5-comment-id="@comment.EntityId">
   <div class="col-auto mr-2">
     <div class="rounded-circle" style='@(isReply ? "height: 54px; width: 54px;" : "height: 64px; width: 64px;") background-color: lightgray;'>
       <img class="img-fluid rounded-circle" src="@App.Path/images/default-avatar.png">
@@ -31,7 +32,7 @@
           <h4>@displayName</h4>
         </div>
         <div class="col-auto">
-          <span>@comment.Created</span>
+          <span class="text-muted">@comment.Created.ToString("MM.dd.yyyy H:mm")</span>
         </div>
       </div>
     </div>

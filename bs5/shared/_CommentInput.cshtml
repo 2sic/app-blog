@@ -3,11 +3,11 @@
 @{
   var isLoggedIn = CmsContext.User.Id > 0;
   var isReply = DynamicModel.IsReply ?? false;
+  var isFirstComment = DynamicModel.IsFirstComment ?? false;
 }
 
 <div class='row mb-4 @(isReply ? "d-none": "")' @(isReply ? "app-blog5-reply-form-wrapper" : "")>
   <div class="col-auto mr-2">
-    @* TODO: User avatar or guest picture fallback *@
     <div class="rounded-circle" style="height: 64px; width: 64px;">
       <img class="img-fluid rounded-circle" src="@App.Path/images/default-avatar.png">
     </div>
@@ -19,9 +19,8 @@
       </div>
     }
     <div class="form-group mb-3">
-      <textarea class="form-control" app-blog5-discussion-content placeholder="@Resources.PlaceholderComment" required minlength="1" data-pristine-required-message="@Resources.MessageCommentRequired" style="height: 100px"></textarea>
+      <textarea class="form-control" app-blog5-discussion-content placeholder="@(isFirstComment ? Resources.PlaceholderStartDiscussion : Resources.PlaceholderJoinDiscussion)" required minlength="1" data-pristine-required-message="@Resources.MessageCommentRequired" style="height: 100px"></textarea>
     </div>
-    @* TODO: Change text if logged in *@
     <div class="container-fluid px-0">
       <div class="row justify-content-between align-items-center">
         <div class="col-auto">

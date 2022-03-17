@@ -13,12 +13,13 @@
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["BlogComment"])>
   @{
     var comments = AsList(App.Data["BlogComment"]).Where(comment => comment.BlogPostFK == blogId).OrderByDescending(comment => comment.Created);
+    var commentTotal = comments.Count();
   }
 
   <hr/>
-  <h3 class="mb-4">@Resources.LabelComments (@comments.Count())</h3>
+  <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
   <div class="container-fluid px-0">
-    @Html.Partial("shared/_CommentInput.cshtml")
+    @Html.Partial("shared/_CommentInput.cshtml", new { IsFirstComment = commentTotal == 0 })
     
     @{
       var parentComments = AsList(comments).Where(comment => comment.ParentComment.Count == 0);
@@ -30,8 +31,12 @@
         .Where(comment => (comment.ParentComment as IEnumerable<dynamic>)
         .Any(p => p.EntityId == parentComment.EntityId));
 
-      foreach (var reply in replies) {
-        @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, IsReply = true });
+      for (var i = 0; i < replies.Count(); i++) {
+        var reply = replies.ElementAt(i);
+        @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, ParentId = parentComment.EntityId, IsVisible = i < 2 });
+      }
+      if (replies.Count() > 2) {
+        <button type="button" class="btn btn-light btn-sm mb-4" app-blog5-show-all app-blog5-show-id="@parentComment.EntityId" style="margin-left: 80px;">@Resources.ViewAllComments.Replace("[total]", replies.Count().ToString())</button>
       }
     }
   </div>
