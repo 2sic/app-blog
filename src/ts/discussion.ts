@@ -12,6 +12,9 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
   const discussionWrapper = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
   const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
   const commentButton = discussionFormWrapper.querySelector('[app-blog5-submit-comment-button]');
+
+  setDraftValue(discussionWrapper, 'main');
+  addDraftHandler(discussionWrapper, 'main');
   
   commentButton.addEventListener('click', () => {
     const pristine = new Pristine(discussionFormWrapper);
@@ -27,6 +30,7 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
     commentSvc.create(comment)
       .then((res: any) => {
         if (res.Created) {
+          clearDraft('main');
           location.reload();
           return;
         }
@@ -59,17 +63,20 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
       const replyForm = replyFormWrapper.querySelector('[app-blog5-reply-form]');
       const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
       const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
-
       replyButton.parentElement.appendChild(replyFormWrapper);
+      const targetId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
+      console.log(targetId)
+
+      setDraftValue(replyForm, targetId);
+      addDraftHandler(replyForm, targetId);
+
       replyButton.parentElement.classList.toggle("reply-form-active")
       
       submitReplyButton.addEventListener('click', () => {
         const pristine = new Pristine(replyForm);
         const isValid = pristine.validate();
-
         if (!isValid) return;
-        
-        const targetId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
+
         const comment: Comment = {
           target: +targetId,
           blogPostFK: blogPostId,
@@ -80,6 +87,7 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
         commentSvc.create(comment)
           .then((res: any) => {
             if (res.Created) {
+              clearDraft(targetId);
               location.reload();
               return;
             }
@@ -95,6 +103,34 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
     });
   })
 }
+
+function setDraftValue(wrapper: Element, itemId: string) {
+  const pseudonymInput = (wrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement); 
+  const contentInput = (wrapper.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement); 
+  console.log(pseudonymInput)
+  console.log(contentInput)
+  
+  const pseudonymValue = window.localStorage.getItem(`draft-pseudonym-${itemId}`);
+  const contentValue = window.localStorage.getItem(`draft-content-${itemId}`);
+  console.log(contentValue)
+
+  if (pseudonymInput) pseudonymInput.value = pseudonymValue
+  if (contentInput) contentInput.value = contentValue
+}
+
+function clearDraft(itemId: string) {
+  window.localStorage.removeItem(`draft-pseudonym-${itemId}`)
+  window.localStorage.removeItem(`draft-content-${itemId}`)
+}
+
+function addDraftHandler(wrapper: Element, itemId: string) {
+  const pseudonymInput = (wrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement); 
+  const contentInput = (wrapper.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement); 
+  
+  if (pseudonymInput) pseudonymInput.addEventListener('keyup', () => window.localStorage.setItem(`draft-pseudonym-${itemId}`, pseudonymInput.value));
+  if (contentInput) contentInput.addEventListener('keyup', () => window.localStorage.setItem(`draft-content-${itemId}`, contentInput.value));
+}
+
 
 function getFormValues(discussionFormWrapper: Element): { pseudonym?: string, content: string} {
   const pseudonymInput = (discussionFormWrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement);
