@@ -1,8 +1,8 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using System.Linq;
 @{
   var discussionDomAttribute = "app-blog5-discussion-" + CmsContext.Module.Id;
-  var isLoggedIn = CmsContext.User.Id > 0;
   var blogPost = AsList(Data).FirstOrDefault();
   if (blogPost == null) {
     return;
@@ -12,77 +12,27 @@
 
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["BlogComment"])>
   @{
-    var comments = AsList(App.Data["BlogComment"]).Where(comment => comment.BlogPostFK == blogId);
+    var comments = AsList(App.Data["BlogComment"]).Where(comment => comment.BlogPostFK == blogId).OrderByDescending(comment => comment.Created);
   }
 
   <hr/>
   <h3 class="mb-4">Comments (@comments.Count())</h3>
   <div class="container-fluid px-0">
-    <div class="row mb-4">
-      <div class="col-auto mr-2">
-        @* TODO: User Avatar or guest picture fallback *@
-        <div class="rounded-3" style="height: 64px; width: 64px; background-color: lightgray;">
-        </div>
-      </div>
-      <div class="col" app-blog5-discussion-form novalidate="true">
-        @if (!isLoggedIn) {
-          <div class="form-group mb-2">
-            <input class="form-control" app-blog5-discussion-pseudonym placeholder="Your name" required data-pristine-required-message="Please enter your name">
-          </div>
-        }
-        <div class="form-group mb-3">
-          <textarea class="form-control" app-blog5-discussion-content placeholder="Join the discussion..." required minlength="1" data-pristine-required-message="Please write a comment" style="height: 100px"></textarea>
-        </div>
-        @* TODO: Change Text if logged in *@
-        <div class="container-fluid px-0">
-          <div class="row justify-content-between align-items-center">
-            <div class="col-auto">
-              <button app-blog5-discussion-button type="button" class="btn btn-outline-primary me-2">@(isLoggedIn ? "Comment" : "Comment as guest")</button>
-            </div>
-            @if (!isLoggedIn) {
-              <div class="col-auto">
-                <span>or <a href="##">Login</a></span>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-    @foreach (var comment in comments) {
-      <div class="row mb-2">
-        <div class="col-auto mr-2">
-          @* TODO: User Avatar or guest picture fallback *@
-          <div class="rounded-3" style="height: 64px; width: 64px; background-color: lightgray;"></div>
-        </div>
-        <div class="col">
-          <div class="container-fluid px-0">
-            <div class="row">
-              <div class="col-auto">
-                @{
-                  var owner = comment.Entity.Owner;
-                  var displayName = comment.Pseudonym;
-                  if (owner != "anonymous") {
-                    var userId = owner.Replace("dnn:userid=", "");
-                    if (userId == "1") {
-                      displayName = "Admin";
-                    } else {
-                      var userQuery = App.Query["DNNUser"];
-                      @* userQuery.Params("UserId", userId); *@
-                      var user = AsList(userQuery["Default"]).FirstOrDefault();
-                      displayName = user.DisplayName;
-                    }
-                  }
-                }
-                <h4>@displayName</h4>
-              </div>
-              <div class="col-auto">
-                <span>@comment.Created</span>
-              </div>
-            </div>
-          </div>
-          <p>@comment.Content</p>
-        </div>
-      </div>
+    @Html.Partial("shared/_CommentInput.cshtml")
+    
+    @{
+      var parentComments = AsList(comments).Where(comment => comment.ParentComment.Count == 0);
+    }
+    @foreach (var parentComment in parentComments) {
+      @Html.Partial("shared/_Comment.cshtml", new { Comment = parentComment });
+
+      var replies = comments
+        .Where(comment => (comment.ParentComment as IEnumerable<dynamic>)
+        .Any(p => p.EntityId == parentComment.EntityId));
+
+      foreach (var reply in replies) {
+        @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, IsReply = true });
+      }
     }
   </div>
 </section>

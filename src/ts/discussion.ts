@@ -11,7 +11,7 @@ interface Comment {
 function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId: number }) {
   const discussionWrapper = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
   const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
-  const commentButton = discussionFormWrapper.querySelector('[app-blog5-discussion-button]');
+  const commentButton = discussionFormWrapper.querySelector('[app-blog5-submit-comment-button]');
   
   commentButton.addEventListener('click', () => {
     const pristine = new Pristine(discussionFormWrapper);
@@ -34,6 +34,41 @@ function initDiscussion({ moduleId, blogPostId }: { moduleId: number, blogPostId
         alert("Something went wrong, please contact the Admin.")
       });
   });
+
+  discussionWrapper.querySelectorAll('[app-blog5-reply-button]')
+    .forEach((replyButton: HTMLButtonElement) => {
+      const replyFormWrapper = replyButton.parentElement.querySelector("[app-blog5-reply-form-wrapper]");
+      const replyForm = replyFormWrapper.querySelector("[app-blog5-reply-form]");
+      const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
+      const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
+
+      submitReplyButton.addEventListener('click', () => {
+        const pristine = new Pristine(replyForm);
+        const isValid = pristine.validate();
+        if (!isValid) return;
+        
+        const parentCommentId = replyFormWrapper.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
+        const comment: Comment = {
+          parentComment: +parentCommentId,
+          blogPostFK: blogPostId,
+          ...getFormValues(replyForm)
+        };
+  
+        const commentSvc = $2sxc(moduleId).data('BlogComment');
+        commentSvc.create(comment)
+          .then((res: any) => {
+            if (res.Created) {
+              location.reload();
+              return;
+            }
+  
+            alert("Something went wrong, please contact the Admin.")
+          });
+      })
+
+      replyButton.addEventListener('click', () => replyFormWrapper.classList.remove("d-none"));
+      cancelReplyButton.addEventListener('click', () => replyFormWrapper.classList.add("d-none"));
+    })
 }
 
 function getFormValues(discussionFormWrapper: Element): { pseudonym?: string, content: string} {
