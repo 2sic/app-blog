@@ -25,8 +25,8 @@
       <div class="row justify-content-between align-items-center">
         <div class="col-auto">
           @if (isReply) {
-            <button app-blog5-submit-reply-button type="button" class="btn btn-outline-primary me-2">@(isLoggedIn ? Resources.Reply : Resources.ReplyAsGuest)</button>
-            <button app-blog5-cancel-reply-button type="button" class="btn btn-outline-secondary me-2">@Resources.Cancel</button>
+            <button app-blog5-submit-reply-button type="button" class="btn btn-outline-primary me-2 mb-2">@(isLoggedIn ? Resources.Reply : Resources.ReplyAsGuest)</button>
+            <button app-blog5-cancel-reply-button type="button" class="btn btn-outline-secondary me-2 mb-2">@Resources.Cancel</button>
           } else {
             <button app-blog5-submit-comment-button type="button" class="btn btn-outline-primary me-2">@(isLoggedIn ? Resources.Comment : Resources.CommentAsGuest)</button>
           }
