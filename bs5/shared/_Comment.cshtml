@@ -32,14 +32,13 @@
           <h4>@displayName</h4>
         </div>
         <div class="col-auto">
-          <span class="text-muted">@comment.Created.ToString("MM.dd.yyyy H:mm")</span>
+          <span class="text-muted">@comment.Created.ToString("dd.MM.yyyy H:mm")</span>
         </div>
       </div>
     </div>
     <p>@comment.Content</p>
     @if (!isReply) {
       <button app-blog5-reply-button type="button" class="btn btn-light me-2 mb-3 btn-sm">@Resources.Reply</button>
-      @Html.Partial("_CommentInput.cshtml", new { IsReply = true })
     }
   </div>
 </div>
