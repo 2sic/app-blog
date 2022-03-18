@@ -18,6 +18,10 @@
 
   <hr/>
   <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
+  @if (Edit.Enabled) {
+    <a href="@Link.To(parameters: CmsContext.Page.Parameters)/comment-moderation">Moderate comments</a>
+  }
+
   <div class="container-fluid px-0">
     @Html.Partial("shared/_CommentInput.cshtml", new { IsFirstComment = commentTotal == 0 })
     
