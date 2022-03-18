@@ -1,15 +1,16 @@
 {
-  "name": "comment-management",
+  "name": "comment-moderation",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "local": "ng serve --public-host localhost:4200 --disable-host-check true --ssl false"
   },
   "private": true,
   "dependencies": {
+    "@2sic.com/dnn-sxc-angular": "file:2sic.com-dnn-sxc-angular-11.1.2.tgz",
     "@angular/animations": "~13.3.0",
     "@angular/cdk": "^13.3.0",
     "@angular/common": "~13.3.0",
