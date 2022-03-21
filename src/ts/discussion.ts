@@ -64,7 +64,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       const replyForm = replyFormWrapper.querySelector('[app-blog5-reply-form]');
       const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
       const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
-      replyButton.parentElement.appendChild(replyFormWrapper);
+      replyButton.parentElement.parentElement.parentElement.appendChild(replyFormWrapper);
       const parentCommentId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
 
       setDraftValue(replyForm, parentCommentId);
@@ -121,12 +121,9 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
 function setDraftValue(wrapper: Element, itemId: string) {
   const pseudonymInput = (wrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement); 
   const contentInput = (wrapper.querySelector('[app-blog5-discussion-content]') as HTMLTextAreaElement); 
-  console.log(pseudonymInput)
-  console.log(contentInput)
   
   const pseudonymValue = window.localStorage.getItem(`draft-pseudonym-${itemId}`);
   const contentValue = window.localStorage.getItem(`draft-content-${itemId}`);
-  console.log(contentValue)
 
   if (pseudonymInput) pseudonymInput.value = pseudonymValue
   if (contentInput) contentInput.value = contentValue
@@ -144,7 +141,6 @@ function addDraftHandler(wrapper: Element, itemId: string) {
   if (pseudonymInput) pseudonymInput.addEventListener('keyup', () => window.localStorage.setItem(`draft-pseudonym-${itemId}`, pseudonymInput.value));
   if (contentInput) contentInput.addEventListener('keyup', () => window.localStorage.setItem(`draft-content-${itemId}`, contentInput.value));
 }
-
 
 function getFormValues(discussionFormWrapper: Element): { pseudonym?: string, content: string} {
   const pseudonymInput = (discussionFormWrapper.querySelector('[app-blog5-discussion-pseudonym]') as HTMLInputElement);
