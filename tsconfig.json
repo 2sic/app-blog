@@ -6,5 +6,8 @@
         "lib": ["es6", "dom"],
         "target": "es3",
         "allowJs": true
-    }
+    },
+    "exclude": [
+      "./comment-moderation"
+    ]
 }

@@ -13,6 +13,8 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
   const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
   const commentButton = discussionFormWrapper.querySelector('[app-blog5-submit-comment-button]');
 
+  const commentSvc = $2sxc(moduleId).data('Comment');
+
   setDraftValue(discussionWrapper, 'main');
   addDraftHandler(discussionWrapper, 'main');
   
@@ -26,7 +28,6 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       ...getFormValues(discussionFormWrapper)
     };
 
-    const commentSvc = $2sxc(moduleId).data('Comment');
     commentSvc.create(comment)
       .then((res: any) => {
         if (res.Created) {
@@ -82,7 +83,6 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
           ...getFormValues(replyForm)
         };
   
-        const commentSvc = $2sxc(moduleId).data('Comment');
         commentSvc.create(comment)
           .then((res: any) => {
             if (res.Created) {
@@ -101,6 +101,21 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       });
     });
   })
+
+  discussionWrapper.querySelectorAll('[app-blog5-deny-button]')
+    .forEach((denyButton: HTMLButtonElement) => {
+      const commentId = denyButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
+      denyButton.addEventListener('click', () => {
+        if (!confirm("This action can't be reverted. Are you sure you want to delete this comment?")) return;
+        commentSvc.delete(commentId, true);
+      });
+    });
+    
+    discussionWrapper.querySelectorAll('app-blog5-publish-button')
+    .forEach((publishButton: HTMLButtonElement) => {
+      const commentId = publishButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
+      // commentSvc.update(commentId, true);
+    })
 }
 
 function setDraftValue(wrapper: Element, itemId: string) {

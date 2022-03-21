@@ -11,16 +11,18 @@
 }
 
 <section @discussionDomAttribute @Edit.TagToolbar(App.Data["Comment"])>
-  @{
-    var comments = AsList(App.Data["Comment"]).Where(comment => comment.Target.EntityId == targetId).OrderByDescending(comment => comment.Created);
-    var commentTotal = comments.Count();
-  }
+@{
+  var comments = AsList(App.Data["Comment"]).Where(comment => comment.Target.EntityId == targetId).OrderByDescending(comment => comment.Created);
+  var commentTotal = comments.Count();
+}
 
   <hr/>
-  <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
-  @if (Edit.Enabled) {
-    <a href="@Link.To(parameters: CmsContext.Page.Parameters)/comment-moderation">Moderate comments</a>
-  }
+  <div class="d-flex justify-content-between">
+    <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
+    @if (Edit.Enabled) {
+      <a href="@Link.To(parameters: CmsContext.Page.Parameters)/comment-moderation">Moderate comments</a>
+    }
+  </div>
 
   <div class="container-fluid px-0">
     @Html.Partial("shared/_CommentInput.cshtml", new { IsFirstComment = commentTotal == 0 })
