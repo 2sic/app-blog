@@ -64,7 +64,8 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       const replyForm = replyFormWrapper.querySelector('[app-blog5-reply-form]');
       const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
       const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
-      replyButton.parentElement.parentElement.parentElement.appendChild(replyFormWrapper);
+      const replyWrapper = replyButton.closest('[app-blog5-reply-wrapper]')
+      replyWrapper.appendChild(replyFormWrapper);
       const parentCommentId = replyForm.closest("[app-blog5-comment-id]").getAttribute("app-blog5-comment-id");
 
       setDraftValue(replyForm, parentCommentId);
@@ -96,7 +97,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       })
 
       cancelReplyButton.addEventListener('click', () => {
-        replyButton.parentElement.querySelector('[app-blog5-reply-form-wrapper]').remove()
+        replyWrapper.querySelector('[app-blog5-reply-form-wrapper]').remove()
         replyButton.parentElement.classList.toggle("reply-form-active")
       });
     });
@@ -107,14 +108,32 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       const commentId = denyButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
       denyButton.addEventListener('click', () => {
         if (!confirm("This action can't be reverted. Are you sure you want to delete this comment?")) return;
-        commentSvc.delete(commentId, true);
+        commentSvc.delete(commentId + "?force=true").then((res: any) => {
+          if (res.Created) {
+            location.reload();
+            return;
+          }
+          
+          alert("Something went wrong, please contact the Admin.")
+        });
       });
     });
     
-    discussionWrapper.querySelectorAll('app-blog5-publish-button')
+    discussionWrapper.querySelectorAll('[app-blog5-publish-button]')
     .forEach((publishButton: HTMLButtonElement) => {
-      const commentId = publishButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
-      // commentSvc.update(commentId, true);
+      publishButton.addEventListener('click', () => {
+        const commentId = publishButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
+        commentSvc.update(commentId, {
+          PublishState: true
+        }).then((res: any) => {
+          if (res.Created) {
+            location.reload();
+            return;
+          }
+
+          alert("Something went wrong, please contact the Admin.")
+        });
+      });
     })
 }
 

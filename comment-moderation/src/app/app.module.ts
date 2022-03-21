@@ -8,6 +8,13 @@ import { ManagementComponent } from './management/management.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
+import { ContentManagerModule, DnnSxcRootModule } from '@2sic.com/dnn-sxc-angular';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    DnnSxcRootModule,
+    ContentManagerModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

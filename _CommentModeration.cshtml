@@ -21,9 +21,10 @@
   var ngHelpers = CreateInstance("shared/Angular.cs");
 
   // Show the Angular either from ng-server (local) or from the compiled live/staging folders
-  if(editions.CurrentEdition == "local") {
-    @Html.Partial("_AngularApp.PartLocalAssets.cshtml")
-  } else {
-    @Html.Raw(ngHelpers.ImportAngularHtml(editions.CurrentEdition));
-  }
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@if(editions.CurrentEdition == "local") {
+  @Html.Partial("_AngularApp.PartLocalAssets.cshtml")
+} else {
+  @Html.Raw(ngHelpers.ImportAngularHtml(editions.CurrentEdition));
 }
