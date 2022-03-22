@@ -38,7 +38,7 @@ export class BlocksComponent implements OnInit, AfterContentInit {
 
 
   unblockIp(ipId: number): void {
-    this.blockedIPsService.delete(ipId).subscribe(res => this.loadData());
+    this.blockedIPsService.delete(ipId).subscribe(() => this.loadData());
   }
 
   blockIp(): void {
