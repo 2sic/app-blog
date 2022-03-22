@@ -19,6 +19,8 @@ public class CommentController : Custom.Hybrid.Api12
 {
   [HttpGet]
   public dynamic GetAll() {
+    if (!CmsContext.User.IsSiteAdmin) return null;
+    
     return AsList(App.Data["Comment"])
       .Select(comment => {
         var displayName = comment.Pseudonym;

@@ -107,8 +107,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
     .forEach((denyButton: HTMLButtonElement) => {
       const commentId = denyButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
       denyButton.addEventListener('click', () => {
-        if (!confirm("This action can't be reverted. Are you sure you want to delete this comment?")) return;
-        commentSvc.delete(commentId + "?force=true").then((res: any) => {
+        commentSvc.delete(commentId).then((res: any) => {
           if (res.Created) {
             location.reload();
             return;
