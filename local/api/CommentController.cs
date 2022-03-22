@@ -39,10 +39,7 @@ public class CommentController : Custom.Hybrid.Api12
           id = comment.EntityId,
           displayName = displayName,
           title = comment.Title,
-          target = new {
-            id = comment.Target.Id,
-            title = comment.Target.Title
-          },
+          target = comment.Target.Title,
           parentComment = new {
             id = comment.ParentComment.Id,
             title = comment.ParentComment.Title

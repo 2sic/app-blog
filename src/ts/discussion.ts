@@ -5,7 +5,7 @@ interface Comment {
   pseudonym?: string;
   content: string;
   parentComment?: number;
-  target?: any;
+  target?: number;
 }
 
 function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: number }) {
@@ -24,11 +24,11 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
     if (!isValid) return;
 
     const comment: Comment = {
-      target: [{ id: targetId }],
+      target: targetId,
       ...getFormValues(discussionFormWrapper)
     };
 
-    commentSvc.create(comment)
+    $2sxc(moduleId).webApi.fetchJson('comment/create', comment)
       .then((res: any) => {
         if (res.Created) {
           clearDraft('main');
@@ -80,11 +80,11 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
 
         const comment: Comment = {
           parentComment: +parentCommentId,
-          target: [{ id: targetId }],
+          target: targetId,
           ...getFormValues(replyForm)
         };
   
-        commentSvc.create(comment)
+        $2sxc(moduleId).webApi.fetchJson('comment/create', comment)
           .then((res: any) => {
             if (res.Created) {
               clearDraft(parentCommentId);
@@ -119,14 +119,14 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
       });
     });
     
-    discussionWrapper.querySelectorAll('[app-blog5-publish-button]')
+  discussionWrapper.querySelectorAll('[app-blog5-publish-button]')
     .forEach((publishButton: HTMLButtonElement) => {
       publishButton.addEventListener('click', () => {
         const commentId = publishButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
         commentSvc.update(commentId, {
           PublishState: true
         }).then((res: any) => {
-          if (res.Created) {
+          if (res.Modified) {
             location.reload();
             return;
           }

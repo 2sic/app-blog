@@ -30,12 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     DnnSxcRootModule,
     ContentManagerModule,
-    MatMenuModule,
     MatIconModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
