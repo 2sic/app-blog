@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';

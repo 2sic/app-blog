@@ -100,4 +100,9 @@ public class BlogController : Custom.Hybrid.Api12
   public dynamic CurrentCulture() {
     return CmsContext.Culture;
   }
+
+  [HttpGet]
+  public dynamic TranslationPath() {
+    return App.Path + "/assets/i18n/";
+  }
 }

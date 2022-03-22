@@ -15,5 +15,6 @@
   "SEARCH_IPS": "Search ips...",
   "BLOCK_IP": "block IP",
   "APPROVED": "approved",
-  "UNVERIFIED": "unverified"
+  "UNVERIFIED": "unverified",
+  "ALL": "All"
 }
