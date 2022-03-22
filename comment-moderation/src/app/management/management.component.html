@@ -50,7 +50,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ 'STATUS' | translate }}
     </th>
-    <td mat-cell *matCellDef="let comment"> <div [class]="'badge ' + (comment.isPublished ? 'bg-success' : 'bg-danger')">{{ comment.isPublished ? "approved" : "unapproved" }}</div></td>
+    <td mat-cell *matCellDef="let comment"> <div [class]="'badge ' + (comment.isPublished ? 'bg-success' : 'bg-danger')">{{ comment.isPublished ? ('APPROVED' | translate) : ('UNVERIFIED' | translate) }}</div></td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
@@ -76,7 +76,7 @@
           </div>
           <div class="col-auto">
             <button type="button" class="btn btn-outline-danger" (click)="blockIp(comment.ip)">
-              {{ 'UNBLOCK_IP' | translate }}
+              {{ 'BLOCK_IP' | translate }}
             </button>
           </div>
         </div>
