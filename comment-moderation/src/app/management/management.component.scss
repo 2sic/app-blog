@@ -1,12 +1,31 @@
 table {
   width: 100%;
+  .mat-row:not(.detail-row) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: whitesmoke;
+    }
+  }
+  .mat-column-actions {
+    text-align: right;
+  }
+
+  tr.detail-row {
+    height: 0;
+  }
+
+  .element-detail {
+    overflow: hidden;
+  }
+
+  .element-row td {
+    border-bottom-width: 0;
+  }
+  .profile {
+    width: 46px;
+    padding-block: 10px;
+  }
 }
 
-.profile {
-  width: 46px;
-  padding-block: 10px;
-}
 
-.mat-column-actions {
-  text-align: right;
-}

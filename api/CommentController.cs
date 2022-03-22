@@ -17,8 +17,49 @@ using System.Web;
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class CommentController : Custom.Hybrid.Api12
 {
+  [HttpGet]
+  public dynamic GetAll() {
+    return AsList(App.Data["Comment"])
+      .Select(comment => {
+        var displayName = comment.Pseudonym;
+        var owner = comment.Entity.Owner;
+        var userId = owner.Replace("dnn:userid=", "");
+        if (owner != "anonymous") { 
+          if (userId == "1") {
+            displayName = "Admin";
+          } else {
+            var userQuery = App.Query["DNNUser"];
+            var user = AsList(userQuery["Default"]).FirstOrDefault();
+            displayName = user.DisplayName;
+          }
+        }
+
+        return new {
+          content = comment.Content,
+          created = comment.Created.ToString("dd.MM.yyyy HH:mm"), 
+          id = comment.EntityId,
+          displayName = displayName,
+          title = comment.Title,
+          target = new {
+            id = comment.Target.EntityId,
+            title = comment.Target.Title
+          },
+          parentComment = new {
+            id = comment.ParentComment.EntityId,
+            title = comment.ParentComment.Title
+          },
+          ip = comment.IP,
+          isPublished = comment.IsPublished
+        };
+      }).OrderByDescending(comment => comment.created).ToList();
+  }
+
   [HttpPost]
   public dynamic Create(dynamic comment) {
+    var ip = HttpContext.Current.Request.UserHostAddress;
+    if (AsList(App.Data["BlockedIP"]).Any(blockedIp => blockedIp.IP == ip))
+      return new { Message = "blocked" };
+
     try {
       var values = new Dictionary<string, dynamic>();
       values.Add("Content", comment.content);
@@ -29,9 +70,9 @@ public class CommentController : Custom.Hybrid.Api12
       if (comment.target != null) {
         values.Add("Target", new List<int>() { Convert.ToInt32(comment.target) });
       }
-      values.Add("IP", HttpContext.Current.Request.UserHostAddress);
+      values.Add("IP", ip);
       App.Data.Create("Comment", values);
-      return new { Created = DateTime.UtcNow };
+      return new { Created = DateTime.Now };
     } catch (Exception ex) {
       return ex;
     }

@@ -1,0 +1,19 @@
+{
+  "COMMENTS": "Kommentare",
+  "IP_BLOCKS": "IP Blockaden",
+  "SEARCH_COMMENTS": "Kommentare suchen...",
+  "AUTHOR": "Autor",
+  "MESSAGE": "Nachricht",
+  "TARGET": "Ziel",
+  "CREATED": "Erstellt",
+  "STATUS": "Status",
+  "ACTIONS": "Aktionen",
+  "DELETE": "Löschen",
+  "APPROVE": "Genehmigen",
+  "BLOCK_CREATED": "Blockade erstellt",
+  "UNBLOCK_IP": "IP entblocken",
+  "SEARCH_IPS": "IPs suchen...",
+  "BLOCK_IP": "IP blockieren",
+  "APPROVED": "genehmigt",
+  "UNVERIFIED": "unverifiziert"
+}

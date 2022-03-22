@@ -1,0 +1,19 @@
+{
+  "COMMENTS": "Comments",
+  "IP_BLOCKS": "IP blocks",
+  "SEARCH_COMMENTS": "Search comments...",
+  "AUTHOR": "Author",
+  "MESSAGE": "Message",
+  "TARGET": "Target",
+  "CREATED": "Created",
+  "STATUS": "Status",
+  "ACTIONS": "Actions",
+  "DELETE": "Delete",
+  "APPROVE": "Approve",
+  "BLOCK_CREATED": "Block created",
+  "UNBLOCK_IP": "Unblock IP",
+  "SEARCH_IPS": "Search ips...",
+  "BLOCK_IP": "block IP",
+  "APPROVED": "approved",
+  "UNVERIFIED": "unverified"
+}

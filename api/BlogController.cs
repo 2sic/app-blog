@@ -96,4 +96,8 @@ public class BlogController : Custom.Hybrid.Api12
     return node;
   }
 
+  [HttpGet]
+  public dynamic CurrentCulture() {
+    return CmsContext.Culture;
+  }
 }

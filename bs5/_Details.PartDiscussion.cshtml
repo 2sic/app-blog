@@ -20,7 +20,7 @@
   <div class="d-flex justify-content-between">
     <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
     @if (Edit.Enabled) {
-      <a href="@Link.To(parameters: CmsContext.Page.Parameters)/comment-moderation">Moderate comments</a>
+      <a href='@Link.To(parameters: CmsContext.Page.Parameters + "&target=" + targetId)/comment-moderation'>Moderate comments</a>
     }
   </div>
 

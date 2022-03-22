@@ -32,7 +32,7 @@
           <h4>@displayName</h4>
         </div>
         <div class="col-auto">
-          <span class="text-muted">@comment.Created.ToString("dd.MM.yyyy H:mm")</span>
+          <span class="text-muted">@comment.Created.ToString("dd.MM.yyyy HH:mm")</span>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
         @if (Edit.Enabled && !comment.IsPublished) {
           <div class="col-auto">
             <button app-blog5-deny-button type="button" class="btn btn-outline-danger me-2 mb-3">Deny</button>
-            <button app-blog5-publish-button type="button" class="btn btn-outline-success mb-3">Accept</button>
+            <button app-blog5-publish-button type="button" class="btn btn-outline-success mb-3">Approve</button>
           </div>
         }
       </div>

@@ -15,11 +15,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { NavComponent } from './nav/nav.component';
+import { BlocksComponent } from './blocks/blocks.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManagementComponent
+    ManagementComponent,
+    NavComponent,
+    BlocksComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     DnnSxcRootModule,
     ContentManagerModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
