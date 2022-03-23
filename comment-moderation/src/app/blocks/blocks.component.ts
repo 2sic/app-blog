@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators'
   templateUrl: './blocks.component.html',
   styleUrls: ['./blocks.component.scss']
 })
-export class BlocksComponent implements OnInit, AfterContentInit {
+export class BlocksComponent implements OnInit {
 
   displayedColumns: string[] = ['IP', 'Created', 'actions'];
   dataSource = new MatTableDataSource<{ IP: string, Created?: Date }>();
@@ -22,18 +22,12 @@ export class BlocksComponent implements OnInit, AfterContentInit {
   ipControl = new FormControl('');
   blockedIPsService: Data<{ IP: string, Created?: Date }>;
 
-  @ViewChild(MatSort) sort!: MatSort;
-
   constructor(private app: SxcApp) {
     this.blockedIPsService = app.data('BlockedIP');
   }
 
   ngOnInit(): void {
     this.loadData();
-  }
-
-  ngAfterContentInit(): void {
-    this.dataSource.sort = this.sort;
   }
 
 
