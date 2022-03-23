@@ -13,7 +13,7 @@
       displayName = "Admin";
     } else {
       var userQuery = App.Query["DNNUser"];
-      @* userQuery.Params("UserId", userId); *@
+      userQuery.Params("UserId", userId);
       var user = AsList(userQuery["Default"]).FirstOrDefault();
       displayName = user.DisplayName;
     }
