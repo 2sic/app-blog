@@ -60,17 +60,17 @@ public class CommentController : Custom.Hybrid.Api12
   public dynamic Create(dynamic comment) {
     var ip = HttpContext.Current.Request.UserHostAddress;
     if (AsList(App.Data["BlockedIP"]).Any(blockedIp => blockedIp.IP == ip))
-      return new { Message = "blocked" };
+      return new { Message = Resources.Blocked };
     
     // Validation
     if (comment.pseudonym != null && comment.pseudonym.ToString().Length < 3) 
-      return new { Message = "Your name is too short." };
+      return new { Message = Resources.MessageNameTooShort };
     
     if (CmsContext.User.Id < 0 && comment.pseudonym == null)
-      return new { Message = "Please submit your name" };
+      return new { Message = Resources.MessageNoName };
 
     if (comment.content == null || comment.content != null && comment.content.ToString().Length < 5)
-      return new { Message = "Your comment is too short"};
+      return new { Message = Resources.MessageCommentTooShort };
     
     try {
       var values = new Dictionary<string, dynamic>();

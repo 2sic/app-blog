@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
@@ -44,7 +45,8 @@ export class ManagementComponent implements OnInit, AfterViewInit {
   constructor(
     private app: SxcApp,
     private ctx: Context,
-    private targetService: TargetService
+    private targetService: TargetService,
+    private translate: TranslateService
   ) {
     ctx.apiEdition = "";
     this.commentService = app.data('Comment');
@@ -87,7 +89,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
         this.loadData();
         return;
       }
-      alert("Something went wrong. Please contact the admin.")
+      alert(this.translate.instant('ERROR_JS'))
     });
   }
 
@@ -96,8 +98,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
   }
 
   loadData(): void {
-    this.api.get<Comment[]>('getAll', "")
-      .subscribe((comments) => this.dataSource.data = comments);
+    this.api.get<Comment[]>('getAll', "").subscribe((comments) => this.dataSource.data = comments);
   }
 
   blockIp(ip: string): void {

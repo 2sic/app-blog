@@ -46,8 +46,8 @@
         </div>
         @if (Edit.Enabled && !comment.IsPublished) {
           <div class="col-auto">
-            <button app-blog5-deny-button type="button" class="btn btn-outline-danger me-2 mb-3">Deny</button>
-            <button app-blog5-publish-button type="button" class="btn btn-outline-success mb-3">Approve</button>
+            <button app-blog5-deny-button type="button" class="btn btn-outline-danger me-2 mb-3">@Resources.Deny</button>
+            <button app-blog5-publish-button type="button" class="btn btn-outline-success mb-3">@Resources.Approve</button>
           </div>
         }
       </div>

@@ -16,5 +16,6 @@
   "BLOCK_IP": "IP blockieren",
   "APPROVED": "genehmigt",
   "UNVERIFIED": "unverifiziert",
-  "ALL": "Alle"
+  "ALL": "Alle",
+  "ERROR_JS": "Etwas ist schiefgelaufen. Bitte kontaktieren Sie den Admin."
 }

@@ -13,8 +13,9 @@
   "BLOCK_CREATED": "Block created",
   "UNBLOCK_IP": "Unblock IP",
   "SEARCH_IPS": "Search ips...",
-  "BLOCK_IP": "block IP",
+  "BLOCK_IP": "Block IP",
   "APPROVED": "approved",
   "UNVERIFIED": "unverified",
-  "ALL": "All"
+  "ALL": "All",
+  "ERROR_JS": "Something went wrong. Please contact the admin."
 }

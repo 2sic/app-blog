@@ -8,7 +8,7 @@ interface Comment {
   target?: number;
 }
 
-function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: number }) {
+function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number, targetId: number, defaultError: string }) {
   const discussionWrapper = document.querySelector(`[app-blog5-discussion-${moduleId}]`);
   const discussionFormWrapper = discussionWrapper.querySelector('[app-blog5-discussion-form]');
   const commentButton = discussionFormWrapper.querySelector('[app-blog5-submit-comment-button]');
@@ -36,7 +36,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
           return;
         }
 
-        alert("Something went wrong, please contact the Admin.")
+        alert(res.Message)
       });
   });
 
@@ -92,7 +92,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
               return;
             }
   
-            alert("Something went wrong, please contact the Admin.")
+            alert(res.Message)
           });
       })
 
@@ -107,7 +107,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
     .forEach((denyButton: HTMLButtonElement) => {
       const commentId = denyButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
       denyButton.addEventListener('click', () => {
-        commentSvc.delete(commentId).then((res: any) => location.reload());
+        commentSvc.delete(commentId).then(() => location.reload());
       });
     });
     
@@ -123,7 +123,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
             return;
           }
 
-          alert("Something went wrong, please contact the Admin.")
+          alert(defaultError)
         });
       });
     })
