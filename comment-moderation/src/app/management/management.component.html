@@ -58,10 +58,10 @@
       {{ 'ACTIONS' | translate }}
     </th>
     <td mat-cell *matCellDef="let comment">
-      <button *ngIf="!comment.isPublished" [title]="'APPROVE' | translate" type="button" mat-icon-button (click)="$event.stopPropagation(); approveComment(comment.id)" class="me-2">
+      <button *ngIf="!comment.isPublished" [title]="'APPROVE' | translate" type="button" mat-icon-button (click)="$event.stopPropagation(); approveComment(comment.id)">
         <mat-icon>done</mat-icon>
       </button>
-      <button type="button" [title]="'DELETE' | translate" mat-icon-button (click)="$event.stopPropagation(); deleteComment(comment.id)">
+      <button type="button" class="ms-2" [title]="'DELETE' | translate" mat-icon-button (click)="$event.stopPropagation(); deleteComment(comment.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
