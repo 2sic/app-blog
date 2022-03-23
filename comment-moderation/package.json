@@ -1,12 +1,17 @@
 {
   "name": "comment-moderation",
   "version": "0.0.0",
+  "config": {
+    "publish_path_ex": "..",
+    "publish_path": "C:/IPA/Entwicklung/IPA-Entwicklung/Website/Portals/0/2sxc/Blog5"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "local": "ng serve --public-host localhost:4200 --disable-host-check true --ssl false"
+    "local": "ng serve --public-host localhost:4200 --disable-host-check true --ssl false",
+    "build-to-live": "ng build --configuration production && node deploy/publish.js live"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +28,7 @@
     "@angular/router": "~13.3.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "cpx": "^1.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

@@ -9,7 +9,7 @@ public class Angular: Custom.Hybrid.Code12 {
   // -------------------------------------------------------------------------------------
 
   // ----------------------------------  Private Constants ----------------------------------
-  private const string DefaultAppName = "ng-app";   // Angular app name if not set
+  private const string DefaultAppName = "comment-moderation";   // Angular app name if not set
   private const string DefaultAppTag = "app-root";  // Angular app tag if not set
   private const string LocalDevServer = "//localhost:4200"; // default localhost dev-server using angular  
 
