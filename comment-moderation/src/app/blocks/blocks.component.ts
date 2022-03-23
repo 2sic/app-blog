@@ -36,7 +36,8 @@ export class BlocksComponent implements OnInit {
   }
 
   blockIp(): void {
-    if(this.ipControl.value.length >= 7) this.blockedIPsService.create({ IP: this.ipControl.value }).subscribe(() => this.loadData())
+    if(this.ipControl.valid)
+      this.blockedIPsService.create({ IP: this.ipControl.value }).subscribe(() => this.loadData())
   }
 
   loadData(): void {

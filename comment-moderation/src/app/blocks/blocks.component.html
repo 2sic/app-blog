@@ -7,7 +7,7 @@
       <div class="container-fluid px-0">
         <div class="row">
           <div class="col">
-            <input type="text" [formControl]="ipControl" class="form-control" placeholder="123.456.789.123">
+            <input type="text" minlength="7" [formControl]="ipControl" class="form-control" placeholder="123.456.789.123">
           </div>
           <div class="col-auto">
             <button type="button" class="btn btn-outline-danger" (click)="blockIp()">{{ 'BLOCK_IP' | translate }}</button>
