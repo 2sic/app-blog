@@ -61,7 +61,17 @@ public class CommentController : Custom.Hybrid.Api12
     var ip = HttpContext.Current.Request.UserHostAddress;
     if (AsList(App.Data["BlockedIP"]).Any(blockedIp => blockedIp.IP == ip))
       return new { Message = "blocked" };
+    
+    // Validation
+    if (comment.pseudonym != null && comment.pseudonym.ToString().Length < 3) 
+      return new { Message = "Your name is too short." };
+    
+    if (CmsContext.User.Id < 0 && comment.pseudonym == null)
+      return new { Message = "Please submit your name" };
 
+    if (comment.content == null || comment.content != null && comment.content.ToString().Length < 5)
+      return new { Message = "Your comment is too short"};
+    
     try {
       var values = new Dictionary<string, dynamic>();
       values.Add("Content", comment.content);

@@ -107,14 +107,7 @@ function initDiscussion({ moduleId, targetId }: { moduleId: number, targetId: nu
     .forEach((denyButton: HTMLButtonElement) => {
       const commentId = denyButton.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
       denyButton.addEventListener('click', () => {
-        commentSvc.delete(commentId).then((res: any) => {
-          if (res.Created) {
-            location.reload();
-            return;
-          }
-          
-          alert("Something went wrong, please contact the Admin.")
-        });
+        commentSvc.delete(commentId).then((res: any) => location.reload());
       });
     });
     
