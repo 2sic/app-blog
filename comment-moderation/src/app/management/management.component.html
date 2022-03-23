@@ -15,7 +15,7 @@
 <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8">
   <ng-container matColumnDef="avatar">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let comment"><img class="profile" src="http://ipa-entwicklung.dnndev.me/Portals/0/2sxc/Blog5/images/default-avatar.png"></td>
+    <td mat-cell *matCellDef="let comment"><img class="profile" [src]="comment.profileUrl"></td>
   </ng-container>
 
   <ng-container matColumnDef="displayName">

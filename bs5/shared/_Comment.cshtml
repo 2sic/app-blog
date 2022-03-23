@@ -6,8 +6,9 @@
   var isVisible = DynamicModel.IsVisible ?? true;
   var owner = comment.Entity.Owner;
   var displayName = comment.Pseudonym;
+  var userId = "-1";
   if (owner != "anonymous") {
-    var userId = owner.Replace("dnn:userid=", "");
+    userId = owner.Replace("dnn:userid=", "");
     if (userId == "1") {
       displayName = "Admin";
     } else {
@@ -22,7 +23,7 @@
 <div class='row @(isVisible ? "" : "d-none") @(isReply ? "mb-2" : "mb-3")' style='@(isReply ? "margin-left: 80px;" : "")' app-blog5-parent-id="@DynamicModel.ParentId" app-blog5-comment-id="@comment.EntityId">
   <div class="col-auto mr-2">
     <div class="rounded-circle" style='@(isReply ? "height: 54px; width: 54px;" : "height: 64px; width: 64px;") background-color: lightgray;'>
-      <img class="img-fluid rounded-circle" src="@App.Path/images/default-avatar.png">
+      <img class="img-fluid rounded-circle" src='@(CmsContext.Site.Url + "/" + "/DnnImageHandler.ashx?mode=profilepic&userId=" + userId)'>
     </div>
   </div>
   <div class="col">

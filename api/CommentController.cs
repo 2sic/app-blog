@@ -50,6 +50,7 @@ public class CommentController : Custom.Hybrid.Api12
             id = comment.ParentComment.EntityId,
             title = comment.ParentComment.Title
           },
+          profileUrl = CmsContext.Site.Url + "/" + "/DnnImageHandler.ashx?mode=profilepic&userId=" + userId,
           ip = comment.IP,
           isPublished = comment.IsPublished
         };

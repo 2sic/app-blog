@@ -9,7 +9,7 @@
 <div class='row mb-4' @(isReply ? "app-blog5-reply-form-wrapper" : "")>
   <div class="col-auto">
     <div class="rounded-circle" style="height: 64px; width: 64px;">
-      <img class="img-fluid rounded-circle" src="@App.Path/images/default-avatar.png">
+      <img class="img-fluid rounded-circle" src='@(CmsContext.Site.Url + "/" + "/DnnImageHandler.ashx?mode=profilepic&userId=" + CmsContext.User.Id)'>
     </div>
   </div>
   <div class="col" @(isReply ? "app-blog5-reply-form" : "app-blog5-discussion-form") novalidate="true">
