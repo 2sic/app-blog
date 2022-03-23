@@ -4,6 +4,8 @@ export interface Comment {
   parentComment?: Entity;
   target: Entity;
   ip?: string;
+  isDenied?: boolean;
+  isPublished?: boolean;
   PublishState?: boolean;
 }
 

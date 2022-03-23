@@ -11,6 +11,10 @@ table {
     text-align: right;
   }
 
+  .mat-column-content {
+    max-width: 225px;
+  }
+
   tr.detail-row {
     height: 0;
   }

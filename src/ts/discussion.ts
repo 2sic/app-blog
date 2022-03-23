@@ -30,13 +30,19 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
 
     $2sxc(moduleId).webApi.fetchJson('comment/create', comment)
       .then((res: any) => {
+        discussionFormWrapper.querySelector('[app-blog5-discussion-pseudonym]')?.setAttribute('disabled', 'true');
+        discussionFormWrapper.querySelector('[app-blog5-discussion-content]').setAttribute('disabled', 'true');
+        (commentButton as HTMLElement).style.display = "none";
         if (res.Created) {
+          const successMessage = (discussionWrapper.querySelector('[app-blog5-comment-success-template]') as HTMLTemplateElement).content.cloneNode(true);
+          discussionFormWrapper.appendChild(successMessage);
           clearDraft('main');
-          location.reload();
           return;
         }
 
-        alert(res.Message)
+        let errorMessage = (discussionWrapper.querySelector('[app-blog5-comment-error-template]') as HTMLTemplateElement).content.cloneNode(true) as HTMLElement;
+        errorMessage.querySelector('span').textContent = res.Message;
+        discussionFormWrapper.appendChild(errorMessage);
       });
   });
 
@@ -86,13 +92,20 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
   
         $2sxc(moduleId).webApi.fetchJson('comment/create', comment)
           .then((res: any) => {
+            replyForm.querySelector('[app-blog5-discussion-pseudonym]')?.setAttribute('disabled', 'true');
+            replyForm.querySelector('[app-blog5-discussion-content]').setAttribute('disabled', 'true');
+            (submitReplyButton as HTMLElement).style.display = "none";
+            (cancelReplyButton as HTMLElement).style.display = "none";
             if (res.Created) {
+              const successMessage = (discussionWrapper.querySelector('[app-blog5-comment-success-template]') as HTMLTemplateElement).content.cloneNode(true);
+              replyForm.appendChild(successMessage);
               clearDraft(parentCommentId);
-              location.reload();
               return;
             }
-  
-            alert(res.Message)
+    
+            let errorMessage = (discussionWrapper.querySelector('[app-blog5-comment-error-template]') as HTMLTemplateElement).content.cloneNode(true) as HTMLElement;
+            errorMessage.querySelector('span').textContent = res.Message;
+            replyForm.appendChild(errorMessage);
           });
       })
 

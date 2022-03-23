@@ -46,13 +46,11 @@ public class CommentController : Custom.Hybrid.Api12
             id = comment.Target.EntityId,
             title = comment.Target.Title
           },
-          parentComment = new {
-            id = comment.ParentComment.EntityId,
-            title = comment.ParentComment.Title
-          },
+          isReply = comment.ParentComment.EntityId != 0 ? true : false,
           profileUrl = CmsContext.Site.Url + "/" + "/DnnImageHandler.ashx?mode=profilepic&userId=" + userId,
           ip = comment.IP,
-          isPublished = comment.IsPublished
+          isPublished = comment.IsPublished,
+          isDenied = comment.IsDenied
         };
       }).OrderByDescending(comment => comment.created).ToList();
   }
@@ -77,6 +75,7 @@ public class CommentController : Custom.Hybrid.Api12
       var values = new Dictionary<string, dynamic>();
       values.Add("Content", comment.content);
       values.Add("Pseudonym", comment.pseudonym);
+      values.Add("IsDenied", false);
       if (comment.parentComment != null) {
         values.Add("ParentComment", new List<int>() { Convert.ToInt32(comment.parentComment) });
       }

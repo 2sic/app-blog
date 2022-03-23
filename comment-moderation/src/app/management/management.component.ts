@@ -22,13 +22,18 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ],
 })
 export class ManagementComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['avatar', 'displayName', 'content', 'target.title', 'created', 'isPublished', 'actions'];
+  displayedColumns: string[] = ['avatar', 'displayName', 'content', 'target.title', 'created', 'type', 'isPublished'];
   dataSource = new MatTableDataSource<Comment>();
 
   targetControl = new FormControl(-1);
+  statusControl = new FormControl(-1);
+
+  statuses: string[] = [ "approved", "unverified", "denied"]
+
   filterValues = {
     searchFilter: '',
-    targetFilter: -1
+    targetFilter: -1,
+    statusFilter: -1
   }
 
   commentService: Data<unknown>;
@@ -69,6 +74,12 @@ export class ManagementComponent implements OnInit, AfterViewInit {
       this.dataSource.filter = JSON.stringify(this.filterValues)
     });
 
+    this.statusControl.valueChanges.subscribe((status) => {
+      console.log(status)
+      this.filterValues.statusFilter = status
+      this.dataSource.filter = JSON.stringify(this.filterValues)
+    });
+
     this.targetControl.setValue(this.targetService.currentTarget.value)
   }
 
@@ -93,8 +104,21 @@ export class ManagementComponent implements OnInit, AfterViewInit {
     });
   }
 
+  denyComment(commentId: number): void {
+    this.commentService.update(commentId, { IsDenied: true })
+    .subscribe(res => {
+      if ((res as { Modified: Date}).Modified) {
+        this.loadData();
+        return;
+      }
+
+      alert(this.translate.instant('ERROR_JS'))
+    });
+  }
+
   deleteComment(commentId: number): void {
-    this.commentService.delete(commentId).subscribe(res => this.loadData());
+    if(confirm(this.translate.instant('CONFIRM_COMMENT_DELETE')))
+      this.commentService.delete(commentId).subscribe(res => this.loadData());
   }
 
   loadData(): void {
@@ -117,6 +141,15 @@ export class ManagementComponent implements OnInit, AfterViewInit {
 
       if (searchTerms.targetFilter != -1 && data.target.id != searchTerms.targetFilter)
         return false
+
+      if (searchTerms.statusFilter != -1) {
+        console.log(searchTerms.statusFilter)
+        switch(searchTerms.statusFilter) {
+          case '0': return data.isPublished ?? false;
+          case '1': return (!data.isPublished && data.isDenied) ?? false;
+          case '2': return (!data.isPublished && !data.isDenied) ?? false;
+        }
+      }
 
       if (searchTerms.searchFilter)
         // search all object fields for searchFilter

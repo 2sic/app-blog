@@ -4,7 +4,7 @@
   "SEARCH_COMMENTS": "Kommentare suchen...",
   "AUTHOR": "Autor",
   "MESSAGE": "Nachricht",
-  "TARGET": "Ziel",
+  "TARGET": "Thema",
   "CREATED": "Erstellt",
   "STATUS": "Status",
   "ACTIONS": "Aktionen",
@@ -15,7 +15,14 @@
   "SEARCH_IPS": "IPs suchen...",
   "BLOCK_IP": "IP blockieren",
   "APPROVED": "genehmigt",
+  "DENIED": "abgelehnt",
   "UNVERIFIED": "unverifiziert",
   "ALL": "Alle",
-  "ERROR_JS": "Etwas ist schiefgelaufen. Bitte kontaktieren Sie den Admin."
+  "ERROR_JS": "Etwas ist schiefgelaufen. Bitte kontaktieren Sie den Admin.",
+  "TYPE": "Typ",
+  "REPLY": "Antwort",
+  "COMMENT": "Kommentar",
+  "SEARCH": "Suchen",
+  "DENY": "Ablehnen",
+  "CONFIRM_COMMENT_DELETE": "Sind sie sich sicher, dass sie diesen Kommentar loschen wollen?"
 }

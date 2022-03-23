@@ -49,6 +49,8 @@
   <template app-blog5-reply-template>
     @Html.Partial("shared/_CommentInput.cshtml", new { IsReply = true })
   </template>
+  <template app-blog5-comment-success-template><div class="alert alert-success"><span>@Resources.MessageCommentSent</span></div></template>
+  <template app-blog5-comment-error-template><div class="alert alert-danger"><span>@Resources.MessageErrorJS</span></div></template>
 </section>
 
 @Html.Partial("_DiscussionAssets.cshtml", new { TargetId = targetId })

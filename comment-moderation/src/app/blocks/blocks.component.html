@@ -1,9 +1,10 @@
 <div class="container-fluid px-0">
   <div class="row justify-content-between">
     <div class="col-md-6 mb-3">
+      <p class="h6">{{ 'SEARCH' | translate }}</p>
       <input matInput (keyup)="applyFilter($event)" type="text" class="form-control" [placeholder]="'SEARCH_IPS' | translate">
     </div>
-    <div class="col-md-auto">
+    <div class="col-md-auto d-flex align-items-end mb-3">
       <div class="container-fluid px-0">
         <div class="row">
           <div class="col">

@@ -4,7 +4,7 @@
   "SEARCH_COMMENTS": "Search comments...",
   "AUTHOR": "Author",
   "MESSAGE": "Message",
-  "TARGET": "Target",
+  "TARGET": "Topic",
   "CREATED": "Created",
   "STATUS": "Status",
   "ACTIONS": "Actions",
@@ -15,7 +15,14 @@
   "SEARCH_IPS": "Search ips...",
   "BLOCK_IP": "Block IP",
   "APPROVED": "approved",
+  "DENIED": "denied",
   "UNVERIFIED": "unverified",
   "ALL": "All",
-  "ERROR_JS": "Something went wrong. Please contact the admin."
+  "ERROR_JS": "Something went wrong. Please contact the admin.",
+  "TYPE": "Type",
+  "REPLY": "Reply",
+  "COMMENT": "Comment",
+  "SEARCH": "Search",
+  "DENY": "Deny",
+  "CONFIRM_COMMENT_DELETE": "Are you sure you want to delete this comment?"
 }
