@@ -1,5 +1,4 @@
 @inherits Custom.Hybrid.Razor12
-@using ToSic.Razor.Blade;
 @{
   var isLoggedIn = CmsContext.User.Id > 0;
   var isReply = DynamicModel.IsReply ?? false;
@@ -19,21 +18,22 @@
       <div class="form-group mb-2">
         @* Pseudonym input *@
         <input class="form-control" 
-          app-blog5-discussion-pseudonym minlength="3" 
-          data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "3")' 
+          app-blog5-discussion-pseudonym 
+          minlength="3" 
           placeholder="@Resources.PlaceholderNameInput" 
-          required data-pristine-required-message="@Resources.MessageNameRequired">
+          required 
+          data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "3")' 
+          data-pristine-required-message="@Resources.MessageNameRequired">
       </div>
     }
     <div class="form-group mb-3">
       @* Content input *@
-      <textarea class="form-control" 
+      <textarea class="form-control comment-message" 
         app-blog5-discussion-content minlength="5" 
-        data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "5")' 
         placeholder="@(isFirstComment ? Resources.PlaceholderStartDiscussion : Resources.PlaceholderJoinDiscussion)" 
-        required minlength="1" 
+        required
+        data-pristine-minlength-message='@Resources.MessageMinLength.Replace("[minlength]", "5")' 
         data-pristine-required-message="@Resources.MessageCommentRequired" 
-        style="height: 100px"
       ></textarea>
     </div>
     <div class="container-fluid px-0">
