@@ -1,5 +1,4 @@
 @inherits Custom.Hybrid.Razor12
-@using ToSic.Razor.Blade;
 @using System.Linq;
 @{
   var discussionDomAttribute = "app-blog5-discussion-" + CmsContext.Module.Id;
@@ -8,14 +7,12 @@
     return;
   }
   var targetId = blogPost.EntityId;
-}
 
-<section @discussionDomAttribute @Edit.TagToolbar(App.Data["Comment"])>
-@{
   var comments = AsList(App.Data["Comment"]).Where(comment => comment.Target.EntityId == targetId).OrderByDescending(comment => comment.Created);
   var commentTotal = comments.Count();
 }
 
+<section @discussionDomAttribute @Edit.TagToolbar()>
   <hr/>
   <div class="d-flex justify-content-between">
     <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
