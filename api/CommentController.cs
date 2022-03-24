@@ -13,6 +13,8 @@ using ToSic.Razor.Blade;
 using System.Collections.Generic;
 using System;
 using System.Web;
+using DotNetNuke.Entities.Users;
+
 
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class CommentController : Custom.Hybrid.Api12
@@ -25,14 +27,14 @@ public class CommentController : Custom.Hybrid.Api12
       .Select(comment => {
         var displayName = comment.Pseudonym;
         var owner = comment.Entity.Owner;
+        var portalId = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().PortalId;
         var userId = owner.Replace("dnn:userid=", "");
         if (owner != "anonymous") { 
           if (userId == "1") {
             displayName = "Admin";
           } else {
-            var userQuery = App.Query["DNNUser"];
-            var user = AsList(userQuery["Default"]).FirstOrDefault();
-            displayName = user.DisplayName;
+            UserInfo userInfo = UserController.GetUserById(portalId, Convert.ToInt32(userId));
+            displayName = userInfo.DisplayName;
           }
         }
 
