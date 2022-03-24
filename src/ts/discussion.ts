@@ -56,18 +56,17 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
         
         // Clear and remove other active reply forms
         discussionWrapper.querySelectorAll(".reply-form-active")
-          .forEach(discussionFormWrapper => discussionFormWrapper.classList.toggle("reply-form-active"))
+          .forEach(discussionFormWrapper => discussionFormWrapper.classList.toggle("reply-form-active"));
         discussionWrapper.querySelectorAll("[app-blog5-reply-form-wrapper]")
-          .forEach(form => form.remove())
+          .forEach(form => form.remove());
         
         // Get form template 
         const formTemplate = (discussionWrapper.querySelector('[app-blog5-reply-template]') as HTMLTemplateElement);
-        console.log(formTemplate)
         
         // Clone template
         const replyFormWrapper = formTemplate.content.cloneNode(true) as Element;
-        const replyWrapper = replyButton.closest('[app-blog5-reply-wrapper]')
 
+        const replyWrapper = replyButton.closest('[app-blog5-reply-wrapper]');
         const replyForm = replyFormWrapper.querySelector('[app-blog5-reply-form]');
 
         // Get Buttons
@@ -84,7 +83,7 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
         addLocalDraftHandler(replyForm, parentCommentId);
 
         // Mark form as active
-        replyButton.parentElement.classList.toggle("reply-form-active")
+        replyButton.parentElement.classList.toggle("reply-form-active");
         
         // Handle submit
         submitReplyButton.addEventListener('click', () => {
@@ -103,14 +102,14 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
               (submitReplyButton as HTMLElement).style.display = "none";
               (cancelReplyButton as HTMLElement).style.display = "none";
 
-              handleCreateResponse(res, replyForm, discussionWrapper, defaultError, parentCommentId)
+              handleCreateResponse(res, replyForm, discussionWrapper, defaultError, parentCommentId);
             });
-        })
+        });
 
         // Remove and deactivate form when canceled  
         cancelReplyButton.addEventListener('click', () => {
-          replyWrapper.querySelector('[app-blog5-reply-form-wrapper]').remove()
-          replyButton.parentElement.classList.toggle("reply-form-active")
+          replyWrapper.querySelector('[app-blog5-reply-form-wrapper]').remove();
+          replyButton.parentElement.classList.toggle("reply-form-active");
         });
       });
     })
@@ -204,7 +203,7 @@ function isFormValid(form: Element): boolean {
 }
 
 function getClosestCommentId(form: Element): string {
-  return form.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id')
+  return form.closest('[app-blog5-comment-id]').getAttribute('app-blog5-comment-id');
 }
 
 export default initDiscussion;

@@ -8,7 +8,9 @@
   }
   var targetId = blogPost.EntityId;
 
-  var comments = AsList(App.Data["Comment"]).Where(comment => comment.Target.EntityId == targetId).OrderByDescending(comment => comment.Created);
+  var comments = AsList(App.Data["Comment"])
+    .Where(comment => comment.Target.EntityId == targetId)
+    .OrderByDescending(comment => comment.Created);
   var commentTotal = comments.Count();
 }
 
