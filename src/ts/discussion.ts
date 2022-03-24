@@ -73,7 +73,7 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
         // Get Buttons
         const submitReplyButton = replyFormWrapper.querySelector("[app-blog5-submit-reply-button]");
         const cancelReplyButton = replyFormWrapper.querySelector("[app-blog5-cancel-reply-button]");
-        
+
         // Append form to replyWrapper
         replyWrapper.appendChild(replyFormWrapper);
 
@@ -148,13 +148,13 @@ function setLocalDraftValue(wrapper: Element, itemId: string) {
   const pseudonymValue = window.localStorage.getItem(`draft-pseudonym-${itemId}`);
   const contentValue = window.localStorage.getItem(`draft-content-${itemId}`);
 
-  if (pseudonymInput) pseudonymInput.value = pseudonymValue
-  if (contentInput) contentInput.value = contentValue
+  if (pseudonymInput) pseudonymInput.value = pseudonymValue;
+  if (contentInput) contentInput.value = contentValue;
 }
 
 function clearDraft(itemId: string) {
-  window.localStorage.removeItem(`draft-pseudonym-${itemId}`)
-  window.localStorage.removeItem(`draft-content-${itemId}`)
+  window.localStorage.removeItem(`draft-pseudonym-${itemId}`);
+  window.localStorage.removeItem(`draft-content-${itemId}`);
 }
 
 function addLocalDraftHandler(wrapper: Element, itemId: string) {
@@ -175,7 +175,7 @@ function getFormValues(discussionFormWrapper: Element): { pseudonym?: string, co
   };
 
   if(pseudonymInput != null) formValues.pseudonym = pseudonymInput.value;
-  return formValues
+  return formValues;
 }
 
 function disableFormInputs(form: Element): void {
@@ -185,13 +185,15 @@ function disableFormInputs(form: Element): void {
 
 function handleCreateResponse(res: any, form: Element, discussionWrapper: Element, defaultError: string, draftId: string) {
   if (res.Created) {
-    const successMessage = (discussionWrapper.querySelector('[app-blog5-comment-success-template]') as HTMLTemplateElement).content.cloneNode(true);
+    const successMessageTemplate = (discussionWrapper.querySelector('[app-blog5-comment-success-template]') as HTMLTemplateElement);
+    const successMessage = successMessageTemplate.content.cloneNode(true);
     form.appendChild(successMessage);
     clearDraft(draftId);
     return;
   }
 
-  let errorMessage = (discussionWrapper.querySelector('[app-blog5-comment-error-template]') as HTMLTemplateElement).content.cloneNode(true) as HTMLElement;
+  const errorMessageTemplate = (discussionWrapper.querySelector('[app-blog5-comment-error-template]') as HTMLTemplateElement);
+  let errorMessage = errorMessageTemplate.content.cloneNode(true) as HTMLElement;
   errorMessage.querySelector('span').textContent = `${defaultError}: ${res.Message}`;
   form.appendChild(errorMessage);
 }
