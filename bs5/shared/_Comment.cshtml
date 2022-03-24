@@ -1,5 +1,6 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using DotNetNuke.Entities.Users;
 @{
   var comment = DynamicModel.Comment;
   var isReply = DynamicModel.ParentId != null;
@@ -7,15 +8,14 @@
   var owner = comment.Entity.Owner;
   var displayName = comment.Pseudonym;
   var userId = "-1";
+  var portalId = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings().PortalId;
   if (owner != "anonymous") {
     userId = owner.Replace("dnn:userid=", "");
     if (userId == "1") {
       displayName = "Admin";
     } else {
-      var userQuery = App.Query["DNNUser"];
-      userQuery.Params("UserId", userId);
-      var user = AsList(userQuery["Default"]).FirstOrDefault();
-      displayName = user.DisplayName;
+      UserInfo userInfo = UserController.GetUserById(portalId, Convert.ToInt32(userId));
+      displayName = userInfo.DisplayName;
     }
   }
 }

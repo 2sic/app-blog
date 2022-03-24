@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.05.00" ExportDate="2022-03-23T17:52:48.0597147+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.05.00" ExportDate="2022-03-23T18:03:17.4676797+01:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -2080,18 +2080,42 @@
   </AttributeSets>
   <Entities>
     <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="51f89e07-b06a-46b0-b9e4-7821bb5c3675" Json="True" KeyNumber="4">
-      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
-      <Value Key="AllowTokenTemplates" Value="True" Type="Boolean" />
-      <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String" />
-      <Value Key="DisplayName" Value="Blog" Type="String" />
-      <Value Key="Folder" Value="Blog5" Type="String" />
-      <Value Key="Hidden" Value="False" Type="Boolean" />
-      <Value Key="OriginalId" Value="" Type="String" />
-      <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String" />
-      <Value Key="RequiredOqtaneVersion" Value="02.02.00" Type="String" />
-      <Value Key="RequiredVersion" Value="12.05.00" Type="String" />
-      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean" />
-      <Value Key="Version" Value="05.01.01" Type="String" />
+      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="AllowTokenTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="DisplayName" Value="Blog" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="Folder" Value="Blog5" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="Hidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="OriginalId" Value="" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredOqtaneVersion" Value="02.02.00" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredVersion" Value="12.05.00" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
+      <Value Key="Version" Value="05.02.00" Type="String">
+        <Dimension DimensionID="3" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="059facb3-0968-4021-92a7-72984522fcf2" KeyNumber="4">
       <Value Key="DetailsPage" Value="" Type="Hyperlink" />
