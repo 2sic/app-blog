@@ -37,9 +37,7 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
       });
   });
 
-  discussionWrapper.querySelectorAll("[app-blog5-show-all]").forEach(showAllButton => {
-    if (!showAllButton) return;
-    
+  discussionWrapper.querySelectorAll("[app-blog5-show-all]").forEach(showAllButton => {    
     showAllButton.addEventListener('click', () => {
       const parentId = showAllButton.getAttribute("app-blog5-show-id");
       // Show all comments
@@ -114,15 +112,24 @@ function initDiscussion({ moduleId, targetId, defaultError }: { moduleId: number
       });
     })
 
-  discussionWrapper.querySelectorAll('[app-blog5-deny-button]')
+  discussionWrapper.querySelectorAll('[app-blog5-comment-deny-button]')
     .forEach((denyButton: HTMLButtonElement) => {
-      const commentId = getClosestCommentId(denyButton);
       denyButton.addEventListener('click', () => {
-        commentSvc.delete(commentId).then(() => location.reload());
+        const commentId = getClosestCommentId(denyButton);
+        commentSvc.update(commentId, { 
+          IsDenied: true 
+        }).then((res: any) => {
+          if (res.Modified) {
+            location.reload();
+            return;
+          }
+
+          alert(`${defaultError}: ${res.Message}`)
+        });
       });
     });
     
-  discussionWrapper.querySelectorAll('[app-blog5-publish-button]')
+  discussionWrapper.querySelectorAll('[app-blog5-comment-publish-button]')
     .forEach((publishButton: HTMLButtonElement) => {
       publishButton.addEventListener('click', () => {
         const commentId = getClosestCommentId(publishButton);

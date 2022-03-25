@@ -18,8 +18,8 @@
   <hr/>
   <div class="d-flex justify-content-between">
     <h3 class="mb-4">@Resources.LabelComments (@commentTotal)</h3>
-    @if (Edit.Enabled) {
-      <a href='@Link.To(parameters: CmsContext.Page.Parameters + "&target=" + targetId)/comment-moderation'>Moderate comments</a>
+    @if (CmsContext.User.IsSiteAdmin) {
+      <a href='@Link.To(parameters: CmsContext.Page.Parameters + "&target=" + targetId)/comment-moderation'>@Resources.ModerateComments</a>
     }
   </div>
 
@@ -41,7 +41,13 @@
         @Html.Partial("shared/_Comment.cshtml", new { Comment = reply, ParentId = parentComment.EntityId, IsVisible = i < 2 });
       }
       if (replies.Count() > 2) {
-        <button type="button" class="btn btn-light btn-sm mb-4" app-blog5-show-all app-blog5-show-id="@parentComment.EntityId" style="margin-left: 80px;">@Resources.ViewAllComments.Replace("[total]", replies.Count().ToString())</button>
+        <button 
+          type="button" 
+          class="btn btn-light btn-sm mb-4" 
+          app-blog5-show-all app-blog5-show-id="@parentComment.EntityId" 
+          style="margin-left: 80px;">
+          @Resources.ViewAllComments.Replace("[total]", replies.Count().ToString())
+        </button>
       }
     }
   </div>

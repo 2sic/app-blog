@@ -52,10 +52,10 @@
             <button app-blog5-reply-button type="button" class="btn btn-light me-2 mb-3 btn-sm">@Resources.Reply</button>
           }
         </div>
-        @if (Edit.Enabled && !comment.IsPublished) {
+        @if (CmsContext.User.IsSiteAdmin && !comment.IsPublished) {
           <div class="col-auto">
-            <button app-blog5-publish-button type="button" class="btn btn-outline-success me-2 mb-3">@Resources.Approve</button>
-            <button app-blog5-deny-button type="button" class="btn btn-outline-danger mb-3">@Resources.Deny</button>
+            <button app-blog5-comment-publish-button type="button" class="btn btn-outline-success me-2 mb-3">@Resources.Approve</button>
+            <button app-blog5-comment-deny-button type="button" class="btn btn-outline-danger mb-3">@Resources.Deny</button>
           </div>
         }
       </div>
