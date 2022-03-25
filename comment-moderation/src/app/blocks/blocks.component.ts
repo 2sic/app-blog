@@ -22,7 +22,7 @@ export class BlocksComponent implements OnInit {
   ipControl = new FormControl('');
   blockedIPsService: Data<{ IP: string, Created?: Date }>;
 
-  constructor(private app: SxcApp) {
+  constructor(private app: SxcApp, private translate: TranslateService) {
     this.blockedIPsService = app.data('BlockedIP');
   }
 
@@ -30,14 +30,21 @@ export class BlocksComponent implements OnInit {
     this.loadData();
   }
 
-
   unblockIp(ipId: number): void {
     this.blockedIPsService.delete(ipId).subscribe(() => this.loadData());
   }
 
   blockIp(): void {
     if(this.ipControl.valid)
-      this.blockedIPsService.create({ IP: this.ipControl.value }).subscribe(() => this.loadData())
+      this.blockedIPsService.create({ IP: this.ipControl.value })
+        .subscribe((res: any) => {
+          if (res.Created) {
+            this.loadData();
+            return;
+          }
+
+          alert(`${this.translate.instant('ERROR_JS')}: ${res.Message}`)
+        });
   }
 
   loadData(): void {

@@ -18,7 +18,7 @@
   "DENIED": "denied",
   "UNVERIFIED": "unverified",
   "ALL": "All",
-  "ERROR_JS": "Something went wrong. Please contact the admin.",
+  "ERROR_JS": "Something went wrong:",
   "TYPE": "Type",
   "REPLY": "Reply",
   "COMMENT": "Comment",

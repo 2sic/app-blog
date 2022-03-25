@@ -95,30 +95,30 @@ export class ManagementComponent implements OnInit, AfterViewInit {
 
   approveComment(commentId: number): void {
     this.commentService.update(commentId, { PublishState: true })
-    .subscribe(res => {
-      if ((res as { Modified: Date}).Modified) {
+    .subscribe((res: any) => {
+      if (res.Modified) {
         this.loadData();
         return;
       }
-      alert(this.translate.instant('ERROR_JS'))
+      alert(`${this.translate.instant('ERROR_JS')}: ${res.Message}`)
     });
   }
 
   denyComment(commentId: number): void {
     this.commentService.update(commentId, { IsDenied: true })
-    .subscribe(res => {
-      if ((res as { Modified: Date}).Modified) {
+    .subscribe((res: any) => {
+      if (res.Modified) {
         this.loadData();
         return;
       }
 
-      alert(this.translate.instant('ERROR_JS'))
+      alert(`${this.translate.instant('ERROR_JS')}: ${res.Message}`)
     });
   }
 
   deleteComment(commentId: number): void {
     if(confirm(this.translate.instant('CONFIRM_COMMENT_DELETE')))
-      this.commentService.delete(commentId).subscribe(res => this.loadData());
+      this.commentService.delete(commentId).subscribe(() => this.loadData());
   }
 
   loadData(): void {
@@ -126,7 +126,15 @@ export class ManagementComponent implements OnInit, AfterViewInit {
   }
 
   blockIp(ip: string): void {
-    this.blockedIPsService.create({ IP: ip }).subscribe(() => this.loadData())
+    this.blockedIPsService.create({ IP: ip })
+      .subscribe((res: any) => {
+        if (res.Created) {
+          this.loadData();
+          return;
+        }
+
+        alert(`${this.translate.instant('ERROR_JS')}: ${res.Message}`)
+      });
   }
 
   // custom filter

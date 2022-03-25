@@ -18,7 +18,7 @@
   "DENIED": "abgelehnt",
   "UNVERIFIED": "unverifiziert",
   "ALL": "Alle",
-  "ERROR_JS": "Etwas ist schiefgelaufen. Bitte kontaktieren Sie den Admin.",
+  "ERROR_JS": "Etwas ist schiefgelaufen:",
   "TYPE": "Typ",
   "REPLY": "Antwort",
   "COMMENT": "Kommentar",

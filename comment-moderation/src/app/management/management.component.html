@@ -80,9 +80,9 @@
     <td mat-cell *matCellDef="let comment" [attr.colspan]="displayedColumns.length">
       <div class="element-detail container-fluid px-0" [@detailExpand]="comment == expandedElement ? 'expanded' : 'collapsed'">
         <div class="my-2">
-          <button *ngIf="!comment.isPublished" type="button" class="btn btn-outline-success me-2 mb-2" (click)="$event.stopPropagation(); approveComment(comment.id)">{{ 'APPROVE' | translate}}</button>
-          <button *ngIf="!comment.isPublished && !comment.isDenied" type="button" class="btn btn-outline-danger me-2 mb-2" (click)="$event.stopPropagation(); denyComment(comment.id)">{{ 'DENY' | translate}}</button>
-          <button type="button" class="btn btn-outline-danger me-2 mb-2" (click)="$event.stopPropagation(); deleteComment(comment.id)">{{ 'DELETE' | translate}}</button>
+          <button *ngIf="!comment.isPublished" type="button" class="btn btn-outline-success me-2 mb-2" (click)="approveComment(comment.id)">{{ 'APPROVE' | translate}}</button>
+          <button *ngIf="!comment.isPublished && !comment.isDenied" type="button" class="btn btn-outline-danger me-2 mb-2" (click)="denyComment(comment.id)">{{ 'DENY' | translate}}</button>
+          <button type="button" class="btn btn-outline-danger me-2 mb-2" (click)="deleteComment(comment.id)">{{ 'DELETE' | translate}}</button>
           <button type="button" class="btn btn-outline-danger me-2 mb-2" (click)="blockIp(comment.ip)">{{ 'BLOCK_IP' | translate }}</button>
         </div>
         <div class="row mb-3">
