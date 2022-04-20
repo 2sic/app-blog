@@ -1,5 +1,6 @@
 using System;
 using ToSic.Razor.Blade;
+using ToSic.Sxc.Services;
 
 public class DetailsHelper: Custom.Hybrid.Code12 {
 
@@ -34,13 +35,15 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
         ? Link.Image(post.Image, Settings.Images.Blog, type: "full")
         : "";
 
-    var page = GetService<ToSic.Sxc.Web.IPageService>();
-    var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : Tags.Strip(post.Teaser);
+    var page = GetService<IPageService>();
+    var scrubSvc = GetService<IScrub>();
+
+    var sharingDescription = Text.Has(post.SharingDescription) ? post.SharingDescription : scrubSvc.All(post.Teaser);
 
     // Try to replace the term "PostTitle" in the page title with the post title, otherwise prefix the existing title
     page.SetTitle(Text.First(post.MetaTitle, post.Title) + " ", "PostTitle");
 
-    page.SetDescription(Text.Has(post.MetaDescription) ? post.MetaDescription : Tags.Strip(post.Teaser));
+    page.SetDescription(Text.Has(post.MetaDescription) ? post.MetaDescription : scrubSvc.All(post.Teaser));
 
     // Add open graph meta information
     page.AddOpenGraph("og:type", "article");

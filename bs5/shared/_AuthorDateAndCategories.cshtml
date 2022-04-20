@@ -1,6 +1,9 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Services;
 @{
+  var imgSvc = GetService<IImageService>();
+
   var post = DynamicModel.Post;
   var author = post.author;
   var publicationDate = post.PublicationMoment.ToString("d");
@@ -14,7 +17,7 @@
   <div class="post-author mr-2">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if(Text.Has(author.Image)) {
-        <img loading="lazy" src='@Link.Image(author.Image, Settings.Images.Author)' alt="@author.FullName" style="width: 40px" class="rounded-circle" />
+        @imgSvc.Picture(author.Image, settings: Settings.Images.Author, imgAlt:author.FullName, imgClass:"rounded-circle author-img");
       } else {
         @author.FullName
       }

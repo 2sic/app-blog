@@ -1,6 +1,9 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Services;
 @{
+  var imgSvc = GetService<IImageService>();
+
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
@@ -11,7 +14,7 @@
     <p>@Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
     // Set 404 status if the post was not found
-    GetService<ToSic.Sxc.Web.IPageService>().SetHttpStatus(404, "Error: Blog Post not Found.");
+    GetService<IPageService>().SetHttpStatus(404, "Error: Blog Post not Found.");
     return;
   }
 
@@ -22,7 +25,7 @@
   var author = post.Author;
 
   // Render Service helps to create inner-content on the main body
-  var renderSvc = GetService<ToSic.Sxc.Blocks.IRenderService>();
+  var renderSvc = GetService<IRenderService>();
 }
 
 <section class="row app-blog5 app-blog5-post-detail">
@@ -61,7 +64,7 @@
         </div>
         @if(Text.Has(author.Image)) {
           <div>
-            <img loading="lazy" src='@Link.Image(author.Image, Settings.Images.Author)' class="rounded-circle" alt="@author.FullName" />
+            @imgSvc.Picture(author.Image, settings: Settings.Images.Author, imgClass:"rounded-circle author-picture", imgAlt:author.FullName)
           </div>
         }
       </div>
@@ -72,7 +75,7 @@
         var previousPost = AsList(Data["Previous"]).FirstOrDefault();
         var nextPost = AsList(Data["Next"]).FirstOrDefault();
       }
-      
+
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
         @if (previousPost != null) {
           @detailsHelpers.PostMicroPreview(previousPost, "previous")

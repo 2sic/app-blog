@@ -1,6 +1,8 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
+  var scrubSvc = GetService<IScrub>();
+
   var helpers = CreateInstance("Links.cs");
 
   // This config is for the toolbar used on an item.
@@ -28,7 +30,7 @@
 
           <div class="card-body">
             <h5 class="card-title">@post.Title</h5>
-            <p class="card-text">@Html.Raw(Tags.Strip(post.Teaser))</p>
+            <p class="card-text">@Html.Raw(scrubSvc.All(post.Teaser))</p>
           </div>
 
           <div class="card-footer text-right">
