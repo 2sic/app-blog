@@ -48,3 +48,8 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 * Updated License
 * Changes default view
+
+### V5.02 2022-04
+
+* Changed all access to Services to ToSic.Sxc.Services
+* Changed all Images to use the IImageService
