@@ -4,6 +4,7 @@
   var scrubSvc = GetService<IScrub>();
 
   var helpers = CreateInstance("Links.cs");
+  var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // This config is for the toolbar used on an item.
   var toolbarConfig = new [] {
@@ -30,7 +31,8 @@
 
           <div class="card-body">
             <h5 class="card-title">@post.Title</h5>
-            <p class="card-text">@Html.Raw(scrubSvc.All(post.Teaser))</p>
+            <p class="card-text">@Html.Raw(scrubSvc.All(@globalHelpers.TeaserAssembly(post)))</p>
+
           </div>
 
           <div class="card-footer text-right">

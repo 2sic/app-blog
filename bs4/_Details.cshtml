@@ -2,6 +2,7 @@
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Services;
 @{
+  var imgSvc = GetService<IImageService>();
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");

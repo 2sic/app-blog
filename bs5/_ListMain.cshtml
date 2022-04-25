@@ -3,6 +3,7 @@
 @{
   // Prepare helpers
   var helpers = CreateInstance("Links.cs");
+  var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // Toolbar configuration for use on posts
   var postToolbarConfig = new [] {
@@ -34,7 +35,9 @@
           </div>
 
           <div class="app-blog5-post-content">
-            @Html.Raw(post.Teaser)
+            <p>
+              @Html.Raw(globalHelpers.TeaserAssembly(post))
+            </p>
             <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
           </div>
         </article>
