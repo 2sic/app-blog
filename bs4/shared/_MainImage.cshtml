@@ -1,16 +1,16 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Services;
 @{
+  var imgSvc = GetService<IImageService>();
+  
   var post = DynamicModel.Post;
-  var imgSettings = DynamicModel.Settings ?? Settings.Images.Blog;
-  var blogImg = Link.Image(post.Image, imgSettings, parameters: "anchor=" + post.CropAnchor);
+  var imgSettings = AsDynamic(Settings.Images.Blog, Settings.Images.Content);
 }
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
-  <picture>
-    <img loading="lazy" class="img-fluid" src="@blogImg" alt="@post.Title" />
-  </picture>
+  @imgSvc.Picture(post.Image, settings: imgSettings, imgClass:"img-fluid", imgAlt:post.Title)
 }
 
 @* Show info to admin when the post will publish *@
