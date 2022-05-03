@@ -2,7 +2,6 @@
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Services;
 @{
-  var imgSvc = GetService<IImageService>();
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
@@ -25,6 +24,9 @@
 
   // Render Service helps to create inner-content on the main body
   var renderSvc = GetService<IRenderService>();
+  
+  // Image Service used for generating optimal images
+  var imgSvc = GetService<IImageService>();
 }
 
 <section class="row app-blog5 app-blog5-post-detail">
@@ -62,8 +64,9 @@
           @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + author.FullName)'>@author.FullName</a>
         </div>
         @if(Text.Has(author.Image)) {
+          var altText = Text.First(author.Field("Image").Metadata.Description, author.FullName);
           <div>
-            @imgSvc.Picture(author.Image, settings: Settings.Images.Author, imgClass:"rounded-circle author-picture", imgAlt:author.FullName)
+            @imgSvc.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAlt: altText)
           </div>
         }
       </div>

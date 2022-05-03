@@ -2,15 +2,17 @@
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Services;
 @{
-  var imgSvc = GetService<IImageService>();
-  
   var post = DynamicModel.Post;
   var imgSettings = AsDynamic(Settings.Images.Blog, Settings.Images.Content);
+
+  // Image Service used for generating optimal images
+  var imgSvc = GetService<IImageService>();
 }
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
-  @imgSvc.Picture(post.Image, settings: imgSettings, imgClass:"img-fluid", imgAlt:post.Title)
+  var altText = Text.First(post.Field("Image").Metadata.Description, post.Title);
+  @imgSvc.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
 }
 
 @* Show info to admin when the post will publish *@
