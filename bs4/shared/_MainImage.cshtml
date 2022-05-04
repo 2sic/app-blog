@@ -3,7 +3,7 @@
 @using ToSic.Sxc.Services;
 @{
   var post = DynamicModel.Post;
-  var imgSettings = AsDynamic(Settings.Images.Blog, Settings.Images.Content);
+  var imgSettings = AsDynamic(Settings.Images.Blog, "Content");
 
   // Image Service used to generate optimal images
   var imgSvc = GetService<IImageService>();

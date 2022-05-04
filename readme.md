@@ -55,3 +55,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * Changed all Images to use the IImageService
 * Made the teaser for the posts optional
 * Activated image configuration
+* Replaced data-enableoptimizations with IPageService.AssetAttributes
