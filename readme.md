@@ -53,6 +53,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 * Changed all access to Services to ToSic.Sxc.Services
 * Changed all Images to use the IImageService
-* Made the teaser for the posts optional
+* Made the teaser for the posts optional 
+* If the teaser is left empty it will take the first 100 characters of the content text to replace the teaser
 * Activated image configuration
 * Replaced data-enableoptimizations with IPageService.AssetAttributes

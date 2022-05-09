@@ -5,6 +5,8 @@ using ToSic.Sxc.Services;
 public class DetailsHelper: Custom.Hybrid.Code12 {
 
   public dynamic PostMicroPreview(dynamic post, string context) {
+    var imgSvc = GetService<IImageService>();
+    var imgSettings = AsDynamic(Settings.Images.NextPost, Settings.Images.Content);
     var helpers = CreateInstance("Links.cs");
     var title = context == "previous"
       ? Resources.PreviousPost
@@ -12,8 +14,8 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
 
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(helpers.LinkToDetailsPage(post)).Wrap(
-        (Text.Has(post.Image) 
-          ? Tag.Img().Src(Link.Image(post.Image, Settings.Images.NextPost)).Alt(post.Title).Class("rounded-circle d-none d-lg-block").Attr("loading", "lazy")
+        (Text.Has(post.Image)
+          ? (imgSvc.Picture( post.Image ,settings: Settings.Images.NextPost, imgAlt:post.Title, imgClass:"rounded-circle d-none d-lg-block")).ToString()
           : ""),
         Tag.Span(
           Tag.Strong(title) + " " + post.Title
