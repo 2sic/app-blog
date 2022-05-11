@@ -6,6 +6,7 @@ public class DetailsHelper: Custom.Hybrid.Code12 {
 
   public dynamic PostMicroPreview(dynamic post, string context) {
     var helpers = CreateInstance("Links.cs");
+    var imgSvc = GetService<IImageService>();
     var title = context == "previous"
       ? Resources.PreviousPost
       : Resources.NextPost;
