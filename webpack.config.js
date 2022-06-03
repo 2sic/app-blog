@@ -1,9 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const WebpackBar = require('webpackbar');
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+
 
 module.exports = (env) => {
   return {
@@ -19,39 +18,24 @@ module.exports = (env) => {
     devtool: 'source-map',
     watch: true,
     stats: {
-      all: false,
-      assets: true
+      warnings: false,
+      cachedModules: false,
+      groupModulesByCacheStatus: false
+    },
+    cache: {
+      type: 'filesystem',
+      cacheDirectory: path.resolve(__dirname, '.temp_cache'),
+      compression: 'gzip',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.scss']
-    },
-    optimization: {
-      minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            output: {
-              comments: false,
-            },
-          },
-          extractComments: false,
-        }),
-        new OptimizeCSSAssetsPlugin({
-          cssProcessorOptions: {
-            map: {
-              inline: false,
-              annotation: true,
-            }
-          }
-        })
-      ],
-    },
+    },    
     plugins: [
+      new FixStyleOnlyEntriesPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].min.css',
       }),
-      new WebpackBar(),
-      new FriendlyErrorsWebpackPlugin()
+      new webpack.ProgressPlugin(),
     ],
     module: {
       rules: [{
@@ -88,18 +72,12 @@ module.exports = (env) => {
           use: {
             loader: 'ts-loader'
           }
-        },
-        {
-          test: /\.(png|jpe?g|gif)$/,
-          use: [{
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/'
-            }
-          }]
         }
       ],
     },
   }
 };
+
+new webpack.ProgressPlugin((percentage, message) => {
+  console.log(`${(percentage * 100).toFixed()}% ${message}`);
+})
