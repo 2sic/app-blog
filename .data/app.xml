@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.10.02" ExportDate="2022-05-10T12:31:02.0748476+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.02.00" ExportDate="2022-06-15T09:16:45.1463973+02:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -3452,8 +3452,8 @@
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="c4c034b1-3023-45be-9ced-2e5f15f0a401" Json="True">
-      <Value Key="Content" Value="6d5c72df-05c2-437a-9591-9ff1ddc25b64" Type="Entity" />
-      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Content" Value="6d5c72df-05c2-437a-9591-9ff1ddc25b64,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null" Type="Entity" />
+      <Value Key="Presentation" Value="null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null" Type="Entity" />
       <Value Key="Template" Value="070032b2-4f5e-44a1-86f4-16cd81c73434" Type="Entity" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.RelationshipFilter" AttributeSetName="ToSic.Eav.DataSources.RelationshipFilter" EntityGUID="6a82cabc-3972-48f8-93e2-15bb159a78e0" Json="True" KeyGuid="c72dfc36-bc21-4c7a-8c47-a5bd8153a1a4">
@@ -5044,7 +5044,7 @@
       <Value Key="MetaTitle" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2022-04-25T00:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2022-06-02T12:22:54" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="" Type="String">
@@ -5095,7 +5095,7 @@
       <Value Key="Advanced" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="ByUrlParameters" Value="False" Type="Boolean">
+      <Value Key="ByUrlParameters" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Duration" Value="14400" Type="Number">
@@ -5117,6 +5117,17 @@
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="5e958dc6-2922-4d68-835c-7b9711538b12" AttributeSetName="NoteDecorator" EntityGUID="6ebe5870-2ccc-4daf-b77d-562df5cd27d4" Json="True" KeyGuid="15af8f98-d497-4aff-bb98-5076d295a673">
+      <Value Key="Note" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="NoteType" Value="note" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="empty" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
