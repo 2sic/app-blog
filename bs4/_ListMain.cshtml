@@ -1,4 +1,4 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 @{
   // Prepare helpers
@@ -6,13 +6,13 @@
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // Toolbar configuration for use on posts
-  var postToolbarConfig = new [] {
-    "-layout",
-    "%new&show=true?contentType=BlogPost&entityId=0&prefill:PublicationMoment=" + DateTime.Now.ToString("yyyy-MM-dd"),
-    "%delete&show=true"
-  };
+  var postToolbar = Kit.Toolbar.Empty()
+    .Layout("-")
+    .New("BlogPost", prefill: new { PublicationMoment = DateTime.Now.ToString("yyyy-MM-dd") })
+    .Delete();
+
 }
-<section class="app-blog5" @Edit.TagToolbar(Content)>
+<section class="app-blog5" @Kit.Toolbar.Default(Content)>
   <div class="row">
     <div class="col-12">
       @* Title / Description of current filter (Author, Category, etc.) *@
@@ -27,7 +27,7 @@
 
       @* List the posts *@
       @foreach(var post in AsList(Data["Posts"])) {
-        <article class="app-blog5-list-item effect-zoom mb-5" @Edit.TagToolbar(post, toolbar: postToolbarConfig)>
+        <article class="app-blog5-list-item effect-zoom mb-5" @postToolbar.For(post)>
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
             @Html.Partial("shared/_MainImage.cshtml", new { Post = post })

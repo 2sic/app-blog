@@ -1,6 +1,6 @@
 using ToSic.Razor.Blade;
 
-public class Links : Custom.Hybrid.Code12
+public class Links : Custom.Hybrid.Code14
 {
   /// <summary>
   /// Returns a safe url to a post details page
@@ -18,7 +18,7 @@ public class Links : Custom.Hybrid.Code12
     {
       if (_detailsPageId != 0) return _detailsPageId;
       _detailsPageId = Text.Has(Settings.DetailsPage)
-        ? Convert.ToInt((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
+        ? Kit.Convert.ToInt((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
         : CmsContext.Page.Id;
       return _detailsPageId;
     }

@@ -1,18 +1,14 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   var post = DynamicModel.Post;
   var imgSettings = AsDynamic(Settings.Images.Blog, "Content");
-
-  // Image Service used to generate optimal images
-  var imgSvc = GetService<IImageService>();
 }
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
   var altText = Text.First(post.Field("Image").Metadata.Description, post.Title);
-  @imgSvc.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
+  @Kit.Image.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
 }
 
 @* Show info to admin when the post will publish *@

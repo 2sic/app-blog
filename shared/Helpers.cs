@@ -2,7 +2,7 @@ using ToSic.Razor.Blade;
 using System;
 using System.Globalization;
 
-public class Helpers: Custom.Hybrid.Code12
+public class Helpers: Custom.Hybrid.Code14
 {
   public string TeaserAssembly(dynamic post){
     var teaser = post.Teaser;

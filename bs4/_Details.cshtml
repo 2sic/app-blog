@@ -1,6 +1,5 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
@@ -12,7 +11,7 @@
     <p>@Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
     // Set 404 status if the post was not found
-    GetService<IPageService>().SetHttpStatus(404, "Error: Blog Post not Found.");
+    Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
     return;
   }
 
@@ -22,15 +21,11 @@
   // Shortcut to author, makes the code simpler
   var author = post.Author;
 
-  // Render Service helps to create inner-content on the main body
-  var renderSvc = GetService<IRenderService>();
-  
-  // Image Service used to generate optimal images
-  var imgSvc = GetService<IImageService>();
+  var postToolbar = Kit.Toolbar.Default().Add("-").Layout("-");
 }
 
 <section class="row app-blog5 app-blog5-post-detail">
-  <article class="col-lg-8 mb-4" @Edit.TagToolbar(post, toolbar: new [] { "-layout", "%delete&show=true" })>
+  <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
@@ -40,7 +35,7 @@
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
     <div class="app-blog5-post-content mb-4">
-      @renderSvc.All(post, field: "InnerContent", merge: post.Content)
+      @Kit.Render.All(post, field: "InnerContent", merge: post.Content)
     </div>
 
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
@@ -66,7 +61,7 @@
         @if(Text.Has(author.Image)) {
           var altText = Text.First(author.Field("Image").Metadata.Description, author.FullName);
           <div>
-            @imgSvc.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAlt: altText)
+            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAlt: altText)
           </div>
         }
       </div>

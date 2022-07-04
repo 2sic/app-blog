@@ -10,10 +10,9 @@ using DotNetNuke.Web.Api;	// this is to verify the AntiForgeryToken
 using System.Xml;
 using System.IO;
 using ToSic.Razor.Blade;
-using ToSic.Sxc.Services;
 
 [AllowAnonymous]			// define that all commands can be accessed without a login
-public class BlogController : Custom.Hybrid.Api12
+public class BlogController : Custom.Hybrid.Api14
 {
   public const string AtomNsCode = "atom";
   public const string AtomNamespace = "http://www.w3.org/2005/Atom";
@@ -24,7 +23,6 @@ public class BlogController : Custom.Hybrid.Api12
   [HttpGet]
   public dynamic Rss()
   {
-    var scrubSvc = GetService<IScrub>();
 
     // 1. Prepare
     // 1.1 Figure out what page will show post details based on settings
@@ -69,7 +67,7 @@ public class BlogController : Custom.Hybrid.Api12
       var itemNode = AddTag(channel, "item");
       AddTag(itemNode, "title", post.EntityTitle);
       AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.UrlKey, type: "full"));
-      AddTag(itemNode, "description", scrubSvc.All(post.Teaser)); // scrubSvc.All makes sure no HTML makes it into the teaser
+      AddTag(itemNode, "description", Kit.Scrub.All(post.Teaser)); // Scrub.All makes sure no HTML makes it into the teaser
       var guidNode = AddTag(itemNode, "guid", post.EntityGuid.ToString());
       AddAttribute(guidNode, "isPermaLink", "false");
       AddTag(itemNode, "pubDate", post.PublicationMoment.ToString("R"));

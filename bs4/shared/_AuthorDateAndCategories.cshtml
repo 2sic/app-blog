@@ -1,13 +1,9 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   var post = DynamicModel.Post;
   var author = post.author;
   var publicationDate = post.PublicationMoment.ToString("d");
-
-  // Image Service used to generate optimal images
-  var imgSvc = GetService<IImageService>();
 }
 
 @* Post title *@
@@ -19,7 +15,7 @@
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if(Text.Has(author.Image)) {
         var altText = Text.First(author.Field("Image").Metadata.Description, author.FullName);
-        @imgSvc.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAlt: altText, imgClass:"rounded-circle author-img");
+        @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAlt: altText, imgClass:"rounded-circle author-img");
       } else {
         @author.FullName
       }

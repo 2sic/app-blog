@@ -57,3 +57,9 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * If the teaser is left empty it will take the first 100 characters of the content text to replace the teaser
 * Activated image configuration
 * Replaced data-enableoptimizations with IPageService.AssetAttributes
+
+### V5.03 2022-06 
+
+* Changed all base classes to their sxc14 equivalents
+* Removed all GetService<> and switched to use the ServiceKit14
+* Updated toolbars to use the new IToolbarService
