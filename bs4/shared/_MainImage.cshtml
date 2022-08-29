@@ -2,13 +2,15 @@
 @using ToSic.Razor.Blade;
 @{
   var post = DynamicModel.Post;
-  var imgSettings = AsDynamic(Settings.Images.Blog, "Content");
+  var imgSettings = AsDynamic(DynamicModel.Settings, Settings.Images.Blog, "Content");
 }
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
   var altText = Text.First(post.Field("Image").Metadata.Description, post.Title);
-  @Kit.Image.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
+  <figure class="effect-zoom">
+    @Kit.Image.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
+  </figure>
 }
 
 @* Show info to admin when the post will publish *@

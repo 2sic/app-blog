@@ -10,50 +10,50 @@
   .app-blog5-list-item {
     position: relative;
 
-    // https://w3bits.com/css-image-hover-zoom/
-    // https://w3bits.com/labs/css-image-hover-zoom/
-    &.effect-zoom {
-      picture {
-        overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-      }
+    figure {
+      position: relative;
+      overflow: hidden;    
+      transition: background-color 0.3s ease-in-out;
 
-      img {
-        transition: transform .5s ease;
-      }
-      &:hover img {
-        transform: scale(1.2);
-      }
-    }
-
-    /* Effects for Mouse-Over */
-    &.effect-darken {
       picture {
         background-color: $primary;
       }
-      
-      &:hover {
-        picture {
+
+      img {
+        transition: transform .5s ease, opacity 0.3s ease-in-out;
+        backface-visibility: hidden;
+      }
+    }
+
+    a {
+      svg {
+        transition: margin-left .3s ease-in-out;
+      }
+    }
+
+    &:hover {
+      figure {
+        // https://w3bits.com/css-image-hover-zoom/
+        // https://w3bits.com/labs/css-image-hover-zoom/ 
+        &.effect-zoom {
+          img {
+            transform: scale(1.05);
+          }
+        }
+    
+        /* Effects for Mouse-Over */
+        &.effect-darken {
           img {
             opacity: 0.8;
           }
         }
-  
-        h2,
-        h5 {
-          color: $primary;
+      }
+
+      a {
+        svg {          
+          margin-left: 8px;
         }
       }
-    }
-  }
-
-  picture {
-    display: block;
-    transition: background-color 0.3s ease-in-out;
-
-    img {
-      transition: opacity 0.3s ease-in-out;
-      backface-visibility: hidden;
-      width: 100%;
     }
   }
 

@@ -12,27 +12,20 @@
   <div class="alert alert-danger" role="alert">@Html.Raw(@Resources.LabelAdminDetailPageWarning)</div>
 }
 
-<section class="app-blog5" @Kit.Toolbar.Default(Contet)>
+<section class="app-blog5" @Kit.Toolbar.Default(Content)>
   <h1 class="category-header mb-4">@Content.Title</h1>
 
   @* List the posts in 3 columns *@
-  <div class="row card-deck">
+  <div class="row ">
     @foreach (var post in AsList(Data["Posts"])) {
-      <article class="app-blog5-list-item effect-zoom col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
-        <div class="card h-100 m-0">
+      <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
           @* Image of the post *@
           @Html.Partial("shared/_MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
-          <div class="card-body">
-            <h5 class="card-title">@post.Title</h5>
-            <p class="card-text">@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
+          <h4>@post.Title</h4>
+          <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
 
-          </div>
-
-          <div class="card-footer text-right">
-            <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link">@Resources.ReadMore</a>
-          </div>
-        </div>
+          <a href="@helpers.LinkToDetailsPage(post)" class="stretched-link">@Resources.ReadMore <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
       </article>
     }
   </div>
