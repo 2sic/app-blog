@@ -19,13 +19,13 @@
   <div class="row ">
     @foreach (var post in AsList(Data["Posts"])) {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
-          @* Image of the post *@
-          @Html.Partial("shared/_MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+        @* Image of the post *@
+        @Html.Partial("shared/_MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
-          <h4>@post.Title</h4>
-          <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
+        <h4>@post.Title</h4>
+        <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
 
-          <a href="@helpers.LinkToDetailsPage(post)" class="stretched-link">@Resources.ReadMore <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+        <a href="@helpers.LinkToDetailsPage(post)" class="stretched-link">@Resources.ReadMore <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
       </article>
     }
   </div>

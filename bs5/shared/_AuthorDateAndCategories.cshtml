@@ -11,7 +11,7 @@
 
 <div class="post-meta d-flex align-items-center flex-row my-3">
   @* Author Info & Link to Authors Posts *@
-  <div class="post-author mr-2">
+  <div class="post-author me-2">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if(Text.Has(author.Image)) {
         @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAlt: author.FullName, imgClass:"rounded-circle author-img");
