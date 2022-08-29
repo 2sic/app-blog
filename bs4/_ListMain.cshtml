@@ -35,9 +35,7 @@
           </div>
 
           <div class="app-blog5-post-content">
-            <p>
-              @Html.Raw(globalHelpers.TeaserAssembly(post))
-            </p>
+            <p>@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
             <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
           </div>
         </article>

@@ -9,7 +9,7 @@
 @* Post title *@
 @Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Wrap(Tags.Nl2Br(post.Title))
 
-<div class="post-meta d-flex align-items-center flex-row my-3">
+<div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
   @* Author Info & Link to Authors Posts *@
   <div class="post-author mr-2">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
@@ -23,7 +23,7 @@
   </div>
 
   @* Post Date *@
-  <time pubdate datetime='@publicationDate'>@publicationDate</time>
+  <time itemprop="datePublished" datetime='@post.PublicationMoment.ToString("yyyy-MM-dd")'>@publicationDate</time>
 
   @* List categories of post *@
   @foreach(var category in post.Categories) {
