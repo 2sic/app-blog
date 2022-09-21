@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.01" ExportDate="2022-06-30T17:15:51.5078047+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.09.00" ExportDate="2022-09-21T08:39:55.1287383+02:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -2771,13 +2771,13 @@
       <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="14.07.00" Type="String">
+      <Value Key="RequiredVersion" Value="14.09.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="05.03.00" Type="String">
+      <Value Key="Version" Value="05.03.01" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -4611,7 +4611,7 @@
       <Value Key="Title" Value="" Type="String" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="1a86b080-9e0d-4207-97d2-04edf80b4f2f" AttributeSetName="⚙️Image" EntityGUID="3335ad82-b208-4f9f-9b74-fddf7699a9e2" Json="True">
-      <Value Key="Advanced" Value="" Type="String">
+      <Value Key="Advanced" Value="{&#xD;&#xA;  &quot;recipe&quot;: {&#xD;&#xA;    &quot;name&quot;: &quot;default&quot;,&#xD;&#xA;    &quot;variants&quot;: &quot;2*, 1*, 3/4*, 1/2*&quot;,&#xD;&#xA;    &quot;setWidth&quot;: false,&#xD;&#xA;    &quot;attributes&quot;: {&#xD;&#xA;      &quot;loading&quot;: &quot;lazy&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;recipes&quot;: [&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap3&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs3&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-responsive&quot; },&#xD;&#xA;        &quot;setWidth&quot;: false&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap4&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs4&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap5&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs5&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true,&#xD;&#xA;        &quot;setHeight&quot; : true,&#xD;&#xA;        &quot;recipes&quot;: [&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;12/12&quot;, &#xD;&#xA;            &quot;width&quot;: 1230,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 100vw, 1230px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;11/12&quot;, &quot;width&quot;: 1100 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;10/12&quot;, &quot;width&quot;: 1000 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;9/12&quot;, &quot;width&quot;: 900 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;8/12&quot;, &quot;width&quot;: 800 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;7/12&quot;, &quot;width&quot;: 700 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;6/12&quot;, &#xD;&#xA;            &quot;width&quot;: 600, &#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 50vw, (max-width: 576px) 100vw, 600px&quot; &#xD;&#xA;              }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;5/12&quot;, &quot;width&quot;: 500 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;4/12&quot;, &#xD;&#xA;            &quot;width&quot;: 390,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 34vw, (max-width: 991px) 50vw, (max-width: 767px) 100vw,(max-width: 575px) 100vw, 390px&quot;&#xD;&#xA;            }&#xD;&#xA;           },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;3/12&quot;, &#xD;&#xA;            &quot;width&quot;: 285,&#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(min-width: 992px) 1998px, (max-width: 991px) 50vw, (max-width: 575px) 1993px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;2/12&quot;, &quot;width&quot;: 170 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;1/12&quot;, &quot;width&quot;:  75 }&#xD;&#xA;        ]&#xD;&#xA;      }&#xD;&#xA;    ]&#xD;&#xA;  }&#xD;&#xA;}" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="AspectRatio" Value="2" Type="Number">
@@ -4945,7 +4945,7 @@
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="1a86b080-9e0d-4207-97d2-04edf80b4f2f" AttributeSetName="⚙️Image" EntityGUID="5e60e25b-8a7c-4bee-8ed2-d429f6019e22" Json="True">
-      <Value Key="Advanced" Value="" Type="String">
+      <Value Key="Advanced" Value="{&#xD;&#xA;  &quot;recipe&quot;: {&#xD;&#xA;    &quot;name&quot;: &quot;default&quot;,&#xD;&#xA;    &quot;variants&quot;: &quot;2*, 1*, 3/4*, 1/2*&quot;,&#xD;&#xA;    &quot;setWidth&quot;: false,&#xD;&#xA;    &quot;attributes&quot;: {&#xD;&#xA;      &quot;loading&quot;: &quot;lazy&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;recipes&quot;: [&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap3&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs3&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-responsive&quot; },&#xD;&#xA;        &quot;setWidth&quot;: false&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap4&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs4&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap5&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs5&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true,&#xD;&#xA;        &quot;setHeight&quot; : true,&#xD;&#xA;        &quot;recipes&quot;: [&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;12/12&quot;, &#xD;&#xA;            &quot;width&quot;: 1230,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 100vw, 1230px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;11/12&quot;, &quot;width&quot;: 1100 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;10/12&quot;, &quot;width&quot;: 1000 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;9/12&quot;, &quot;width&quot;: 900 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;8/12&quot;, &quot;width&quot;: 800 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;7/12&quot;, &quot;width&quot;: 700 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;6/12&quot;, &#xD;&#xA;            &quot;width&quot;: 600, &#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 50vw, (max-width: 576px) 100vw, 600px&quot; &#xD;&#xA;              }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;5/12&quot;, &quot;width&quot;: 500 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;4/12&quot;, &#xD;&#xA;            &quot;width&quot;: 390,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 34vw, (max-width: 991px) 50vw, (max-width: 767px) 100vw,(max-width: 575px) 100vw, 390px&quot;&#xD;&#xA;            }&#xD;&#xA;           },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;3/12&quot;, &#xD;&#xA;            &quot;width&quot;: 285,&#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(min-width: 992px) 1998px, (max-width: 991px) 50vw, (max-width: 575px) 1993px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;2/12&quot;, &quot;width&quot;: 170 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;1/12&quot;, &quot;width&quot;:  75 }&#xD;&#xA;        ]&#xD;&#xA;      }&#xD;&#xA;    ]&#xD;&#xA;  }&#xD;&#xA;}" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="AspectRatio" Value="1.618" Type="Number">
@@ -5035,7 +5035,7 @@
       <Value Key="Content" Value="&lt;p&gt;This is a test for the optional teaser. If the teaser is empty then it should use the first 100 characters from the context text.&lt;/p&gt;" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Image" Value="" Type="Hyperlink">
+      <Value Key="Image" Value="file:6266" Type="Hyperlink">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="MetaDescription" Value="" Type="String">
@@ -5136,11 +5136,13 @@
     <File Id="4400" RelativePath="adam\Blog5\eNNVoICvLUGKZM7FWXYyYA\Image\Daniel-Mettler-Profile-MVP.png" />
     <File Id="6043" RelativePath="adam\Blog5\rkOvVN4ESU-rXYp01WEEJQ\Image\Blog5 for 2sxc 12 Hybrid Released.jpg" />
     <File Id="4403" RelativePath="adam\Blog5\AdttIZyPjUuxt0T3NFl0mQ\Image\starwars.jpg" />
+    <File Id="6266" RelativePath="adam\Blog5\mI-vFZfU_0q7mFB20pWmcw\Image\Demo-100.jpg" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="12964" RelativePath="adam/Blog5/eNNVoICvLUGKZM7FWXYyYA/Image/" />
     <Folder Id="12730" RelativePath="adam/Blog5/rkOvVN4ESU-rXYp01WEEJQ/Image/" />
     <Folder Id="12734" RelativePath="adam/Blog5/AdttIZyPjUuxt0T3NFl0mQ/Image/" />
+    <Folder Id="13827" RelativePath="adam/Blog5/mI-vFZfU_0q7mFB20pWmcw/Image/" />
     <Folder Id="12728" RelativePath="adam/Blog5/" />
     <Folder Id="12953" RelativePath="adam/Blog5/4mIW5xdi4ESZ6BUjaABlng/" />
     <Folder Id="12954" RelativePath="adam/Blog5/4mIW5xdi4ESZ6BUjaABlng/ContentCss/" />
@@ -5166,6 +5168,7 @@
     <Folder Id="12980" RelativePath="adam/Blog5/IvTE86ji3k6s_txqyd0urg/Image/" />
     <Folder Id="12949" RelativePath="adam/Blog5/mfCGx-rerk2_7lmgGtyb8Q/" />
     <Folder Id="12950" RelativePath="adam/Blog5/mfCGx-rerk2_7lmgGtyb8Q/Image/" />
+    <Folder Id="13826" RelativePath="adam/Blog5/mI-vFZfU_0q7mFB20pWmcw/" />
     <Folder Id="12945" RelativePath="adam/Blog5/nVdSuBCD5keNYmyJcbzD0g/" />
     <Folder Id="12946" RelativePath="adam/Blog5/nVdSuBCD5keNYmyJcbzD0g/Image/" />
     <Folder Id="12941" RelativePath="adam/Blog5/OieItczcc0SfdYTM6ald1w/" />
