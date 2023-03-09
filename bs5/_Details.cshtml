@@ -25,13 +25,17 @@
   var postToolbar = Kit.Toolbar.Default().Layout("-").Delete();
 }
 
-<section class="row app-blog5 app-blog5-post-detail">
+<section class="row justify-content-center app-blog5 app-blog5-post-detail">
+  <div class="col-lg-12">
+      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
+  </div>
   <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
       @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
+
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -83,16 +87,14 @@
         }
       </div>
       <hr />
-
+      
       @* 3.5 "Back to list" button *@
       @detailsHelpers.BackToListButton()
     </div>
   </article>
 
   @* 4b Desktop Category filter *@
-  <div class="col-lg-4">
-      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
-  </div>
+  
 </section>
 
 @Html.Partial("shared/_Assets.cshtml")

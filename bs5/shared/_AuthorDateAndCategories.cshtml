@@ -7,7 +7,7 @@
 }
 
 @* Post title *@
-@Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Wrap(Tags.Nl2Br(post.Title))
+@Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Class(DynamicModel.CssClass).Wrap(Tags.Nl2Br(post.Title))
 
 <div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
   @* Author Info & Link to Authors Posts *@
