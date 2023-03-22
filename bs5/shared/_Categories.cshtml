@@ -41,16 +41,12 @@
 
     @* 3.2 Show each used Category + count *@
     @foreach (var cat in catsWithPosts) {
-      <li class='@(cat.Cat.Key == filterCat ? "font-weight-bold" : "")'>
-        <a class="d-flex btn btn-sm btn-outline-primary rounded-pill align-items-center" href='@Link.To(parameters: "category=" + cat.Cat.Key)'>
+      <li>
+        <a class='d-flex btn btn-sm btn-outline-primary rounded-pill align-items-center @(cat.Cat.Key == filterCat ? "active" : "")' href='@Link.To(parameters: "category=" + cat.Cat.Key)'>
           @cat.Cat.Name
           <span class="badge rounded-pill badge-primary ms-1">@cat.PostsCount</span>
         </a>
       </li>
     }
   </ul>
-  @if(DynamicModel.EnableSocialSharing == true) {
-          <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
-          <div class="addthis_inline_share_toolbox mt-4"></div>
-        }
 </div>

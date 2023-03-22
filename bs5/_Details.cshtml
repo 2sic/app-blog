@@ -26,9 +26,6 @@
 }
 
 <section class="row justify-content-center app-blog5 app-blog5-post-detail">
-  <div class="col-lg-12">
-      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
-  </div>
   <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
@@ -43,10 +40,19 @@
       @Kit.Render.All(post, field: "InnerContent", merge: post.Content)
     </div>
 
+    <hr />
+
+    <div class="text-center mt-4">
+      <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
+      <div class="addthis_inline_share_toolbox"></div>
+    </div>
+
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
       @if(AsList(post.Tags as object).Any()) {
+        <hr />
+
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="me-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
