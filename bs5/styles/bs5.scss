@@ -14,19 +14,19 @@
  * Re-generate it using the SASS variables of your theme
 */
 
-@import "../../node_modules/bootstrap/scss/_functions";
+@import "../../node_modules/bs5/scss/_functions";
 
 // Choose which variables file you want to use
 // Either the one from the skin. To use the skin variables, adjust the path as needed
 // Or the one on this app - to only make changes here
 // @import "../../../_default/Skins/2sxcBootstrap-B4/src/scss/_variables.scss";
-@import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "../../node_modules/bs5/scss/mixins/_breakpoints.scss";
 
 @import "_variables.scss";
 
 // Now the standard bootstrap functionality
 // It will use our variables
-@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bs5/scss/variables";
 
 //
 // This SCSS generates the css for the general styles
