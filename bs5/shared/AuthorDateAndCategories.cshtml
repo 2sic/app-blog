@@ -14,7 +14,7 @@
   <div class="post-author me-2">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if(Text.Has(author.Image)) {
-        @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAlt: author.FullName, imgClass:"rounded-circle author-img");
+        @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAltFallback: author.FullName, imgClass:"rounded-circle author-img");
       } else {
         @author.FullName
       }

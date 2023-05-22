@@ -12,7 +12,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(helpers.LinkToDetailsPage(post)).Wrap(
         (Text.Has(post.Image) 
-          ? (Kit.Image.Picture( post.Image ,settings: Settings.Images.NextPost, imgAlt:post.Title, imgClass:"rounded-circle d-none d-lg-block")).ToString()
+          ? (Kit.Image.Picture( post.Image ,settings: Settings.Images.NextPost, imgAltFallback:post.Title, imgClass:"rounded-circle d-none d-lg-block")).ToString()
           : ""),
         Tag.Span(
           Tag.Strong(title) + " " + post.Title

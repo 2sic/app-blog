@@ -59,9 +59,8 @@
           @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + author.FullName)'>@author.FullName</a>
         </div>
         @if(Text.Has(author.Image)) {
-          var altText = Text.First(author.Field("Image").Metadata.Description, author.FullName);
           <div>
-            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAlt: altText)
+            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
         }
       </div>

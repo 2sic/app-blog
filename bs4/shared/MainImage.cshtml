@@ -7,9 +7,8 @@
 
 @* Image of the post *@
 @if (Text.Has(post.Image)) {
-  var altText = Text.First(post.Field("Image").Metadata.Description, post.Title);
   <figure class="effect-zoom">
-    @Kit.Image.Picture(post.Field("Image"), settings: imgSettings, imgAlt: altText)
+    @Kit.Image.Picture(post.Field("Image"), settings: imgSettings, imgAltFallback: post.Title)
   </figure>
 }
 
