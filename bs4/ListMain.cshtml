@@ -16,13 +16,13 @@
   <div class="row">
     <div class="col-12">
       @* Title / Description of current filter (Author, Category, etc.) *@
-      @Html.Partial("_ListMain.PartHeader.cshtml")
+      @Html.Partial("ListMain.PartHeader.cshtml")
     </div>
 
     <div class="col-lg-8">
       @* Mobile Category filter *@
       <div class="d-xs-block d-lg-none">
-        @Html.Partial("shared/_Categories.cshtml")
+        @Html.Partial("shared/Categories.cshtml")
       </div>
 
       @* List the posts *@
@@ -30,8 +30,8 @@
         <article class="app-blog5-list-item effect-zoom mb-5" @postToolbar.For(post)>
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
-            @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
-            @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2"})
+            @Html.Partial("shared/MainImage.cshtml", new { Post = post })
+            @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2"})
           </div>
 
           <div class="app-blog5-post-content">
@@ -43,15 +43,15 @@
 
       @* Show pagination if configured *@
       @if (Content.ShowPagination == true) {
-        @Html.Partial("shared/_ListPaging.cshtml")
+        @Html.Partial("shared/ListPaging.cshtml")
       }
     </div>
 
     @* Desktop Category filter *@
     <div class="col-lg-4">
-        @Html.Partial("shared/_Categories.cshtml")
+        @Html.Partial("shared/Categories.cshtml")
     </div>
   </div>
 </section>
 
-@Html.Partial("shared/_Assets.cshtml")
+@Html.Partial("shared/Assets.cshtml")

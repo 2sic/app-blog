@@ -30,8 +30,8 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
-      @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
+      @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/MainImage.cshtml", new { Post = post })
 
     </div>
 
@@ -42,14 +42,15 @@
 
     <hr />
 
+    @* 3. Sharing Links (Addthis) *@
     <div class="text-center mt-4">
       <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
       <div class="addthis_inline_share_toolbox"></div>
     </div>
 
-    @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
+    @* 4. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
-      @* 3.1 Tags of post *@
+      @* 4.1 Tags of post *@
       @if(AsList(post.Tags as object).Any()) {
         <hr />
 
@@ -63,7 +64,7 @@
 
       <hr />
 
-      @* 3.3 Author *@
+      @* 4.3 Author *@
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @Html.Raw(author.ShortBio)
@@ -78,7 +79,7 @@
       </div>
       <hr />
 
-      @* 3.4 Preview of previous and next post *@
+      @* 4.4 Preview of previous and next post *@
       @{
         var previousPost = AsList(Data["Previous"]).FirstOrDefault();
         var nextPost = AsList(Data["Next"]).FirstOrDefault();
@@ -94,13 +95,10 @@
       </div>
       <hr />
       
-      @* 3.5 "Back to list" button *@
+      @* 4.5 "Back to list" button *@
       @detailsHelpers.BackToListButton()
     </div>
   </article>
-
-  @* 4b Desktop Category filter *@
-  
 </section>
 
-@Html.Partial("shared/_Assets.cshtml")
+@Html.Partial("shared/Assets.cshtml")

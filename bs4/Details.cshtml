@@ -29,8 +29,8 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("shared/_MainImage.cshtml", new { Post = post })
-      @Html.Partial("shared/_AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/MainImage.cshtml", new { Post = post })
+      @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -90,8 +90,8 @@
 
   @* 4b Desktop Category filter *@
   <div class="col-lg-4">
-      @Html.Partial("shared/_Categories.cshtml", new { EnableSocialSharing = true})
+      @Html.Partial("shared/Categories.cshtml", new { EnableSocialSharing = true})
   </div>
 </section>
 
-@Html.Partial("shared/_Assets.cshtml")
+@Html.Partial("shared/Assets.cshtml")
