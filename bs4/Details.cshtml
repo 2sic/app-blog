@@ -6,7 +6,7 @@
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
 
   @* Preflight: check if post found, else show notification and stop processing *@
-  if(post == null) {
+  if (post == null) {
     <h1>@Resources.LabelPostNotExists</h1>
     <p>@Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
@@ -21,6 +21,7 @@
   // Shortcut to author, makes the code simpler
   var author = post.Author;
 
+  // Toolbar for editing the Detail post
   var postToolbar = Kit.Toolbar.Default().Add("-").Layout("-");
 }
 
@@ -41,7 +42,7 @@
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
-      @if(AsList(post.Tags as object).Any()) {
+      @if (AsList(post.Tags as object).Any()) {
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="mr-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
@@ -58,7 +59,7 @@
           @Html.Raw(author.ShortBio)
           @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + author.FullName)'>@author.FullName</a>
         </div>
-        @if(Text.Has(author.Image)) {
+        @if (Text.Has(author.Image)) {
           <div>
             @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>

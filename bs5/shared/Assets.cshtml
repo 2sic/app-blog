@@ -1,7 +1,7 @@
 @inherits Custom.Hybrid.Razor14
 @{
   // show warning for admin if koi.json is missing
-  if(Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
+  if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
     <div class='dnnFormMessage dnnFormWarning'>
       @Html.Raw(Connect.Koi.Messages.CssInformationMissing) <br>
       @Html.Raw(Connect.Koi.Messages.OnlyAdminsSeeThis)
@@ -9,7 +9,7 @@
   }
 
   // Include bootstrap 4 if the framework isn't known
-  if(Kit.Css.IsUnknown) {
+  if (Kit.Css.IsUnknown) {
     Kit.Page.Activate("Bootstrap4");
   }
 

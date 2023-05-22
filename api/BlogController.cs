@@ -43,7 +43,7 @@ public class BlogController : Custom.Hybrid.Api14
 
     // 2.1 Add a warning to the XML in case we don't know what page to use for links
     // we use a custom xml namespace "warning" to not break the RSS standard
-    if(detailsPageId == 0) {
+    if (detailsPageId == 0) {
       var warningTag = AddNamespaceTag(root, "warning", "warning", "http://warning");
       warningTag.InnerText = "The links for the details cannot work yet, because the App isn't fully configured. You must set a details page.";
     }
@@ -62,7 +62,7 @@ public class BlogController : Custom.Hybrid.Api14
     AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss", type: "full"));
 
     // 3.3 Add all the posts from the query to this channel
-    foreach(var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
+    foreach (var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
 
       var itemNode = AddTag(channel, "item");
       AddTag(itemNode, "title", post.EntityTitle);

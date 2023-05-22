@@ -8,7 +8,7 @@
   var postToolbar = Kit.Toolbar.Default().Delete().Layout("-");
 }
 @* If no Details-page is configured, show warning to Admin *@
-@if(Edit.Enabled && !Text.Has(Settings.DetailsPage)) {
+@if (Edit.Enabled && !Text.Has(Settings.DetailsPage)) {
   <div class="alert alert-danger" role="alert">@Html.Raw(@Resources.LabelAdminDetailPageWarning)</div>
 }
 

@@ -13,7 +13,7 @@
   @* Author Info & Link to Authors Posts *@
   <div class="post-author mr-2">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
-      @if(Text.Has(author.Image)) {
+      @if (Text.Has(author.Image)) {
         @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAltFallback: author.FullName, imgClass:"rounded-circle author-img");
       } else {
         @author.FullName
@@ -25,7 +25,7 @@
   <time itemprop="datePublished" datetime='@post.PublicationMoment.ToString("yyyy-MM-dd")'>@publicationDate</time>
 
   @* List categories of post *@
-  @foreach(var category in post.Categories) {
+  @foreach (var category in post.Categories) {
     <span>&nbsp;–
     <a class="post-category" href='@Link.To(parameters: "category=" + category.Key)' title="@category.Name">
       @category.Name

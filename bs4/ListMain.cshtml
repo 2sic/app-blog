@@ -26,7 +26,7 @@
       </div>
 
       @* List the posts *@
-      @foreach(var post in AsList(Data["Posts"])) {
+      @foreach (var post in AsList(Data["Posts"])) {
         <article class="app-blog5-list-item effect-zoom mb-5" @postToolbar.For(post)>
           @* Header-block with Image / Author, Title, Categories *@
           <div class="app-blog5-post-header">
