@@ -4,7 +4,7 @@ using ToSic.Razor.Blade;
 public class DetailsHelper: Custom.Hybrid.Code14 {
 
   public dynamic PostMicroPreview(dynamic post, string context) {
-    var helpers = CreateInstance("Links.cs");
+    var helpers = CreateInstance("../shared/Links.cs");
     var title = context == "previous"
       ? Resources.PreviousPost
       : Resources.NextPost;

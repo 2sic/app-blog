@@ -24,17 +24,15 @@
 
   // Toolbar for editing the Detail post
   var postToolbar = Kit.Toolbar.Empty().Edit();
-  
-  var position = isBs5 ? "justify-content-center" : "";
 }
 
-<section class="row @position app-blog5 app-blog5-post-detail">
+<section class="row justify-content-center app-blog5 app-blog5-post-detail">
   <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
-      @Html.Partial("shared/MainImage.cshtml", new { Post = post })
+      @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("../shared/MainImage.cshtml", new { Post = post })
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -93,4 +91,4 @@
   </article>
 </section>
 
-@Html.Partial("shared/Assets.cshtml")
+@Html.Partial("../shared/Assets.cshtml")

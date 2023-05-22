@@ -2,7 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   // Prepare helpers
-  var helpers = CreateInstance("Links.cs");
+  var helpers = CreateInstance("../shared/Links.cs");
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // This config is for the toolbar used on an item.
@@ -18,7 +18,7 @@
       @Html.Partial("ListMain.PartHeader.cshtml")
     </div>
     <div class="col-12">
-      @Html.Partial("shared/Categories.cshtml")
+      @Html.Partial("../shared/Categories.cshtml")
     </div>
 
     @* List the posts *@
@@ -26,12 +26,12 @@
       <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
-          @Html.Partial("shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
-          @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2", CssClass = "h3"})
+          @Html.Partial("../shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+          @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2", CssClass = "h3"})
         </div>
 
         <div class="app-blog5-post-content">
-          <p>@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
+          <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
           <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
         </div>
       </article>
@@ -39,9 +39,9 @@
 
     @* Show pagination if configured *@
     @if (Content.ShowPagination == true) {
-      @Html.Partial("shared/ListPaging.cshtml")
+      @Html.Partial("../shared/ListPaging.cshtml")
     }
   </div>
 </section>
 
-@Html.Partial("shared/Assets.cshtml")
+@Html.Partial("../shared/Assets.cshtml")

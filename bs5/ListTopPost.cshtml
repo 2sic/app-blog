@@ -2,7 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   // Prepare helpers
-  var helpers = CreateInstance("Links.cs");
+  var helpers = CreateInstance("../shared/Links.cs");
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // This config is for the toolbar used on an item.
@@ -24,7 +24,7 @@
     @foreach (var post in AsList(Data["Posts"])) {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
         @* Image of the post *@
-        @Html.Partial("shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+        @Html.Partial("../shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
         <h4>@post.Title</h4>
         <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
@@ -36,8 +36,8 @@
 
   @* Show pagination if configured *@
   @if (Content.ShowPagination == true) {
-    @Html.Partial("shared/ListPaging.cshtml")
+    @Html.Partial("../shared/ListPaging.cshtml")
   }
 </section>
 
-@Html.Partial("shared/Assets.cshtml")
+@Html.Partial("../shared/Assets.cshtml")
