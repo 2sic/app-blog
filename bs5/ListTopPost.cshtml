@@ -27,7 +27,7 @@
         @Html.Partial("shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
 
         <h4>@post.Title</h4>
-        <p>@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
+        <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
 
         <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
       </article>

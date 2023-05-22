@@ -4,7 +4,6 @@ using ToSic.Razor.Blade;
 public class DetailsHelper: Custom.Hybrid.Code14 {
 
   public dynamic PostMicroPreview(dynamic post, string context) {
-    var imgSettings = AsDynamic(Settings.Images.NextPost, Settings.Images.Content);
     var helpers = CreateInstance("Links.cs");
     var title = context == "previous"
       ? Resources.PreviousPost
@@ -12,7 +11,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
 
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(helpers.LinkToDetailsPage(post)).Wrap(
-        (Text.Has(post.Image)
+        (Text.Has(post.Image) 
           ? (Kit.Image.Picture( post.Image ,settings: Settings.Images.NextPost, imgAltFallback:post.Title, imgClass:"rounded-circle d-none d-lg-block")).ToString()
           : ""),
         Tag.Span(
@@ -31,6 +30,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
   }
 
   public void AddMetaTags(dynamic post) {
+    
     var metaImageUrl = Text.Has(post.Image)
         ? Link.Image(post.Image, Settings.Images.Blog, type: "full")
         : "";

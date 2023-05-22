@@ -1,6 +1,7 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 @{
+  // Prepare helpers
   var helpers = CreateInstance("Links.cs");
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
@@ -16,7 +17,7 @@
   <h1 class="category-header mb-4">@Content.Title</h1>
 
   @* List the posts in 3 columns *@
-  <div class="row ">
+  <div class="row">
     @foreach (var post in AsList(Data["Posts"])) {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
         @* Image of the post *@

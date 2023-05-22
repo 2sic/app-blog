@@ -5,12 +5,11 @@
   var helpers = CreateInstance("Links.cs");
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
-  // Toolbar configuration for use on posts
+  // This config is for the toolbar used on an item.
   var postToolbar = Kit.Toolbar.Empty()
     .Layout("-")
     .New("BlogPost", prefill: new { PublicationMoment = DateTime.Now.ToString("yyyy-MM-dd") })
     .Delete();
-
 }
 <section class="app-blog5" @Kit.Toolbar.Default(Content)>
   <div class="row">
