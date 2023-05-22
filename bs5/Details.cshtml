@@ -4,6 +4,7 @@
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
+  var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
@@ -22,17 +23,18 @@
   var author = post.Author;
 
   // Toolbar for editing the Detail post
-  var postToolbar = Kit.Toolbar.Default().Layout("-").Delete();
+  var postToolbar = Kit.Toolbar.Empty().Edit();
+  
+  var position = isBs5 ? "justify-content-center" : "";
 }
 
-<section class="row justify-content-center app-blog5 app-blog5-post-detail">
+<section class="row @position app-blog5 app-blog5-post-detail">
   <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
       @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
       @Html.Partial("shared/MainImage.cshtml", new { Post = post })
-
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -40,31 +42,22 @@
       @Kit.Render.All(post, field: "InnerContent", merge: post.Content)
     </div>
 
-    <hr />
-
-    @* 3. Sharing Links (Addthis) *@
-    <div class="text-center mt-4">
-      <script type="text/javascript" src="@Settings.SocialAddThisJS" ></script>
-      <div class="addthis_inline_share_toolbox"></div>
-    </div>
-
-    @* 4. Footer with Tags, Links to prev/next and sharing buttons *@
+    @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
-      @* 4.1 Tags of post *@
+      @* 3.1 Tags of post *@
       @if (AsList(post.Tags as object).Any()) {
-        <hr />
-
+        var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          <strong class="me-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
+          <strong class="@marginRight">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
-            <a class="btn btn-sm btn-light me-2" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
           }
         </div>
       }
 
       <hr />
 
-      @* 4.3 Author *@
+      @* 3.3 Author *@
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @Html.Raw(author.ShortBio)
@@ -72,13 +65,13 @@
         </div>
         @if (Text.Has(author.Image)) {
           <div>
-            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback :author.FullName)
+            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
         }
       </div>
       <hr />
 
-      @* 4.4 Preview of previous and next post *@
+      @* 3.4 Preview of previous and next post *@
       @{
         var previousPost = AsList(Data["Previous"]).FirstOrDefault();
         var nextPost = AsList(Data["Next"]).FirstOrDefault();
@@ -93,8 +86,8 @@
         }
       </div>
       <hr />
-      
-      @* 4.5 "Back to list" button *@
+
+      @* 3.5 "Back to list" button *@
       @detailsHelpers.BackToListButton()
     </div>
   </article>

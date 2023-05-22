@@ -186,16 +186,14 @@
   position: sticky;
   top: 145px;
   padding: 0px;
-  border-left: 5px solid $primary;
-  padding-left: $grid-gutter-width;
   min-width: 100%;
-
-  @include media-breakpoint-up(lg) {
-    width: 310px;
-  }
 
   .rss-button {
     width: 30px;
+    height:30px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
 
   ul {
@@ -203,14 +201,18 @@
     padding: 0;
 
     li {
+      padding:5px;
+
       a {
-        display: block;
-        line-height: 32px;
+        display: block; 
+        line-height: 22px; 
+        font-size: 14px;
       }
 
-      span {
+      span.badge {
         background: $gray-200;
         color: $body-color;
+        top:1px;
       }
     }
   }

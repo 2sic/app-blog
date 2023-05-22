@@ -6,8 +6,8 @@
   var globalHelpers = CreateInstance("../shared/Helpers.cs");
 
   // This config is for the toolbar used on an item.
-  var postToolbar = Kit.Toolbar.Default()
-    .Layout("-")    
+  var postToolbar = Kit.Toolbar.Empty()
+    .Layout("-")
     .New("BlogPost", prefill: new { PublicationMoment = DateTime.Now.ToString("yyyy-MM-dd") })
     .Delete();
 }
@@ -33,6 +33,11 @@
       </article>
     }
   </div>
+
+  @* Show pagination if configured *@
+  @if (Content.ShowPagination == true) {
+    @Html.Partial("shared/ListPaging.cshtml")
+  }
 </section>
 
 @Html.Partial("shared/Assets.cshtml")

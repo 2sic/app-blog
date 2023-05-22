@@ -26,7 +26,7 @@
         <h4>@post.Title</h4>
         <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>
 
-        <a href="@helpers.LinkToDetailsPage(post)" class="stretched-link">@Resources.ReadMore <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+        <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
       </article>
     }
   </div>

@@ -4,6 +4,8 @@
   var post = DynamicModel.Post;
   var author = post.author;
   var publicationDate = post.PublicationMoment.ToString("d");
+  var isBs5 = Kit.Css.Is("bs5");
+  var marginRight = isBs5 ? "me-2" : "mr-2";
 }
 
 @* Post title *@
@@ -11,7 +13,7 @@
 
 <div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
   @* Author Info & Link to Authors Posts *@
-  <div class="post-author me-2">
+  <div class="post-author @marginRight">
     <a href='@Link.To(parameters: "author=" + author.FullName)'>
       @if (Text.Has(author.Image)) {
         @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgAltFallback: author.FullName, imgClass:"rounded-circle author-img");

@@ -4,6 +4,7 @@
   // Get current post to show from the View-Query + some Helpers
   var post = AsList(Data).FirstOrDefault();
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
+  var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
@@ -23,15 +24,17 @@
 
   // Toolbar for editing the Detail post
   var postToolbar = Kit.Toolbar.Default().Add("-").Layout("-");
+  
+  var position = isBs5 ? "justify-content-center" : "";
 }
 
-<section class="row app-blog5 app-blog5-post-detail">
+<section class="row @position app-blog5 app-blog5-post-detail">
   <article class="col-lg-8 mb-4" @postToolbar.For(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("shared/MainImage.cshtml", new { Post = post })
       @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
+      @Html.Partial("shared/MainImage.cshtml", new { Post = post })
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -43,10 +46,11 @@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
       @if (AsList(post.Tags as object).Any()) {
+        var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          <strong class="mr-2">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
+          <strong class="@marginRight">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
           @foreach (var tag in post.Tags) {
-            <a class="btn btn-sm btn-light mr-2" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
           }
         </div>
       }
@@ -72,7 +76,7 @@
         var previousPost = AsList(Data["Previous"]).FirstOrDefault();
         var nextPost = AsList(Data["Next"]).FirstOrDefault();
       }
-      
+
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
         @if (previousPost != null) {
           @detailsHelpers.PostMicroPreview(previousPost, "previous")
@@ -87,11 +91,6 @@
       @detailsHelpers.BackToListButton()
     </div>
   </article>
-
-  @* 4b Desktop Category filter *@
-  <div class="col-lg-4">
-      @Html.Partial("shared/Categories.cshtml", new { EnableSocialSharing = true})
-  </div>
 </section>
 
 @Html.Partial("shared/Assets.cshtml")

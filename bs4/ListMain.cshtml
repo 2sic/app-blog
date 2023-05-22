@@ -17,39 +17,30 @@
       @* Title / Description of current filter (Author, Category, etc.) *@
       @Html.Partial("ListMain.PartHeader.cshtml")
     </div>
-
-    <div class="col-lg-8">
-      @* Mobile Category filter *@
-      <div class="d-xs-block d-lg-none">
-        @Html.Partial("shared/Categories.cshtml")
-      </div>
-
-      @* List the posts *@
-      @foreach (var post in AsList(Data["Posts"])) {
-        <article class="app-blog5-list-item effect-zoom mb-5" @postToolbar.For(post)>
-          @* Header-block with Image / Author, Title, Categories *@
-          <div class="app-blog5-post-header">
-            @Html.Partial("shared/MainImage.cshtml", new { Post = post })
-            @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2"})
-          </div>
-
-          <div class="app-blog5-post-content">
-            <p>@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
-            <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
-          </div>
-        </article>
-      }
-
-      @* Show pagination if configured *@
-      @if (Content.ShowPagination == true) {
-        @Html.Partial("shared/ListPaging.cshtml")
-      }
+    <div class="col-12">
+      @Html.Partial("shared/Categories.cshtml")
     </div>
 
-    @* Desktop Category filter *@
-    <div class="col-lg-4">
-        @Html.Partial("shared/Categories.cshtml")
-    </div>
+    @* List the posts *@
+    @foreach (var post in AsList(Data["Posts"])) {
+      <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
+        @* Header-block with Image / Author, Title, Categories *@
+        <div class="app-blog5-post-header">
+          @Html.Partial("shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+          @Html.Partial("shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2", CssClass = "h3"})
+        </div>
+
+        <div class="app-blog5-post-content">
+          <p>@Html.Raw(Kit.Scrub.All(@globalHelpers.TeaserAssembly(post)))</p>
+          <a href="@helpers.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
+        </div>
+      </article>
+    }
+
+    @* Show pagination if configured *@
+    @if (Content.ShowPagination == true) {
+      @Html.Partial("shared/ListPaging.cshtml")
+    }
   </div>
 </section>
 
