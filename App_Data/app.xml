@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.09.00" ExportDate="2022-09-21T08:39:55.1287383+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.00.01" ExportDate="2023-05-22T10:19:54.9609397+02:00">
   <Header>
     <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
     <Language Default="en-us" />
@@ -9,7 +9,7 @@
     </Dimensions>
   </Header>
   <AttributeSets>
-    <AttributeSet StaticName="App-Resources" Name="App-Resources" Description="Stores resources like translations for an app" Scope="System.App" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="App-Resources" Name="App-Resources" Scope="System.App" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="GroupDescriptions" Type="Empty" IsTitle="false">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="af5a556e-0016-41bb-9ee6-e503ce1a36a6" Json="True" KeyNumber="4701">
@@ -104,7 +104,7 @@
             <Value Key="InputFontFamily" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="1" Type="Number">
+            <Value Key="RowCount" Value="1.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -160,7 +160,7 @@
             <Value Key="InputFontFamily" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="3" Type="Number">
+            <Value Key="RowCount" Value="3.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1012,7 +1012,7 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="App-Settings" Name="App-Settings" Description="Stores settings for an app" Scope="System.App" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="App-Settings" Name="App-Settings" Scope="System.App" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="DetailsPage" Type="Hyperlink" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="370a628e-a413-4242-b916-a8c05eaf8a0e" Json="True" KeyNumber="1951">
@@ -1081,7 +1081,7 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="3d5500b3-8d0c-4ff2-8114-fb839f4ec869" Name="Author" Description="People writing blogs" Scope="Default" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="3d5500b3-8d0c-4ff2-8114-fb839f4ec869" Name="Author" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="FullName" Type="String" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="6c27965a-7d0b-4cff-9f0b-52b083631ec8" Json="True" KeyNumber="1953">
@@ -1271,12 +1271,12 @@
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="5ede5e0d-1c36-4bd8-84e9-aaed5ab02569" Json="True" KeyNumber="1958">
             <Value Key="DropdownValues" Value="" Type="String" />
             <Value Key="InputType" Value="wysiwyg" Type="String" />
-            <Value Key="RowCount" Value="1" Type="Number" />
+            <Value Key="RowCount" Value="1.0" Type="Number" />
           </Entity>
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" Name="BlogPost" Description="A post for this blog" Scope="Default" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" Name="BlogPost" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Title" Type="String" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7496b63d-21d7-496c-84f7-7d051c55359f" Json="True" KeyNumber="1960">
@@ -1304,7 +1304,7 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="f415cb43-0063-4e8e-a41b-28f237a20e04" Json="True" KeyNumber="1960">
-            <Value Key="RowCount" Value="1" Type="Number" />
+            <Value Key="RowCount" Value="1.0" Type="Number" />
           </Entity>
         </Attribute>
         <Attribute StaticName="GroupSpecs" Type="Empty" IsTitle="false">
@@ -1651,7 +1651,7 @@
             <Value Key="InputType" Value="wysiwyg" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="1" Type="Number">
+            <Value Key="RowCount" Value="1.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1820,7 +1820,7 @@
             <Value Key="InputType" Value="wysiwyg" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="4" Type="Number">
+            <Value Key="RowCount" Value="4.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2326,7 +2326,7 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="1ea28652-a051-4c80-acd7-4d2e3f288f9c" Name="Category" Description="Post categories" Scope="Default" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="1ea28652-a051-4c80-acd7-4d2e3f288f9c" Name="Category" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Name" Type="String" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="2667df53-c253-4029-9237-c80511e56b3f" Json="True" KeyNumber="1978">
@@ -2379,7 +2379,7 @@
             <Value Key="InputFontFamily" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="1" Type="Number">
+            <Value Key="RowCount" Value="1.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2430,7 +2430,7 @@
             <Value Key="InputType" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="1" Type="Number">
+            <Value Key="RowCount" Value="1.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2507,7 +2507,7 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="2d990f54-d003-4767-88ac-50346f27c3ab" Name="ListSettings" Description="Settings for a listing-page" Scope="Default" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="2d990f54-d003-4767-88ac-50346f27c3ab" Name="ListSettings" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Title" Type="String" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3ea4075f-8345-4408-9ce0-e55dec76afef" Json="True" KeyNumber="1981">
@@ -2545,7 +2545,7 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="348cf4de-0fd2-4487-bf1b-e605d62151e6" Json="True" KeyNumber="1981">
-            <Value Key="RowCount" Value="1" Type="Number">
+            <Value Key="RowCount" Value="1.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2578,7 +2578,7 @@
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="ed7e6a0f-1eb6-4e07-8e04-6c0542c25417" Json="True" KeyNumber="3770">
-            <Value Key="Decimals" Value="0" Type="Number">
+            <Value Key="Decimals" Value="0.0" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2644,7 +2644,7 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
-    <AttributeSet StaticName="64108884-5611-4edc-a766-269385b2ecd2" Name="Tag" Description="Tags for tagging everything" Scope="Default" AlwaysShareConfiguration="false">
+    <AttributeSet StaticName="64108884-5611-4edc-a766-269385b2ecd2" Name="Tag" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Tag" Type="String" IsTitle="true">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c567cafa-7e49-403d-a681-1b39d20fa89a" Json="True" KeyNumber="1983">
@@ -2733,7 +2733,7 @@
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="074142f9-fd3b-4cf0-a1c5-dccc4f0649f3" Json="True" KeyNumber="1985">
-            <Value Key="Decimals" Value="0" Type="Number" />
+            <Value Key="Decimals" Value="0.0" Type="Number" />
           </Entity>
         </Attribute>
       </Attributes>
@@ -2771,13 +2771,13 @@
       <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="14.09.00" Type="String">
+      <Value Key="RequiredVersion" Value="16.1" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="05.03.01" Type="String">
+      <Value Key="Version" Value="05.04.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2911,9 +2911,7 @@
       <Value Key="Tag" Value="video" Type="String" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="070032b2-4f5e-44a1-86f4-16cd81c73434" Json="True">
-      <Value Key="ContentDemoEntity" Value="adc4b304-027d-46db-a294-5fd49e714d1b" Type="Entity">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="ContentDemoEntity" Value="adc4b304-027d-46db-a294-5fd49e714d1b" Type="Entity" />
       <Value Key="ContentTypeStaticName" Value="2d990f54-d003-4767-88ac-50346f27c3ab" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -2941,7 +2939,7 @@
       <Value Key="Name" Value="Standardliste" Type="String">
         <Dimension DimensionID="98" ReadOnly="false" />
       </Value>
-      <Value Key="Path" Value="bs4/_ListMain.cshtml" Type="String">
+      <Value Key="Path" Value="bs5/ListMain.cshtml" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Pipeline" Value="f4e79acb-bf44-4f63-a6b3-10f83d906612" Type="Entity" />
@@ -2998,7 +2996,7 @@
       <Value Key="Name" Value="Post Details" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Path" Value="bs4/_Details.cshtml" Type="String">
+      <Value Key="Path" Value="bs5/Details.cshtml" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Pipeline" Value="41e7b616-a5f0-4f21-b8aa-32bc8bc6b7c0" Type="Entity" />
@@ -3375,9 +3373,7 @@
       <Value Key="Template" Value="4dcb2fe1-5f3e-4a66-a693-8589f9c4eb6b" Type="Entity" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="4dcb2fe1-5f3e-4a66-a693-8589f9c4eb6b" Json="True">
-      <Value Key="ContentDemoEntity" Value="adc4b304-027d-46db-a294-5fd49e714d1b" Type="Entity">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="ContentDemoEntity" Value="adc4b304-027d-46db-a294-5fd49e714d1b" Type="Entity" />
       <Value Key="ContentTypeStaticName" Value="2d990f54-d003-4767-88ac-50346f27c3ab" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -3405,7 +3401,7 @@
       <Value Key="Name" Value="Startseite top Beiträge" Type="String">
         <Dimension DimensionID="98" ReadOnly="false" />
       </Value>
-      <Value Key="Path" Value="bs4/_ListTopPost.cshtml" Type="String">
+      <Value Key="Path" Value="bs5/ListTopPost.cshtml" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Pipeline" Value="2c06c899-3dbd-406b-851f-f01b835bff70" Type="Entity" />
@@ -3652,9 +3648,7 @@
       <Value Key="Params" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Query" Value="null" Type="Entity">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Query" Value="null" Type="Entity" />
       <Value Key="Title" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -4058,9 +4052,7 @@
       <Value Key="Params" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Query" Value="161c1034-c68b-43da-92ea-d35a7b696320" Type="Entity">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Query" Value="161c1034-c68b-43da-92ea-d35a7b696320" Type="Entity" />
       <Value Key="Title" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -4132,9 +4124,7 @@
       <Value Key="Params" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Query" Value="161c1034-c68b-43da-92ea-d35a7b696320" Type="Entity">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Query" Value="161c1034-c68b-43da-92ea-d35a7b696320" Type="Entity" />
       <Value Key="Title" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -4249,10 +4239,10 @@
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2d990f54-d003-4767-88ac-50346f27c3ab" AttributeSetName="ListSettings" EntityGUID="cc7bc61d-8c43-4a1c-8b5d-cad454df6d62">
-      <Value Key="ItemsInPage" Value="1" Type="Number">
+      <Value Key="ItemsInPage" Value="3" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="ShowPagination" Value="True" Type="Boolean">
+      <Value Key="ShowPagination" Value="False" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Title" Value="Home Showing List of Latest Top 3 Posts" Type="String">
@@ -4614,19 +4604,19 @@
       <Value Key="Advanced" Value="{&#xD;&#xA;  &quot;recipe&quot;: {&#xD;&#xA;    &quot;name&quot;: &quot;default&quot;,&#xD;&#xA;    &quot;variants&quot;: &quot;2*, 1*, 3/4*, 1/2*&quot;,&#xD;&#xA;    &quot;setWidth&quot;: false,&#xD;&#xA;    &quot;attributes&quot;: {&#xD;&#xA;      &quot;loading&quot;: &quot;lazy&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;recipes&quot;: [&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap3&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs3&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-responsive&quot; },&#xD;&#xA;        &quot;setWidth&quot;: false&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap4&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs4&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true&#xD;&#xA;      },&#xD;&#xA;      {&#xD;&#xA;        &quot;name&quot;: &quot;Experimental Bootstrap5&quot;,&#xD;&#xA;        &quot;forCss&quot;: &quot;bs5&quot;,&#xD;&#xA;        &quot;attributes&quot;: { &quot;class&quot;: &quot;img-fluid&quot; },&#xD;&#xA;        &quot;setWidth&quot;: true,&#xD;&#xA;        &quot;setHeight&quot; : true,&#xD;&#xA;        &quot;recipes&quot;: [&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;12/12&quot;, &#xD;&#xA;            &quot;width&quot;: 1230,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 100vw, 1230px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;11/12&quot;, &quot;width&quot;: 1100 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;10/12&quot;, &quot;width&quot;: 1000 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;9/12&quot;, &quot;width&quot;: 900 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;8/12&quot;, &quot;width&quot;: 800 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;7/12&quot;, &quot;width&quot;: 700 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;6/12&quot;, &#xD;&#xA;            &quot;width&quot;: 600, &#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 50vw, (max-width: 576px) 100vw, 600px&quot; &#xD;&#xA;              }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;5/12&quot;, &quot;width&quot;: 500 },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;4/12&quot;, &#xD;&#xA;            &quot;width&quot;: 390,&#xD;&#xA;            &quot;attributes&quot;:{&#xD;&#xA;              &quot;sizes&quot;: &quot;(max-width: 1400px) 34vw, (max-width: 991px) 50vw, (max-width: 767px) 100vw,(max-width: 575px) 100vw, 390px&quot;&#xD;&#xA;            }&#xD;&#xA;           },&#xD;&#xA;          { &#xD;&#xA;            &quot;forFactor&quot;: &quot;3/12&quot;, &#xD;&#xA;            &quot;width&quot;: 285,&#xD;&#xA;            &quot;attributes&quot;: {&#xD;&#xA;              &quot;sizes&quot;: &quot;(min-width: 992px) 1998px, (max-width: 991px) 50vw, (max-width: 575px) 1993px&quot;&#xD;&#xA;            }&#xD;&#xA;          },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;2/12&quot;, &quot;width&quot;: 170 },&#xD;&#xA;          { &quot;forFactor&quot;: &quot;1/12&quot;, &quot;width&quot;:  75 }&#xD;&#xA;        ]&#xD;&#xA;      }&#xD;&#xA;    ]&#xD;&#xA;  }&#xD;&#xA;}" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="AspectRatio" Value="2" Type="Number">
+      <Value Key="AspectRatio" Value="2.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Format" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Height" Value="600" Type="Number">
+      <Value Key="Height" Value="600.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ItemIdentifier" Value="Blog" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Quality" Value="75" Type="Number">
+      <Value Key="Quality" Value="75.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ResizeMode" Value="crop" Type="String">
@@ -4638,7 +4628,7 @@
       <Value Key="SettingsIdentifier" Value="Images.Blog" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Width" Value="1200" Type="Number">
+      <Value Key="Width" Value="1200.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -4916,19 +4906,19 @@
       <Value Key="Advanced" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="AspectRatio" Value="1" Type="Number">
+      <Value Key="AspectRatio" Value="1.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Format" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Height" Value="80" Type="Number">
+      <Value Key="Height" Value="80.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ItemIdentifier" Value="NextPost" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Quality" Value="70" Type="Number">
+      <Value Key="Quality" Value="70.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ResizeMode" Value="crop" Type="String">
@@ -4940,7 +4930,7 @@
       <Value Key="SettingsIdentifier" Value="Images.NextPost" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Width" Value="80" Type="Number">
+      <Value Key="Width" Value="80.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -4980,19 +4970,19 @@
       <Value Key="Advanced" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="AspectRatio" Value="1" Type="Number">
+      <Value Key="AspectRatio" Value="1.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Format" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Height" Value="120" Type="Number">
+      <Value Key="Height" Value="120.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ItemIdentifier" Value="Author" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Quality" Value="70" Type="Number">
+      <Value Key="Quality" Value="70.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="ResizeMode" Value="crop" Type="String">
@@ -5004,7 +4994,7 @@
       <Value Key="SettingsIdentifier" Value="Images.Author" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Width" Value="120" Type="Number">
+      <Value Key="Width" Value="120.0" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
