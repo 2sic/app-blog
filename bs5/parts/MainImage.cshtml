@@ -2,7 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   var post = AsTyped(DynamicModel.Post as object);
-  var imgSettings = AsDynamic(DynamicModel.Settings, Settings.Images.Blog, "Content");
+  var imgSettings = DynamicModel.Settings ?? "Blog";
   var hasImg = Text.Has(post.Url("Image"));
   var publicationMoment = post.DateTime("PublicationMoment");
 }

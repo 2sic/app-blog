@@ -64,7 +64,7 @@
         </div>
         @if (Text.Has(author.Url("Image"))) {
           <div>
-            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
+            @Kit.Image.Picture(author.Field("Image"), settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
           </div>
         }
       </div>

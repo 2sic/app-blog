@@ -15,7 +15,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(links.LinkToDetailsPage(post)).Wrap(
         (Text.Has(imgUrl) 
-          ? Kit.Image.Picture(imgUrl, settings: Settings.Images.NextPost, imgAltFallback: post.String("Title"), imgClass: "rounded-circle d-none d-lg-block")
+          ? Kit.Image.Picture(imgUrl, settings: "NextPost", imgAltFallback: post.String("Title"), imgClass: "rounded-circle d-none d-lg-block")
           : null),
         Tag.Span(
           Tag.Strong(title) + " " + post.String("Title")

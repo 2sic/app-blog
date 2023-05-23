@@ -24,7 +24,7 @@
     @foreach (var post in AsTypedList(Data["Posts"])) {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
         @* Image of the post *@
-        @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = Settings.Images.BlogCards })
+        @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
 
         <h4>@post.String("Title")</h4>
         <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
