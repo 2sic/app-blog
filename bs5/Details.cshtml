@@ -31,8 +31,8 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h1"})
-      @Html.Partial("../shared/MainImage.cshtml", new { Post = post })
+      @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1"})
+      @Html.Partial("../shared/MainImage.cshtml", new { post })
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@

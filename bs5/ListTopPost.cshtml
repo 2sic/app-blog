@@ -8,7 +8,8 @@
   // This config is for the toolbar used on an item.
   var postToolbar = Kit.Toolbar.Empty()
     .Layout("-")
-    .New("BlogPost", prefill: new { PublicationMoment = DateTime.Now.ToString("yyyy-MM-dd") })
+    .Edit()
+    .New("BlogPost")
     .Delete();
 }
 @* If no Details-page is configured, show warning to Admin *@
@@ -24,7 +25,7 @@
     @foreach (var post in AsList(Data["Posts"])) {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
         @* Image of the post *@
-        @Html.Partial("../shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
+        @Html.Partial("../shared/MainImage.cshtml", new { post, Settings = Settings.Images.BlogCards })
 
         <h4>@post.Title</h4>
         <p>@Html.Raw(Kit.Scrub.All(globalHelpers.TeaserAssembly(post)))</p>

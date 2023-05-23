@@ -27,8 +27,8 @@
       <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
-          @Html.Partial("../shared/MainImage.cshtml", new { Post = post, Settings = Settings.Images.BlogCards })
-          @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { Post = post, HeadingType = "h2", CssClass = "h3"})
+          @Html.Partial("../shared/MainImage.cshtml", new { post, Settings = Settings.Images.BlogCards })
+          @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
         </div>
 
         <div class="app-blog5-post-content">
