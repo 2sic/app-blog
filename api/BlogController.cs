@@ -28,7 +28,7 @@ public class BlogController : Custom.Hybrid.Api14
     // 1.1 Figure out what page will show post details based on settings
     // If the settings are configured, it's something like "page:27"
     var detailsPageId = Text.Has(Settings.DetailsPage)
-      ? int.Parse((Settings.Get("DetailsPage", convertLinks: false)).Split(':')[1])
+      ? int.Parse((Settings.String("DetailsPage")).Split(':')[1])
       : 0; // when 'DetailsPage' app setting is missing.
 
     // 1.2 This will be null or a message. To be used instead of links
@@ -62,15 +62,15 @@ public class BlogController : Custom.Hybrid.Api14
     AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss", type: "full"));
 
     // 3.3 Add all the posts from the query to this channel
-    foreach (var post in AsList(App.Query["BlogPosts"]["AllPosts"])) {
+    foreach (var post in AsTypedList(Kit.Data.GetQuery("BlogPosts").GetStream("AllPosts"))) {
 
       var itemNode = AddTag(channel, "item");
-      AddTag(itemNode, "title", post.EntityTitle);
-      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.UrlKey, type: "full"));
-      AddTag(itemNode, "description", Kit.Scrub.All(post.Teaser)); // Scrub.All makes sure no HTML makes it into the teaser
+      AddTag(itemNode, "title", post.String("EntityTitle"));
+      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.String("UrlKey"), type: "full"));
+      AddTag(itemNode, "description", Kit.Scrub.All(post.String("Teaser"))); // Scrub.All makes sure no HTML makes it into the teaser
       var guidNode = AddTag(itemNode, "guid", post.EntityGuid.ToString());
       AddAttribute(guidNode, "isPermaLink", "false");
-      AddTag(itemNode, "pubDate", post.PublicationMoment.ToString("R"));
+      AddTag(itemNode, "pubDate", post.DateTime("PublicationMoment").ToString("R"));
     }
 
     return File(download: false, fileDownloadName: "rss.xml", contents: rssDoc);
