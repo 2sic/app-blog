@@ -37,7 +37,7 @@
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
     <div class="app-blog5-post-content mb-4">
-      @Kit.Render.All(post, field: "InnerContent", merge: post.Content)
+      @post.Html("Content")
     </div>
 
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@

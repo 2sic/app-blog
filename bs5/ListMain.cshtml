@@ -8,7 +8,8 @@
   // This config is for the toolbar used on an item.
   var postToolbar = Kit.Toolbar.Empty()
     .Layout("-")
-    .New("BlogPost", prefill: new { PublicationMoment = DateTime.Now.ToString("yyyy-MM-dd") })
+    .Edit()
+    .New("BlogPost")
     .Delete();
 }
 <section class="app-blog5" @Kit.Toolbar.Default(Content)>
