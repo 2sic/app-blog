@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.00" ExportDate="2023-05-23T13:52:01.5681089+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.00" ExportDate="2023-05-24T00:34:51.4690232+02:00">
   <Header>
     <App Guid="72e406fd-500f-4632-82ca-942b22358b56" />
     <Language Default="en-us" />
@@ -1901,10 +1901,10 @@
             <Value Key="ContentCss" Value="" Type="Hyperlink">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="Dialog" Value="dialog" Type="String">
+            <Value Key="Dialog" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="InlineInitialHeight" Value="" Type="String">
+            <Value Key="InlineInitialHeight" Value="5" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="WysiwygConfiguration" Value="52d79da0-b10d-4f62-9838-2e17b2254a3e" Type="String">
@@ -6188,7 +6188,7 @@
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="15af8f98-d497-4aff-bb98-5076d295a673">
-      <Value Key="Author" Value="10cbff19-e313-4084-b569-4ded344111b2" Type="Entity" />
+      <Value Key="Author" Value="a055d378-af80-412d-8a64-cec559763260" Type="Entity" />
       <Value Key="Categories" Value="45435066-03bf-4c07-a701-15f5cc540c7e" Type="Entity" />
       <Value Key="Content" Value="&lt;p&gt;This is a test for the optional teaser. If the teaser is empty then it should use the first 100 characters from the context text.&lt;/p&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
@@ -6211,6 +6211,7 @@
       <Value Key="ShowOnStartPage" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
+      <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
       <Value Key="Teaser" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
@@ -6289,18 +6290,125 @@
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="48ba6689-91ba-4f3e-b903-fce661cd3112">
+      <Value Key="Author" Value="a055d378-af80-412d-8a64-cec559763260" Type="Entity" />
+      <Value Key="Categories" Value="45435066-03bf-4c07-a701-15f5cc540c7e" Type="Entity" />
+      <Value Key="Content" Value="&lt;p&gt;The new Blog 6.0 uses the latest features of 2sxc 16, including&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;responsive WYSIWYG content&lt;/li&gt;&#xA;&lt;li&gt;zen edit experience&lt;/li&gt;&#xA;&lt;li&gt;optimized toolbars&lt;/li&gt;&#xA;&lt;li&gt;Razor code using the new TypedEntities&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-0&quot;&gt;&#xA;&lt;h2&gt;Responsive WYSIWYG Content&lt;/h2&gt;&#xA;&lt;p&gt;Bloggers love to add images to their posts, but this creates a big challenge for perfect websites.&lt;/p&gt;&#xA;&lt;h3&gt;Multiple Resolutions&lt;/h3&gt;&#xA;&lt;h3&gt;&lt;img class=&quot;wysiwyg-50 wysiwyg-right&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/Responsive_Web_Design.png&quot; data-cmsid=&quot;file:6343&quot;&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Images should be served in &lt;strong&gt;multiple resolutions&lt;/strong&gt; depending on the size they are shown in. So every image should automatically be converted to a &lt;strong&gt;picture-tag &lt;/strong&gt;with all the possible resolutions.&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h3&gt;Multiple Formats&lt;/h3&gt;&#xA;&lt;h3&gt;&lt;img class=&quot;wysiwyg-50 wysiwyg-right&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/webp-vs-others.png&quot; data-cmsid=&quot;file:6344&quot;&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Some browsers understand modern image formats such as WEBP, while others don't. Perfection is to provide all possible formats and letting the browser pick what's best.&amp;nbsp;&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h3&gt;Screen-Optimized Layout&lt;/h3&gt;&#xA;&lt;img class=&quot;wysiwyg-50 wysiwyg-right&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/Media-Queries.png&quot; data-cmsid=&quot;file:6346&quot;&gt;&#xA;&lt;p&gt;Images should&amp;nbsp;&lt;strong&gt;auto-rearrange&lt;/strong&gt; themselves to be beside the text on desktop, and above the text on mobile.&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h3&gt;Sections&lt;/h3&gt;&#xA;&lt;p&gt;A blogger needs to create&amp;nbsp;&lt;strong&gt;sections&lt;/strong&gt; with texts beside images, and the next section should be below the previous - otherwise the images have strange staggering effects. The section above this one has space beside the image, but this text should not be beside it, because it's a separate section.&amp;nbsp;&lt;/p&gt;&#xA;&lt;img class=&quot;wysiwyg-right wysiwyg-50&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/section-heights.jpg&quot; data-cmsid=&quot;file:6352&quot;&gt;&#xA;&lt;p&gt;Section splitters can also have additional height (which again varies by screen size) for perfect layouts.&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h3&gt;Image Lists&lt;/h3&gt;&#xA;&lt;p&gt;A common need is also to show multiple images - which again should re-arrange themselves as the screen changes. We've added optimized CSS to make sure that 3 left-aligned images 33% will correctly pad themselves:&lt;/p&gt;&#xA;&lt;img class=&quot;wysiwyg-left wysiwyg-33&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/Responsive_Web_Design.png&quot; data-cmsid=&quot;file:6343&quot;&gt;&lt;img class=&quot;wysiwyg-left wysiwyg-33&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/webp-vs-others.png&quot; data-cmsid=&quot;file:6344&quot;&gt;&lt;img class=&quot;wysiwyg-left wysiwyg-33&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/Media-Queries.png&quot; data-cmsid=&quot;file:6346&quot;&gt;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h2&gt;Zen Edit Experience&lt;/h2&gt;&#xA;&lt;img class=&quot;wysiwyg-right wysiwyg-50&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/Zen-edit-experience.jpg&quot; alt=&quot;Zen-edit-experience&quot; data-cmsid=&quot;file:6347&quot;&gt;&#xA;&lt;p&gt;Blogs tend to have a lot of fields, such as tags, publishing dates, author and much more. But as you're texting, you will usually just want the main post, and nothing else.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;We've made this possible thanks to the new feature in 2sxc 16, where a button can open the Edit UI for just one field. So this is what editing the current post looks like ➡️.&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h2&gt;Optimized Toolbars&lt;/h2&gt;&#xA;&lt;img class=&quot;wysiwyg-right wysiwyg-33&quot; src=&quot;/Portals/blog-koi/adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/optimized-toolbars.jpg&quot; data-cmsid=&quot;file:6350&quot;&gt;&#xA;&lt;p&gt;Every dialog / list now has toolbars optimized to each specific use case. The most special is certainly the new field-edit toolbar used for the new Zen-mode. ➡️&lt;/p&gt;&#xA;&lt;hr class=&quot;wysiwyg-splitter wysiwyg-spacer-s&quot;&gt;&#xA;&lt;h2&gt;Try it Yourself&lt;/h2&gt;&#xA;&lt;p&gt;All this is possible thanks to new features in 2sxc 16. Just for demonstration, we've added some images to lighten things up. Resize your screen to see how the images in this post re-arrange themelves as expected.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Have fun!&lt;/p&gt;&#xA;&lt;p&gt;With 💖 from Switzerland,&lt;br&gt;iJungleboy&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="file:6351" Type="Hyperlink">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="MetaDescription" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="MetaTitle" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="PublicationMoment" Value="2023-05-23T23:22:26" Type="DateTime">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="SharingDescription" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowOnStartPage" Value="True" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Tags" Value="056240cf-ad5e-4cc7-ab58-919fe0e66760" Type="Entity" />
+      <Value Key="Teaser" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Blog 6.0 with Responsive Content" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlKey" Value="blog-6-0-with-responsive-content" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
   </Entities>
   <PortalFiles>
-    <File Id="4400" RelativePath="adam\Blog5\eNNVoICvLUGKZM7FWXYyYA\Image\Daniel-Mettler-Profile-MVP.png" />
-    <File Id="6043" RelativePath="adam\Blog5\rkOvVN4ESU-rXYp01WEEJQ\Image\Blog5 for 2sxc 12 Hybrid Released.jpg" />
-    <File Id="4403" RelativePath="adam\Blog5\AdttIZyPjUuxt0T3NFl0mQ\Image\starwars.jpg" />
-    <File Id="6266" RelativePath="adam\Blog5\mI-vFZfU_0q7mFB20pWmcw\Image\Demo-100.jpg" />
+    <File Id="4400" RelativePath="adam\Blog6\eNNVoICvLUGKZM7FWXYyYA\Image\Daniel-Mettler-Profile-MVP.png" />
+    <File Id="6043" RelativePath="adam\Blog6\rkOvVN4ESU-rXYp01WEEJQ\Image\Blog5 for 2sxc 12 Hybrid Released.jpg" />
+    <File Id="4403" RelativePath="adam\Blog6\AdttIZyPjUuxt0T3NFl0mQ\Image\starwars.jpg" />
+    <File Id="6266" RelativePath="adam\Blog6\mI-vFZfU_0q7mFB20pWmcw\Image\Demo-100.jpg" />
+    <File Id="6351" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Image\Blog6-Released.jpg" />
+    <File Id="6342" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\app-icon.png" />
+    <File Id="6346" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\Media-Queries.png" />
+    <File Id="6350" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\optimized-toolbars.jpg" />
+    <File Id="6343" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\Responsive_Web_Design.png" />
+    <File Id="6352" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\section-heights.jpg" />
+    <File Id="6344" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\webp-vs-others.png" />
+    <File Id="6347" RelativePath="adam\Blog6\iWa6SLqRPk-5A_zmYc0xEg\Content\Zen-edit-experience.jpg" />
+    <File Id="6341" RelativePath="adam\Blog6\O6z_F8S8Bkq6y1MKGlf4XQ\Image\582d96a1df2d94bb439af1594639ccfe.jpg" />
   </PortalFiles>
   <PortalFolders>
-    <Folder Id="12964" RelativePath="adam/Blog5/eNNVoICvLUGKZM7FWXYyYA/Image/" />
-    <Folder Id="12730" RelativePath="adam/Blog5/rkOvVN4ESU-rXYp01WEEJQ/Image/" />
-    <Folder Id="12734" RelativePath="adam/Blog5/AdttIZyPjUuxt0T3NFl0mQ/Image/" />
-    <Folder Id="13827" RelativePath="adam/Blog5/mI-vFZfU_0q7mFB20pWmcw/Image/" />
-    <Folder Id="13936" RelativePath="adam/Blog6/" />
+    <Folder Id="12964" RelativePath="adam/Blog6/eNNVoICvLUGKZM7FWXYyYA/Image/" />
+    <Folder Id="12730" RelativePath="adam/Blog6/rkOvVN4ESU-rXYp01WEEJQ/Image/" />
+    <Folder Id="12734" RelativePath="adam/Blog6/AdttIZyPjUuxt0T3NFl0mQ/Image/" />
+    <Folder Id="13827" RelativePath="adam/Blog6/mI-vFZfU_0q7mFB20pWmcw/Image/" />
+    <Folder Id="13939" RelativePath="adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Image/" />
+    <Folder Id="13938" RelativePath="adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/Content/" />
+    <Folder Id="13935" RelativePath="adam/Blog6/O6z_F8S8Bkq6y1MKGlf4XQ/Image/" />
+    <Folder Id="12728" RelativePath="adam/Blog6/" />
+    <Folder Id="12953" RelativePath="adam/Blog6/4mIW5xdi4ESZ6BUjaABlng/" />
+    <Folder Id="12954" RelativePath="adam/Blog6/4mIW5xdi4ESZ6BUjaABlng/ContentCss/" />
+    <Folder Id="12930" RelativePath="adam/Blog6/4S_LTT5fZkqmk4WJ-cTraw/" />
+    <Folder Id="12931" RelativePath="adam/Blog6/4S_LTT5fZkqmk4WJ-cTraw/Icon/" />
+    <Folder Id="12969" RelativePath="adam/Blog6/8C4B3pODMk-idSH-Qek04Q/" />
+    <Folder Id="12970" RelativePath="adam/Blog6/8C4B3pODMk-idSH-Qek04Q/Image/" />
+    <Folder Id="12733" RelativePath="adam/Blog6/AdttIZyPjUuxt0T3NFl0mQ/" />
+    <Folder Id="12963" RelativePath="adam/Blog6/eNNVoICvLUGKZM7FWXYyYA/" />
+    <Folder Id="12975" RelativePath="adam/Blog6/fVHnfbJynk-N0EHeXcmnrg/" />
+    <Folder Id="12976" RelativePath="adam/Blog6/fVHnfbJynk-N0EHeXcmnrg/Image/" />
+    <Folder Id="12965" RelativePath="adam/Blog6/Gf_LEBPjhEC1aU3tNEERsg/" />
+    <Folder Id="12966" RelativePath="adam/Blog6/Gf_LEBPjhEC1aU3tNEERsg/Image/" />
+    <Folder Id="12977" RelativePath="adam/Blog6/GW3agk5lq0Wdmy1FrTmYRQ/" />
+    <Folder Id="12978" RelativePath="adam/Blog6/GW3agk5lq0Wdmy1FrTmYRQ/Image/" />
+    <Folder Id="12731" RelativePath="adam/Blog6/hqtbebem70mTIfuLzPWT3g/" />
+    <Folder Id="12732" RelativePath="adam/Blog6/hqtbebem70mTIfuLzPWT3g/Image/" />
+    <Folder Id="12951" RelativePath="adam/Blog6/HvkY1-99I0OE_w3hV13v2Q/" />
+    <Folder Id="12952" RelativePath="adam/Blog6/HvkY1-99I0OE_w3hV13v2Q/Image/" />
+    <Folder Id="12943" RelativePath="adam/Blog6/ihbQvn2_kECtxBXrlNHVAw/" />
+    <Folder Id="12944" RelativePath="adam/Blog6/ihbQvn2_kECtxBXrlNHVAw/Image/" />
+    <Folder Id="12979" RelativePath="adam/Blog6/IvTE86ji3k6s_txqyd0urg/" />
+    <Folder Id="12980" RelativePath="adam/Blog6/IvTE86ji3k6s_txqyd0urg/Image/" />
+    <Folder Id="13937" RelativePath="adam/Blog6/iWa6SLqRPk-5A_zmYc0xEg/" />
+    <Folder Id="12949" RelativePath="adam/Blog6/mfCGx-rerk2_7lmgGtyb8Q/" />
+    <Folder Id="12950" RelativePath="adam/Blog6/mfCGx-rerk2_7lmgGtyb8Q/Image/" />
+    <Folder Id="13826" RelativePath="adam/Blog6/mI-vFZfU_0q7mFB20pWmcw/" />
+    <Folder Id="12945" RelativePath="adam/Blog6/nVdSuBCD5keNYmyJcbzD0g/" />
+    <Folder Id="12946" RelativePath="adam/Blog6/nVdSuBCD5keNYmyJcbzD0g/Image/" />
+    <Folder Id="13934" RelativePath="adam/Blog6/O6z_F8S8Bkq6y1MKGlf4XQ/" />
+    <Folder Id="12941" RelativePath="adam/Blog6/OieItczcc0SfdYTM6ald1w/" />
+    <Folder Id="12942" RelativePath="adam/Blog6/OieItczcc0SfdYTM6ald1w/Image/" />
+    <Folder Id="12967" RelativePath="adam/Blog6/opXHl5GbI0edcU0MI2SDCw/" />
+    <Folder Id="12968" RelativePath="adam/Blog6/opXHl5GbI0edcU0MI2SDCw/Image/" />
+    <Folder Id="12971" RelativePath="adam/Blog6/qE8qSOvXIEuRrEz-YkOo_A/" />
+    <Folder Id="12972" RelativePath="adam/Blog6/qE8qSOvXIEuRrEz-YkOo_A/Image/" />
+    <Folder Id="13004" RelativePath="adam/Blog6/r_OuY8oWXkOnFt3BagdxWA/" />
+    <Folder Id="13005" RelativePath="adam/Blog6/r_OuY8oWXkOnFt3BagdxWA/Icon/" />
+    <Folder Id="12729" RelativePath="adam/Blog6/rkOvVN4ESU-rXYp01WEEJQ/" />
+    <Folder Id="12928" RelativePath="adam/Blog6/s6yfBWgJIUCSp3KYRSL88g/" />
+    <Folder Id="12929" RelativePath="adam/Blog6/s6yfBWgJIUCSp3KYRSL88g/DetailsPage/" />
+    <Folder Id="12983" RelativePath="adam/Blog6/sjIAB15PoUSG9BbNgcc0NA/" />
+    <Folder Id="12984" RelativePath="adam/Blog6/sjIAB15PoUSG9BbNgcc0NA/Icon/" />
+    <Folder Id="12973" RelativePath="adam/Blog6/tH_eyCP83kqJX29lsXJ_-w/" />
+    <Folder Id="12974" RelativePath="adam/Blog6/tH_eyCP83kqJX29lsXJ_-w/Image/" />
+    <Folder Id="12981" RelativePath="adam/Blog6/VerRyf-av0uHGzHdTv2uMw/" />
+    <Folder Id="12982" RelativePath="adam/Blog6/VerRyf-av0uHGzHdTv2uMw/Icon/" />
+    <Folder Id="12937" RelativePath="adam/Blog6/vMT1QDf3pUmLwrbyu-8qkg/" />
+    <Folder Id="12938" RelativePath="adam/Blog6/vMT1QDf3pUmLwrbyu-8qkg/Image/" />
+    <Folder Id="12947" RelativePath="adam/Blog6/vPJEkgeOVUS4cmWadDnLXw/" />
+    <Folder Id="12948" RelativePath="adam/Blog6/vPJEkgeOVUS4cmWadDnLXw/Image/" />
+    <Folder Id="12939" RelativePath="adam/Blog6/wRMr__IU-U6KtpEREp2FGw/" />
+    <Folder Id="12940" RelativePath="adam/Blog6/wRMr__IU-U6KtpEREp2FGw/ContentCss/" />
+    <Folder Id="12958" RelativePath="adam/Blog6/x6HzKLjVc0SM4C5nlRVkwA/" />
+    <Folder Id="12960" RelativePath="adam/Blog6/x6HzKLjVc0SM4C5nlRVkwA/Icon/" />
+    <Folder Id="12959" RelativePath="adam/Blog6/x6HzKLjVc0SM4C5nlRVkwA/Link/" />
+    <Folder Id="12955" RelativePath="adam/Blog6/YzyMD-uyS0y58Fa2XecM4g/" />
+    <Folder Id="12956" RelativePath="adam/Blog6/YzyMD-uyS0y58Fa2XecM4g/Icon/" />
+    <Folder Id="12957" RelativePath="adam/Blog6/YzyMD-uyS0y58Fa2XecM4g/Link/" />
+    <Folder Id="12961" RelativePath="adam/Blog6/Z2PkUV1eD0uSyfbF03gj-w/" />
+    <Folder Id="12962" RelativePath="adam/Blog6/Z2PkUV1eD0uSyfbF03gj-w/Image/" />
   </PortalFolders>
 </SexyContent>
