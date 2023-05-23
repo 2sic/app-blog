@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.00.01" ExportDate="2023-05-22T14:01:18.7187655+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.00" ExportDate="2023-05-23T13:52:01.5681089+02:00">
   <Header>
-    <App Guid="6f8b157e-400a-4dcb-9769-b464b94a1471" />
+    <App Guid="72e406fd-500f-4632-82ca-942b22358b56" />
     <Language Default="en-us" />
     <Dimensions>
       <Dimension DimensionID="97" Name="English (United States)" SystemKey="" ExternalKey="en-US" Active="true" />
@@ -1776,6 +1776,13 @@
             </Value>
           </Entity>
         </Attribute>
+        <Attribute StaticName="GroupEndBeforeContent" Type="Empty" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="51e94b00-2aa9-4084-91aa-08c222c9a234" Json="True" KeyNumber="5735">
+            <Value Key="InputType" Value="empty-end" Type="String" />
+            <Value Key="Name" Value="GroupEndBeforeContent" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
         <Attribute StaticName="GroupContent" Type="Empty" IsTitle="false">
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="737980ad-4fe9-4e56-bb5a-d21f6952910a" Json="True" KeyNumber="5702">
             <Value Key="CustomJavaScript" Value="" Type="String">
@@ -1836,6 +1843,12 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
+            <Value Key="HelpLink" Value="" Type="Hyperlink">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="Information" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="string-wysiwyg" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
@@ -1857,6 +1870,9 @@
             <Value Key="Required" Value="True" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
+            <Value Key="Tooltip" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
@@ -1871,7 +1887,7 @@
             <Value Key="InputType" Value="wysiwyg" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="RowCount" Value="1.0" Type="Number">
+            <Value Key="RowCount" Value="1" Type="Number">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1886,6 +1902,12 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="Dialog" Value="dialog" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="InlineInitialHeight" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="WysiwygConfiguration" Value="52d79da0-b10d-4f62-9838-2e17b2254a3e" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -3139,7 +3161,7 @@
       <Value Key="AllowTokenTemplates" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Description" Value="A simple, lightweight but very adaptable blog for DNN" Type="String">
+      <Value Key="Description" Value="Super-Adaptable Blog for DNN and Oqtane" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Description" Value="Ein einfacher aber sehr anpassungsfähiger Blog für DNN" Type="String">
@@ -3148,7 +3170,7 @@
       <Value Key="DisplayName" Value="Blog" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Folder" Value="Blog5" Type="String">
+      <Value Key="Folder" Value="Blog6" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Hidden" Value="False" Type="Boolean">
@@ -3163,13 +3185,13 @@
       <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="16.0.1" Type="String">
+      <Value Key="RequiredVersion" Value="16.01.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="05.04.00" Type="String">
+      <Value Key="Version" Value="06.00.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -5874,7 +5896,7 @@
       <Value Key="Enabled" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Formula" Value="v1(data, context) { return data.Title.length &gt; 3; }" Type="String">
+      <Value Key="Formula" Value="v1(data, context) {&#xD;&#xA;  // console.log('groupContentVisible', data.value);&#xD;&#xA;  const visible = data.Title.length &gt; 3;&#xD;&#xA;  return visible;&#xD;&#xA;}" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Notes" Value="" Type="String">
@@ -6168,7 +6190,7 @@
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ed31a7c6-e76c-4874-958f-d67f33c02c34" AttributeSetName="BlogPost" EntityGUID="15af8f98-d497-4aff-bb98-5076d295a673">
       <Value Key="Author" Value="10cbff19-e313-4084-b569-4ded344111b2" Type="Entity" />
       <Value Key="Categories" Value="45435066-03bf-4c07-a701-15f5cc540c7e" Type="Entity" />
-      <Value Key="Content" Value="&lt;p&gt;This is a test for the optional teaser. If the teaser is empty then it should use the first 100 characters from the context text.&lt;/p&gt;" Type="String">
+      <Value Key="Content" Value="&lt;p&gt;This is a test for the optional teaser. If the teaser is empty then it should use the first 100 characters from the context text.&lt;/p&gt;&#xA;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;&#xA;&lt;p&gt;todo&lt;/p&gt;" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="Image" Value="file:6266" Type="Hyperlink">
@@ -6180,7 +6202,7 @@
       <Value Key="MetaTitle" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2022-06-02T12:22:54" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2023-05-22T12:22:54" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="" Type="String">
@@ -6192,7 +6214,7 @@
       <Value Key="Teaser" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="Optional teaser test" Type="String">
+      <Value Key="Title" Value="New Rich WYSIWYG in Blog 6" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="UrlKey" Value="optional-teaser-test" Type="String">
@@ -6246,10 +6268,10 @@
       <Value Key="DurationUsers" Value="-1" Type="Number">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="IsEnabled" Value="False" Type="Boolean">
+      <Value Key="IsEnabled" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="🚫" Type="String">
+      <Value Key="Title" Value="✅ - Users 14400s, Reg 🚫, Editors 300s, SysAdmins 300s" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
@@ -6273,73 +6295,12 @@
     <File Id="6043" RelativePath="adam\Blog5\rkOvVN4ESU-rXYp01WEEJQ\Image\Blog5 for 2sxc 12 Hybrid Released.jpg" />
     <File Id="4403" RelativePath="adam\Blog5\AdttIZyPjUuxt0T3NFl0mQ\Image\starwars.jpg" />
     <File Id="6266" RelativePath="adam\Blog5\mI-vFZfU_0q7mFB20pWmcw\Image\Demo-100.jpg" />
-    <File Id="6341" RelativePath="adam\Blog5\O6z_F8S8Bkq6y1MKGlf4XQ\Image\582d96a1df2d94bb439af1594639ccfe.jpg" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="12964" RelativePath="adam/Blog5/eNNVoICvLUGKZM7FWXYyYA/Image/" />
     <Folder Id="12730" RelativePath="adam/Blog5/rkOvVN4ESU-rXYp01WEEJQ/Image/" />
     <Folder Id="12734" RelativePath="adam/Blog5/AdttIZyPjUuxt0T3NFl0mQ/Image/" />
     <Folder Id="13827" RelativePath="adam/Blog5/mI-vFZfU_0q7mFB20pWmcw/Image/" />
-    <Folder Id="13935" RelativePath="adam/Blog5/O6z_F8S8Bkq6y1MKGlf4XQ/Image/" />
-    <Folder Id="12728" RelativePath="adam/Blog5/" />
-    <Folder Id="12953" RelativePath="adam/Blog5/4mIW5xdi4ESZ6BUjaABlng/" />
-    <Folder Id="12954" RelativePath="adam/Blog5/4mIW5xdi4ESZ6BUjaABlng/ContentCss/" />
-    <Folder Id="12930" RelativePath="adam/Blog5/4S_LTT5fZkqmk4WJ-cTraw/" />
-    <Folder Id="12931" RelativePath="adam/Blog5/4S_LTT5fZkqmk4WJ-cTraw/Icon/" />
-    <Folder Id="12969" RelativePath="adam/Blog5/8C4B3pODMk-idSH-Qek04Q/" />
-    <Folder Id="12970" RelativePath="adam/Blog5/8C4B3pODMk-idSH-Qek04Q/Image/" />
-    <Folder Id="12733" RelativePath="adam/Blog5/AdttIZyPjUuxt0T3NFl0mQ/" />
-    <Folder Id="12963" RelativePath="adam/Blog5/eNNVoICvLUGKZM7FWXYyYA/" />
-    <Folder Id="12975" RelativePath="adam/Blog5/fVHnfbJynk-N0EHeXcmnrg/" />
-    <Folder Id="12976" RelativePath="adam/Blog5/fVHnfbJynk-N0EHeXcmnrg/Image/" />
-    <Folder Id="12965" RelativePath="adam/Blog5/Gf_LEBPjhEC1aU3tNEERsg/" />
-    <Folder Id="12966" RelativePath="adam/Blog5/Gf_LEBPjhEC1aU3tNEERsg/Image/" />
-    <Folder Id="12977" RelativePath="adam/Blog5/GW3agk5lq0Wdmy1FrTmYRQ/" />
-    <Folder Id="12978" RelativePath="adam/Blog5/GW3agk5lq0Wdmy1FrTmYRQ/Image/" />
-    <Folder Id="12731" RelativePath="adam/Blog5/hqtbebem70mTIfuLzPWT3g/" />
-    <Folder Id="12732" RelativePath="adam/Blog5/hqtbebem70mTIfuLzPWT3g/Image/" />
-    <Folder Id="12951" RelativePath="adam/Blog5/HvkY1-99I0OE_w3hV13v2Q/" />
-    <Folder Id="12952" RelativePath="adam/Blog5/HvkY1-99I0OE_w3hV13v2Q/Image/" />
-    <Folder Id="12943" RelativePath="adam/Blog5/ihbQvn2_kECtxBXrlNHVAw/" />
-    <Folder Id="12944" RelativePath="adam/Blog5/ihbQvn2_kECtxBXrlNHVAw/Image/" />
-    <Folder Id="12979" RelativePath="adam/Blog5/IvTE86ji3k6s_txqyd0urg/" />
-    <Folder Id="12980" RelativePath="adam/Blog5/IvTE86ji3k6s_txqyd0urg/Image/" />
-    <Folder Id="12949" RelativePath="adam/Blog5/mfCGx-rerk2_7lmgGtyb8Q/" />
-    <Folder Id="12950" RelativePath="adam/Blog5/mfCGx-rerk2_7lmgGtyb8Q/Image/" />
-    <Folder Id="13826" RelativePath="adam/Blog5/mI-vFZfU_0q7mFB20pWmcw/" />
-    <Folder Id="12945" RelativePath="adam/Blog5/nVdSuBCD5keNYmyJcbzD0g/" />
-    <Folder Id="12946" RelativePath="adam/Blog5/nVdSuBCD5keNYmyJcbzD0g/Image/" />
-    <Folder Id="13934" RelativePath="adam/Blog5/O6z_F8S8Bkq6y1MKGlf4XQ/" />
-    <Folder Id="12941" RelativePath="adam/Blog5/OieItczcc0SfdYTM6ald1w/" />
-    <Folder Id="12942" RelativePath="adam/Blog5/OieItczcc0SfdYTM6ald1w/Image/" />
-    <Folder Id="12967" RelativePath="adam/Blog5/opXHl5GbI0edcU0MI2SDCw/" />
-    <Folder Id="12968" RelativePath="adam/Blog5/opXHl5GbI0edcU0MI2SDCw/Image/" />
-    <Folder Id="12971" RelativePath="adam/Blog5/qE8qSOvXIEuRrEz-YkOo_A/" />
-    <Folder Id="12972" RelativePath="adam/Blog5/qE8qSOvXIEuRrEz-YkOo_A/Image/" />
-    <Folder Id="13004" RelativePath="adam/Blog5/r_OuY8oWXkOnFt3BagdxWA/" />
-    <Folder Id="13005" RelativePath="adam/Blog5/r_OuY8oWXkOnFt3BagdxWA/Icon/" />
-    <Folder Id="12729" RelativePath="adam/Blog5/rkOvVN4ESU-rXYp01WEEJQ/" />
-    <Folder Id="12928" RelativePath="adam/Blog5/s6yfBWgJIUCSp3KYRSL88g/" />
-    <Folder Id="12929" RelativePath="adam/Blog5/s6yfBWgJIUCSp3KYRSL88g/DetailsPage/" />
-    <Folder Id="12983" RelativePath="adam/Blog5/sjIAB15PoUSG9BbNgcc0NA/" />
-    <Folder Id="12984" RelativePath="adam/Blog5/sjIAB15PoUSG9BbNgcc0NA/Icon/" />
-    <Folder Id="12973" RelativePath="adam/Blog5/tH_eyCP83kqJX29lsXJ_-w/" />
-    <Folder Id="12974" RelativePath="adam/Blog5/tH_eyCP83kqJX29lsXJ_-w/Image/" />
-    <Folder Id="12981" RelativePath="adam/Blog5/VerRyf-av0uHGzHdTv2uMw/" />
-    <Folder Id="12982" RelativePath="adam/Blog5/VerRyf-av0uHGzHdTv2uMw/Icon/" />
-    <Folder Id="12937" RelativePath="adam/Blog5/vMT1QDf3pUmLwrbyu-8qkg/" />
-    <Folder Id="12938" RelativePath="adam/Blog5/vMT1QDf3pUmLwrbyu-8qkg/Image/" />
-    <Folder Id="12947" RelativePath="adam/Blog5/vPJEkgeOVUS4cmWadDnLXw/" />
-    <Folder Id="12948" RelativePath="adam/Blog5/vPJEkgeOVUS4cmWadDnLXw/Image/" />
-    <Folder Id="12939" RelativePath="adam/Blog5/wRMr__IU-U6KtpEREp2FGw/" />
-    <Folder Id="12940" RelativePath="adam/Blog5/wRMr__IU-U6KtpEREp2FGw/ContentCss/" />
-    <Folder Id="12958" RelativePath="adam/Blog5/x6HzKLjVc0SM4C5nlRVkwA/" />
-    <Folder Id="12960" RelativePath="adam/Blog5/x6HzKLjVc0SM4C5nlRVkwA/Icon/" />
-    <Folder Id="12959" RelativePath="adam/Blog5/x6HzKLjVc0SM4C5nlRVkwA/Link/" />
-    <Folder Id="12955" RelativePath="adam/Blog5/YzyMD-uyS0y58Fa2XecM4g/" />
-    <Folder Id="12956" RelativePath="adam/Blog5/YzyMD-uyS0y58Fa2XecM4g/Icon/" />
-    <Folder Id="12957" RelativePath="adam/Blog5/YzyMD-uyS0y58Fa2XecM4g/Link/" />
-    <Folder Id="12961" RelativePath="adam/Blog5/Z2PkUV1eD0uSyfbF03gj-w/" />
-    <Folder Id="12962" RelativePath="adam/Blog5/Z2PkUV1eD0uSyfbF03gj-w/Image/" />
+    <Folder Id="13936" RelativePath="adam/Blog6/" />
   </PortalFolders>
 </SexyContent>
