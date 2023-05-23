@@ -9,22 +9,21 @@
 
   // If a Category-Filter was set, show it with description
   if (Data["Category"].Any()) {
-    var filteredCategory = AsDynamic(Data["Category"].First());
-    Title = Resources.Category + " " + filteredCategory.Name;
-    Description = filteredCategory.Description;
+    var category = AsTyped(Data["Category"]);
+    Title = Resources.Category + " " + category.String("Name");
+    Description = category.String("Description");
   }
 
   // If a Tag-Filter was set, show that
   else if (Data["Tag"].Any()) {
-    var filteredTag = AsDynamic(Data["Tag"].First());
-    Title = Resources.Filter + " " + filteredTag.Name;
+    Title = Resources.Filter + " " + AsTyped(Data["Tag"]).String("Name");
   }
 
   // If an Author was used to filter, show him/her + Bio
   else if (Data["Author"].Any()) {
-    var filteredAuthor = AsDynamic(Data["Author"].First());
-    Title = Resources.PostsBy + " " + filteredAuthor.FullName;
-    Description = filteredAuthor.ShortBio;
+    var author = AsTyped(Data["Author"]);
+    Title = Resources.PostsBy + " " + author.String("FullName");
+    Description = author.String("ShortBio");
   }
 
   // Fallback: Show normal module title

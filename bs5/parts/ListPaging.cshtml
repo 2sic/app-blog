@@ -3,9 +3,9 @@
   /** Part List Paging - Show a pager (if activated) **/
 
   // Paging information is provided by the Query in the "Paging" stream
-  var pagingInfo = AsDynamic(Data["Paging"].FirstOrDefault());
-  int current = (int)pagingInfo.PageNumber;
-  int max = (int)pagingInfo.PageCount;
+  var pagingInfo = AsTyped(Data["Paging"]);
+  int current = pagingInfo.Int("PageNumber");
+  int max = pagingInfo.Int("PageCount");
 
   // Stop here if we dont' have pages to show
   if (max <= 1) {  return; }

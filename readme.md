@@ -1,6 +1,6 @@
 <image src="app-icon.png" align="right" width="200px">
 
-# Blog 5 App for .net CMSs
+# Blog 6 App for Dnn and Oqtane
 
 > This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
@@ -11,14 +11,14 @@ A standard blog app to use with 2sxc
 | 2sxc                | ✅    | requires 2sxc v16.1
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
-| No jQuery           | ✅    | 
-| Live Demo           | ➖    | [2sxc blog](https://2sxc.org/en/blog) [Mettlers blog](http://www.mettler.li/blog)
+| No jQuery           | ✅    |
+| Live Demo           | ➖    | [2givelife blog](https://www.2givelife.org/blog) [Blazor CMS blog](https://blazor-cms.org/blog)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/vgApEx0X) on [azing.org](https://azing.org/2sxc)
 | Source & License    | ✅    | included, ISC/MIT
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
 | Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
-| Best Practices      | ✅    | Uses v13.10 conventions
-| Bootstrap 3         | ➖    | Use Blog4 if you need it
+| Best Practices      | ✅    | Uses v16.01 conventions
+| Bootstrap 3         | ➖    | Use the old Blog4 if you need it
 | Bootstrap 4         | ✅    |
 | Bootstrap 5         | ✅    |
 
@@ -61,4 +61,12 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v5.04 2023-05
   * Removed _ from Filenames
   * Enhanced Kit.Image with `imgAltFallback`
-  
+
+### V6 2023-05
+
+* v6.00 2023-05-25 (Towel Day)
+  * new main version with folder `Blog6` to allow side-by-side install with previous versions and new Guid
+  * Updated to 2sxc 16.01
+  * Changed all dynamic code to use AsTyped
+  * Introduced rich WYSIWYG where the images auto-align and resize
+  * Reduced code amount by merging Bootstrap4 with Bootstrap5

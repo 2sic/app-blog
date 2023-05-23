@@ -2,7 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   // Get current post to show from the View-Query + some Helpers
-  var post = AsList(Data).FirstOrDefault();
+  var post = AsTyped(Data);
   var detailsHelpers = CreateInstance("DetailsHelper.cs");
   var isBs5 = Kit.Css.Is("bs5");
 
@@ -18,21 +18,15 @@
 
 	// Add open-graph meta-tags to page header
   detailsHelpers.AddMetaTags(post);
-
-  // Shortcut to author, makes the code simpler
-  var author = post.Author;
-
-  // Toolbar for editing the Detail post
-  var postToolbar = Kit.Toolbar.Empty().Edit();
 }
 
 <section class="row justify-content-center app-blog5 app-blog5-post-detail">
-  <article class="col-lg-8 mb-4" @postToolbar.For(post)>
+  <article class="col-lg-8 mb-4" @Kit.Toolbar.Empty().Edit(post)>
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @Html.Partial("../shared/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1"})
-      @Html.Partial("../shared/MainImage.cshtml", new { post })
+      @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1"})
+      @Html.Partial("./parts/MainImage.cshtml", new { post })
     </div>
 
     @* 2. Body of the post - will also create inner content blocks / apps *@
@@ -43,12 +37,15 @@
     @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
-      @if (AsList(post.Tags as object).Any()) {
+      @{
+        var tags = post.Children("Tags");
+      }
+      @if (tags.Any()) {
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          <strong class="@marginRight">@(post.Tags.Count > 1 ? @Resources.Tags : @Resources.Tag): </strong>
-          @foreach (var tag in post.Tags) {
-            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title="@tag.Name">@tag.Name</a>
+          <strong class="@marginRight">@Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
+          @foreach (var tag in tags) {
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Dyn.Tag)' title="@tag.Dyn.Name">@tag.Dyn.Name</a>
           }
         </div>
       }
@@ -56,14 +53,18 @@
       <hr />
 
       @* 3.3 Author *@
+      @{
+        var author = post.Child("Author");
+        var authorName = author.String("FullName");
+      }
       <div class="app-blog5-post-author-details d-flex">
         <div>
-          @Html.Raw(author.ShortBio)
-          @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + author.FullName)'>@author.FullName</a>
+          @author.Html("ShortBio", container: "")
+          @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
-        @if (Text.Has(author.Image)) {
+        @if (Text.Has(author.Url("Image"))) {
           <div>
-            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
+            @Kit.Image.Picture(author.Field("Image"), settings: Settings.Images.Author, imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
           </div>
         }
       </div>
@@ -71,10 +72,9 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
-        var previousPost = AsList(Data["Previous"]).FirstOrDefault();
-        var nextPost = AsList(Data["Next"]).FirstOrDefault();
+        var previousPost = AsTyped(Data["Previous"]);
+        var nextPost = AsTyped(Data["Next"]);
       }
-
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
         @if (previousPost != null) {
           @detailsHelpers.PostMicroPreview(previousPost, "previous")
@@ -83,6 +83,7 @@
           @detailsHelpers.PostMicroPreview(nextPost, "next")
         }
       </div>
+
       <hr />
 
       @* 3.5 "Back to list" button *@
@@ -91,4 +92,4 @@
   </article>
 </section>
 
-@Html.Partial("../shared/Assets.cshtml")
+@Html.Partial("./parts/Assets.cshtml")
