@@ -1,6 +1,6 @@
 {
   "name": "app-blog",
-  "version": "05.00.00",
+  "version": "06.00.00",
   "description": "A blog app for .net CMSs",
   "main": "(none)",
   "scripts": {
