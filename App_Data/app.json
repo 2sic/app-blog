@@ -15,6 +15,7 @@
       // Skip git versioning folders, github config folders
       ".git/",
       ".github/",
+      ".vscode/",
       // ".gitignore",
 
       // Webpack 5 temporary folder and NPM folders
