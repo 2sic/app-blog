@@ -28,8 +28,6 @@
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
           @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
-          @* TODO: @2ro - what is the CssClass for? it doesn't actually work *@
-          @* TODO: @2ro - the compiled CSS also has a todo inside it*@
           @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
         </div>
 
