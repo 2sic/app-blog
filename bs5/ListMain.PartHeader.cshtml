@@ -1,4 +1,5 @@
 @inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
 @using System.Linq;
 @{
   /** List Header - Will generate a title and maybe description based on filters/categories selected **/
@@ -31,7 +32,14 @@
     Title = Content.Title;
   }
 }
-<div class="category-header mb-5">
-  <h1>@Title</h1>
-  @Html.Raw(Description)
-</div>
+
+@if(Text.Has(Title) || Text.Has(Description)) {
+  <div class="category-header mb-5">
+    @if(Text.Has(Title)) {
+      <h1>@Title</h1>
+    }
+    @if(Text.Has(Description)) {
+      @Html.Raw(Description)
+    }
+  </div>
+}

@@ -5,14 +5,17 @@
   var links = CreateInstance("./helpers/Links.cs");
   var listHelpers = CreateInstance("./helpers/Helpers.cs");
 
+  var mainToolbar = Kit.Toolbar.Default()
+    .Edit(operation: "%", tweak: b => b.Note("Edit display settings"))
+    .New("BlogPost", tweak: b => b.Position(1).Color("#15585F").Note("Create a new post"));  
+
   // This config is for the toolbar used on an item.
   var postToolbar = Kit.Toolbar.Empty()
-    .Layout("-")
-    .Edit()
-    .New("BlogPost")
-    .Delete();
+    .Edit(tweak: b => b.Color("#15585F"))
+    .Delete(tweak: b => b.Color("gray"));
+
 }
-<section class="app-blog5" @Kit.Toolbar.Default(Content)>
+<section class="app-blog5" @mainToolbar.For(Content)>
   <div class="row">
     <div class="col-12">
       @* Title / Description of current filter (Author, Category, etc.) *@
