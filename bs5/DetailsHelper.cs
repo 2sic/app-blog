@@ -4,7 +4,7 @@ using ToSic.Sxc.Data;
 
 public class DetailsHelper: Custom.Hybrid.Code14 {
 
-  public IHtmlTag PostMicroPreview(ITypedEntity post, string context) {
+  public IHtmlTag PostMicroPreview(ITypedItem post, string context) {
     if (post == null) return null;
     var links = CreateInstance("./helpers/Links.cs");
     var title = context == "previous"
@@ -32,7 +32,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
     );
   }
 
-  public void AddMetaTags(ITypedEntity post) {
+  public void AddMetaTags(ITypedItem post) {
     
     var metaImageUrl = Text.Has(post.Url("Image"))
         ? Link.Image(post.Url("Image"), Settings.Images.Blog, type: "full")

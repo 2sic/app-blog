@@ -6,7 +6,7 @@ public class Links : Custom.Hybrid.Code14
   /// <summary>
   /// Returns a safe url to a post details page
   /// </summary>
-  public dynamic LinkToDetailsPage(ITypedEntity post) {
+  public dynamic LinkToDetailsPage(ITypedItem post) {
     return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.String("UrlKey"));
   }
 

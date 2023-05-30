@@ -5,7 +5,7 @@ using ToSic.Sxc.Data;
 
 public class Helpers: Custom.Hybrid.Code14
 {
-  public string BuildTeaser(ITypedEntity post){
+  public string BuildTeaser(ITypedItem post){
     var teaser = post.String("Teaser");
     var mainText = post.String("Content");
 
