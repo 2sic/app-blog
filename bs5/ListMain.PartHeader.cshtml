@@ -33,12 +33,12 @@
   }
 }
 
-@if(Text.Has(Title) || Text.Has(Description)) {
+@if (Text.Has(Title) || Text.Has(Description)) {
   <div class="category-header mb-5">
-    @if(Text.Has(Title)) {
+    @if (Text.Has(Title)) {
       <h1>@Title</h1>
     }
-    @if(Text.Has(Description)) {
+    @if (Text.Has(Description)) {
       @Html.Raw(Description)
     }
   </div>
