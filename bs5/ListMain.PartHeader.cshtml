@@ -1,4 +1,4 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
 @using System.Linq;
 @{
@@ -9,27 +9,27 @@
   string Description = null;
 
   // If a Category-Filter was set, show it with description
-  if (Data["Category"].Any()) {
-    var category = AsTyped(Data["Category"]);
-    Title = Resources.Category + " " + category.String("Name");
+  if (MyData["Category"].Any()) {
+    var category = AsItem(MyData["Category"]);
+    Title = App.Resources.String("Category") + " " + category.String("Name");
     Description = category.String("Description");
   }
 
   // If a Tag-Filter was set, show that
-  else if (Data["Tag"].Any()) {
-    Title = Resources.Filter + " " + AsTyped(Data["Tag"]).String("Name");
+  else if (MyData["Tag"].Any()) {
+    Title = App.Resources.String("Filter") + " " + AsItem(MyData["Tag"]).String("Name");
   }
 
   // If an Author was used to filter, show him/her + Bio
-  else if (Data["Author"].Any()) {
-    var author = AsTyped(Data["Author"]);
-    Title = Resources.PostsBy + " " + author.String("FullName");
+  else if (MyData["Author"].Any()) {
+    var author = AsItem(MyData["Author"]);
+    Title = App.Resources.String("PostsBy") + " " + author.String("FullName");
     Description = author.String("ShortBio");
   }
 
   // Fallback: Show normal module title
   else {
-    Title = Content.Title;
+    Title = MyItem.Title;
   }
 }
 

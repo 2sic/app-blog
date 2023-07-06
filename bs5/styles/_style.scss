@@ -75,6 +75,8 @@
         font-size: 13px;
         display: inline-block;
         padding: 0 5px;
+        position: relative;
+        z-index: 10;
       }
       .author-img{
         width: 40px;

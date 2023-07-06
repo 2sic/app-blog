@@ -1,15 +1,15 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
 @{
   // Get current post to show from the View-Query + some Helpers
-  var post = AsTyped(Data);
-  var detailsHelpers = CreateInstance("DetailsHelper.cs");
+  var post = AsItem(MyData);
+  var detailsHelpers = GetCode("DetailsHelper.cs");
   var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
-    <h1>@Resources.LabelPostNotExists</h1>
-    <p>@Resources.LabelPostNotExistsText</p>
+    <h1>@App.Resources.String("LabelPostNotExists")</h1>
+    <p>@App.Resources.String("LabelPostNotExistsText")</p>
     @detailsHelpers.BackToListButton()
     // Set 404 status if the post was not found
     Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
@@ -43,9 +43,9 @@
       @if (tags.Any()) {
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          <strong class="@marginRight">@Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
+          <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
-            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Dyn.Tag)' title="@tag.Dyn.Name">@tag.Dyn.Name</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
           }
         </div>
       }
@@ -60,7 +60,8 @@
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @author.Html("ShortBio", container: "")
-          @Resources.ReadMoreAuthor <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
+          @App.Resources.String("ReadMoreAuthor")
+          <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
         @if (Text.Has(author.Url("Image"))) {
           <div>
@@ -72,16 +73,12 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
-        var previousPost = AsTyped(Data["Previous"]);
-        var nextPost = AsTyped(Data["Next"]);
+        var previousPost = AsItem(MyData["Previous"]);
+        var nextPost = AsItem(MyData["Next"]);
       }
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
-        @if (previousPost != null) {
-          @detailsHelpers.PostMicroPreview(previousPost, "previous")
-        }
-        @if (nextPost != null) {
-          @detailsHelpers.PostMicroPreview(nextPost, "next")
-        }
+        @detailsHelpers.PostMicroPreview(previousPost, "previous")
+        @detailsHelpers.PostMicroPreview(nextPost, "next")
       </div>
 
       <hr />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.01" ExportDate="2023-05-31T14:51:53.0068288+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.02.00" ExportDate="2023-07-06T08:40:22.7487262+02:00">
   <Header>
     <App Guid="72e406fd-500f-4632-82ca-942b22358b56" />
     <Language Default="en-us" />
@@ -3142,13 +3142,13 @@
       <Value Key="RequiredOqtaneVersion" Value="03.04.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="16.01.00" Type="String">
+      <Value Key="RequiredVersion" Value="16.02.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="06.00.01" Type="String">
+      <Value Key="Version" Value="06.00.02" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -4836,72 +4836,32 @@
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="DataPipeline" AttributeSetName="DataPipeline" EntityGUID="f4e79acb-bf44-4f63-a6b3-10f83d906612" Json="True">
-      <Value Key="AllowEdit" Value="True" Type="Boolean">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Description" Value="" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="BlogPosts" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Params" Value="PageNumber=[QueryString:Page||1]" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="StreamsOut" Value="ListContent,Default,Paging,Posts,Tag,Author,Category,AllPosts" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="StreamWiring" Value="4770582d-848f-4f86-9c47-40dd4a43b192:Posts&gt;ddf9cbba-2ffd-4a43-ad5d-bf1ad9a5fb4f:Default&#xD;&#xA;ddf9cbba-2ffd-4a43-ad5d-bf1ad9a5fb4f:Default&gt;32724a10-dfb7-48de-8a67-3feecd216240:False&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Posts&gt;32724a10-dfb7-48de-8a67-3feecd216240:True&#xD;&#xA;32724a10-dfb7-48de-8a67-3feecd216240:Default&gt;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&#xD;&#xA;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&gt;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Default&#xD;&#xA;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Paging&gt;Out:Paging&#xD;&#xA;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Default&gt;Out:Posts&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Tag&gt;Out:Tag&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Author&gt;Out:Author&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Category&gt;Out:Category&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Default&gt;Out:Default&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Default&gt;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Settings&#xD;&#xA;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&gt;Out:AllPosts" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="TestParameters" Value="[Params:PageNumber]=1&#xA;[Params:ShowDrafts]=False" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&quot;ShowDataSourceDetails&quot;:true}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="AllowEdit" Value="True" Type="Boolean" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="BlogPosts" Type="String" />
+      <Value Key="Params" Value="PageNumber=[QueryString:Page||1]" Type="String" />
+      <Value Key="StreamsOut" Value="ListContent,Default,Paging,Posts,Tag,Author,Category,AllPosts" Type="String" />
+      <Value Key="StreamWiring" Value="4770582d-848f-4f86-9c47-40dd4a43b192:Posts&gt;ddf9cbba-2ffd-4a43-ad5d-bf1ad9a5fb4f:Default&#xD;&#xA;ddf9cbba-2ffd-4a43-ad5d-bf1ad9a5fb4f:Default&gt;32724a10-dfb7-48de-8a67-3feecd216240:False&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Posts&gt;32724a10-dfb7-48de-8a67-3feecd216240:True&#xD;&#xA;32724a10-dfb7-48de-8a67-3feecd216240:Default&gt;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&#xD;&#xA;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&gt;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Default&#xD;&#xA;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Paging&gt;Out:Paging&#xD;&#xA;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Default&gt;Out:Posts&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Tag&gt;Out:Tag&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Author&gt;Out:Author&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Category&gt;Out:Category&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Default&gt;Out:Default&#xD;&#xA;4770582d-848f-4f86-9c47-40dd4a43b192:Default&gt;f7c26b61-d6fe-45d4-8cc3-b8b144966e8b:Settings&#xD;&#xA;8982f1fb-a972-4d2a-be08-7c34381c59d0:Default&gt;Out:AllPosts" Type="String" />
+      <Value Key="TestParameters" Value="[Params:PageNumber]=1&#xA;[Params:ShowDrafts]=False" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&quot;ShowDataSourceDetails&quot;:true}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="4770582d-848f-4f86-9c47-40dd4a43b192" Json="True" KeyGuid="f4e79acb-bf44-4f63-a6b3-10f83d906612">
-      <Value Key="Description" Value="'" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="Query Run: Posts Root" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.QueryRun, ToSic.Eav.DataSources" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 760,&#xD;&#xA;  &quot;Left&quot;: 620&#xD;&#xA;}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Description" Value="'" Type="String" />
+      <Value Key="Name" Value="Query Run: Posts Root" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.QueryRun, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 760,&#xD;&#xA;  &quot;Left&quot;: 620&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="ddf9cbba-2ffd-4a43-ad5d-bf1ad9a5fb4f" Json="True" KeyGuid="f4e79acb-bf44-4f63-a6b3-10f83d906612">
-      <Value Key="Description" Value="'" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="Filter: Hide future posts" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 600,&#xD;&#xA;  &quot;Left&quot;: 120&#xD;&#xA;}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Description" Value="'" Type="String" />
+      <Value Key="Name" Value="Filter: Hide future posts" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 600,&#xD;&#xA;  &quot;Left&quot;: 120&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="32724a10-dfb7-48de-8a67-3feecd216240" Json="True" KeyGuid="f4e79acb-bf44-4f63-a6b3-10f83d906612">
-      <Value Key="Description" Value="" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="StreamPick: Show drafts" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.StreamPick, ToSic.Eav.DataSources" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 440,&#xD;&#xA;  &quot;Left&quot;: 120&#xD;&#xA;}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="StreamPick: Show drafts" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.StreamPick, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 440,&#xD;&#xA;  &quot;Left&quot;: 120&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="67b19864-df6d-400b-9f37-f41f1dd69c4a" AttributeSetName="StreamPick" EntityGUID="697ec1ae-45f3-4de2-8782-5c2a5a7964e1" Json="True" KeyGuid="32724a10-dfb7-48de-8a67-3feecd216240">
       <Value Key="StreamName" Value="[Params:ShowDrafts]" Type="String">
@@ -4909,32 +4869,16 @@
       </Value>
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="8982f1fb-a972-4d2a-be08-7c34381c59d0" Json="True" KeyGuid="f4e79acb-bf44-4f63-a6b3-10f83d906612">
-      <Value Key="Description" Value="" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="Sort: Newest on Top" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 280,&#xD;&#xA;  &quot;Left&quot;: 100&#xD;&#xA;}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="Sort: Newest on Top" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 280,&#xD;&#xA;  &quot;Left&quot;: 100&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="f7c26b61-d6fe-45d4-8cc3-b8b144966e8b" Json="True" KeyGuid="f4e79acb-bf44-4f63-a6b3-10f83d906612">
-      <Value Key="Description" Value="" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="Paging" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Paging, ToSic.Eav.DataSources" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 120,&#xD;&#xA;  &quot;Left&quot;: 300&#xD;&#xA;}" Type="String">
-        <Dimension DimensionID="97" ReadOnly="false" />
-      </Value>
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="Paging" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Paging, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 120,&#xD;&#xA;  &quot;Left&quot;: 300&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="ToSic.Eav.DataSources.ValueSort" EntityGUID="1302915a-2b79-4ac9-aa5e-e67ffab7db1b" Json="True" KeyGuid="8982f1fb-a972-4d2a-be08-7c34381c59d0">
       <Value Key="Attributes" Value="PublicationMoment" Type="String">
@@ -6276,6 +6220,17 @@
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="UrlKey" Value="blog-6-0-with-responsive-content" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="cb27a0f2-f921-48d0-a3bc-37c0e77b1d0c" AttributeSetName="ImageDecorator" EntityGUID="8e17d410-0641-4fa8-a937-6ee66a4deeff" Json="True" KeyString="file:6351">
+      <Value Key="CropBehavior" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="CropTo" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>

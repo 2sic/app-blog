@@ -12,7 +12,7 @@ You can also inherit from a DynamicCode base class (like Code12) if you need mor
 
 For more guidance on search customizations, see https://r.2sxc.org/customize-search
 */
-public class SearchMapper : Custom.Hybrid.Code14, ICustomizeSearch
+public class SearchMapper : Custom.Hybrid.CodePro, ICustomizeSearch
 {
     /// <summary>
     /// Populate the search
@@ -28,9 +28,9 @@ public class SearchMapper : Custom.Hybrid.Code14, ICustomizeSearch
         
         foreach (var si in searchInfos["AllPosts"])
         {
-            var entity = AsDynamic(si.Entity);
+            var entity = AsItem(si.Entity);
             si.Title = "Title: " + entity.Title;
-            si.QueryString = "details=" + entity.UrlKey;
+            si.QueryString = "details=" + entity.Url("UrlKey");
         }
     }
 }

@@ -12,7 +12,7 @@ using System.IO;
 using ToSic.Razor.Blade;
 
 [AllowAnonymous]			// define that all commands can be accessed without a login
-public class BlogController : Custom.Hybrid.Api14
+public class BlogController : Custom.Hybrid.ApiPro
 {
   public const string AtomNsCode = "atom";
   public const string AtomNamespace = "http://www.w3.org/2005/Atom";
@@ -21,14 +21,14 @@ public class BlogController : Custom.Hybrid.Api14
   public const string ErrDetailsPage = "Error: 'DetailsPage' app setting is missing. Please configure to get RSS to work.";
 
   [HttpGet]
-  public dynamic Rss()
+  public object Rss()
   {
 
     // 1. Prepare
     // 1.1 Figure out what page will show post details based on settings
     // If the settings are configured, it's something like "page:27"
-    var detailsPageId = Text.Has(Settings.DetailsPage)
-      ? int.Parse((Settings.String("DetailsPage")).Split(':')[1])
+    var detailsPageId = Text.Has(App.Settings.String("DetailsPage"))
+      ? int.Parse((App.Settings.String("DetailsPage")).Split(':')[1])
       : 0; // when 'DetailsPage' app setting is missing.
 
     // 1.2 This will be null or a message. To be used instead of links
@@ -51,9 +51,9 @@ public class BlogController : Custom.Hybrid.Api14
     // 3. Create Channel
     // 3.1 Create <channel> node and set important values
     var channel = AddTag(root, "channel");
-    AddTag(channel, "title", Resources.BlogTitle);
+    AddTag(channel, "title", App.Resources.String("BlogTitle"));
     AddTag(channel, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, type: "full"));
-    AddTag(channel, "description", Resources.RssDescription);
+    AddTag(channel, "description", App.Resources.String("RssDescription"));
 
     // 3.2 Create the <atom> tag with all the attributes. It needs to have the namespace "atom" for valid RSS
     var atom = AddNamespaceTag(channel, AtomNsCode, "link", AtomNamespace);
@@ -62,13 +62,13 @@ public class BlogController : Custom.Hybrid.Api14
     AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss", type: "full"));
 
     // 3.3 Add all the posts from the query to this channel
-    foreach (var post in AsTypedList(Kit.Data.GetQuery("BlogPosts").GetStream("AllPosts"))) {
+    foreach (var post in AsItems(Kit.Data.GetQuery("BlogPosts").GetStream("AllPosts"))) {
 
       var itemNode = AddTag(channel, "item");
-      AddTag(itemNode, "title", post.String("EntityTitle"));
+      AddTag(itemNode, "title", post.Title);
       AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.String("UrlKey"), type: "full"));
-      AddTag(itemNode, "description", Kit.Scrub.All(post.String("Teaser"))); // Scrub.All makes sure no HTML makes it into the teaser
-      var guidNode = AddTag(itemNode, "guid", post.EntityGuid.ToString());
+      AddTag(itemNode, "description", post.String("Teaser", scrubHtml: true)); // Scrub.All makes sure no HTML makes it into the teaser
+      var guidNode = AddTag(itemNode, "guid", post.Guid.ToString());
       AddAttribute(guidNode, "isPermaLink", "false");
       AddTag(itemNode, "pubDate", post.DateTime("PublicationMoment").ToString("R"));
     }

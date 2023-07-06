@@ -8,7 +8,7 @@ A standard blog app to use with 2sxc
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | requires 2sxc v16.1
+| 2sxc                | ✅    | requires 2sxc v16.02
 | Dnn                 | ✅    | For v9.6.1
 | Oqtane 2            | ✅    | Requires v3.04
 | No jQuery           | ✅    |

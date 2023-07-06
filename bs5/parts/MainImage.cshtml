@@ -1,8 +1,9 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Data;
 @{
-  var post = AsTyped(DynamicModel.Post as object);
-  var imgSettings = DynamicModel.Settings ?? "Blog";
+  var post = MyModel.Item("Post");
+  var imgSettings = MyModel.String("Settings", fallback: "Blog");
   var hasImg = Text.Has(post.Url("Image"));
   var publicationMoment = post.DateTime("PublicationMoment");
 }
@@ -15,8 +16,8 @@
 }
 
 @* Show info to admin when the post will publish *@
-@if (Edit.Enabled && publicationMoment.CompareTo(DateTime.Now) > 0) {
+@if (MyUser.IsContentAdmin && publicationMoment.CompareTo(DateTime.Now) > 0) {
   <div class='alert alert-warning @(hasImg ? "mb-0" : "mb-3")' role="alert">
-    @(Resources.LabelAdminPostPublishInfo + " " + publicationMoment.Date.ToString("d") + " " + publicationMoment.TimeOfDay)
+    @(App.Resources.String("LabelAdminPostPublishInfo") + " " + publicationMoment.Date.ToString("d") + " " + publicationMoment.TimeOfDay)
   </div>
 }

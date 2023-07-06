@@ -1,12 +1,12 @@
 using ToSic.Razor.Blade;
 using ToSic.Sxc.Data;
 
-public class Links : Custom.Hybrid.Code14
+public class Links : Custom.Hybrid.CodePro
 {
   /// <summary>
   /// Returns a safe url to a post details page
   /// </summary>
-  public dynamic LinkToDetailsPage(ITypedItem post) {
+  public object LinkToDetailsPage(ITypedItem post) {
     return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.String("UrlKey"));
   }
 
@@ -16,9 +16,9 @@ public class Links : Custom.Hybrid.Code14
   private int DetailsPageId()
   {
     if (_detailsPageId != 0) return _detailsPageId;
-    _detailsPageId = Text.Has(Settings.DetailsPage)
-      ? Kit.Convert.ToInt((Settings.String("DetailsPage")).Split(':')[1])
-      : CmsContext.Page.Id;
+    _detailsPageId = Text.Has(App.Settings.Url("DetailsPage"))
+      ? Kit.Convert.ToInt((App.Settings.Url("DetailsPage")).Split(':')[1])
+      : MyPage.Id;
     return _detailsPageId;
   }
   private int _detailsPageId;

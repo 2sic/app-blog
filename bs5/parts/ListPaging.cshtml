@@ -1,11 +1,11 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @{
   /** Part List Paging - Show a pager (if activated) **/
 
   // Paging information is provided by the Query in the "Paging" stream
-  var pagingInfo = AsTyped(Data["Paging"]);
-  int current = pagingInfo.Int("PageNumber");
-  int max = pagingInfo.Int("PageCount");
+  var pagingInfo = AsItem(MyData["Paging"]);
+  var current = pagingInfo.Int("PageNumber");
+  var max = pagingInfo.Int("PageCount");
 
   // Stop here if we dont' have pages to show
   if (max <= 1) {  return; }
@@ -18,7 +18,7 @@
   <ul class="pagination justify-content-center">
     @* Show previous button *@
     <li class='page-item @(enablePrev ? "" : "disabled")' aria-hidden="true">
-      <a class="page-link" href='@LinkToPage(current - 1, enablePrev)'>@Resources.PagePrevious</a>
+      <a class="page-link" href='@LinkToPage(current - 1, enablePrev)'>@App.Resources.String("PagePrevious")</a>
     </li>
 
     @* Show button for every page *@
@@ -30,7 +30,7 @@
 
     @* Show next button *@
     <li class='page-item @(enableNext ? "" : "disabled")' aria-hidden="true">
-      <a class="page-link" href='@LinkToPage(current + 1, enableNext)'>@Resources.PageNext</a>
+      <a class="page-link" href='@LinkToPage(current + 1, enableNext)'>@App.Resources.String("PageNext")</a>
     </li>
   </ul>
 </nav>
@@ -39,7 +39,7 @@
   /// <summary>
   /// Generate a paging-link, preserving current filter parameters
   /// </summary>
-  public dynamic LinkToPage(int pageNumber, bool enabled = true) {
+  public object LinkToPage(int pageNumber, bool enabled = true) {
     // If not enabled we must make sure we don't generate links for Google which shouldn't exist
     // For example next-buttons going to pages which is past the last page
     if (!enabled) {
@@ -49,8 +49,8 @@
     // Create page=X parameter
     // Note: We should never have a page=1 parameter, otherwise two different links exist for page 1
     var newParams = pageNumber <= 1
-      ? CmsContext.Page.Parameters.Remove("page")
-      : CmsContext.Page.Parameters.Set("page", pageNumber.ToString());
+      ? MyPage.Parameters.Remove("page")
+      : MyPage.Parameters.Set("page", pageNumber.ToString());
     return Link.To(parameters: newParams); 
   }
 }

@@ -2,14 +2,12 @@ using System;
 using ToSic.Razor.Blade;
 using ToSic.Sxc.Data;
 
-public class DetailsHelper: Custom.Hybrid.Code14 {
+public class DetailsHelper: Custom.Hybrid.CodePro {
 
   public IHtmlTag PostMicroPreview(ITypedItem post, string context) {
     if (post == null) return null;
-    var links = CreateInstance("./helpers/Links.cs");
-    var title = context == "previous"
-      ? Resources.PreviousPost
-      : Resources.NextPost;
+    var links = GetCode("./helpers/Links.cs");
+    var title = App.Resources.String(context == "previous" ? "PreviousPost" : "NextPost");
 
     var imgUrl = post.Url("Image");
     return Tag.Div().Class(context).Wrap(
@@ -24,9 +22,9 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
     );
   }
 
-  public dynamic BackToListButton() {
+  public object BackToListButton() {
     return Tag.Div().Class("backlink").Wrap(
-      Tag.A(Resources.BackToHome)
+      Tag.A(App.Resources.String("BackToHome"))
         .Class("btn btn-outline-primary")
         .Href(Link.To())
     );
@@ -35,10 +33,10 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
   public void AddMetaTags(ITypedItem post) {
     
     var metaImageUrl = Text.Has(post.Url("Image"))
-        ? Link.Image(post.Url("Image"), Settings.Images.Blog, type: "full")
+        ? Link.Image(post.Url("Image"), settings: "Blog", type: "full")
         : "";
 
-    var teaser = Kit.Scrub.All(post.String("Teaser"));
+    var teaser = post.String("Teaser", scrubHtml: true);
     var sharingDescription = Text.First(post.String("SharingDescription"), teaser);
 
     // Try to replace the term "PostTitle" in the page title with the post title, otherwise prefix the existing title
@@ -51,7 +49,7 @@ public class DetailsHelper: Custom.Hybrid.Code14 {
     var title = post.String("Title");
     Kit.Page.AddOpenGraph("og:type", "article");
     Kit.Page.AddOpenGraph("og:title", title);
-    Kit.Page.AddOpenGraph("og:site_name", Resources.BlogTitle);
+    Kit.Page.AddOpenGraph("og:site_name", App.Resources.String("BlogTitle"));
     Kit.Page.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.String("UrlKey")));
     Kit.Page.AddOpenGraph("og:description", sharingDescription);
     Kit.Page.AddOpenGraph("og:image", metaImageUrl);

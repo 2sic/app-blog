@@ -1,9 +1,12 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
 @{
+  // Config as edited by the user
+  var viewConfig = MyItem;
+
   // Prepare helpers
-  var links = CreateInstance("./helpers/Links.cs");
-  var listHelpers = CreateInstance("./helpers/Helpers.cs");
+  var links = GetCode("./helpers/Links.cs");
+  var listHelpers = GetCode("./helpers/Helpers.cs");
 
   var mainToolbar = Kit.Toolbar.Default()
     .Edit(operation: "%", tweak: b => b.Note("Edit display settings"))
@@ -15,7 +18,7 @@
     .Delete(tweak: b => b.Color("gray"));
 
 }
-<section class="app-blog5" @mainToolbar.For(Content)>
+<section class="app-blog5" @mainToolbar.For(viewConfig)>
   <div class="row">
     <div class="col-12">
       @* Title / Description of current filter (Author, Category, etc.) *@
@@ -26,7 +29,7 @@
     </div>
 
     @* List the posts *@
-    @foreach (var post in AsTypedList(Data["Posts"])) {
+      @foreach (var post in AsItems(MyData["Posts"])) {
       <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
@@ -36,13 +39,13 @@
 
         <div class="app-blog5-post-content">
           <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
-          <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@Resources.ReadMore</a>
+          <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.String("ReadMore")</a>
         </div>
       </article>
     }
 
     @* Show pagination if configured *@
-    @if (Content.ShowPagination == true) {
+    @if (viewConfig.Bool("ShowPagination")) {
       @Html.Partial("./parts/ListPaging.cshtml")
     }
   </div>

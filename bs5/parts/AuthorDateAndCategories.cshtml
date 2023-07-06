@@ -1,11 +1,12 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
 @{
-  var blogPost = AsTyped(DynamicModel.Post as object); 
+  var blogPost = MyModel.Item("Post");
+  var pubMoment = blogPost.DateTime("PublicationMoment");
 }
 
 @* Post title *@
-@Tag.Custom(DynamicModel.HeadingType).Class("mt-3").Class(DynamicModel.CssClass).Wrap(Tags.Nl2Br(blogPost.String("Title")))
+@Tag.Custom(MyModel.String("HeadingType")).Class("mt-3").Class(MyModel.String("CssClass", required: false)).Wrap(Tags.Nl2Br(blogPost.String("Title")))
 
 <div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
   @* Author Info & Link to Authors Posts *@
@@ -25,14 +26,13 @@
   </div>
 
   @* Post Date *@
-  @{ var pubMoment = blogPost.DateTime("PublicationMoment"); }
   <time itemprop="datePublished" datetime='@pubMoment.ToString("yyyy-MM-dd")'>@pubMoment.ToString("d")</time>
 
   @* List categories of post *@
   @foreach (var category in blogPost.Children("Categories")) {
     <span>&nbsp;–
-    <a class="post-category" href='@Link.To(parameters: "category=" + category.Dyn.Key)' title="@category.Dyn.Name">
-      @category.Dyn.Name
+    <a class="post-category" href='@Link.To(parameters: "category=" + category.String("Key"))' title='@category.Attribute("Name")'>
+      @category.String("Name")
     </a>
     </span>
   }
