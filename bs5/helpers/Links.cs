@@ -16,8 +16,8 @@ public class Links : Custom.Hybrid.CodePro
   private int DetailsPageId()
   {
     if (_detailsPageId != 0) return _detailsPageId;
-    _detailsPageId = Text.Has(App.Settings.Url("DetailsPage"))
-      ? Kit.Convert.ToInt((App.Settings.Url("DetailsPage")).Split(':')[1])
+    _detailsPageId = Text.Has(App.Settings.String("DetailsPage"))
+      ? Kit.Convert.ToInt((App.Settings.String("DetailsPage")).Split(':')[1])
       : MyPage.Id;
     return _detailsPageId;
   }
