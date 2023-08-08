@@ -12,7 +12,7 @@
   var allPosts = AsItems(App.Data["BlogPost"]);
   
   // 1.2 Get all categories which have posts and keep the Count for showing
-  var catsWithPosts = AsItems(App.Data["Category"]) // AsTypedList(App.Data["Category"])
+  var catsWithPosts = AsItems(App.Data["Category"])
     .Select(Cat => new {
       Cat,
       PostsCount = Cat.Parents("BlogPost").Count()  // Count all the BlogPosts pointing to this category

@@ -67,6 +67,8 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v6.00 2023-05-25 (Towel Day)
   * new main version with folder `Blog6` to allow side-by-side install with previous versions and new Guid
   * Updated to 2sxc 16.01
-  * Changed all dynamic code to use AsTyped
+  * Changed all dynamic code to use Pro/Typed
   * Introduced rich WYSIWYG where the images auto-align and resize
   * Reduced code amount by merging Bootstrap4 with Bootstrap5
+* v06.01 2023-07
+  * Changed pro/Typed API to match 2sxc 16.02 (breaking changes)
