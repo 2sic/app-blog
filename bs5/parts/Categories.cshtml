@@ -15,7 +15,7 @@
   var catsWithPosts = AsItems(App.Data["Category"])
     .Select(Cat => new {
       Cat,
-      PostsCount = Cat.Parents("BlogPost").Count()  // Count all the BlogPosts pointing to this category
+      PostsCount = Cat.Parents(type: "BlogPost").Count()  // Count all the BlogPosts pointing to this category
     })
     .Where(set => set.PostsCount > 0);            // ...and only keep categories which have posts
 

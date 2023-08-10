@@ -70,5 +70,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Changed all dynamic code to use Pro/Typed
   * Introduced rich WYSIWYG where the images auto-align and resize
   * Reduced code amount by merging Bootstrap4 with Bootstrap5
-* v06.01 2023-07
+* v06.03 2023-07
   * Changed pro/Typed API to match 2sxc 16.02 (breaking changes)
+* v06.04 2027-08
+  * Changed Categories.cshtml to use `.Parents(type: ...)` for breaking change in 16.03 where `type` is required
