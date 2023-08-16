@@ -2,7 +2,7 @@ using System;
 using ToSic.Razor.Blade;
 using ToSic.Sxc.Data;
 
-public class DetailsHelper: Custom.Hybrid.CodePro {
+public class DetailsHelper: Custom.Hybrid.CodeTyped {
 
   public IHtmlTag PostMicroPreview(ITypedItem post, string context) {
     if (post == null) return null;

@@ -1,7 +1,7 @@
 using ToSic.Razor.Blade;
 using ToSic.Sxc.Data;
 
-public class Links : Custom.Hybrid.CodePro
+public class Links : Custom.Hybrid.CodeTyped
 {
   /// <summary>
   /// Returns a safe url to a post details page
