@@ -8,9 +8,9 @@ A standard blog app to use with 2sxc
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | requires 2sxc v16.02
+| 2sxc                | ✅    | requires 2sxc v16.04
 | Dnn                 | ✅    | For v9.6.1
-| Oqtane 2            | ✅    | Requires v3.04
+| Oqtane 2            | ✅    | Requires v04.00
 | No jQuery           | ✅    |
 | Live Demo           | ➖    | [2givelife blog](https://www.2givelife.org/blog) [Blazor CMS blog](https://blazor-cms.org/blog)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/vgApEx0X) on [azing.org](https://azing.org/2sxc)
