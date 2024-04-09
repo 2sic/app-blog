@@ -9,24 +9,26 @@
   // These variables will be filled with different infos depending on the filter that was set
   string Title = null;
   string Description = null;
-
+  
   // If a Category-Filter was set, show it with description
   if (MyData["Category"].Any()) {
-    var category = AsItem(MyData["Category"]);
-    Title = App.Resources.Category + " " + category.String("Name");
-    Description = category.String("Description");
+    var category = As<Category>(MyData["Category"]);
+    Title = App.Resources.Category + " " + category.Name;
+    Description = category.Description;
   }
 
   // If a Tag-Filter was set, show that
   else if (MyData["Tag"].Any()) {
+    @* TODO:: Tag and Blog Tag *@
+      @* var tag = As<Tag>(MyData["Tag"]); *@
     Title = App.Resources.Filter + " " + AsItem(MyData["Tag"]).String("Name");
   }
 
   // If an Author was used to filter, show him/her + Bio
   else if (MyData["Author"].Any()) {
-    var author = AsItem(MyData["Author"]);
-    Title = App.Resources.PostsBy + " " + author.String("FullName");
-    Description = author.String("ShortBio");
+    var author = As<Author>(MyData["Author"]);
+    Title = App.Resources.PostsBy + " " + author.FullName;
+    Description = author.ShortBio;
   }
 
   // Fallback: Show normal module title

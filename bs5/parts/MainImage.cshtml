@@ -4,16 +4,16 @@
 @using AppCode.Data
 
 @{
-  var post = MyModel.Item("Post");
+  var post = As<BlogPost>(MyModel.Item("Post"));
   var imgSettings = MyModel.String("Settings", fallback: "Blog");
-  var hasImg = Text.Has(post.Url("Image"));
-  var publicationMoment = post.DateTime("PublicationMoment");
+  var hasImg = post.IsNotEmpty("Image");
+  var publicationMoment = post.PublicationMoment;
 }
 
 @* Image of the post *@
 @if (hasImg) {
   <figure class="effect-zoom">
-    @post.Picture("Image", settings: imgSettings, imgAltFallback: post.String("Title"))
+    @post.Picture("Image", settings: imgSettings, imgAltFallback: post.Title)
   </figure>
 }
 
