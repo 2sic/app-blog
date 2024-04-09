@@ -19,9 +19,8 @@
 
   // If a Tag-Filter was set, show that
   else if (MyData["Tag"].Any()) {
-    @* TODO:: Tag and Blog Tag *@
-      @* var tag = As<Tag>(MyData["Tag"]); *@
-    Title = App.Resources.Filter + " " + AsItem(MyData["Tag"]).String("Name");
+    var tag = As<BlogTag>(MyData["Tag"]);
+    Title = App.Resources.Filter + " " + tag.Name;
   }
 
   // If an Author was used to filter, show him/her + Bio

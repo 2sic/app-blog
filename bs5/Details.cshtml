@@ -1,25 +1,23 @@
-@inherits AppCode.Razor.AppRazor
+@inherits AppCode.Razor.DetailRazorBase
 @using ToSic.Razor.Blade
 @using AppCode.Data
 @{
   // Get current post to show from the View-Query + some Helpers
   var post = As<BlogPost>(MyData);
-    @* TODO:: Open (Tag to BlogTag) *@
-  var detailsHelpers = GetCode("DetailsHelper.cs");
   var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
     <h1>@App.Resources.LabelPostNotExists</h1>
     <p>@App.Resources.LabelPostNotExistsText</p>
-    @detailsHelpers.BackToListButton()
+    @BackToListButton()
     // Set 404 status if the post was not found
     Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
     return;
   }
 
 	// Add open-graph meta-tags to page header
-  detailsHelpers.AddMetaTags(post);
+  AddMetaTags(post);
 }
 
 <section class="row justify-content-center app-blog5 app-blog5-post-detail">
@@ -27,7 +25,6 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
-      @* TODO::  *@
       @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1"})
       @Html.Partial("./parts/MainImage.cshtml", new { post })
     </div>
@@ -83,14 +80,14 @@
         var nextPost = AsItem(MyData["Next"]);
       }
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
-        @detailsHelpers.PostMicroPreview(previousPost, "previous")
-        @detailsHelpers.PostMicroPreview(nextPost, "next")
+        @PostMicroPreview(previousPost, "previous")
+        @PostMicroPreview(nextPost, "next")
       </div>
 
       <hr />
 
       @* 3.5 "Back to list" button *@
-      @detailsHelpers.BackToListButton()
+      @BackToListButton()
     </div>
   </article>
 </section>
