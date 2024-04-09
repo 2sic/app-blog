@@ -3,10 +3,11 @@ using ToSic.Razor.Html5;
 using ToSic.Sxc.Data;
 using ToSic.Sxc.Services;
 
+// TODO:: Delete File Error
 public class Links : Custom.Hybrid.CodeTyped
 {
-  /// <summary>
-  /// Returns a safe url to a post details page
+  // /// <summary>
+  // /// Returns a safe url to a post details page
   /// </summary>
   public object LinkToDetailsPage(ITypedItem post) {
     return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.String("UrlKey"));

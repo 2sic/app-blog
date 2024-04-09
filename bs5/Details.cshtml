@@ -41,7 +41,6 @@
         var tags = post.Tags;
       }
       @if (tags.Any()) {
-        <h2>Teste</h2>
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
           @* TODO:: App.Resources.String *@
@@ -76,8 +75,8 @@
       @* 3.4 Preview of previous and next post *@
       @{
         @* TODO:: Previous, Next *@
-        var previousPost = AsItem(MyData["Previous"]);
-        var nextPost = AsItem(MyData["Next"]);
+        var previousPost = As<BlogPost>(MyData["Previous"]);
+        var nextPost =  As<BlogPost>(MyData["Next"]);
       }
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
         @PostMicroPreview(previousPost, "previous")

@@ -10,53 +10,59 @@ namespace AppCode.Razor
   /// </summary>
   public abstract class DetailRazorBase : AppRazor<object>
   {
-    public IHtmlTag PostMicroPreview(ITypedItem post, string context) {
+    public IHtmlTag PostMicroPreview(BlogPost post, string context) {
     if (post == null) return null;
     var links = GetCode("./helpers/Links.cs");
     var title = App.Resources.String(context == "previous" ? "PreviousPost" : "NextPost");
 
-    var imgUrl = post.Url("Image");
+    var imgUrl = post.Image;
     return Tag.Div().Class(context).Wrap(
       Tag.A().Href(links.LinkToDetailsPage(post)).Wrap(
         (Text.Has(imgUrl) 
-          ? post.Picture("Image", settings: "NextPost", imgAltFallback: post.String("Title"), imgClass: "rounded-circle d-none d-lg-block")
+          ? post.Picture("Image", settings: "NextPost", imgAltFallback: post.Title, imgClass: "rounded-circle d-none d-lg-block")
           : null),
         Tag.Span(
-          Tag.Strong(title) + " " + post.String("Title")
+          Tag.Strong(title) + " " + post.Title
         ).Class("app-blog-previouslink-title")
       )
     );
   }
 
+  /// <summary>
+  /// Returns BackToListButton
+  /// </summary>
   public IHtmlTag BackToListButton() {
     return Tag.Div().Class("backlink").Wrap(
-      Tag.A(App.Resources.String("BackToHome"))
+      Tag.A(App.Resources.BackToHome)
         .Class("btn btn-outline-primary")
         .Href(Link.To())
     );
   }
 
-  public void AddMetaTags(ITypedItem post) {
+  /// <summary>
+  /// Add meta tags for a blog post
+  /// </summary>
+  public void AddMetaTags(BlogPost post) {
     
-    var metaImageUrl = Text.Has(post.Url("Image"))
-        ? Link.Image(post.Url("Image"), settings: "Blog", type: "full")
+    var metaImageUrl = post.IsNotEmpty("Image")
+        ? Link.Image(post.Image, settings: "Blog", type: "full")
         : "";
 
-    var teaser = post.String("Teaser", scrubHtml: true);
-    var sharingDescription = Text.First(post.String("SharingDescription"), teaser);
+    var teaser = Kit.Scrub.All(post.Teaser);
+    var sharingDescription = Text.First(post.SharingDescription, teaser);
 
     // Try to replace the term "PostTitle" in the page title with the post title, otherwise prefix the existing title
-    Kit.Page.SetTitle(Text.First(post.String("MetaTitle"), post.String("Title")) + " ", "PostTitle");
+    Kit.Page.SetTitle(Text.First(post.MetaTitle, post.Title) + " ", "PostTitle");
 
 
-    Kit.Page.SetDescription(Text.First(post.String("MetaDescription"), teaser));
+    Kit.Page.SetDescription(Text.First(post.MetaDescription, teaser));
 
     // Add open graph meta information
     var title = post.String("Title");
     Kit.Page.AddOpenGraph("og:type", "article");
     Kit.Page.AddOpenGraph("og:title", title);
-    Kit.Page.AddOpenGraph("og:site_name", App.Resources.String("BlogTitle"));
-    Kit.Page.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.String("UrlKey")));
+    Kit.Page.AddOpenGraph("og:site_name", App.Resources.BlogTitle);
+    Kit.Page.AddOpenGraph("og:url", Link.To(parameters: "details=" + post.UrlKey));
     Kit.Page.AddOpenGraph("og:description", sharingDescription);
     Kit.Page.AddOpenGraph("og:image", metaImageUrl);
     Kit.Page.AddOpenGraph("og:image:height", "1200");
