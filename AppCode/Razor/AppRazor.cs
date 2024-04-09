@@ -18,7 +18,7 @@ namespace AppCode.Razor
     /// </summary>
     public object LinkToDetailsPage(BlogPost post)
     {
-      return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.String("UrlKey"));
+      return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.UrlKey);
     }
 
     /// <summary>
@@ -27,8 +27,8 @@ namespace AppCode.Razor
     private int DetailsPageId()
     {
       if (_detailsPageId != 0) return _detailsPageId;
-      _detailsPageId = Text.Has(App.Settings.String("DetailsPage"))
-        ? Kit.Convert.ToInt((App.Settings.String("DetailsPage")).Split(':')[1])
+      _detailsPageId = Text.Has(App.Settings.DetailsPage)
+        ? Kit.Convert.ToInt((App.Settings.DetailsPage).Split(':')[1])
         : MyPage.Id;
       return _detailsPageId;
     }
