@@ -68,7 +68,7 @@
           @App.Resources.ReadMoreAuthor
           <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
-        @if (Text.Has(author.Image)) {
+        @if (author.IsNotEmpty("Image")) {
           <div>
             @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
