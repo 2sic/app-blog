@@ -1,6 +1,8 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
-@using ToSic.Sxc.Data;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using ToSic.Sxc.Data
+@using AppCode.Data
+
 @{
   var post = MyModel.Item("Post");
   var imgSettings = MyModel.String("Settings", fallback: "Blog");
@@ -18,6 +20,6 @@
 @* Show info to admin when the post will publish *@
 @if (MyUser.IsContentAdmin && publicationMoment.CompareTo(DateTime.Now) > 0) {
   <div class='alert alert-warning @(hasImg ? "mb-0" : "mb-3")' role="alert">
-    @(App.Resources.String("LabelAdminPostPublishInfo") + " " + publicationMoment.Date.ToString("d") + " " + publicationMoment.TimeOfDay)
+    @(App.Resources.LabelAdminPostPublishInfo + " " + publicationMoment.Date.ToString("d") + " " + publicationMoment.TimeOfDay)
   </div>
 }

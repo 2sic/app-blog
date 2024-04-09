@@ -1,5 +1,6 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // Config as edited by the user
   var viewConfig = MyItem;
@@ -39,7 +40,7 @@
 
         <div class="app-blog5-post-content">
           <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
-          <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.String("ReadMore")</a>
+          <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
         </div>
       </article>
     }

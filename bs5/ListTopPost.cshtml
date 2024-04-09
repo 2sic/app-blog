@@ -1,5 +1,6 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // Prepare helpers
   var links = GetCode("./helpers/Links.cs");
@@ -17,7 +18,7 @@
 }
 
 @* If no Details-page is configured, show warning to Admin *@
-@if (MyUser.IsContentAdmin && !Text.Has(App.Settings.String("DetailsPage"))) {
+@if (MyUser.IsContentAdmin && !Text.Has(App.Settings.DetailsPage)) {
   <div class="alert alert-danger" role="alert">@App.Resources.Html("LabelAdminDetailPageWarning")</div>
 }
 
@@ -34,7 +35,7 @@
         <h4>@post.String("Title")</h4>
         <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
 
-        <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.String("ReadMore")</a>
+        <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
       </article>
     }
   </div>

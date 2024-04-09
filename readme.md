@@ -8,7 +8,7 @@ A standard blog app to use with 2sxc
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | requires 2sxc v16.04
+| 2sxc                | ✅    | requires 2sxc v17.06.02
 | Dnn                 | ✅    | For v9.6.1
 | Oqtane 2            | ✅    | Requires v04.00
 | No jQuery           | ✅    |
@@ -72,5 +72,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Reduced code amount by merging Bootstrap4 with Bootstrap5
 * v06.03 2023-07
   * Changed pro/Typed API to match 2sxc 16.02 (breaking changes)
-* v06.04 2027-08
+* v06.04 2023-08
   * Changed Categories.cshtml to use `.Parents(type: ...)` for breaking change in 16.03 where `type` is required
+* v06.04.17 2024-04
+  * strong Typed

@@ -1,15 +1,16 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // Get current post to show from the View-Query + some Helpers
-  var post = AsItem(MyData);
+  var post = As<BlogPost>(MyData);
   var detailsHelpers = GetCode("DetailsHelper.cs");
   var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
-    <h1>@App.Resources.String("LabelPostNotExists")</h1>
-    <p>@App.Resources.String("LabelPostNotExistsText")</p>
+    <h1>@App.Resources.LabelPostNotExists</h1>
+    <p>@App.Resources.LabelPostNotExistsText</p>
     @detailsHelpers.BackToListButton()
     // Set 404 status if the post was not found
     Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
@@ -38,11 +39,13 @@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
       @{
-        var tags = post.Children("Tags");
+        var tags = post.Tags;
       }
       @if (tags.Any()) {
+        <h2>Teste</h2>
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
+          @* TODO:: *@
           <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
             <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
@@ -54,18 +57,18 @@
 
       @* 3.3 Author *@
       @{
-        var author = post.Child("Author");
-        var authorName = author.String("FullName");
+        var author = post.Author;
+        var authorName = author.FullName;
       }
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @author.Html("ShortBio", container: "")
-          @App.Resources.String("ReadMoreAuthor")
+          @App.Resources.ReadMoreAuthor
           <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
-        @if (Text.Has(author.Url("Image"))) {
+        @if (Text.Has(author.Image)) {
           <div>
-            @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
+            @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
         }
       </div>

@@ -1,5 +1,11 @@
 @inherits Custom.Hybrid.RazorTyped
 @using ToSic.Razor.Blade;
+@* TODO:: *@
+@* 
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data *@
+
 @{
   var blogPost = MyModel.Item("Post");
   var pubMoment = blogPost.DateTime("PublicationMoment");
