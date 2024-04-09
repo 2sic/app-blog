@@ -3,11 +3,7 @@
 @using AppCode.Data
 @{
   // Config as edited by the user
-  var viewConfig = MyItem;
-
-  // Prepare helpers
-  var links = GetCode("./helpers/Links.cs");
-  var listHelpers = GetCode("./helpers/Helpers.cs");
+  var viewConfig = As<ListSettings>(MyItem);
 
   var mainToolbar = Kit.Toolbar.Default()
     .Edit(operation: "%", tweak: b => b.Note("Edit display settings"))
@@ -30,23 +26,24 @@
     </div>
 
     @* List the posts *@
-      @foreach (var post in AsItems(MyData["Posts"])) {
+      @foreach (var post in AsList<BlogPost>(MyData["Posts"])) {
       <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
+          @* TODO:: *@
           @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
           @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
         </div>
 
         <div class="app-blog5-post-content">
-          <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
-          <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
+          <p>@Html.Raw(BuildTeaser(post))</p>
+          <a href="@LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
         </div>
       </article>
     }
 
     @* Show pagination if configured *@
-    @if (viewConfig.Bool("ShowPagination")) {
+    @if (viewConfig.ShowPagination) {
       @Html.Partial("./parts/ListPaging.cshtml")
     }
   </div>
