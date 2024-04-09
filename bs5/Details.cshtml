@@ -4,6 +4,7 @@
 @{
   // Get current post to show from the View-Query + some Helpers
   var post = As<BlogPost>(MyData);
+    @* TODO:: Open (Tag to BlogTag) *@
   var detailsHelpers = GetCode("DetailsHelper.cs");
   var isBs5 = Kit.Css.Is("bs5");
 
@@ -26,6 +27,7 @@
 
     @* 1. Header containing the main image, title and date information *@
     <div class="app-blog5-post-header">
+      @* TODO::  *@
       @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1"})
       @Html.Partial("./parts/MainImage.cshtml", new { post })
     </div>
@@ -45,7 +47,7 @@
         <h2>Teste</h2>
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          @* TODO:: *@
+          @* TODO:: App.Resources.String *@
           <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
             <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
@@ -76,6 +78,7 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
+        @* TODO:: Previous, Next *@
         var previousPost = AsItem(MyData["Previous"]);
         var nextPost = AsItem(MyData["Next"]);
       }
