@@ -12,12 +12,12 @@ namespace AppCode.Razor
   {
     public IHtmlTag PostMicroPreview(BlogPost post, string context) {
     if (post == null) return null;
-    var links = GetCode("./helpers/Links.cs");
+    // var links = GetCode("./helpers/Links.cs");
     var title = App.Resources.String(context == "previous" ? "PreviousPost" : "NextPost");
 
     var imgUrl = post.Image;
     return Tag.Div().Class(context).Wrap(
-      Tag.A().Href(links.LinkToDetailsPage(post)).Wrap(
+      Tag.A().Href(LinkToDetailsPage(post)).Wrap(
         (Text.Has(imgUrl) 
           ? post.Picture("Image", settings: "NextPost", imgAltFallback: post.Title, imgClass: "rounded-circle d-none d-lg-block")
           : null),

@@ -16,7 +16,7 @@ namespace AppCode.Razor
     /// <summary>
     /// Returns a safe url to a post details page
     /// </summary>
-    public object LinkToDetailsPage(BlogPost post)
+    public string LinkToDetailsPage(BlogPost post)
     {
       return Link.To(pageId: DetailsPageId(), parameters: "details=" + post.UrlKey);
     }
