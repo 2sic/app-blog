@@ -44,9 +44,9 @@
         var marginRight = isBs5 ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
           @* TODO:: App.Resources.String *@
-          <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
+          <strong class="@marginRight">@App.Resources.(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
-            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title='@tag.Attribute("Name")'>@tag.Name</a>
           }
         </div>
       }
@@ -74,7 +74,6 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
-        @* TODO:: Previous, Next *@
         var previousPost = As<BlogPost>(MyData["Previous"]);
         var nextPost =  As<BlogPost>(MyData["Next"]);
       }
