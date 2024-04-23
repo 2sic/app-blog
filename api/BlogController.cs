@@ -12,6 +12,12 @@ using System.IO;
 using ToSic.Razor.Blade;
 using AppCode.Data;
 
+
+
+using System.Collections.Generic;
+using System;
+using ToSic.Sxc.Data;
+
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class BlogController : Custom.Hybrid.ApiTyped
 {
@@ -28,13 +34,18 @@ public class BlogController : Custom.Hybrid.ApiTyped
     var AppSet = As<AppSettings>(App.Settings);
     var AppRes = As<AppResources>(App.Resources);
 
+    throw new Exception("got here ", App.Settings.String("DetailsPage"));
 
     // 1. Prepare
     // 1.1 Figure out what page will show post details based on settings
     // If the settings are configured, it's something like "page:27"
-    var detailsPageId = Text.Has(AppSet.DetailsPage)
-      ? int.Parse((AppSet.DetailsPage).Split(':')[1])
-      : 0; // when 'DetailsPage' app setting is missing.
+    // var detailsPageId = Text.Has(AppSet.DetailsPage)
+    //   ? int.Parse((AppSet.DetailsPage).Split(':')[1])
+    //   : 0; // when 'DetailsPage' app setting is missing.
+
+      var detailsPageId = 1;
+
+
 
     // 1.2 This will be null or a message. To be used instead of links
     var linkErrMessage = (detailsPageId == 0) ? ErrDetailsPage : null;
