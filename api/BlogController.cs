@@ -33,19 +33,13 @@ public class BlogController : Custom.Hybrid.ApiTyped
 
     var AppSet = As<AppSettings>(App.Settings);
     var AppRes = As<AppResources>(App.Resources);
-
-    throw new Exception("got here ", App.Settings.String("DetailsPage"));
-
+  
     // 1. Prepare
     // 1.1 Figure out what page will show post details based on settings
     // If the settings are configured, it's something like "page:27"
-    // var detailsPageId = Text.Has(AppSet.DetailsPage)
-    //   ? int.Parse((AppSet.DetailsPage).Split(':')[1])
-    //   : 0; // when 'DetailsPage' app setting is missing.
-
-      var detailsPageId = 1;
-
-
+    var detailsPageId = Text.Has(AppSet.String("DetailsPage")) // use String() because it's a link and we need the underlying value like 'file:72'
+      ? int.Parse((AppSet.String("DetailsPage")).Split(':')[1])
+      : 0; // when 'DetailsPage' app setting is missing.
 
     // 1.2 This will be null or a message. To be used instead of links
     var linkErrMessage = (detailsPageId == 0) ? ErrDetailsPage : null;
