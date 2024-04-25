@@ -1,10 +1,9 @@
-@inherits AppCode.Razor.DetailRazorBase
+@inherits AppCode.Razor.DetailRazor
 @using ToSic.Razor.Blade
 @using AppCode.Data
 @{
   // Get current post to show from the View-Query + some Helpers
   var post = As<BlogPost>(MyData);
-  var isBs5 = Kit.Css.Is("bs5");
 
   @* Preflight: check if post found, else show notification and stop processing *@
   if (post == null) {
@@ -41,12 +40,11 @@
         var tags = post.Tags;
       }
       @if (tags.Any()) {
-        var marginRight = isBs5 ? "me-2" : "mr-2";
+        var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          @* TODO:: App.Resources.String *@
-          <strong class="@marginRight">@App.Resources.(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
+          <strong class="@marginRight">@App.Resources.String((tags.Count() > 1 ? "Tags" : "Tag")): </strong>
           @foreach (var tag in tags) {
-            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title='@tag.Attribute("Name")'>@tag.Name</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title='@tag.Name'>@tag.Name</a>
           }
         </div>
       }

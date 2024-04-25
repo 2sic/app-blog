@@ -5,6 +5,7 @@
   // Config as edited by the user
   var viewConfig = As<ListSettings>(MyItem);
 
+  // Main Toolbar Config
   var mainToolbar = Kit.Toolbar.Default()
     .Edit(operation: "%", tweak: b => b.Note("Edit display settings"))
     .New("BlogPost", tweak: b => b.Position(1).Color("#15585F").Note("Create a new post"));  
@@ -30,7 +31,6 @@
       <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
         @* Header-block with Image / Author, Title, Categories *@
         <div class="app-blog5-post-header">
-          @* TODO:: *@
           @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
           @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
         </div>
