@@ -10,14 +10,15 @@
   var filterCat = filter == null ? null : filter.Key;
 
   // 1.1. Get all Blog Posts from the App, to ignore filters (note that admins also get unpublished posts)
-  var allPosts = AsList<BlogPost>(App.Data["BlogPost"]);
+  var allPosts = App.Data.GetAll<BlogPost>();
+
 
   if(!MyUser.IsContentAdmin) {
     allPosts = allPosts.Where(p => p.PublicationMoment.Date <= DateTime.Now.Date);
   }
   
   // 1.2 Get all categories which have posts and keep the Count for showing
-  var catsWithPosts = AsList<Category>(App.Data["Category"])
+  var catsWithPosts = App.Data.GetAll<Category>() 
     .Select(Cat => new {
       Cat,
       PostsCount = MyUser.IsContentAdmin ? Cat.Parents(type: "BlogPost").Count() : Cat.Parents(type: "BlogPost")
