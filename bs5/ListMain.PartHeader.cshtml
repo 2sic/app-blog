@@ -11,20 +11,23 @@
   string Description = null;
   
   // If a Category-Filter was set, show it with description
-  if (MyData["Category"].Any()) {
+  if (MyData["Category"].Any()) 
+  {
     var category = As<Category>(MyData["Category"]);
     Title = App.Resources.Category + " " + category.Name;
     Description = category.Description;
   }
 
   // If a Tag-Filter was set, show that
-  else if (MyData["Tag"].Any()) {
+  else if (MyData["Tag"].Any()) 
+  {
     var tag = As<BlogTag>(MyData["Tag"]);
     Title = App.Resources.Filter + " " + tag.Name;
   }
 
   // If an Author was used to filter, show him/her + Bio
-  else if (MyData["Author"].Any()) {
+  else if (MyData["Author"].Any()) 
+  {
     var author = As<Author>(MyData["Author"]);
     Title = App.Resources.PostsBy + " " + author.FullName;
     Description = author.ShortBio;

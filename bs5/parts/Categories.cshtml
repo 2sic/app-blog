@@ -21,7 +21,6 @@
     .Select(Cat => new {
       Cat,
       PostsCount = MyUser.IsContentAdmin ? Cat.Parents(type: "BlogPost").Count() : Cat.Parents(type: "BlogPost")
-      @* TODO:: *@
       .Where(b => b.DateTime("PublicationMoment").Date <= DateTime.Now.Date).Count()  // Count all the BlogPosts pointing to this category
     })
     .Where(set => set.PostsCount > 0);            // ...and only keep categories which have posts
@@ -48,12 +47,15 @@
     </li>
 
     @* 3.2 Show each used Category + count *@
-    @foreach (var cat in catsWithPosts) {
+    @foreach (var cat in catsWithPosts) 
+    {
       var catKey = cat.Cat.Key;
       <li>
-        <a class='d-flex btn btn-sm btn-outline-primary @pill align-items-center @(catKey == filterCat ? "active" : "")' href='@Link.To(parameters: "category=" + catKey)'>
-          @cat.Cat.Name
-          <span class="badge @pill badge-primary @marginLeft">@cat.PostsCount</span>
+        <a class='d-flex btn btn-sm btn-outline-primary @pill align-items-center 
+          @(catKey == filterCat ? "active" : "")' 
+          href='@Link.To(parameters: "category=" + catKey)'>
+            @cat.Cat.Name
+            <span class="badge @pill badge-primary @marginLeft">@cat.PostsCount</span>
         </a>
       </li>
     }

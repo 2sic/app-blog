@@ -24,7 +24,8 @@
     </li>
 
     @* Show button for every page *@
-    @for (int i = 1; i <= max; i++) {
+    @for (int i = 1; i <= max; i++) 
+    {
       <li class='page-item @(i == current ? "active" : "")'>
         <a class="page-link" href='@LinkToPage(i)'>@i</a>
       </li>

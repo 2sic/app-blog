@@ -6,7 +6,8 @@
   var post = As<BlogPost>(MyData);
 
   @* Preflight: check if post found, else show notification and stop processing *@
-  if (post == null) {
+  if (post == null) 
+  {
     <h1>@App.Resources.LabelPostNotExists</h1>
     <p>@App.Resources.LabelPostNotExistsText</p>
     @BackToListButton()
@@ -39,7 +40,8 @@
       @{
         var tags = post.Tags;
       }
-      @if (tags.Any()) {
+      @if (tags.Any()) 
+      {
         var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="@marginRight">@App.Resources.String((tags.Count() > 1 ? "Tags" : "Tag")): </strong>

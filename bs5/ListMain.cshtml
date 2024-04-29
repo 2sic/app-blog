@@ -27,20 +27,21 @@
     </div>
 
     @* List the posts *@
-      @foreach (var post in AsList<BlogPost>(MyData["Posts"])) {
-      <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
-        @* Header-block with Image / Author, Title, Categories *@
-        <div class="app-blog5-post-header">
-          @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
-          @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
-        </div>
+      @foreach (var post in AsList<BlogPost>(MyData["Posts"])) 
+      {
+        <article class="app-blog5-list-item effect-zoom mb-5 col-lg-4" @postToolbar.For(post)>
+          @* Header-block with Image / Author, Title, Categories *@
+          <div class="app-blog5-post-header">
+            @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
+            @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h2", CssClass = "h3"})
+          </div>
 
-        <div class="app-blog5-post-content">
-          <p>@Html.Raw(BuildTeaser(post))</p>
-          <a href="@LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
-        </div>
-      </article>
-    }
+          <div class="app-blog5-post-content">
+            <p>@Html.Raw(BuildTeaser(post))</p>
+            <a href="@LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
+          </div>
+        </article>
+      }
 
     @* Show pagination if configured *@
     @if (viewConfig.ShowPagination) {

@@ -31,7 +31,8 @@
   <time itemprop="datePublished" datetime='@pubMoment.ToString("yyyy-MM-dd")'>@pubMoment.ToString("d")</time>
 
   @* List categories of post *@
-  @foreach (var category in blogPost.Categories) {
+  @foreach (var category in blogPost.Categories) 
+  {
     <span>&nbsp;–
     <a class="post-category" href='@Link.To(parameters: "category=" + category.Key)' title='@category.Attribute("Name")'>
       @category.Name

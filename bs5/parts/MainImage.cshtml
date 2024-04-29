@@ -11,14 +11,16 @@
 }
 
 @* Image of the post *@
-@if (hasImg) {
+@if (hasImg) 
+{
   <figure class="effect-zoom">
     @post.Picture("Image", settings: imgSettings, imgAltFallback: post.Title)
   </figure>
 }
 
 @* Show info to admin when the post will publish *@
-@if (MyUser.IsContentAdmin && publicationMoment.CompareTo(DateTime.Now) > 0) {
+@if (MyUser.IsContentAdmin && publicationMoment.CompareTo(DateTime.Now) > 0) 
+{
   <div class='alert alert-warning @(hasImg ? "mb-0" : "mb-3")' role="alert">
     @(App.Resources.LabelAdminPostPublishInfo + " " + publicationMoment.Date.ToString("d") + " " + publicationMoment.TimeOfDay)
   </div>
