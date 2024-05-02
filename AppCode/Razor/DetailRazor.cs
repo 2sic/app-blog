@@ -6,7 +6,7 @@ namespace AppCode.Razor
   /// <summary>
   /// Us for Details 
   /// </summary>
-  public abstract class DetailRazor : AppRazor// TODO: @2dg don't use AppRazor<object>
+  public abstract class DetailRazor : AppRazor
   {
     /// <summary>
     /// Returns a teaser for a blog Previous/Next post
