@@ -4,7 +4,7 @@
 @using AppCode.Data
 
 @{
-  var post = As<BlogPost>(MyModel.Item("Post"));
+  var post = As<BlogPost>(MyModel.Get("Post"));
   var imgSettings = MyModel.String("Settings", fallback: "Blog");
   var hasImg = post.IsNotEmpty("Image");
   var publicationMoment = post.PublicationMoment;

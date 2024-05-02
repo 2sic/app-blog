@@ -5,7 +5,8 @@
   /** Part List Paging - Show a pager (if activated) **/
 
   // Paging information is provided by the Query in the "Paging" stream
-  var pagingInfo = AsList<Paging>(MyData["Paging"]).FirstOrDefault();
+  var pagingInfo = As<Paging>(MyData.GetStream("Paging"));
+
   var current = pagingInfo.PageNumber;
   var max = pagingInfo.PageCount;
 
@@ -53,7 +54,7 @@
     // Note: We should never have a page=1 parameter, otherwise two different links exist for page 1
     var newParams = pageNumber <= 1
       ? MyPage.Parameters.Remove("page")
-      : MyPage.Parameters.Set("page", pageNumber.ToString());
+      : MyPage.Parameters.Set("page", pageNumber);
     return Link.To(parameters: newParams); 
   }
 }

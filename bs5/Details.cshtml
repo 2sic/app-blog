@@ -44,7 +44,7 @@
       {
         var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
-          <strong class="@marginRight">@App.Resources.String((tags.Count() > 1 ? "Tags" : "Tag")): </strong>
+          <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
             <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title='@tag.Name'>@tag.Name</a>
           }
@@ -64,7 +64,8 @@
           @App.Resources.ReadMoreAuthor
           <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
-        @if (author.IsNotEmpty("Image")) {
+        @if (author.IsNotEmpty("Image"))
+        {
           <div>
             @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
@@ -74,8 +75,8 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
-        var previousPost = As<BlogPost>(MyData["Previous"]);
-        var nextPost =  As<BlogPost>(MyData["Next"]);
+        var previousPost = As<BlogPost>(MyData.GetStream("Previous"));
+        var nextPost = As<BlogPost>(MyData.GetStream("Next"));
       }
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
         @PostMicroPreview(previousPost, "previous")

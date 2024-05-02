@@ -6,7 +6,7 @@ namespace AppCode.Razor
   /// <summary>
   /// Us for Details 
   /// </summary>
-  public abstract class DetailRazor : AppRazor<object>
+  public abstract class DetailRazor : AppRazor// TODO: @2dg don't use AppRazor<object>
   {
     /// <summary>
     /// Returns a teaser for a blog Previous/Next post
@@ -14,15 +14,15 @@ namespace AppCode.Razor
     public IHtmlTag PostMicroPreview(BlogPost post, string context)
     {
       if (post == null) return null;
-      // var links = GetCode("./helpers/Links.cs");
       var title = App.Resources.String(context == "previous" ? "PreviousPost" : "NextPost");
 
       var imgUrl = post.Image;
+      // TODO: USE tagSvc = Kit.HtmlTags instead of Tag
       return Tag.Div().Class(context).Wrap(
         Tag.A().Href(LinkToDetailsPage(post)).Wrap(
-          (Text.Has(imgUrl)
+          Text.Has(imgUrl)
             ? post.Picture("Image", settings: "NextPost", imgAltFallback: post.Title, imgClass: "rounded-circle d-none d-lg-block")
-            : null),
+            : null,
           Tag.Span(
             Tag.Strong(title) + " " + post.Title
           ).Class("app-blog-previouslink-title")
@@ -35,8 +35,9 @@ namespace AppCode.Razor
     /// </summary>
     public IHtmlTag BackToListButton()
     {
-      return Tag.Div().Class("backlink").Wrap(
-        Tag.A(App.Resources.BackToHome)
+      var tags = Kit.HtmlTags;
+      return tags.Div().Class("backlink").Wrap(
+        tags.A(App.Resources.BackToHome)
           .Class("btn btn-outline-primary")
           .Href(Link.To())
       );
@@ -61,7 +62,7 @@ namespace AppCode.Razor
       Kit.Page.SetDescription(Text.First(post.MetaDescription, teaser));
 
       // Add open graph meta information
-      var title = post.String("Title");
+      var title = post.Title;
       Kit.Page.AddOpenGraph("og:type", "article");
       Kit.Page.AddOpenGraph("og:title", title);
       Kit.Page.AddOpenGraph("og:site_name", App.Resources.BlogTitle);

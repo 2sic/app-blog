@@ -11,24 +11,26 @@
   string Description = null;
   
   // If a Category-Filter was set, show it with description
-  if (MyData["Category"].Any()) 
+  var category = As<Category>(MyData.GetStream("Category"));
+  var tag = As<BlogTag>(MyData.GetStream("Tag"));
+  var author = As<Author>(MyData.GetStream("Author"));
+
+  if (category != null) 
   {
-    var category = As<Category>(MyData["Category"]);
     Title = App.Resources.Category + " " + category.Name;
     Description = category.Description;
   }
 
   // If a Tag-Filter was set, show that
-  else if (MyData["Tag"].Any()) 
+  else if (tag != null)
   {
-    var tag = As<BlogTag>(MyData["Tag"]);
     Title = App.Resources.Filter + " " + tag.Name;
   }
 
+
   // If an Author was used to filter, show him/her + Bio
-  else if (MyData["Author"].Any()) 
+  else if (author != null) 
   {
-    var author = As<Author>(MyData["Author"]);
     Title = App.Resources.PostsBy + " " + author.FullName;
     Description = author.ShortBio;
   }
@@ -38,12 +40,15 @@
   
 }
 
-@if (Text.Has(Title) || Text.Has(Description)) {
+@if (Text.Has(Title) || Text.Has(Description))
+{
   <div class="category-header mb-5">
-    @if (Text.Has(Title)) 
+    @if (Text.Has(Title)) {
       <h1>@Title</h1>
+    }
     
-    @if (Text.Has(Description))
+    @if (Text.Has(Description)) {
       @Html.Raw(Description)
+    }
   </div>
 }

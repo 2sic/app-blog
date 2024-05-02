@@ -74,6 +74,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Changed pro/Typed API to match 2sxc 16.02 (breaking changes)
 * v06.04 2023-08
   * Changed Categories.cshtml to use `.Parents(type: ...)` for breaking change in 16.03 where `type` is required
-* v06.04.17 2024-04
+* v06.17.00 2024-04
   * strong Typed
   * Auto Generated Class

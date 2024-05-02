@@ -3,20 +3,18 @@
 @using AppCode.Data
 
 @{
-  var blogPost = As<BlogPost>(MyModel.Item("Post"));
+  var blogPost = As<BlogPost>(MyModel.Get("Post"));
   var pubMoment = blogPost.PublicationMoment;
+  // Author Info & Link to Authors Posts
+  var author = blogPost.Author;
+  var authorName = author.FullName;
+  var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
 }
 
 @* Post title *@
 @Tag.Custom(MyModel.String("HeadingType")).Class("mt-3").Class(MyModel.String("CssClass", required: false)).Wrap(Tags.Nl2Br(blogPost.Title))
 
 <div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
-  @* Author Info & Link to Authors Posts *@
-  @{
-    var author = blogPost.Author;
-    var authorName = author.FullName;
-    var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
-  }
   <div class="post-author @marginRight">
     <a href='@Link.To(parameters: "author=" + authorName)'>
       @if (author.IsNotEmpty("Image")) {

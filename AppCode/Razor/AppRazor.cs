@@ -8,9 +8,12 @@ namespace AppCode.Razor
     /// <summary>
     /// Returns a teaser for a blog post
     /// </summary>
+    // TODO: @2dg - move this to the BlogPost class as an additional method, since that's where it belongs
     public string BuildTeaser(BlogPost post)
     {
-      return Text.First(post.Teaser, Text.Ellipsis(Kit.Scrub.All(post.Content), 100));
+      // TODO: @2dg - use post.String("Content", scrub: true)
+      // return Text.First(post.Teaser, Text.Ellipsis(post.String("Content", scrub: true), 100));
+         return Text.First(post.Teaser, Text.Ellipsis(Kit.Scrub.All(post.Content), 100));
     }
 
     /// <summary>
@@ -27,8 +30,8 @@ namespace AppCode.Razor
     private int DetailsPageId()
     {
       if (_detailsPageId != 0) return _detailsPageId;
-      _detailsPageId = Text.Has(App.Settings.DetailsPage)
-        ? Kit.Convert.ToInt((App.Settings.DetailsPage).Split(':')[1])
+      _detailsPageId = App.Settings.IsNotEmpty("DetailsPage")
+        ? Kit.Convert.ToInt(App.Settings.DetailsPage.Split(':')[1])
         : MyPage.Id;
       return _detailsPageId;
     }
