@@ -1,23 +1,23 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
+
 @{
-  var blogPost = MyModel.Item("Post");
-  var pubMoment = blogPost.DateTime("PublicationMoment");
+  var blogPost = As<BlogPost>(MyModel.Get("Post"));
+  var pubMoment = blogPost.PublicationMoment;
+  // Author Info & Link to Authors Posts
+  var author = blogPost.Author;
+  var authorName = author.FullName;
+  var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
 }
 
 @* Post title *@
-@Tag.Custom(MyModel.String("HeadingType")).Class("mt-3").Class(MyModel.String("CssClass", required: false)).Wrap(Tags.Nl2Br(blogPost.String("Title")))
+@Tag.Custom(MyModel.String("HeadingType")).Class("mt-3").Class(MyModel.String("CssClass", required: false)).Wrap(Tags.Nl2Br(blogPost.Title))
 
 <div class="post-meta d-flex align-items-center flex-row my-3" itemscope itemtype="http://schema.org/BlogPosting">
-  @* Author Info & Link to Authors Posts *@
-  @{
-    var author = blogPost.Child("Author");
-    var authorName = author.String("FullName");
-    var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
-  }
   <div class="post-author @marginRight">
     <a href='@Link.To(parameters: "author=" + authorName)'>
-      @if (Text.Has(author.Url("Image"))) {
+      @if (author.IsNotEmpty("Image")) {
         @author.Picture("Image", settings: "Author", imgAltFallback: authorName, imgClass:"rounded-circle author-img");
       } else {
         @authorName
@@ -29,10 +29,11 @@
   <time itemprop="datePublished" datetime='@pubMoment.ToString("yyyy-MM-dd")'>@pubMoment.ToString("d")</time>
 
   @* List categories of post *@
-  @foreach (var category in blogPost.Children("Categories")) {
+  @foreach (var category in blogPost.Categories) 
+  {
     <span>&nbsp;–
-    <a class="post-category" href='@Link.To(parameters: "category=" + category.String("Key"))' title='@category.Attribute("Name")'>
-      @category.String("Name")
+    <a class="post-category" href='@Link.To(parameters: "category=" + category.Key)' title='@category.Attribute("Name")'>
+      @category.Name
     </a>
     </span>
   }

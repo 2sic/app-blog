@@ -1,11 +1,14 @@
-@inherits Custom.Hybrid.RazorTyped
+@inherits AppCode.Razor.AppRazor
+@using AppCode.Data
+
 @{
   /** Part List Paging - Show a pager (if activated) **/
 
   // Paging information is provided by the Query in the "Paging" stream
-  var pagingInfo = AsItem(MyData["Paging"]);
-  var current = pagingInfo.Int("PageNumber");
-  var max = pagingInfo.Int("PageCount");
+  var pagingInfo = As<Paging>(MyData.GetStream("Paging"));
+
+  var current = pagingInfo.PageNumber;
+  var max = pagingInfo.PageCount;
 
   // Stop here if we dont' have pages to show
   if (max <= 1) {  return; }
@@ -18,11 +21,12 @@
   <ul class="pagination justify-content-center">
     @* Show previous button *@
     <li class='page-item @(enablePrev ? "" : "disabled")' aria-hidden="true">
-      <a class="page-link" href='@LinkToPage(current - 1, enablePrev)'>@App.Resources.String("PagePrevious")</a>
+      <a class="page-link" href='@LinkToPage(current - 1, enablePrev)'>@App.Resources.PagePrevious</a>
     </li>
 
     @* Show button for every page *@
-    @for (int i = 1; i <= max; i++) {
+    @for (int i = 1; i <= max; i++) 
+    {
       <li class='page-item @(i == current ? "active" : "")'>
         <a class="page-link" href='@LinkToPage(i)'>@i</a>
       </li>
@@ -30,7 +34,7 @@
 
     @* Show next button *@
     <li class='page-item @(enableNext ? "" : "disabled")' aria-hidden="true">
-      <a class="page-link" href='@LinkToPage(current + 1, enableNext)'>@App.Resources.String("PageNext")</a>
+      <a class="page-link" href='@LinkToPage(current + 1, enableNext)'>@App.Resources.PageNext</a>
     </li>
   </ul>
 </nav>
@@ -50,7 +54,7 @@
     // Note: We should never have a page=1 parameter, otherwise two different links exist for page 1
     var newParams = pageNumber <= 1
       ? MyPage.Parameters.Remove("page")
-      : MyPage.Parameters.Set("page", pageNumber.ToString());
+      : MyPage.Parameters.Set("page", pageNumber);
     return Link.To(parameters: newParams); 
   }
 }

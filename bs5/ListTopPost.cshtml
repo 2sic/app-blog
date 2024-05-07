@@ -1,9 +1,7 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.ListRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
-  // Prepare helpers
-  var links = GetCode("./helpers/Links.cs");
-  var listHelpers = GetCode("./helpers/Helpers.cs");
 
   var mainToolbar = Kit.Toolbar.Default()
     .Edit(operation: "%", tweak: b => b.Note("Edit display settings"))
@@ -17,24 +15,25 @@
 }
 
 @* If no Details-page is configured, show warning to Admin *@
-@if (MyUser.IsContentAdmin && !Text.Has(App.Settings.String("DetailsPage"))) {
+@if (MyUser.IsContentAdmin && !Text.Has(App.Settings.DetailsPage)) {
   <div class="alert alert-danger" role="alert">@App.Resources.Html("LabelAdminDetailPageWarning")</div>
 }
 
 <section class="app-blog5" @mainToolbar.For(MyItem)>
-  <h1 class="category-header mb-4">@MyItem.String("Title")</h1>
+  <h1 class="category-header mb-4">@MyItem.Title</h1>
 
   @* List the posts in 3 columns *@
   <div class="row">
-    @foreach (var post in AsItems(MyData["Posts"])) {
+    @foreach (var post in AsList<BlogPost>(MyData.GetStream("Posts"))) 
+    {
       <article class="app-blog5-list-item col-12 col-md-6 col-lg-4 mb-5" @postToolbar.For(post)>
         @* Image of the post *@
         @Html.Partial("./parts/MainImage.cshtml", new { post, Settings = "BlogCards" })
 
-        <h4>@post.String("Title")</h4>
-        <p>@Html.Raw(listHelpers.BuildTeaser(post))</p>
+        <h4>@post.Title</h4>
+        <p>@Html.Raw(BuildTeaser(post))</p>
 
-        <a href="@links.LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.String("ReadMore")</a>
+        <a href="@LinkToDetailsPage(post)" class="btn btn-outline-primary stretched-link mt-2">@App.Resources.ReadMore</a>
       </article>
     }
   </div>

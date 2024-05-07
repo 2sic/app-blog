@@ -10,6 +10,12 @@ using DotNetNuke.Web.Api;	// this is to verify the AntiForgeryToken
 using System.Xml;
 using System.IO;
 using ToSic.Razor.Blade;
+using AppCode.Data;
+
+
+using System.Collections.Generic;
+using System;
+using ToSic.Sxc.Data;
 
 [AllowAnonymous]			// define that all commands can be accessed without a login
 public class BlogController : Custom.Hybrid.ApiTyped
@@ -24,11 +30,14 @@ public class BlogController : Custom.Hybrid.ApiTyped
   public object Rss()
   {
 
+    var AppSet = As<AppSettings>(App.Settings);
+    var AppRes = As<AppResources>(App.Resources);
+  
     // 1. Prepare
     // 1.1 Figure out what page will show post details based on settings
     // If the settings are configured, it's something like "page:27"
-    var detailsPageId = Text.Has(App.Settings.String("DetailsPage"))
-      ? int.Parse((App.Settings.String("DetailsPage")).Split(':')[1])
+    var detailsPageId = Text.Has(AppSet.String("DetailsPage")) // use String() because it's a link and we need the underlying value like 'file:72'
+      ? int.Parse((AppSet.String("DetailsPage")).Split(':')[1])
       : 0; // when 'DetailsPage' app setting is missing.
 
     // 1.2 This will be null or a message. To be used instead of links
@@ -51,9 +60,9 @@ public class BlogController : Custom.Hybrid.ApiTyped
     // 3. Create Channel
     // 3.1 Create <channel> node and set important values
     var channel = AddTag(root, "channel");
-    AddTag(channel, "title", App.Resources.String("BlogTitle"));
+    AddTag(channel, "title", AppRes.BlogTitle);
     AddTag(channel, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, type: "full"));
-    AddTag(channel, "description", App.Resources.String("RssDescription"));
+    AddTag(channel, "description", AppRes.RssDescription);
 
     // 3.2 Create the <atom> tag with all the attributes. It needs to have the namespace "atom" for valid RSS
     var atom = AddNamespaceTag(channel, AtomNsCode, "link", AtomNamespace);
@@ -62,15 +71,15 @@ public class BlogController : Custom.Hybrid.ApiTyped
     AddAttribute(atom, "href", Link.To(api: "api/Blog/Rss", type: "full"));
 
     // 3.3 Add all the posts from the query to this channel
-    foreach (var post in AsItems(Kit.Data.GetQuery("BlogPosts").GetStream("AllPosts"))) {
+    foreach (var post in AsList<BlogPost>(Kit.Data.GetQuery("BlogPosts").GetStream("AllPosts"))) {
 
       var itemNode = AddTag(channel, "item");
       AddTag(itemNode, "title", post.Title);
-      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.String("UrlKey"), type: "full"));
-      AddTag(itemNode, "description", post.String("Teaser", scrubHtml: true)); // Scrub.All makes sure no HTML makes it into the teaser
+      AddTag(itemNode, "link", linkErrMessage ?? Link.To(pageId: detailsPageId, parameters: "details=" + post.UrlKey, type: "full"));
+      AddTag(itemNode, "description", Kit.Scrub.All(post.Teaser)); // Scrub.All makes sure no HTML makes it into the teaser
       var guidNode = AddTag(itemNode, "guid", post.Guid.ToString());
       AddAttribute(guidNode, "isPermaLink", "false");
-      AddTag(itemNode, "pubDate", post.DateTime("PublicationMoment").ToString("R"));
+      AddTag(itemNode, "pubDate", post.PublicationMoment.ToString("R"));
     }
 
     return File(download: false, fileDownloadName: "rss.xml", contents: rssDoc);

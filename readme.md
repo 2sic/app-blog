@@ -6,11 +6,11 @@
 
 A standard blog app to use with 2sxc
 
-| Aspect              | Status | Comments or Version |
-| ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | requires 2sxc v16.04
+| Aspect              | Status | Comments or Version
+| ------------------- | :----: | -------------------
+| 2sxc                | ✅    | requires 2sxc v17.07.00
 | Dnn                 | ✅    | For v9.6.1
-| Oqtane 2            | ✅    | Requires v04.00
+| Oqtane              | ✅    | Requires v05.00
 | No jQuery           | ✅    |
 | Live Demo           | ➖    | [2givelife blog](https://www.2givelife.org/blog) [Blazor CMS blog](https://blazor-cms.org/blog)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/vgApEx0X) on [azing.org](https://azing.org/2sxc)
@@ -72,5 +72,8 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Reduced code amount by merging Bootstrap4 with Bootstrap5
 * v06.03 2023-07
   * Changed pro/Typed API to match 2sxc 16.02 (breaking changes)
-* v06.04 2027-08
+* v06.04 2023-08
   * Changed Categories.cshtml to use `.Parents(type: ...)` for breaking change in 16.03 where `type` is required
+* v06.17.00 2024-04
+  * strong Typed
+  * Auto Generated Class

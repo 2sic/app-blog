@@ -1,23 +1,23 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.DetailRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // Get current post to show from the View-Query + some Helpers
-  var post = AsItem(MyData);
-  var detailsHelpers = GetCode("DetailsHelper.cs");
-  var isBs5 = Kit.Css.Is("bs5");
+  var post = As<BlogPost>(MyData);
 
   @* Preflight: check if post found, else show notification and stop processing *@
-  if (post == null) {
-    <h1>@App.Resources.String("LabelPostNotExists")</h1>
-    <p>@App.Resources.String("LabelPostNotExistsText")</p>
-    @detailsHelpers.BackToListButton()
+  if (post == null) 
+  {
+    <h1>@App.Resources.LabelPostNotExists</h1>
+    <p>@App.Resources.LabelPostNotExistsText</p>
+    @BackToListButton()
     // Set 404 status if the post was not found
     Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
     return;
   }
 
 	// Add open-graph meta-tags to page header
-  detailsHelpers.AddMetaTags(post);
+  AddMetaTags(post);
 }
 
 <section class="row justify-content-center app-blog5 app-blog5-post-detail">
@@ -38,14 +38,15 @@
     <div class="app-blog5-post-footer">
       @* 3.1 Tags of post *@
       @{
-        var tags = post.Children("Tags");
+        var tags = post.Tags;
       }
-      @if (tags.Any()) {
-        var marginRight = isBs5 ? "me-2" : "mr-2";
+      @if (tags.Any()) 
+      {
+        var marginRight = Kit.Css.Is("bs5") ? "me-2" : "mr-2";
         <div class="app-blog5-tags d-flex align-items-center">
           <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
           @foreach (var tag in tags) {
-            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
+            <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.Tag)' title='@tag.Name'>@tag.Name</a>
           }
         </div>
       }
@@ -54,18 +55,19 @@
 
       @* 3.3 Author *@
       @{
-        var author = post.Child("Author");
-        var authorName = author.String("FullName");
+        var author = post.Author;
+        var authorName = author.FullName;
       }
       <div class="app-blog5-post-author-details d-flex">
         <div>
           @author.Html("ShortBio", container: "")
-          @App.Resources.String("ReadMoreAuthor")
+          @App.Resources.ReadMoreAuthor
           <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
         </div>
-        @if (Text.Has(author.Url("Image"))) {
+        @if (author.IsNotEmpty("Image"))
+        {
           <div>
-            @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
+            @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.FullName)
           </div>
         }
       </div>
@@ -73,18 +75,18 @@
 
       @* 3.4 Preview of previous and next post *@
       @{
-        var previousPost = AsItem(MyData["Previous"]);
-        var nextPost = AsItem(MyData["Next"]);
+        var previousPost = As<BlogPost>(MyData.GetStream("Previous"));
+        var nextPost = As<BlogPost>(MyData.GetStream("Next"));
       }
       <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
-        @detailsHelpers.PostMicroPreview(previousPost, "previous")
-        @detailsHelpers.PostMicroPreview(nextPost, "next")
+        @PostMicroPreview(previousPost, "previous")
+        @PostMicroPreview(nextPost, "next")
       </div>
 
       <hr />
 
       @* 3.5 "Back to list" button *@
-      @detailsHelpers.BackToListButton()
+      @BackToListButton()
     </div>
   </article>
 </section>

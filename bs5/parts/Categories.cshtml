@@ -1,21 +1,25 @@
-@inherits Custom.Hybrid.RazorTyped
-@using System.Linq;
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using System.Linq
+@using AppCode.Data
 @{
   // Optionally get selected category from Query 
   // If there is nothing in the Category-filter, then it's a virtual entity with all properties being null
-  var filter = AsItems(MyData["Category"]).FirstOrDefault();
+  var filter = As<Category>(MyData.GetStream("Category"));
 
-  var filterCat = filter == null ? null : filter.String("Key");
+  var filterCat = filter?.Key;
 
   // 1.1. Get all Blog Posts from the App, to ignore filters (note that admins also get unpublished posts)
-  var allPosts = AsItems(App.Data["BlogPost"]);
+  var allPosts = App.Data.GetAll<BlogPost>();
   
   // 1.2 Get all categories which have posts and keep the Count for showing
-  var catsWithPosts = AsItems(App.Data["Category"])
+  var catsWithPosts = App.Data.GetAll<Category>() 
     .Select(Cat => new {
       Cat,
-      PostsCount = Cat.Parents(type: "BlogPost").Count()  // Count all the BlogPosts pointing to this category
+      // Count all the BlogPosts pointing to this category, but if anonymous-user, only the published ones
+      PostsCount = MyUser.IsContentAdmin
+        ? Cat.Parents(type: "BlogPost").Count()
+        : Cat.Parents(type: "BlogPost").Where(b => b.DateTime("PublicationMoment").Date <= DateTime.Now.Date).Count()
     })
     .Where(set => set.PostsCount > 0);            // ...and only keep categories which have posts
 
@@ -27,26 +31,25 @@
 <div class="app-blog5-sidebar mb-3">
   <ul class="d-flex align-items-center justify-content-center flex-wrap">
     <li>
-      <a class="badge @pill bg-primary rss-button"
-      href='@Link.To(api: "api/Blog/Rss", parameters: filterCat == null ? "" : "category=" + filterCat)'
-      target="_blank">
-      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-rss fa-w-14"><path fill="white" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z" class=""></path></svg>
-    </a>
+       @Html.Partial("./RssLink.cshtml", new { filterCat, pill})
     </li>
     @* 3.1. Link for the all-categories *@
     <li>
       <a class="d-flex btn btn-sm btn-outline-primary @pill align-items-center" href='@Link.To()'>
-        @App.Resources.String("ShowAll")<span class="@marginLeft badge @pill badge-primary">@allPosts.Count()</span>
+        @App.Resources.ShowAll<span class="@marginLeft badge @pill badge-primary">@allPosts.Count()</span>
       </a>
     </li>
 
     @* 3.2 Show each used Category + count *@
-    @foreach (var cat in catsWithPosts) {
-      var catKey = cat.Cat.String("Key");
+    @foreach (var cat in catsWithPosts) 
+    {
+      var catKey = cat.Cat.Key;
       <li>
-        <a class='d-flex btn btn-sm btn-outline-primary @pill align-items-center @(catKey == filterCat ? "active" : "")' href='@Link.To(parameters: "category=" + catKey)'>
-          @cat.Cat.String("Name")
-          <span class="badge @pill badge-primary @marginLeft">@cat.PostsCount</span>
+        <a class='d-flex btn btn-sm btn-outline-primary @pill align-items-center 
+          @(catKey == filterCat ? "active" : "")' 
+          href='@Link.To(parameters: "category=" + catKey)'>
+            @cat.Cat.Name
+            <span class="badge @pill badge-primary @marginLeft">@cat.PostsCount</span>
         </a>
       </li>
     }

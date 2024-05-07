@@ -1,43 +1,52 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
-@using System.Linq;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using System.Linq
+@using AppCode.Data
+
 @{
   /** List Header - Will generate a title and maybe description based on filters/categories selected **/
 
   // These variables will be filled with different infos depending on the filter that was set
   string Title = null;
   string Description = null;
-
+  
   // If a Category-Filter was set, show it with description
-  if (MyData["Category"].Any()) {
-    var category = AsItem(MyData["Category"]);
-    Title = App.Resources.String("Category") + " " + category.String("Name");
-    Description = category.String("Description");
+  var category = As<Category>(MyData.GetStream("Category"));
+  var tag = As<BlogTag>(MyData.GetStream("Tag"));
+  var author = As<Author>(MyData.GetStream("Author"));
+
+  if (category != null) 
+  {
+    Title = App.Resources.Category + " " + category.Name;
+    Description = category.Description;
   }
 
   // If a Tag-Filter was set, show that
-  else if (MyData["Tag"].Any()) {
-    Title = App.Resources.String("Filter") + " " + AsItem(MyData["Tag"]).String("Name");
+  else if (tag != null)
+  {
+    Title = App.Resources.Filter + " " + tag.Name;
   }
 
+
   // If an Author was used to filter, show him/her + Bio
-  else if (MyData["Author"].Any()) {
-    var author = AsItem(MyData["Author"]);
-    Title = App.Resources.String("PostsBy") + " " + author.String("FullName");
-    Description = author.String("ShortBio");
+  else if (author != null) 
+  {
+    Title = App.Resources.PostsBy + " " + author.FullName;
+    Description = author.ShortBio;
   }
 
   // Fallback: Show normal module title
-  else {
-    Title = MyItem.Title;
-  }
+  else Title = MyItem.Title;
+  
 }
 
-@if (Text.Has(Title) || Text.Has(Description)) {
+@if (Text.Has(Title) || Text.Has(Description))
+{
   <div class="category-header mb-5">
     @if (Text.Has(Title)) {
       <h1>@Title</h1>
     }
+    
     @if (Text.Has(Description)) {
       @Html.Raw(Description)
     }
