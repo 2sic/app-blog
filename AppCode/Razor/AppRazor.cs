@@ -20,7 +20,7 @@ namespace AppCode.Razor
     {
       if (_detailsPageId != 0) return _detailsPageId;
       _detailsPageId = App.Settings.IsNotEmpty("DetailsPage")
-        ? Kit.Convert.ToInt(App.Settings.DetailsPage.Split(':')[1])
+        ? Kit.Convert.ToInt(App.Settings.String("DetailsPage").Split(':')[1])
         : MyPage.Id;
       return _detailsPageId;
     }

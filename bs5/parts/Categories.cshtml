@@ -25,6 +25,7 @@
 
   var isBs5 = Kit.Css.Is("bs5");
   var pill = isBs5 ? "rounded-pill" : "badge-pill";
+  var pillBg = isBs5 ? "text-bg-light" : "badge-light";
   var marginLeft = isBs5 ? "ms-1" : "ml-1";
 }
 
@@ -36,7 +37,7 @@
     @* 3.1. Link for the all-categories *@
     <li>
       <a class="d-flex btn btn-sm btn-outline-primary @pill align-items-center" href='@Link.To()'>
-        @App.Resources.ShowAll<span class="@marginLeft badge @pill badge-primary">@allPosts.Count()</span>
+        @App.Resources.ShowAll<span class="@marginLeft badge @pill @pillBg">@allPosts.Count()</span>
       </a>
     </li>
 
@@ -49,7 +50,7 @@
           @(catKey == filterCat ? "active" : "")' 
           href='@Link.To(parameters: "category=" + catKey)'>
             @cat.Cat.Name
-            <span class="badge @pill badge-primary @marginLeft">@cat.PostsCount</span>
+            <span class="badge @pill @pillBg @marginLeft">@cat.PostsCount</span>
         </a>
       </li>
     }
