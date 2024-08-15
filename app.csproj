@@ -65,10 +65,16 @@
   <!-- Polymorphism - if have files with the same classes confuse IntelliSense - see https://go.2sxc.org/vscode -->
   <!-- Example: exclude /live as we're always working on /staging -->
   <ItemGroup>
-    <None Remove="live\**" />
-    <Content Remove="live\**" />
-    <Compile Remove="live\**" />
-    <EmbeddedResource Remove="live\**" />
+    <None Remove="bs3\**" />
+    <Content Remove="bs3\**" />
+    <Compile Remove="bs3\**" />
+    <EmbeddedResource Remove="bs3\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="bs4\**" />
+    <Content Remove="bs4\**" />
+    <Compile Remove="bs4\**" />
+    <EmbeddedResource Remove="bs4\**" />
   </ItemGroup>
 
 </Project>
