@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="18.00.00" ExportDate="2024-07-25T06:43:41.3040954+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="21.06.00" ExportDate="2026-03-31T15:31:51.1504128+02:00">
   <Header>
     <App Guid="72e406fd-500f-4632-82ca-942b22358b56" />
     <Language Default="en-us" />
@@ -1208,12 +1208,6 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="HelpLink" Value="" Type="Hyperlink">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Information" Value="" Type="String">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
             <Value Key="InputType" Value="string-dropdown" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
@@ -1227,9 +1221,6 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -1865,12 +1856,6 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="HelpLink" Value="" Type="Hyperlink">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Information" Value="" Type="String">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
             <Value Key="InputType" Value="string-wysiwyg" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
@@ -1890,9 +1875,6 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="True" Type="Boolean">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -1930,6 +1912,32 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="WysiwygConfiguration" Value="52d79da0-b10d-4f62-9838-2e17b2254a3e" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="cb27a0f2-f921-48d0-a3bc-37c0e77b1d0c" AttributeSetName="ImageDecorator" EntityGUID="e5c61daf-edf5-4c54-a007-ea82987ff0a0" Json="True" KeyNumber="5703">
+            <Value Key="CropBehavior" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="CropTo" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="Description" Value="Image Render Presets" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="DescriptionExtended" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="LightboxGroup" Value="default" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="LightboxIsEnabled" Value="True" Type="Boolean">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="ResizeSettings" Value="" Type="String">
+              <Dimension DimensionID="97" ReadOnly="false" />
+            </Value>
+            <Value Key="SkipFallbackTitle" Value="False" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
           </Entity>
@@ -2241,12 +2249,6 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
-            <Value Key="HelpLink" Value="" Type="Hyperlink">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Information" Value="" Type="String">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
             <Value Key="InputType" Value="entity-default" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
@@ -2266,9 +2268,6 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -2298,12 +2297,6 @@
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="EntityType" Value="BlogTag" Type="String">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="Label" Value="" Type="String">
-              <Dimension DimensionID="97" ReadOnly="false" />
-            </Value>
-            <Value Key="MoreFields" Value="" Type="String">
               <Dimension DimensionID="97" ReadOnly="false" />
             </Value>
             <Value Key="Prefill" Value="" Type="String">
@@ -3234,18 +3227,18 @@
       <Value Key="RequiredOqtaneVersion" Value="05.00.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="17.07.00" Type="String">
+      <Value Key="RequiredVersion" Value="21.05.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="06.17.01" Type="String">
+      <Value Key="Version" Value="06.21.00" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
     <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="059facb3-0968-4021-92a7-72984522fcf2" KeyNumber="114">
-      <Value Key="DetailsPage" Value="page:1763" Type="Hyperlink">
+      <Value Key="DetailsPage" Value="" Type="Hyperlink">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="RssButtonInCategories" Value="e" Type="String">
@@ -4505,7 +4498,7 @@
       <Value Key="Description" Value="contains filter-settings" Type="String" />
       <Value Key="Name" Value="ModuleDataSource" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Sxc.DataSources.CmsBlock, ToSic.Sxc" Type="String" />
-      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 800,&#xD;&#xA;  &quot;Left&quot;: 980&#xD;&#xA;}" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 860,&#xD;&#xA;  &quot;Left&quot;: 960&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="ea9d4e80-7dd6-4851-a7ad-22c360cad79d" Json="True" KeyGuid="161c1034-c68b-43da-92ea-d35a7b696320">
       <Value Key="Description" Value="" Type="String" />
@@ -5309,7 +5302,7 @@
       <Value Key="MetaTitle" Value="" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2020-10-03T16:00:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2026-10-03T16:00:00" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="" Type="String">
@@ -6069,7 +6062,13 @@
       <Value Key="Title" Value="✅ - Users 14400s, Reg 🚫, Editors 300s, SysAdmins 300s" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
+      <Value Key="UrlParameterNames" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
       <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersOthersDisableCache" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
@@ -6099,7 +6098,7 @@
       <Value Key="MetaTitle" Value="SEO Blog 6.0 with Responsive Content" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="PublicationMoment" Value="2025-05-23T23:22:00" Type="DateTime">
+      <Value Key="PublicationMoment" Value="2024-05-23T23:22:00" Type="DateTime">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
       <Value Key="SharingDescription" Value="" Type="String">
@@ -6126,13 +6125,100 @@
       </Value>
     </Entity>
     <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="cb27a0f2-f921-48d0-a3bc-37c0e77b1d0c" AttributeSetName="ImageDecorator" EntityGUID="8e17d410-0641-4fa8-a937-6ee66a4deeff" Json="True" KeyString="file:6351">
-      <Value Key="CropBehavior" Value="" Type="String">
+      <Value Key="CropBehavior" Value="to" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="CropTo" Value="" Type="String">
+      <Value Key="CropTo" Value="tl" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
+      <Value Key="Description" Value="For the blind..." Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DescriptionExtended" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="LightboxGroup" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="ResizeSettings" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="SkipFallbackTitle" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="1ea28652-a051-4c80-acd7-4d2e3f288f9c" AttributeSetName="Category" EntityGUID="cf9ba190-206c-4fda-9a43-48a829fa63d1">
       <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Key" Value="marketing" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="Marketing" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="be34f64b-7d1f-4ad0-b488-dabbbb01a186" AttributeSetName="LightSpeedOutputDecorator" EntityGUID="702f5139-83b8-40bc-b6db-53a7497d7558" Json="True" KeyGuid="63aef3af-16ca-435e-a716-ddc16a077158">
+      <Value Key="Advanced" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="ByUrlParameters" Value="True" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Duration" Value="-1" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationEditors" Value="300" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationSystemAdmin" Value="60" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationUsers" Value="-1" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="🚫" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParameterNames" Value="details" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersOthersDisableCache" Value="True" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="be34f64b-7d1f-4ad0-b488-dabbbb01a186" AttributeSetName="LightSpeedOutputDecorator" EntityGUID="b3dd3a74-c359-42b1-b3b6-8139e09e38fb" Json="True" KeyGuid="070032b2-4f5e-44a1-86f4-16cd81c73434">
+      <Value Key="Advanced" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="ByUrlParameters" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Duration" Value="-1" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationEditors" Value="300" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationSystemAdmin" Value="60" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationUsers" Value="-1" Type="Number">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="🚫" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParameterNames" Value="" Type="String">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="97" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersOthersDisableCache" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
