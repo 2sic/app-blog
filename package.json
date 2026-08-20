@@ -16,7 +16,7 @@
     "autoprefixer": "^10.5.4",
     "concurrently": "^10.0.3",
     "cross-env": "^10.1.0",
-    "postcss": "^8.5.22",
+    "postcss": "^8.5.26",
     "sass": "^1.101.6",
     "typescript": "^6.0.3",
     "vite": "^8.1.5"
