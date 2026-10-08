@@ -1,6 +1,6 @@
 <image src="app-icon.png" align="right" width="200px">
 
-# Blog 6 App for Dnn and Oqtane
+# Blog 6 App for .NET CMSs (DNN and Oqtane)
 
 > This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 

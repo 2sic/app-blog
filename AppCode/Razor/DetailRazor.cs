@@ -17,14 +17,14 @@ namespace AppCode.Razor
       var title = App.Resources.String(context == "previous" ? "PreviousPost" : "NextPost");
 
       var imgUrl = post.Image;
-      // TODO: USE tagSvc = Kit.HtmlTags instead of Tag
-      return Tag.Div().Class(context).Wrap(
-        Tag.A().Href(LinkToDetailsPage(post)).Wrap(
+      var tagSvc = Kit.HtmlTags;
+      return tagSvc.Div().Class(context).Wrap(
+        tagSvc.A().Href(LinkToDetailsPage(post)).Wrap(
           Text.Has(imgUrl)
             ? post.Picture("Image", settings: "NextPost", imgAltFallback: post.Title, imgClass: "rounded-circle d-none d-lg-block")
             : null,
-          Tag.Span(
-            Tag.Strong(title) + " " + post.Title
+          tagSvc.Span(
+            tagSvc.Strong(title) + " " + post.Title
           ).Class("app-blog-previouslink-title")
         )
       );
