@@ -1,9 +1,9 @@
 //
-// This SCSS generates the css file for bootstrap 4 themes
+// This SCSS generates the CSS file for Bootstrap 5 themes
 // To regenerate the SCSS using your variables (custom colors, etc.)
 // update the reference to your _variables.scss of your skin
 // and re-run the following npm
-// npm run start-bs4
+// npm run build-bs5
 //
 
 // the following comment is multi-line and will be included in the final CSS
@@ -32,7 +32,7 @@
 //
 // It is used by all CSS generators (Bootstrap3/4, etc.)
 // To keep things simple, it uses the standard variables of
-// bootstrap 4 conventions.
+// Bootstrap 5 conventions.
 //
 
 @import "_style.scss";          // General CSS stuff for everything

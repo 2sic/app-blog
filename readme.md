@@ -18,8 +18,8 @@ A standard blog app to use with 2sxc
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
 | Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/blog-v5-hybrid-for-dnn-and-oqtane)
 | Best Practices      | ✅    | Uses v16.01 conventions
-| Bootstrap 3         | ➖    | Use the old Blog4 if you need it
-| Bootstrap 4         | ✅    |
+| Bootstrap 3         | ❌    | Last supported in v04.02.00
+| Bootstrap 4         | ❌    | Last supported in v06.21.01
 | Bootstrap 5         | ✅    |
 
 ## Customize the App
@@ -84,3 +84,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Added intellisense Extensions for Visual Studio Code
 * v06.21.01 2026-06
   * Switched from webpack to Vite for faster builds 
+* v06.21.02 2026-10
+  * Removed Bootstrap 4 support; the app is now Bootstrap 5 only
+  * For Bootstrap 3, use v04.02.00; for Bootstrap 4, use v06.21.01
