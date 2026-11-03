@@ -3284,7 +3284,7 @@
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="06.21.01" Type="String">
+      <Value Key="Version" Value="06.21.02" Type="String">
         <Dimension DimensionID="97" ReadOnly="false" />
       </Value>
     </Entity>
